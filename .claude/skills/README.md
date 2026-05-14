@@ -26,6 +26,7 @@ cp -r .claude/skills/. ~/.claude/skills/
 | `premium-landing-page` | Premium custom landing pages | "תעצב לי דף נחיתה" |
 | `premium-website` | Full multi-page websites | "תבנה לי אתר" |
 | `brand-book-creator` | Complete brand identity systems | "תיצור ספר מותג" |
+| `skill-auditor` | Safety audit of third-party skills before install | "תבדוק את הסקיל הזה" |
 | `session-start-hook` | Web container setup hook | "set up the session-start hook" |
 
 ## How they chain together
