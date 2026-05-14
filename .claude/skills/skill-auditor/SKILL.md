@@ -31,13 +31,22 @@ Trigger phrases:
 
 ## Audit workflow (10 checks)
 
-### 1. Source reputation
+### 1. Source reputation & popularity
 - [ ] Is it from a known, trusted author/org? (Anthropic, well-known dev, large org)
 - [ ] If GitHub: how many stars / forks / contributors? Last commit date? Open issues addressed?
 - [ ] If npm: weekly downloads, version history, maintainer
 - [ ] Look up the author — do they have other reputable projects?
 
-🚩 **Red flags:** Anonymous one-off repo, no commits in >12 months, single commit only, brand-new account with no history.
+**Popularity thresholds (per course guidance "skills with many downloads = more trustworthy"):**
+| Stars/downloads | Treatment |
+|-----------------|-----------|
+| Official Anthropic / Microsoft / Google | ✅ Pass section 1, still scan code |
+| ≥ 500 stars OR ≥ 1,000 weekly npm downloads | ✅ Likely safe — still scan code |
+| 50–500 stars | ⚠️ Acceptable but extra scrutiny on every file |
+| < 50 stars AND < 5 contributors | 🚩 Treat as untrusted — assume guilty until proven safe |
+| Brand-new (< 30 days, < 10 stars) | 🚩 Default to DO NOT INSTALL unless user has strong reason |
+
+🚩 **Red flags:** Anonymous one-off repo, no commits in >12 months, single commit only, brand-new account with no history, forked-and-modified from popular project (potential supply chain).
 
 ### 2. Read every file
 - [ ] `SKILL.md` / README — does the description match the actual code?
