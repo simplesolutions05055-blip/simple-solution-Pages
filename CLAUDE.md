@@ -8,7 +8,7 @@
 ## About the user
 
 - **Role:** Owner of a marketing/advertising agency in Israel (Webxp).
-- **Email:** gili@webxp.co.il
+- **Email:** simple.solutions05055@gmail.com
 - **Languages:** Hebrew (primary) + English. Reply in the language the user writes in.
 - **Background:** Not a developer. Treat as smart non-technical user — explain in plain language, never assume git/CLI fluency.
 - **Goal:** Use Claude Code as a force multiplier for the agency — building landing pages, websites, brand books, copy, SaaS products, and lead-gen for clients.
@@ -58,6 +58,7 @@ Folders mirrored:
 
 ## Custom skills available (current state)
 
+### Webxp custom skills
 | Skill | Purpose | Trigger example |
 |-------|---------|----------------|
 | `skill-creator` | Meta — creates new skills properly | "תיצור לי סקיל ל..." |
@@ -67,6 +68,21 @@ Folders mirrored:
 | `premium-landing-page` | Premium custom landing pages | "תעצב לי דף נחיתה" |
 | `premium-website` | Full multi-page websites | "תבנה לי אתר" |
 | `brand-book-creator` | Complete brand identity systems | "תיצור ספר מותג" |
+
+### Document skills (anthropics/skills — official)
+| Skill | Purpose | Trigger example |
+|-------|---------|----------------|
+| `docx` | Word docs (create/read/edit) | "תכין לי הצעת מחיר ב-Word" |
+| `pptx` | PowerPoint decks | "תבנה pitch deck" |
+| `pdf` | PDF operations | "תאחד את ה-PDFs האלה" |
+
+### Community marketing skills
+| Skill | Purpose | Trigger example |
+|-------|---------|----------------|
+| `content-ideas` | 100 viral content ideas from trends | "תן לי רעיונות לסרטונים" |
+
+### Knowledge base (not a skill — reference docs)
+- `.claude/references/awesome-design-md/` — 71 brand design-language guides (Apple, Linear, Vercel, Stripe…) used for landing-page/website design inspiration.
 
 ## Context-window hygiene
 

@@ -18,6 +18,7 @@ cp -r .claude/skills/. ~/.claude/skills/
 
 ## Skill index
 
+### Core agency skills (Webxp custom)
 | Skill | Purpose | Sample trigger |
 |-------|---------|---------------|
 | `skill-creator` | Meta — creates new skills | "תיצור לי סקיל ל..." |
@@ -28,6 +29,22 @@ cp -r .claude/skills/. ~/.claude/skills/
 | `brand-book-creator` | Complete brand identity systems | "תיצור ספר מותג" |
 | `skill-auditor` | Safety audit of third-party skills before install | "תבדוק את הסקיל הזה" |
 | `session-start-hook` | Web container setup hook | "set up the session-start hook" |
+
+### Document skills (from anthropics/skills — official)
+| Skill | Purpose | Sample trigger |
+|-------|---------|---------------|
+| `docx` | Create / read / edit Word documents | "תכין לי הצעת מחיר ב-Word" |
+| `pptx` | Create / read / edit PowerPoint decks | "תבנה pitch deck ללקוח" |
+| `pdf` | Read, merge, split, watermark, fill PDFs | "תאחד את כל ה-PDFs האלה" |
+
+### Marketing skills (community)
+| Skill | Purpose | Sample trigger |
+|-------|---------|---------------|
+| `content-ideas` | 100 viral content ideas from Reddit/X/GitHub trends | "תן לי 100 רעיונות לסרטונים" |
+
+## References (not skills — design knowledge base)
+
+`/.claude/references/awesome-design-md/` — 71 design-language guides for top brands (Apple, Airbnb, Linear, Vercel, Stripe…). Used by `premium-landing-page` and `premium-website` as design inspiration.
 
 ## How they chain together
 
