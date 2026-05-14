@@ -1,4 +1,4 @@
-# Working Context — Webxp Marketing Agency
+# Working Context — Simple Solutions Marketing Agency
 
 > This file is auto-loaded on every Claude Code session and survives `/compact`.
 > It is the single source of truth for who the user is and how Claude should work for them.
@@ -7,11 +7,17 @@
 
 ## About the user
 
-- **Role:** Owner of a marketing/advertising agency in Israel (Webxp).
+- **Agency name:** Simple Solutions (סימפל סולושנס)
+- **Owner:** Gili
+- **Role:** Owner of a marketing/advertising agency in Israel.
 - **Email:** simple.solutions05055@gmail.com
+- **Primary domain:** `simple-solution.co.il` (singular, no `s`) — live at https://www.simple-solution.co.il/
+- **Domain registrar:** livedns.co.il (Israeli registrar — manage records at https://domains.livedns.co.il/Main.aspx). DNS will be delegated to Cloudflare; the registrar remains LiveDNS.
+- **Subdomain convention:** `lp.simple-solution.co.il` for Simple Solutions's own landing pages; client landing pages live under each client's own domain.
 - **Languages:** Hebrew (primary) + English. Reply in the language the user writes in.
 - **Background:** Not a developer. Treat as smart non-technical user — explain in plain language, never assume git/CLI fluency.
 - **Goal:** Use Claude Code as a force multiplier for the agency — building landing pages, websites, brand books, copy, SaaS products, and lead-gen for clients.
+- **Working mode:** wants to issue ONE-COMMAND requests like "deploy the landing page" and have Claude execute end-to-end via the connected MCPs (Vercel, Cloudflare, GitHub).
 
 ## Core rules of engagement
 
@@ -58,7 +64,7 @@ Folders mirrored:
 
 ## Custom skills available (current state)
 
-### Webxp custom skills
+### Simple Solutions custom skills
 | Skill | Purpose | Trigger example |
 |-------|---------|----------------|
 | `skill-creator` | Meta — creates new skills properly | "תיצור לי סקיל ל..." |

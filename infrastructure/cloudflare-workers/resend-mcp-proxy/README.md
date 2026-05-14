@@ -1,10 +1,12 @@
-# Resend MCP Proxy — Cloudflare Worker
+# API-Key MCP Proxy — Cloudflare Worker (Template)
 
-Bridges Claude on Web to Resend's MCP server. Holds the Resend API key as an encrypted Cloudflare secret so Claude never sees it.
+> **Status: template, not active.** Originally intended for Resend MCP, but Resend does **not** host a public MCP server at `mcp.resend.com` — they only ship the server as a `npx`/stdio package for self-hosting. This Worker remains as a reusable template for any future MCP that **does** expose a public HTTPS endpoint requiring `Authorization: Bearer <key>`.
+
+Holds an API key as an encrypted Cloudflare secret so Claude never sees it.
 
 ## Why this exists
 
-Claude on Web's **Add custom connector** dialog supports only OAuth-based MCP servers (Client ID / Client Secret). Resend's MCP requires `Authorization: Bearer <key>` and there is no field for custom headers in the dialog. This Worker fills the gap.
+Claude on Web's **Add custom connector** dialog supports only OAuth-based MCP servers (Client ID / Client Secret). Many vendor MCPs require `Authorization: Bearer <key>` and there is no field for custom headers in the dialog. This Worker fills the gap.
 
 ## Architecture
 
