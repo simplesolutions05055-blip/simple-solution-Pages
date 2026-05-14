@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>אפיון מערכת CRM · Simple Solution</title>
+<meta name="description" content="אפיון פונקציונלי מלא למערכת CRM — מודולים, תפקידים, מבנה נתונים, זרימות, ארכיטקטורה, אבטחה ו-Roadmap." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1020;
+    --bg-2:#10172a;
+    --surface:#ffffff;
+    --surface-2:#f6f8fc;
+    --ink:#0f172a;
+    --ink-soft:#334155;
+    --ink-muted:#64748b;
+    --line:#e2e8f0;
+    --line-strong:#cbd5e1;
+    --brand:#5b6cff;
+    --brand-2:#22d3ee;
+    --brand-ink:#1e1b4b;
+    --accent:#f59e0b;
+    --ok:#10b981;
+    --warn:#f59e0b;
+    --err:#ef4444;
+    --radius:14px;
+    --radius-sm:10px;
+    --shadow-sm:0 1px 2px rgba(15,23,42,.06), 0 1px 1px rgba(15,23,42,.04);
+    --shadow:0 10px 30px -12px rgba(15,23,42,.18), 0 4px 10px -6px rgba(15,23,42,.08);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Heebo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,#f7f9ff 0%, #ffffff 240px) ,#ffffff;
+    line-height:1.7;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code, kbd, .mono{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;font-size:.92em}
+
+  /* ===== Header / Hero ===== */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:saturate(160%) blur(10px);
+    -webkit-backdrop-filter:saturate(160%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:var(--maxw);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 24px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink)}
+  .brand .dot{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 200deg,var(--brand),var(--brand-2),var(--brand));box-shadow:0 6px 18px -6px rgba(91,108,255,.6)}
+  .brand small{display:block;font-weight:400;color:var(--ink-muted);font-size:12px;letter-spacing:.04em}
+  .topbar nav{display:flex;gap:18px;font-size:14px}
+  .topbar nav a{color:var(--ink-soft)}
+  .topbar .badge{font-size:12px;padding:4px 10px;border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);background:#fff}
+
+  .hero{
+    background:
+      radial-gradient(900px 400px at 90% -10%, rgba(34,211,238,.18), transparent 60%),
+      radial-gradient(800px 400px at 10% 10%, rgba(91,108,255,.22), transparent 60%),
+      linear-gradient(180deg,#0b1020 0%,#111a36 100%);
+    color:#eef1ff;
+    border-bottom:1px solid #0a0f1f;
+  }
+  .hero-inner{
+    max-width:var(--maxw);margin:0 auto;padding:64px 24px 80px;
+    display:grid;grid-template-columns:1.4fr .9fr;gap:40px;align-items:center;
+  }
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#a5b4fc;background:rgba(99,102,241,.12);border:1px solid rgba(165,180,252,.25);padding:6px 12px;border-radius:999px}
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:#22d3ee;box-shadow:0 0 0 0 rgba(34,211,238,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,238,.6)}70%{box-shadow:0 0 0 12px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+  .hero h1{font-size:clamp(28px,3.4vw,46px);line-height:1.15;margin:16px 0 10px;font-weight:800;letter-spacing:-.01em}
+  .hero p.lead{color:#cdd5f3;font-size:18px;max-width:62ch;margin:0 0 24px}
+  .meta-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .meta-pills span{font-size:12px;color:#e0e7ff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px}
+  .hero-card{
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:16px;padding:18px;color:#e6ebff;
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.6);
+  }
+  .hero-card h3{margin:0 0 12px;font-size:14px;color:#a5b4fc;letter-spacing:.06em;text-transform:uppercase}
+  .hero-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+  .hero-card li{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding-bottom:10px;border-bottom:1px dashed rgba(255,255,255,.12)}
+  .hero-card li:last-child{border-bottom:0;padding-bottom:0}
+  .hero-card li b{color:#fff;font-weight:600}
+  .hero-card li span{color:#a5b4fc}
+
+  /* ===== Layout ===== */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:32px 24px 80px;display:grid;grid-template-columns:260px 1fr;gap:40px}
+  aside.toc{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 90px);overflow:auto;padding-inline-end:8px}
+  .toc h4{margin:8px 0 8px;font-size:11px;letter-spacing:.14em;color:var(--ink-muted);text-transform:uppercase}
+  .toc ol{list-style:none;padding:0;margin:0;display:grid;gap:2px;counter-reset:tocsec}
+  .toc ol li a{display:block;padding:6px 10px;border-radius:8px;color:var(--ink-soft);font-size:14px;border:1px solid transparent}
+  .toc ol li a::before{counter-increment:tocsec;content:counter(tocsec) ".";color:var(--ink-muted);margin-inline-end:8px;font-variant-numeric:tabular-nums}
+  .toc ol li a:hover{background:var(--surface-2);text-decoration:none;color:var(--ink)}
+
+  main{min-width:0}
+  section.section{scroll-margin-top:80px;padding:24px 0 8px;border-top:1px solid var(--line)}
+  section.section:first-of-type{border-top:0;padding-top:8px}
+  section h2{font-size:26px;margin:8px 0 6px;letter-spacing:-.01em}
+  section h3{font-size:18px;margin:22px 0 8px}
+  section h4{font-size:15px;margin:16px 0 6px;color:var(--ink-soft)}
+  section p{color:var(--ink-soft)}
+  .lead-sub{color:var(--ink-muted);max-width:72ch;margin-top:0}
+
+  .grid{display:grid;gap:14px}
+  .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow-sm);
+  }
+  .card h4{margin-top:0}
+  .card .ico{
+    display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,rgba(91,108,255,.12),rgba(34,211,238,.12));
+    color:var(--brand);font-weight:700;margin-bottom:8px;
+  }
+  .callout{
+    border-radius:var(--radius);padding:14px 16px;border:1px solid var(--line);background:var(--surface-2);
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .callout .tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:#eef2ff;color:#4338ca;border:1px solid #e0e7ff;flex-shrink:0;margin-top:3px}
+  .callout.warn .tag{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
+  .callout.ok .tag{background:#ecfdf5;color:#065f46;border-color:#a7f3d0}
+
+  ul.checks{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+  ul.checks li{padding-inline-start:26px;position:relative;color:var(--ink-soft)}
+  ul.checks li::before{content:"";position:absolute;inset-inline-start:0;top:9px;width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:inset 0 0 0 2px #fff}
+
+  table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+  thead th{background:var(--surface-2);text-align:start;color:var(--ink-soft);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.02em}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#fafbff}
+  td .pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--ink-soft)}
+  td .pill.ok{background:#ecfdf5;border-color:#a7f3d0;color:#065f46}
+  td .pill.no{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  td .pill.partial{background:#fffbeb;border-color:#fde68a;color:#92400e}
+
+  /* Pipeline columns mockup */
+  .pipeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:8px 0 4px}
+  .pipeline .col{background:var(--surface-2);border:1px dashed var(--line-strong);border-radius:12px;padding:10px}
+  .pipeline .col h5{margin:0 0 8px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between}
+  .pipeline .col h5 small{color:var(--ink-muted);font-weight:400}
+  .pipeline .ticket{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:8px;font-size:13px;box-shadow:var(--shadow-sm)}
+  .pipeline .ticket b{display:block;font-size:13.5px}
+  .pipeline .ticket .val{color:var(--brand);font-weight:600;font-size:12px}
+
+  /* Customer-card mock */
+  .cust{
+    border:1px solid var(--line);border-radius:var(--radius);background:#fff;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .cust-head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 18px;background:linear-gradient(180deg,#fafbff,#fff);border-bottom:1px solid var(--line)}
+  .cust .avatar{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;background:linear-gradient(135deg,var(--brand),var(--brand-2));font-size:18px}
+  .cust h4{margin:0;font-size:18px}
+  .cust .sub{color:var(--ink-muted);font-size:13px}
+  .cust .tabs{display:flex;gap:4px;padding:8px 12px;border-bottom:1px solid var(--line);background:#fff;overflow:auto}
+  .cust .tabs span{padding:8px 12px;border-radius:8px;font-size:13.5px;color:var(--ink-soft);white-space:nowrap}
+  .cust .tabs span.active{background:#eef2ff;color:#3730a3;font-weight:600}
+  .cust .body{display:grid;grid-template-columns:1.3fr 1fr;gap:0}
+  .cust .body > div{padding:14px 18px}
+  .cust .body > div + div{border-inline-start:1px solid var(--line)}
+  .timeline{display:grid;gap:10px;margin-top:6px}
+  .timeline .ev{display:grid;grid-template-columns:auto 1fr auto;gap:10px;font-size:13.5px;align-items:start}
+  .timeline .ev .dotline{position:relative;width:10px;height:10px;border-radius:50%;background:var(--brand);margin-top:6px}
+  .timeline .ev small{color:var(--ink-muted);white-space:nowrap}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13.5px}
+  .kv dt{color:var(--ink-muted)}
+  .kv dd{margin:0;color:var(--ink)}
+
+  /* ERD */
+  .erd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .erd .ent{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px;box-shadow:var(--shadow-sm)}
+  .erd .ent h5{margin:0;background:linear-gradient(180deg,#eef2ff,#fff);padding:8px 10px;font-size:13px;color:#312e81;border-bottom:1px solid var(--line)}
+  .erd .ent ul{margin:0;padding:6px 10px;list-style:none}
+  .erd .ent li{padding:3px 0;color:var(--ink-soft);display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line)}
+  .erd .ent li:last-child{border-bottom:0}
+  .erd .ent li .t{color:var(--ink-muted);font-family:"JetBrains Mono",monospace;font-size:11.5px}
+  .erd .ent li.pk b::before{content:"PK ";color:#9333ea;font-weight:700;letter-spacing:.05em;font-size:10.5px}
+  .erd .ent li.fk b::before{content:"FK ";color:#0891b2;font-weight:700;letter-spacing:.05em;font-size:10.5px}
+
+  .roadmap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .phase{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;position:relative;overflow:hidden}
+  .phase::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--brand),var(--brand-2))}
+  .phase.p2::before{background:linear-gradient(180deg,#22d3ee,#10b981)}
+  .phase.p3::before{background:linear-gradient(180deg,#f59e0b,#ef4444)}
+  .phase h4{margin:0 0 4px;display:flex;align-items:center;justify-content:space-between}
+  .phase h4 small{font-weight:500;color:var(--ink-muted)}
+  .phase ul{margin:8px 0 0;padding-inline-start:18px;color:var(--ink-soft);font-size:14px}
+
+  /* Glossary */
+  .glossary dl{display:grid;grid-template-columns:200px 1fr;gap:6px 16px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+  .glossary dt{font-weight:600;color:var(--brand-ink)}
+  .glossary dd{margin:0;color:var(--ink-soft)}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:24px;color:var(--ink-muted);font-size:13px;text-align:center}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 980px){
+    .hero-inner{grid-template-columns:1fr;padding:44px 20px 56px}
+    .wrap{grid-template-columns:1fr;padding:20px 16px 60px;gap:16px}
+    aside.toc{position:static;max-height:none;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+    .grid.cols-2,.grid.cols-3{grid-template-columns:1fr}
+    .pipeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .erd{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cust .body{grid-template-columns:1fr}
+    .cust .body > div + div{border-inline-start:0;border-top:1px solid var(--line)}
+    .glossary dl{grid-template-columns:1fr}
+    .roadmap{grid-template-columns:1fr}
+    .topbar nav{display:none}
+  }
+
+  /* ===== Print ===== */
+  @media print{
+    .topbar, aside.toc, .hero-card{display:none !important}
+    body{background:#fff}
+    .hero{background:#fff;color:#000;border-bottom:1px solid #000}
+    .hero-inner{grid-template-columns:1fr;padding:8px 0}
+    .hero p.lead, .eyebrow, .meta-pills{color:#333}
+    .wrap{grid-template-columns:1fr;padding:0}
+    .card,.callout,table,.cust,.phase{box-shadow:none}
+    section.section{page-break-inside:avoid}
+    a{color:#000;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <div>Simple Solution<small>אפיון מערכת · גרסה 1.0</small></div>
+    </div>
+    <nav aria-label="ניווט מהיר">
+      <a href="#sec-overview">סקירה</a>
+      <a href="#sec-modules">מודולים</a>
+      <a href="#sec-data">מבנה נתונים</a>
+      <a href="#sec-arch">ארכיטקטורה</a>
+      <a href="#sec-roadmap">Roadmap</a>
+    </nav>
+    <span class="badge">14.05.2026</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow"><span class="pulse" aria-hidden="true"></span> מסמך אפיון פונקציונלי · CRM</span>
+      <h1>אפיון מערכת ניהול לקוחות (CRM)</h1>
+      <p class="lead">
+        מסמך אפיון מקיף המגדיר את היכולות, המסכים, מבנה הנתונים, התפקידים, האינטגרציות והדרישות הלא-פונקציונליות של מערכת ה-CRM של
+        Simple Solution. המסמך משמש כבסיס לפיתוח, לתכנון UX וכמקור אמת ל-Stakeholders.
+      </p>
+      <div class="meta-pills">
+        <span>פרויקט: <b style="color:#fff">CRM Web App</b></span>
+        <span>קהל: עסקים קטנים-בינוניים</span>
+        <span>פלטפורמה: Web · Mobile-first</span>
+        <span>שפה: עברית (RTL) · אנגלית בעתיד</span>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="פרטי מסמך">
+      <h3>פרטי מסמך</h3>
+      <ul>
+        <li><b>גרסה</b><span>1.0 · Draft for review</span></li>
+        <li><b>בעלים</b><span>צוות מוצר · Simple Solution</span></li>
+        <li><b>סטטוס</b><span>פתוח לאישור</span></li>
+        <li><b>תאריך עדכון</b><span>14.05.2026</span></li>
+        <li><b>הפניה</b><span>/crm/customers/[id]</span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<div class="wrap">
+  <aside class="toc" aria-label="תוכן עניינים">
+    <h4>תוכן עניינים</h4>
+    <ol>
+      <li><a href="#sec-overview">מבוא ומטרות</a></li>
+      <li><a href="#sec-personas">קהלי יעד ו-Personas</a></li>
+      <li><a href="#sec-roles">תפקידים והרשאות</a></li>
+      <li><a href="#sec-modules">מודולים פונקציונליים</a></li>
+      <li><a href="#sec-stories">User Stories וזרימות</a></li>
+      <li><a href="#sec-data">מבנה נתונים</a></li>
+      <li><a href="#sec-uxui">עקרונות UX/UI</a></li>
+      <li><a href="#sec-arch">ארכיטקטורה טכנית</a></li>
+      <li><a href="#sec-integrations">אינטגרציות חיצוניות</a></li>
+      <li><a href="#sec-security">אבטחה ופרטיות</a></li>
+      <li><a href="#sec-nfr">דרישות לא-פונקציונליות</a></li>
+      <li><a href="#sec-roadmap">אבני דרך · Roadmap</a></li>
+      <li><a href="#sec-appendix">נספחים ומילון מונחים</a></li>
+    </ol>
+  </aside>
+
+  <main>
+
+    <!-- 1 -->
+    <section id="sec-overview" class="section">
+      <h2>מבוא ומטרות</h2>
+      <p class="lead-sub">
+        מערכת ה-CRM של Simple Solution היא פלטפורמת ניהול קשרי לקוחות מבוססת ענן,
+        המאפשרת לבעלי עסק ולצוותי מכירות לנהל לקוחות, לידים, פעילויות ותהליכי מכירה
+        ממקום אחד, באמצעות ממשק עברי, נקי, מהיר ונגיש מכל מכשיר.
+      </p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="ico">M</div>
+          <h4>חזון</h4>
+          <p>להעניק לעסקים קטנים-בינוניים שליטה מלאה בתיק הלקוחות שלהם, ללא תלות במערכות יקרות ומסורבלות.</p>
+        </div>
+        <div class="card">
+          <div class="ico">G</div>
+          <h4>יעדים עסקיים</h4>
+          <ul class="checks">
+            <li>קיצור זמן טיפול בליד ב-40%.</li>
+            <li>שיפור שיעור המרה (conversion) ב-15%.</li>
+            <li>תיעוד מלא ושקוף של כל אינטראקציה.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ico">K</div>
+          <h4>מדדי הצלחה (KPI)</h4>
+          <ul class="checks">
+            <li>DAU/MAU גבוה מ-40%.</li>
+            <li>שביעות רצון משתמשים (NPS) ≥ 45.</li>
+            <li>זמן טעינת עמוד מתחת ל-2.5 שניות.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px">
+        <span class="tag">היקף</span>
+        <div>המסמך מגדיר את <b>MVP (שלב א')</b> ואת המודולים המתקדמים בשלב ב' ו-ג'. ראו פרק <a href="#sec-roadmap">Roadmap</a> להפרדה.</div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section id="sec-personas" class="section">
+      <h2>קהלי יעד ו-Personas</h2>
+      <p class="lead-sub">מערכת ה-CRM פונה לארבעה פרסונות עיקריות, ולכל אחת צרכים, יכולות ורמות גישה שונות.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>1. בעל עסק (Owner)</h4>
+          <p>מנהל את כלל הפעילות, רוצה תמונה כללית ושליטה בהגדרות וההרשאות.</p>
+          <ul class="checks"><li>צופה בלוח בקרה כללי וב-KPIs.</li><li>מנהל משתמשים והרשאות.</li><li>מקבל התראות על עסקאות גדולות.</li></ul>
+        </div>
+        <div class="card">
+          <h4>2. מנהל מכירות (Sales Manager)</h4>
+          <p>מנהל צוות מכירות, עוקב אחר ביצועים ומחלק לידים.</p>
+          <ul class="checks"><li>מקצה לידים לנציגים.</li><li>בודק דוחות ביצועים שבועיים.</li><li>מאשר הצעות מחיר חריגות.</li></ul>
+        </div>
+        <div class="card">
+          <h4>3. נציג מכירות (Sales Rep)</h4>
+          <p>איש השטח/הטלפון — המשתמש העיקרי במערכת ביום-יום.</p>
+          <ul class="checks"><li>עובד בעיקר במובייל.</li><li>מתעד שיחות ומשימות.</li><li>מקדם לידים בפייפליין.</li></ul>
+        </div>
+        <div class="card">
+          <h4>4. עובד תפעול / שירות (Read-Only / Support)</h4>
+          <p>צופה במידע לצורך מתן שירות, ללא הרשאות עריכה גורפות.</p>
+          <ul class="checks"><li>צפייה בכרטיס לקוח.</li><li>הוספת הערות.</li><li>פתיחת קריאות שירות.</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section id="sec-roles" class="section">
+      <h2>תפקידים והרשאות (RBAC)</h2>
+      <p class="lead-sub">המערכת תומכת ב-Role-Based Access Control עם תפקידים מובנים. ניתן להוסיף תפקידים מותאמים בשלב ב'.</p>
+      <table>
+        <thead>
+          <tr><th>פעולה / משאב</th><th>Admin</th><th>Manager</th><th>Sales Rep</th><th>Read-Only</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ניהול משתמשים והרשאות</td><td><span class="pill ok">מלא</span></td><td><span class="pill no">אין</span></td><td><span class="pill no">אין</span></td><td><span class="pill no">אין</span></td></tr>
+          <tr><td>צפייה בכל הלקוחות</td><td><span class="pill ok">מלא</span></td><td><span class="pill ok">מלא</span></td><td><span class="pill partial">שלו בלבד</span></td><td><span class="pill ok">צפייה</span></td></tr>
+          <tr><td>יצירה / עריכת לקוח</td><td><span class="pill ok">מלא</span></td><td><span class="pill ok">מלא</span></td><td><span class="pill ok">מלא</span></td><td><span class="pill no">אין</span></td></tr>
+          <tr><td>מחיקת לקוח / לידים</td><td><span class="pill ok">מלא</span></td><td><span class="pill partial">באישור</span></td><td><span class="pill no">אין</span></td><td><span class="pill no">אין</span></td></tr>
+          <tr><td>צפייה בדוחות וביצועים</td><td><span class="pill ok">מלא</span></td><td><span class="pill ok">מלא</span></td><td><span class="pill partial">אישי</span></td><td><span class="pill no">אין</span></td></tr>
+          <tr><td>שינוי הגדרות מערכת</td><td><span class="pill ok">מלא</span></td><td><span class="pill no">אין</span></td><td><span class="pill no">אין</span></td><td><span class="pill no">אין</span></td></tr>
+          <tr><td>יצוא נתונים (CSV / Excel)</td><td><span class="pill ok">מלא</span></td><td><span class="pill ok">מלא</span></td><td><span class="pill partial">אישי</span></td><td><span class="pill no">אין</span></td></tr>
+          <tr><td>הוספת הערות לכרטיס</td><td><span class="pill ok">כן</span></td><td><span class="pill ok">כן</span></td><td><span class="pill ok">כן</span></td><td><span class="pill ok">כן</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 4 -->
+    <section id="sec-modules" class="section">
+      <h2>מודולים פונקציונליים</h2>
+      <p class="lead-sub">לב המערכת מורכב מ-11 מודולים. שלב MVP יכלול 4.1–4.6 וכן 4.8 ו-4.10. שלב ב' יוסיף את היתרים.</p>
+
+      <h3>4.1 לקוחות (Customers)</h3>
+      <p>ניהול בסיס הלקוחות של העסק. כולל מסך רשימה, חיפוש, סינון, יצירה ועריכה, וכרטיס לקוח מפורט בנתיב <code>/crm/customers/[id]</code>.</p>
+      <div class="cust" aria-label="הדגמת כרטיס לקוח">
+        <div class="cust-head">
+          <div class="avatar">ים</div>
+          <div>
+            <h4>ים פתרונות בע"מ <span class="pill ok" style="margin-inline-start:6px">פעיל</span></h4>
+            <div class="sub">לקוח #2 · נפתח 12.03.2026 · מנהל תיק: דנה כהן</div>
+          </div>
+          <div style="display:flex;gap:6px"><span class="pill">ערוך</span><span class="pill">פעולה חדשה</span></div>
+        </div>
+        <div class="tabs" role="tablist">
+          <span class="active">סקירה</span><span>אנשי קשר</span><span>פעילויות</span><span>הצעות מחיר</span><span>מסמכים</span><span>הערות</span><span>היסטוריה</span>
+        </div>
+        <div class="body">
+          <div>
+            <h4 style="margin-top:0">פרטי לקוח</h4>
+            <dl class="kv">
+              <dt>ח.פ / ע.מ</dt><dd>514123456</dd>
+              <dt>טלפון</dt><dd>03-1234567</dd>
+              <dt>אימייל</dt><dd>info@yam.co.il</dd>
+              <dt>כתובת</dt><dd>הרצל 20, תל אביב</dd>
+              <dt>מקור</dt><dd>פייסבוק · קמפיין מאי</dd>
+              <dt>תגיות</dt><dd><span class="pill">VIP</span> <span class="pill">SMB</span></dd>
+            </dl>
+          </div>
+          <div>
+            <h4 style="margin-top:0">פעילות אחרונה</h4>
+            <div class="timeline">
+              <div class="ev"><span class="dotline"></span><div><b>שיחה יוצאת</b><div class="sub">סוכם על שליחת הצעת מחיר מעודכנת.</div></div><small>היום, 10:42</small></div>
+              <div class="ev"><span class="dotline" style="background:#10b981"></span><div><b>הצעת מחיר #Q-118</b><div class="sub">נשלחה ללקוח · בתוקף 14 יום.</div></div><small>אתמול</small></div>
+              <div class="ev"><span class="dotline" style="background:#f59e0b"></span><div><b>פגישה תואמה</b><div class="sub">פגישת היכרות במשרדי הלקוח.</div></div><small>21.05</small></div>
+              <div class="ev"><span class="dotline" style="background:#64748b"></span><div><b>נוצר ליד</b><div class="sub">מקור: טופס יצירת קשר באתר.</div></div><small>12.03</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4>פונקציות מרכזיות במודול הלקוחות</h4>
+      <ul class="checks">
+        <li>רשימת לקוחות עם חיפוש חופשי, סינון לפי תגית/סטטוס/מנהל תיק וסידור עמודות מותאם.</li>
+        <li>יצירה / עריכה / השבתה (Soft Delete) של לקוח, כולל בדיקת כפילויות לפי ח.פ/אימייל.</li>
+        <li>כרטיס לקוח חד-עמוד עם Tabs: סקירה, אנשי קשר, פעילויות, הצעות מחיר, מסמכים, הערות, היסטוריה.</li>
+        <li>שיוך מנהל תיק (Owner) ושינוי בעלות עם רישום ב-Audit Log.</li>
+        <li>ייצוא לקובץ CSV / Excel של רשומה בודדת או של רשימה מסוננת.</li>
+      </ul>
+
+      <h3>4.2 אנשי קשר (Contacts)</h3>
+      <p>איש קשר מקושר ללקוח (Many-to-One). כולל שם, תפקיד, טלפון, אימייל, הערות והגדרת איש קשר ראשי.</p>
+      <ul class="checks">
+        <li>כל לקוח חייב לפחות איש קשר ראשי אחד.</li>
+        <li>תמיכה במספר טלפונים/אימיילים לאיש קשר אחד.</li>
+        <li>סנכרון אופציונלי עם אנשי קשר ב-Google / Outlook (שלב ב').</li>
+      </ul>
+
+      <h3>4.3 לידים והזדמנויות (Leads &amp; Pipeline)</h3>
+      <p>ניהול תהליך המכירה דרך משפך עם שלבים מותאמים אישית, תצוגת Kanban עם Drag-and-Drop.</p>
+      <div class="pipeline" aria-label="הדגמת פייפליין">
+        <div class="col">
+          <h5>חדש <small>4</small></h5>
+          <div class="ticket"><b>אבי לוי</b><div>טלפון: 050-1234567</div><span class="val">12,000 ₪</span></div>
+          <div class="ticket"><b>סטודיו אורן</b><div>מקור: לינקדאין</div><span class="val">8,500 ₪</span></div>
+        </div>
+        <div class="col">
+          <h5>צרו קשר <small>3</small></h5>
+          <div class="ticket"><b>ים פתרונות</b><div>שיחה היום</div><span class="val">45,000 ₪</span></div>
+        </div>
+        <div class="col">
+          <h5>הצעה נשלחה <small>2</small></h5>
+          <div class="ticket"><b>קולור פרינט</b><div>בתוקף 14 יום</div><span class="val">18,200 ₪</span></div>
+        </div>
+        <div class="col">
+          <h5>במו"מ <small>1</small></h5>
+          <div class="ticket"><b>טרמינל גרופ</b><div>פגישה שני</div><span class="val">62,400 ₪</span></div>
+        </div>
+        <div class="col">
+          <h5>נסגר <small>5</small></h5>
+          <div class="ticket"><b>בית קפה ענבל</b><div>WON · 04.05</div><span class="val">9,300 ₪</span></div>
+        </div>
+      </div>
+      <ul class="checks" style="margin-top:10px">
+        <li>הגדרת שלבים בהגדרות (מינימום 3, מקסימום 10).</li>
+        <li>לכל הזדמנות: ערך, מטבע, הסתברות סגירה, תאריך סגירה משוער.</li>
+        <li>הצגת סיכומים לכל עמודה: סה"כ ערך פתוח, ממוצע, מספר הזדמנויות.</li>
+        <li>היסטוריית מעבר בין שלבים (Audit) — מתי וע"י מי.</li>
+        <li>סטטוס סופי: <b>Won</b> / <b>Lost</b> + סיבה לאובדן (Dropdown).</li>
+      </ul>
+
+      <h3>4.4 משימות ותזכורות (Tasks)</h3>
+      <ul class="checks">
+        <li>יצירת משימה משויכת ללקוח/ליד/איש קשר, עם תאריך יעד, עדיפות (נמוכה/רגילה/דחופה).</li>
+        <li>תזכורות לפני מועד היעד (15 דק' / שעה / יום).</li>
+        <li>תצוגת "המשימות שלי" — קלנדר, רשימה ולוח Kanban (לעשות / בעבודה / הושלם).</li>
+        <li>השלמת משימה רושמת אוטומטית פעילות ב-Timeline של הלקוח.</li>
+      </ul>
+
+      <h3>4.5 תיעוד פעילויות (Activity Timeline)</h3>
+      <p>כל אינטראקציה עם לקוח נשמרת בציר זמן אחיד: שיחות, מיילים, פגישות, הערות, שינויי סטטוס, שליחת הצעות.</p>
+      <ul class="checks">
+        <li>הוספה ידנית עם סוג פעילות, משך, תוצאה וטקסט חופשי.</li>
+        <li>תיעוד אוטומטי של אירועי מערכת (יצירה, שינוי שלב, שליחת מסמך).</li>
+        <li>סינון לפי סוג / משתמש / טווח תאריכים.</li>
+      </ul>
+
+      <h3>4.6 מסמכים והערות</h3>
+      <ul class="checks">
+        <li>העלאת קבצים (PDF, DOC, XLSX, תמונות) עד 25MB לקובץ; אחסון ב-Object Storage עם חתימת URL.</li>
+        <li>הערות עשירות (Rich-Text קל) עם תיוג משתמשים <code>@דנה</code>.</li>
+        <li>סיווג מסמכים: חוזה / הצעת מחיר / חשבונית / אחר.</li>
+      </ul>
+
+      <h3>4.7 הצעות מחיר וחשבוניות (שלב ב')</h3>
+      <ul class="checks">
+        <li>בונה הצעת מחיר עם פריטים, כמויות, הנחות, מע"מ, תנאי תשלום.</li>
+        <li>ייצוא ל-PDF ממותג + שליחה במייל ישירות מהמערכת.</li>
+        <li>סטטוסים: טיוטה / נשלחה / אושרה / נדחתה / פג תוקף.</li>
+        <li>חיבור עתידי לחשבוניות ירוקות / Hashavshevet / iCount.</li>
+      </ul>
+
+      <h3>4.8 לוח בקרה ודוחות (Dashboard)</h3>
+      <ul class="checks">
+        <li>Widgets ניתנים להזזה: לידים פתוחים, ערך פייפליין, יחס סגירה, משימות מתקרבות.</li>
+        <li>גרפים: הכנסה חודשית, פילוח מקורות לידים, ביצועים לפי נציג.</li>
+        <li>שמירת תצוגות אישיות וייצוא PDF/Excel.</li>
+      </ul>
+
+      <h3>4.9 חיפוש גלובלי וסינונים מתקדמים</h3>
+      <ul class="checks">
+        <li>חיפוש אחד (⌘K) על פני לקוחות, לידים, אנשי קשר ומסמכים, עם דירוג רלוונטיות.</li>
+        <li>בונה סינונים: AND/OR, שמירת סינון מועדף, שיתוף עם צוות.</li>
+      </ul>
+
+      <h3>4.10 התראות</h3>
+      <ul class="checks">
+        <li>התראות in-app בפעמון + סיכום יומי במייל.</li>
+        <li>טריגרים: שיוך משימה, אזכור (mention), הזדמנות גדולה נכנסה, הצעת מחיר פגה.</li>
+        <li>הגדרת ערוצים והשתקה (Mute) לפי שעות / סוג.</li>
+      </ul>
+
+      <h3>4.11 הגדרות מערכת</h3>
+      <ul class="checks">
+        <li>שדות מותאמים אישית (Custom Fields) לישויות עיקריות.</li>
+        <li>ניהול תגיות, צוותים, שלבי פייפליין, סיבות אובדן.</li>
+        <li>תבניות מייל וחתימות.</li>
+        <li>מיתוג: לוגו, צבע ראשי, פרטי חברה.</li>
+      </ul>
+    </section>
+
+    <!-- 5 -->
+    <section id="sec-stories" class="section">
+      <h2>User Stories וזרימות מפתח</h2>
+      <p class="lead-sub">דוגמאות מייצגות לזרימות המרכזיות. כל סיפור מנוסח בפורמט <code>As a … I want … so that …</code>.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>US-01 · יצירת לקוח חדש</h4>
+          <p><b>As a</b> נציג מכירות <b>I want</b> ליצור לקוח חדש מהר ככל הניתן <b>so that</b> אוכל להתחיל לטפל בו עוד באותה השיחה.</p>
+          <ul class="checks">
+            <li>Form עם שדות חובה מינימליים (שם, טלפון או אימייל).</li>
+            <li>בדיקת כפילויות בזמן הקלדה.</li>
+            <li>שמירה ומעבר ישיר לכרטיס הלקוח.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>US-02 · קידום ליד בפייפליין</h4>
+          <p><b>As a</b> נציג <b>I want</b> לגרור ליד בין שלבים <b>so that</b> אוכל לעדכן סטטוס בלי לפתוח טפסים.</p>
+          <ul class="checks">
+            <li>Drag-and-drop עם אישור ויזואלי.</li>
+            <li>אם המעבר ל"נסגר אבד" — דורש סיבת אובדן.</li>
+            <li>רישום אוטומטי ב-Activity Timeline.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>US-03 · התראת תזכורת</h4>
+          <p><b>As a</b> נציג <b>I want</b> לקבל תזכורת 15 דקות לפני פגישה <b>so that</b> לא אשכח לקוח.</p>
+          <ul class="checks">
+            <li>Push בדפדפן + מייל.</li>
+            <li>אפשרות לדחות (Snooze) ב-10/30 דק'.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>US-04 · דוח חודשי למנהל</h4>
+          <p><b>As a</b> מנהל מכירות <b>I want</b> לייצא דוח חודשי של ביצועי הצוות <b>so that</b> אוכל להציגו בישיבת הנהלה.</p>
+          <ul class="checks">
+            <li>בחירת טווח תאריכים, נציגים, מקורות.</li>
+            <li>ייצוא PDF + Excel.</li>
+            <li>שמירת תבנית דוח לשימוש חוזר.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section id="sec-data" class="section">
+      <h2>מבנה נתונים (Data Model)</h2>
+      <p class="lead-sub">מודל נתונים יחסי הניתן למימוש ב-Postgres (Supabase). השדות כאן חיוניים — שדות מותאמים נוספים תומכים דרך טבלת <code>custom_fields</code>.</p>
+
+      <div class="erd" aria-label="ERD תרשים ישויות">
+        <div class="ent">
+          <h5>customers</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li><b>name</b><span class="t">text</span></li>
+            <li><b>tax_id</b><span class="t">text</span></li>
+            <li><b>phone</b><span class="t">text</span></li>
+            <li><b>email</b><span class="t">text</span></li>
+            <li><b>address</b><span class="t">text</span></li>
+            <li><b>source</b><span class="t">text</span></li>
+            <li><b>tags</b><span class="t">text[]</span></li>
+            <li><b>status</b><span class="t">enum</span></li>
+            <li class="fk"><b>owner_id</b><span class="t">uuid→users</span></li>
+            <li><b>created_at</b><span class="t">timestamptz</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>contacts</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li class="fk"><b>customer_id</b><span class="t">uuid→customers</span></li>
+            <li><b>full_name</b><span class="t">text</span></li>
+            <li><b>role</b><span class="t">text</span></li>
+            <li><b>phone</b><span class="t">text</span></li>
+            <li><b>email</b><span class="t">text</span></li>
+            <li><b>is_primary</b><span class="t">bool</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>leads</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li class="fk"><b>customer_id</b><span class="t">uuid?</span></li>
+            <li><b>title</b><span class="t">text</span></li>
+            <li><b>stage</b><span class="t">enum</span></li>
+            <li><b>value</b><span class="t">numeric</span></li>
+            <li><b>currency</b><span class="t">char(3)</span></li>
+            <li><b>probability</b><span class="t">int</span></li>
+            <li><b>expected_close</b><span class="t">date</span></li>
+            <li class="fk"><b>owner_id</b><span class="t">uuid→users</span></li>
+            <li><b>lost_reason</b><span class="t">text?</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>activities</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li class="fk"><b>customer_id</b><span class="t">uuid?</span></li>
+            <li class="fk"><b>lead_id</b><span class="t">uuid?</span></li>
+            <li><b>type</b><span class="t">enum</span></li>
+            <li><b>title</b><span class="t">text</span></li>
+            <li><b>body</b><span class="t">text</span></li>
+            <li><b>duration_min</b><span class="t">int</span></li>
+            <li class="fk"><b>created_by</b><span class="t">uuid→users</span></li>
+            <li><b>created_at</b><span class="t">timestamptz</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>tasks</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li class="fk"><b>customer_id</b><span class="t">uuid?</span></li>
+            <li class="fk"><b>lead_id</b><span class="t">uuid?</span></li>
+            <li><b>title</b><span class="t">text</span></li>
+            <li><b>due_at</b><span class="t">timestamptz</span></li>
+            <li><b>priority</b><span class="t">enum</span></li>
+            <li><b>status</b><span class="t">enum</span></li>
+            <li class="fk"><b>assignee_id</b><span class="t">uuid→users</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>documents</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li class="fk"><b>customer_id</b><span class="t">uuid</span></li>
+            <li><b>name</b><span class="t">text</span></li>
+            <li><b>storage_key</b><span class="t">text</span></li>
+            <li><b>mime</b><span class="t">text</span></li>
+            <li><b>size_bytes</b><span class="t">bigint</span></li>
+            <li><b>category</b><span class="t">enum</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>users</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li><b>email</b><span class="t">text</span></li>
+            <li><b>full_name</b><span class="t">text</span></li>
+            <li class="fk"><b>role_id</b><span class="t">uuid→roles</span></li>
+            <li><b>is_active</b><span class="t">bool</span></li>
+          </ul>
+        </div>
+        <div class="ent">
+          <h5>audit_log</h5>
+          <ul>
+            <li class="pk"><b>id</b><span class="t">uuid</span></li>
+            <li><b>entity</b><span class="t">text</span></li>
+            <li><b>entity_id</b><span class="t">uuid</span></li>
+            <li><b>action</b><span class="t">text</span></li>
+            <li><b>diff</b><span class="t">jsonb</span></li>
+            <li class="fk"><b>actor_id</b><span class="t">uuid→users</span></li>
+            <li><b>at</b><span class="t">timestamptz</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout ok" style="margin-top:14px">
+        <span class="tag">יחסים</span>
+        <div>
+          <b>customers 1—N contacts</b> · <b>customers 1—N leads</b> · <b>customers 1—N activities/tasks/documents</b> ·
+          <b>users 1—N owner_of(customers, leads)</b>. כל פעולת שינוי משמעותית נרשמת ב-<code>audit_log</code>.
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section id="sec-uxui" class="section">
+      <h2>עקרונות UX / UI</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4>RTL-first ועברית קודם</h4>
+          <p>כל הרכיבים מתוכננים מימין לשמאל מהיסוד, כולל אייקונים, חצים, גרפים וטבלאות. אנגלית תיתמך כשלב ב'.</p>
+        </div>
+        <div class="card">
+          <h4>Mobile responsive</h4>
+          <p>נציג מכירות עובד בעיקר במובייל — כל מסך מרכזי חייב להיות שמיש בגודל 375px ומעלה.</p>
+        </div>
+        <div class="card">
+          <h4>Design Tokens</h4>
+          <p>שימוש בטוקנים מרכזיים (צבעים, מרווחים, רדיוסים, צללים) לעקביות בין מסכים ולתחזוקה קלה.</p>
+        </div>
+        <div class="card">
+          <h4>נגישות (WCAG 2.1 AA)</h4>
+          <p>ניגודיות מינימלית, ניווט מקלדת מלא, תוויות ARIA, פוקוסים נראים, תמיכה בקוראי מסך בעברית.</p>
+        </div>
+        <div class="card">
+          <h4>מהירות תפיסה</h4>
+          <p>Skeletons בטעינה, Optimistic UI בפעולות עריכה, אנימציות עדינות בלבד (≤ 200ms).</p>
+        </div>
+        <div class="card">
+          <h4>Dark mode</h4>
+          <p>תמיכה במצב כהה החל משלב ב', עם החלפה אוטומטית לפי הגדרת מערכת ההפעלה.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section id="sec-arch" class="section">
+      <h2>ארכיטקטורה טכנית מומלצת</h2>
+      <p class="lead-sub">המלצה מנומקת; הצוות הטכני רשאי להחליף רכיב — כל עוד עומדים בדרישות הלא-פונקציונליות.</p>
+      <table>
+        <thead><tr><th>שכבה</th><th>טכנולוגיה</th><th>נימוק</th></tr></thead>
+        <tbody>
+          <tr><td>Frontend</td><td>Next.js 14 (App Router) + TypeScript + Tailwind + shadcn/ui</td><td>SSR/ISR, ביצועים מצוינים ב-Vercel, מערכת קומפוננטות בוגרת ונגישה.</td></tr>
+          <tr><td>State / Data</td><td>TanStack Query + Zustand</td><td>קאשינג חכם של בקשות, פתרון פשוט ל-state גלובלי קל-משקל.</td></tr>
+          <tr><td>Backend / DB</td><td>Supabase (Postgres + Row Level Security)</td><td>Auth, DB ו-Storage במשולב; RLS מאפשר אכיפת הרשאות במסד.</td></tr>
+          <tr><td>Storage</td><td>Supabase Storage (S3-compatible)</td><td>קבצי לקוח עם Signed URLs.</td></tr>
+          <tr><td>Auth</td><td>Supabase Auth + Magic Link / Google OAuth</td><td>חוויית התחברות חלקה, MFA אופציונלי.</td></tr>
+          <tr><td>Hosting</td><td>Vercel (Edge + ISR)</td><td>פריסה רציפה, preview לכל PR, CDN גלובלי.</td></tr>
+          <tr><td>Observability</td><td>Vercel Analytics + Sentry + Logflare</td><td>ניטור ביצועים, שגיאות בזמן אמת ולוגים.</td></tr>
+          <tr><td>Email</td><td>Resend / Postmark</td><td>שליחת התראות והצעות מחיר עם reputation גבוה.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 9 -->
+    <section id="sec-integrations" class="section">
+      <h2>אינטגרציות חיצוניות</h2>
+      <div class="grid cols-3">
+        <div class="card"><h4>Gmail / Outlook</h4><p>סנכרון מיילים דו-כיווני, כפתור "שמור במערכת" בתוסף דפדפן (שלב ב').</p></div>
+        <div class="card"><h4>WhatsApp Business</h4><p>שליחת הודעות תבניתיות מתוך כרטיס הלקוח, תיעוד אוטומטי ב-Timeline.</p></div>
+        <div class="card"><h4>Google Calendar</h4><p>סנכרון פגישות שתואמו במערכת ליומן האישי.</p></div>
+        <div class="card"><h4>ייבוא Excel/CSV</h4><p>אשף ייבוא לקוחות עם מיפוי עמודות, בדיקת תקינות וטיפול בכפילויות.</p></div>
+        <div class="card"><h4>Webhooks</h4><p>שליחת אירועים יוצאים (לקוח חדש, ליד נסגר) למערכות צד-שלישי.</p></div>
+        <div class="card"><h4>חשבונית ירוקה / iCount</h4><p>הפקת חשבונית מס מהצעת מחיר אושרה (שלב ב'–ג').</p></div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section id="sec-security" class="section">
+      <h2>אבטחה ופרטיות</h2>
+      <ul class="checks">
+        <li><b>אימות:</b> Supabase Auth, סיסמאות חזקות, אפשרות ל-MFA (TOTP).</li>
+        <li><b>אכיפת הרשאות במסד:</b> Postgres Row Level Security — נציג רואה רק את הלקוחות שהוא Owner שלהם.</li>
+        <li><b>הצפנה:</b> TLS 1.3 בתעבורה, AES-256 במנוחה (ברירת מחדל של Supabase).</li>
+        <li><b>Audit Log מלא</b> לכל שינוי משמעותי: יצירה, עריכה, מחיקה, ייצוא, שינוי הרשאה.</li>
+        <li><b>פרטיות:</b> תאימות לחוק הגנת הפרטיות הישראלי ול-GDPR — זכות עיון, תיקון ומחיקה (Right to be forgotten).</li>
+        <li><b>גיבויים:</b> יומיים אוטומטיים ב-Supabase, שמירה 30 יום; שחזור Point-in-Time (שלב ב').</li>
+        <li><b>סודות:</b> ניהול ב-Vercel Environment Variables + Supabase Vault, ללא commit ל-Git.</li>
+        <li><b>Rate-limiting</b> על endpoints ציבוריים, ניטור התקפות brute-force.</li>
+      </ul>
+    </section>
+
+    <!-- 11 -->
+    <section id="sec-nfr" class="section">
+      <h2>דרישות לא-פונקציונליות</h2>
+      <table>
+        <thead><tr><th>קטגוריה</th><th>דרישה</th><th>יעד</th></tr></thead>
+        <tbody>
+          <tr><td>ביצועים</td><td>LCP בעמוד לקוח טיפוסי</td><td>&lt; 2.5 שניות (P75)</td></tr>
+          <tr><td>ביצועים</td><td>זמן תגובה ל-API</td><td>&lt; 400ms (P95)</td></tr>
+          <tr><td>זמינות</td><td>Uptime חודשי</td><td>≥ 99.5%</td></tr>
+          <tr><td>סקיילביליות</td><td>תמיכה בכמות לקוחות לכל ארגון</td><td>עד 100,000 לקוחות, ללא ירידה מורגשת</td></tr>
+          <tr><td>תאימות דפדפנים</td><td>שתי גרסאות אחרונות</td><td>Chrome, Edge, Safari, Firefox</td></tr>
+          <tr><td>נגישות</td><td>תקן</td><td>WCAG 2.1 AA · ת"י 5568</td></tr>
+          <tr><td>שפות</td><td>שלב MVP</td><td>עברית · אנגלית בשלב ב'</td></tr>
+          <tr><td>RPO / RTO</td><td>גיבוי / שחזור</td><td>RPO 24h · RTO 4h</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 12 -->
+    <section id="sec-roadmap" class="section">
+      <h2>אבני דרך · Roadmap</h2>
+      <div class="roadmap">
+        <div class="phase">
+          <h4>MVP <small>שלב א' · 6–8 שבועות</small></h4>
+          <ul>
+            <li>לקוחות, אנשי קשר, פעילויות, משימות, מסמכים, הערות.</li>
+            <li>פייפליין בסיסי (5 שלבים) + Drag-and-drop.</li>
+            <li>Dashboard עם 4 widgets מרכזיים.</li>
+            <li>התראות in-app + מייל יומי.</li>
+            <li>RBAC עם 4 תפקידים מובנים.</li>
+            <li>RTL מלא, מובייל responsive.</li>
+          </ul>
+        </div>
+        <div class="phase p2">
+          <h4>שלב ב' <small>+8–12 שבועות</small></h4>
+          <ul>
+            <li>הצעות מחיר, יצוא PDF, חתימה דיגיטלית.</li>
+            <li>אינטגרציות Gmail/Outlook ו-WhatsApp Business.</li>
+            <li>שדות מותאמים, תבניות מייל, Dark mode.</li>
+            <li>API ציבורי + Webhooks.</li>
+            <li>אנגלית כשפה שנייה.</li>
+          </ul>
+        </div>
+        <div class="phase p3">
+          <h4>שלב ג' <small>חזון</small></h4>
+          <ul>
+            <li>חשבוניות מס ושילוב חשבונית ירוקה / iCount.</li>
+            <li>AI Assistant — סיכומי שיחה, ניקוד לידים, ניסוח מיילים.</li>
+            <li>אפליקציית מובייל ייעודית (React Native).</li>
+            <li>BI מתקדם וייצוא ל-Looker Studio.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section id="sec-appendix" class="section">
+      <h2>נספחים</h2>
+
+      <h3>רשימת מסכים עיקריים</h3>
+      <ul class="checks">
+        <li><code>/login</code> · התחברות (Magic Link / Google).</li>
+        <li><code>/dashboard</code> · לוח בקרה.</li>
+        <li><code>/crm/customers</code> · רשימת לקוחות.</li>
+        <li><code>/crm/customers/[id]</code> · כרטיס לקוח מלא (Tabs).</li>
+        <li><code>/crm/leads</code> · פייפליין Kanban.</li>
+        <li><code>/tasks</code> · המשימות שלי.</li>
+        <li><code>/reports</code> · דוחות.</li>
+        <li><code>/settings</code> · הגדרות מערכת ומשתמשים.</li>
+      </ul>
+
+      <h3>מילון מונחים</h3>
+      <div class="glossary">
+        <dl>
+          <dt>Lead</dt><dd>הזדמנות מכירה פתוחה הנמצאת בתהליך מעקב.</dd>
+          <dt>Pipeline</dt><dd>משפך מכירה — סדרת שלבים שאיש מכירות מקדם בה את הליד.</dd>
+          <dt>Activity</dt><dd>אינטראקציה תועדה (שיחה, מייל, פגישה) המשויכת ללקוח/ליד.</dd>
+          <dt>Owner</dt><dd>המשתמש האחראי על לקוח או על הזדמנות.</dd>
+          <dt>RBAC</dt><dd>Role-Based Access Control — מודל הרשאות מבוסס תפקידים.</dd>
+          <dt>RLS</dt><dd>Row Level Security — אכיפת הרשאות ברמת השורה במסד הנתונים.</dd>
+          <dt>SLA</dt><dd>Service Level Agreement — התחייבות לרמת שירות (זמינות, תגובה).</dd>
+          <dt>MVP</dt><dd>Minimum Viable Product — גרסה ראשונית עם פיצ'רי ליבה בלבד.</dd>
+        </dl>
+      </div>
+
+      <h3>שאלות פתוחות לדיון</h3>
+      <ul class="checks">
+        <li>האם נדרשת תמיכה רב-ארגונית (Multi-tenant) כבר ב-MVP, או לקוח-יחיד-לכל-מופע?</li>
+        <li>מי ספק החשבוניות המועדף לאינטגרציה — חשבונית ירוקה, iCount או Sumit?</li>
+        <li>האם נדרש ייבוא ראשוני מנתוני CRM קיימים של לקוח-פיילוט?</li>
+        <li>סף עליון לכמות משתמשים בו-זמנית — להתאמת תצורת DB.</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  © 2026 Simple Solution · אפיון CRM · גרסה 1.0 · עודכן 14.05.2026 ·
+  <a href="https://simple-solution-three.vercel.app/crm/customers/2">/crm/customers/2</a>
+</footer>
+
+</body>
+</html>
