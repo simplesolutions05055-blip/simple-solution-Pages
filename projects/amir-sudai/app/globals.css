@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === A.S · AMIR SUDAI · Design Tokens · v3.0 === */
+:root {
+  --as-navy: #14253D;
+  --as-navy-deep: #0A1828;
+  --as-navy-mid: #1F3550;
+  --as-navy-light: #3A5375;
+
+  --as-gold: #C9A858;
+  --as-gold-bright: #E8C77A;
+  --as-gold-pale: #F5E5B8;
+  --as-bronze: #9C7F38;
+
+  --as-white: #FFFFFF;
+  --as-paper: #FAFAFA;
+  --as-cream: #F7F7F4;
+  --as-charcoal: #2A3142;
+
+  --as-green: #2D9D5C;
+  --as-red: #C84B3F;
+  --as-amber: #D4A53A;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--as-navy-deep);
+}
+
+body {
+  background: var(--as-navy-deep);
+  color: var(--as-cream);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-feature-settings: "kern", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display headings always Frank Ruhl */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display), serif;
+  letter-spacing: -0.01em;
+}
+
+/* Numeric tabular for prices/data */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gold shimmer text utility */
+.text-gold-shimmer {
+  background: linear-gradient(135deg, #C9A858 0%, #E8C77A 50%, #9C7F38 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle gold hairline (used as section divider) */
+.gold-hairline {
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(201, 168, 88, 0) 5%,
+    rgba(201, 168, 88, 0.5) 50%,
+    rgba(201, 168, 88, 0) 95%,
+    transparent 100%
+  );
+}
+
+/* Halftone — corners only (brand rule, p.11) */
+.halftone {
+  background-image: radial-gradient(
+    circle,
+    rgba(201, 168, 88, 0.22) 1px,
+    transparent 1.4px
+  );
+  background-size: 14px 14px;
+}
+
+/* Form field base */
+.field {
+  background: rgba(31, 53, 80, 0.55);
+  border: 1px solid rgba(201, 168, 88, 0.15);
+  color: var(--as-cream);
+  padding: 14px 16px;
+  border-radius: 14px;
+  width: 100%;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--as-gold);
+  background: rgba(31, 53, 80, 0.85);
+}
+.field::placeholder {
+  color: rgba(247, 247, 244, 0.35);
+}
+
+/* Selection */
+::selection {
+  background: var(--as-gold);
+  color: var(--as-ink);
+}
