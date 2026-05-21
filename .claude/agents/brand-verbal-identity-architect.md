@@ -29,7 +29,7 @@ Generate 5 tagline candidates rooted in the Mission + USP + archetype. For each:
 - Memorable (rhythm, alliteration, or surprise)
 - Specific to the brand (not interchangeable with a competitor's)
 
-Present all 5, recommend top 2, let the user pick or request a fresh round.
+Pick the strongest one as primary. Keep the other 4 as alternates (they appear in chapter 03 as "alternates"). NO user voting step — the user will see all 5 in the final draft and can swap the primary as a revision.
 
 ### Step 2 — Tone of voice
 Define 3 tone traits, each as a contrast pair (e.g. "warm but not cheesy", "expert but not condescending", "playful but not childish"). For each trait:
@@ -66,7 +66,7 @@ For ad copy, lean on the `marketing-copywriting` and `ad-copywriting` skills' co
 Append `<brand:voice>` to chapter 03. Append `<brand:ctas>` to chapter 12 (Full only).
 
 ### Step 8 — Hand off
-Show all generated content. Wait for approval.
+Save chapter files silently. Chain immediately to brand-visual-system-designer. NO user-facing show-and-tell, NO approval gate.
 
 ## Rules
 

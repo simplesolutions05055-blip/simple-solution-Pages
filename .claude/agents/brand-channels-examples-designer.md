@@ -30,14 +30,14 @@ Write to `clients/<client-slug>/brand-book/assets/channel-mocks/`:
 ## Workflow
 
 ### Step 1 — Channel selection (Mini)
-For Mini books, pick the single most strategically important channel:
+For Mini books, pick the single most strategically important channel autonomously:
 - E-commerce / consumer → Instagram
 - B2B / professional → LinkedIn
 - Restaurants / local → Facebook + Instagram (treat as one)
 - Youth brand / fashion → TikTok or Instagram
 - Service business → WhatsApp Business + Instagram
 
-Show user the recommendation, confirm before mocking.
+Override with Q29 selections if the user explicitly checked a different channel. Lock the choice. NO confirmation step.
 
 ### Step 2 — Meta feed (1080×1080)
 Produce 2 mock posts as SVG with embedded text + brand colors:
@@ -112,7 +112,7 @@ Cross-reference with chapter 12 (Verbal Identity Architect's CTA library). Use 2
 Append `<brand:channels>` (chapter 10) and `<brand:whatsapp>` (chapter 11) per format spec.
 
 ### Step 8 — Hand off
-Show all mocks + scripts. Wait for approval.
+Save all mocks + scripts silently. Chain immediately to brand-ai-ingestion-formatter. NO approval gate.
 
 ## Rules
 

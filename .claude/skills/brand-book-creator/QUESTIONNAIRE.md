@@ -2,16 +2,27 @@
 
 **Fixed and identical for every client.** The order of questions never changes — this is what makes brand-book-creator a repeatable system, not bespoke chaos.
 
-Format: ask questions in batches (3-5 at a time), wait for answers, summarize, continue. Don't dump all 30 at once.
+## Delivery format — ALL AT ONCE
+
+Ask Q0 first as a standalone question (it determines the questionnaire scope).
+Then dump **ALL** remaining questions (Sections A-G, questions 1-30) in a single message.
+
+The user (Gili) typically fills the entire form WITH the client in one sitting and pastes back all answers together. Do NOT split into batches. Do NOT ask one question at a time.
 
 ---
 
-## Q0 — Size selector (ALWAYS FIRST)
+## Q0 — Size selector (ALWAYS FIRST, SEPARATE)
+
+Send this question alone, wait for the answer, THEN send all 30 questions.
 
 ```
-איזה ספר מותג אנחנו בונים?
-[1] Mini  — 10-18 עמודים, יסודות + ויזואליה + ערוץ אחד (~3-4 שעות עבודה)
-[2] Full  — 22-35 עמודים, כולל Meta+IG+TikTok + WhatsApp + בוטים + מודעות (~6-8 שעות)
+איזה ספר מותג אנחנו עושים? — זה גם הקובץ הסופי שתקבל בסיום (PDF + HTML)
+
+[1] בסיסי   — עד 18 עמודים. יסודות + קהל יעד + ויזואליה (לוגו/צבעים/פונטים) +
+              ערוץ פרסום עיקרי אחד + עשה/אל-תעשה + בלוקי AI
+
+[2] מתקדם  — עד 35 עמודים. כל הנ"ל + אסטרטגיה מורחבת + 3 ערוצים (פייסבוק/אינסטגרם/טיקטוק) +
+              חבילת WhatsApp ובוטים + תבניות מודעות + ספריית CTAs + עקרונות תנועה + יישומים
 ```
 
 The choice gates which chapters get built (see `BRAND-BOOK-SKELETON.md`).
@@ -170,29 +181,18 @@ Crucial for separating "new from scratch" vs "refresh existing" workflows.
 
 ---
 
-## Post-questionnaire summary template
+## Single-message dump format
 
-After all 30 answered, summarize in this exact format and confirm with user before passing to Strategist:
+After Q0 is answered (Mini or Full), send ONE message that contains:
 
-```
-✅ סיכום אפיון — [שם הלקוח]
+1. A brief intro line: "מצוין — ספר [בסיסי/מתקדם]. כאן כל 30 השאלות. תוכל לעבור עליהן עם הלקוח ולענות במכה אחת:"
+2. ALL 30 questions (Sections A through G), copy-pasted in order, well-formatted with numbering
+3. A closing line: "תענה על הכול במכה אחת (גם 'לא רלוונטי' זו תשובה לגיטימית)"
 
-גודל ספר: Mini / Full
-תחום: ___
-שם: ___
-שפות: ___
-תקציב פונטים: ___
+After the user pastes the complete answers, the runner saves them and immediately hands off to the next agent in the chain — NO summary confirmation step, NO approval gates between agents.
 
-קהל יעד עיקרי: [גיל, מין, אזור, סגנון חיים]
-5 כאבים/רצונות: ___
+The user only reviews the COMPLETE first draft (HTML + PDF) once everything is compiled.
 
-אישיות (5 תארים): ___
-ארכיטיפ נטוי: ___ (יאומת על ידי הסטרטג)
+## Post-questionnaire (internal — for downstream agents only)
 
-סגנון ויזואלי מועדף: ___
-רגש מטרה: ___
-
-ערוצים: ___
-
-האם הסיכום מדויק? [כן → ממשיך לסטרטג / לא → תיקונים]
-```
+The runner produces a structured Markdown answer file for downstream agents — but does NOT show this to the user as a "confirm before proceeding" gate. It's saved silently and the pipeline continues.

@@ -19,19 +19,19 @@ Trigger phrases (Hebrew + English):
 
 ---
 
-## Two delivery sizes (CHOOSE FIRST)
+## Two delivery sizes (CHOOSE FIRST — this is also the final deliverable type)
 
-### Mini Brand Book — 10-18 pages
-- Foundations, Audience, Visual identity, 1 channel example, Do/Don't, AI context block
+The size choice IS the final PDF+HTML the user will receive.
+
+### בסיסי — up to 18 pages (internally "Mini")
+- Foundations, Audience, Visual identity (logo + colors + fonts), 1 primary channel example, Do/Don't, AI context block
 - Use for: small businesses, fast-turnaround clients, early-stage startups, budget under ₪4K
-- Time to produce: ~3-4 hours of agent work
 
-### Full Brand Book — 22-35 pages
-- Everything in Mini, PLUS: Strategy & positioning depth, 3 channels (Meta/IG/TikTok) with mocks, WhatsApp pack, bot/chat scripts library, ad copy templates, CTA library, motion principles, full applications
+### מתקדם — up to 35 pages (internally "Full")
+- Everything in בסיסי, PLUS: Strategy & positioning depth, 3 channels (Meta/IG/TikTok) with mocks, WhatsApp pack, bot/chat scripts library, ad copy templates, CTA library, motion principles, full applications
 - Use for: premium clients, established brands, brands launching paid media, projects ₪8K+
-- Time to produce: ~6-8 hours of agent work
 
-**Q0 in the questionnaire forces the size decision before discovery begins.** Choosing Mini skips chapters 09-12 in the skeleton.
+**Q0 in the questionnaire forces the size decision before discovery begins.** Choosing בסיסי skips chapters 09-13.
 
 ---
 
@@ -49,34 +49,44 @@ Trigger phrases (Hebrew + English):
 
 ---
 
-## Pipeline (7 agents, sequential with one parallel block)
+## Pipeline — single-shot draft, then revisions
+
+The pipeline runs in ONE continuous chain. Only TWO user-interaction points:
+1. **Intake** — Q0 then all 30 questions at once
+2. **Review of complete draft** — user reviews the finished HTML+PDF and asks for specific revisions
+
+NO per-agent gating. NO "approve and continue" between sub-steps. The whole pipeline runs autonomously after intake.
 
 ```
 [user trigger]
     ↓
-1. brand-questionnaire-runner         ← Q0 size + 30 questions, captures existing assets
+[INTERACTION 1] — Q0 (Mini/Full)
     ↓
-2. brand-positioning-archetype-strategist  ← Mission/Vision/Values, audience, archetype, positioning
+[INTERACTION 1 continued] — all 30 questions in one message
     ↓
-3. brand-verbal-identity-architect    ← Tagline, voice, vocabulary, do/don't, CTA library
+[user pastes all answers in one message]
     ↓
-4. brand-visual-system-designer       ← Reads font-selection-matrix + master-fonts-library
-                                         → recommends 2 pairs → user picks → designs full visual system
+═══════════ AUTONOMOUS RUN — NO USER INPUT ═══════════
+1. brand-questionnaire-runner         ← Save raw answers to file
+2. brand-positioning-archetype-strategist  ← Mission/Vision/Values, audience, archetype
+3. brand-verbal-identity-architect    ← Tagline, voice, vocabulary, CTAs
+4. brand-visual-system-designer       ← Reads matrices + library → AUTO-PICKS top font pair
+                                         → designs full visual system
+5. brand-channels-examples-designer   ← (FULL only) channel mocks + WhatsApp pack
+6. brand-ai-ingestion-formatter       ← <brand:...> blocks + brand-context.json
+7. brand-book-compiler-dual-format    ← Unique HTML + PDF + credit footer
+═══════════════════════════════════════════════════════
     ↓
-5. brand-channels-examples-designer   ← (FULL only — skipped in Mini for ch.09-12)
-                                         FB / IG / TikTok mocks + WhatsApp pack + bot scripts
+[INTERACTION 2] — User reviews complete draft (HTML + PDF)
     ↓
-6. brand-ai-ingestion-formatter       ← Builds <brand:...> blocks + final brand-context.json
-    ↓
-7. brand-book-compiler-dual-format    ← Compiles unique HTML (designed per client) + PDF
-                                         + appends Simple Solutions credit footer
-    ↓
-[user review & approval]
-    ↓
-[on approval] → ask: "save this font pair to master-fonts-library?"
-    ↓
-[commit + push to repo]
+[on revision requests]
+    ↓ Targeted re-run of relevant agent ONLY
+[on approval]
+    ↓ Ask: "save font pair to master-fonts-library?"
+    ↓ commit + push
 ```
+
+**Why this matters:** Gili sits with the client, fills the form once, gets a complete draft, then iterates on specific points — instead of being interrupted 5-7 times mid-process.
 
 ---
 
@@ -84,11 +94,13 @@ Trigger phrases (Hebrew + English):
 
 1. **NEVER COPY the Simple Solution v1.0 HTML/CSS.** It is reference only. Every client starts blank, designed fresh.
 
-2. **Font selection is industry-aware.** Before recommending fonts, the visual-system-designer MUST:
+2. **Font selection is industry-aware AND autonomous in v2.** Before designing, the visual-system-designer MUST:
    - Read `font-selection-matrix.md` to match the industry
    - Check `master-fonts-library.md` for already-approved pairs in that industry
-   - If a master-library pair fits → recommend it FIRST
-   - Always present exactly 2 font-pair candidates for the user to pick
+   - If a master-library pair (🟡 or ✅) fits → use it as the first-draft choice
+   - Otherwise → auto-pick the top-matched pair from the matrix
+   - DO NOT pause to ask the user. Pick confidently. The user can request a font change as a revision after seeing the draft.
+   - Record BOTH the chosen pair AND a backup pair (in case user requests alternative)
 
 3. **Hebrew RTL is mandatory** when the client operates in Hebrew. All compiled HTML uses `dir="rtl"` and `lang="he"`.
 
@@ -98,7 +110,7 @@ Trigger phrases (Hebrew + English):
 
 6. **Dual-format delivery.** Every book ships as BOTH `BRAND-BOOK.html` (responsive, browsable) AND `BRAND-BOOK.pdf` (print-ready). The HTML is generated first; PDF is rendered from the HTML.
 
-7. **Step-by-step gating.** After each agent finishes, summarize what was produced and wait for explicit "approved / continue" before invoking the next agent. Per CLAUDE.md ping-pong rule.
+7. **NO per-agent gating in v2.** Unlike most agency workflows, this skill runs the full pipeline autonomously after intake. The user reviews the complete draft, NOT intermediate steps. This is a deliberate exception to the CLAUDE.md ping-pong default — Gili explicitly requested it so he can sit with a client, fill the form, and walk away with a finished draft.
 
 8. **One client = one folder.** Output goes to `clients/<client-slug>/brand-book/` (created at the start of the run).
 

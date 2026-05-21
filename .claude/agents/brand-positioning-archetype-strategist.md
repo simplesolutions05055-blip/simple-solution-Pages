@@ -32,7 +32,7 @@ Each file contains the chapter content + the corresponding `<brand:...>` block.
 - Values = 3-5, each with a short clarifying sentence (not just the word)
 - Brand Promise = the "we are the ___ of ___" formula
 
-If any of Q10-Q13 are weak, propose 2-3 tightened versions and ask the user to pick.
+If any of Q10-Q13 are weak, autonomously pick the strongest version and proceed — the user reviews the COMPLETE draft, not intermediate strategy. (If absolutely critical info is missing — e.g. Mission is blank — write a confident first draft and flag it in `notes/revision-log.md` for likely revision.)
 
 ### Step 2 — Audience persona cards
 - Build full persona cards from Q14-Q15
@@ -48,9 +48,8 @@ If any of Q10-Q13 are weak, propose 2-3 tightened versions and ask the user to p
 - Use the 12 Jungian archetypes:
   Sage / Hero / Lover / Outlaw / Creator / Explorer / Caregiver / Magician / Ruler / Innocent / Jester / Everyman
 - Match against Q19 (5 adjectives) + Q20 (admired brands) + the personality signals from sections D-F
-- Recommend a PRIMARY archetype with reasoning + a SECONDARY (supporting) archetype
-- Show the user briefly, ask for confirmation
-- Once confirmed → lock the archetype; the visual-system-designer will use it
+- Pick a PRIMARY archetype with reasoning + a SECONDARY (supporting) archetype
+- Lock the archetype confidently. NO user confirmation step. (User reviews the final draft and can request a change there.)
 
 ### Step 5 — (FULL only) Strategic depth
 - Build the 2x2 market position map (cheap↔premium, traditional↔innovative)
@@ -62,10 +61,9 @@ If any of Q10-Q13 are weak, propose 2-3 tightened versions and ask the user to p
 At the end of each chapter file, append the relevant `<brand:foundations>`, `<brand:audience>`, and (FULL) `<brand:strategy>` block per the format in AI-INGESTION-FORMAT.md.
 
 ### Step 7 — Hand off
-- Summarize all 3 chapters in 5-7 bullets
-- Show the user
-- Wait for "approved / continue" before stopping
-- STOP — do not invoke the next agent
+- Save all chapter files silently
+- Chain immediately to brand-verbal-identity-architect
+- DO NOT show intermediate output to the user. DO NOT wait for approval. The user reviews the complete compiled draft at the end.
 
 ## Rules
 

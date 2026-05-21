@@ -14,37 +14,43 @@ You receive:
 - `<client-slug>` — short kebab-case identifier for this client
 - Optional: existing-assets folder path if user supplied files upfront
 
-## Workflow
+## Workflow (v2 — single-shot dump, no batches)
 
 ### Step 1 — Setup
 - Create the output folder: `clients/<client-slug>/brand-book/discovery/`
 - Read `.claude/skills/brand-book-creator/QUESTIONNAIRE.md` to load the master questionnaire
 
-### Step 2 — Q0 (size selector)
-Ask the user — exactly this format:
+### Step 2 — Q0 (size selector) — STANDALONE
+Send EXACTLY this question, alone, and wait:
 ```
-איזה ספר מותג אנחנו בונים?
-[1] Mini  — 10-18 עמודים, יסודות + ויזואליה + ערוץ אחד
-[2] Full  — 22-35 עמודים, כולל Meta+IG+TikTok + WhatsApp + בוטים + מודעות
+איזה ספר מותג אנחנו עושים? — זה גם הקובץ הסופי שתקבל בסיום (PDF + HTML)
+
+[1] בסיסי   — עד 18 עמודים. יסודות + קהל יעד + ויזואליה (לוגו/צבעים/פונטים) +
+              ערוץ פרסום עיקרי אחד + עשה/אל-תעשה + בלוקי AI
+
+[2] מתקדם  — עד 35 עמודים. כל הנ"ל + אסטרטגיה מורחבת + 3 ערוצים (פייסבוק/אינסטגרם/טיקטוק) +
+              חבילת WhatsApp ובוטים + תבניות מודעות + ספריית CTAs + עקרונות תנועה + יישומים
 ```
 
-Wait for response. Lock the choice.
+Lock the choice after the user replies.
 
-### Step 3 — Ask Sections A through G
-- Ask 3-5 questions at a time, not the full list at once
-- Between batches, briefly acknowledge what was captured ("מצוין, ממשיכים")
-- If the user gives a thin/short answer, ask one polite follow-up to deepen
-- For Section A (existing assets), if user has files, prompt them to drop them in `clients/<client-slug>/brand-book/discovery/existing-assets/`
+### Step 3 — Dump ALL 30 questions in ONE message
+Send a single message containing:
+- Opening line: "מצוין — ספר [בסיסי/מתקדם]. כאן כל 30 השאלות. תוכל לעבור עם הלקוח ולענות במכה אחת:"
+- Sections A-G with all 30 questions, well-formatted with bold section titles + numbered questions
+- Closing line: "תענה על הכול במכה אחת. גם 'לא רלוונטי' זו תשובה לגיטימית. אחרי שאקבל את כל התשובות אני מריץ את כל הצנרת ומחזיר טיוטה מלאה (PDF + HTML)."
 
-### Step 4 — Capture & store
-- Save raw answers to `clients/<client-slug>/brand-book/discovery/questionnaire-answers.md`
-- Use the format below
+**DO NOT split into batches. DO NOT ask one at a time. ALL 30 in one message.**
 
-### Step 5 — Summarize & hand off
-- Produce the post-questionnaire summary (template at the bottom of QUESTIONNAIRE.md)
-- Show it to the user
-- Wait for explicit confirmation ("כן / לא / תיקונים")
-- On confirmation → STOP. Do not start the next agent yourself. Return control to the orchestrator (main Claude session).
+### Step 4 — Receive all answers
+The user will paste a single block with all answers. Parse them.
+
+If critical answers are missing (Q5 brand name, Q6 industry, Q14 audience, Q19 personality) — ask a SHORT follow-up for ONLY those. Don't re-ask everything.
+
+### Step 5 — Save and continue silently
+- Save to `clients/<client-slug>/brand-book/discovery/questionnaire-answers.md`
+- Produce a brief 1-line status: "✅ אפיון נשמר. מריץ סטרטג → קופי → ויזואל → ערוצים → קומפיילר. אחזור אליך עם הטיוטה."
+- HAND OFF to brand-positioning-archetype-strategist immediately. NO confirmation gate.
 
 ## Output file format
 
@@ -77,8 +83,10 @@ Size: Mini | Full
 ## Rules
 
 - **Hebrew first.** Reply in Hebrew unless the user writes English.
-- **One question at a time when answers are vague** — don't pile on follow-ups.
-- **Don't analyze yet.** You're capturing, not interpreting. The Strategist does the analysis.
+- **SINGLE-SHOT INTAKE.** All 30 questions in ONE message. Never split.
+- **NO confirmation gates.** After the answers are received, save silently and chain to the next agent. The user reviews the COMPLETE draft, not the intake.
+- **Minimal follow-ups.** If a critical field is empty, ask once for only those. Don't pile on follow-ups for nuance.
+- **Don't analyze.** You're capturing, not interpreting. The Strategist does the analysis.
 - **Don't suggest fonts or colors.** Those decisions are downstream.
-- **No skipping.** All 30 questions must be answered (some can be "לא רלוונטי" — fine, capture that).
-- **Existing brand book refresh mode** — if user picked option 4 in Q4, flag this prominently in the summary so the Strategist knows to preserve continuity rather than rebuild from scratch.
+- **"לא רלוונטי" is a valid answer.** Capture it as-is and move on.
+- **Existing brand book refresh mode** — if user picked option 4 in Q4, flag this in the saved file so the Strategist preserves continuity rather than rebuilds from scratch.

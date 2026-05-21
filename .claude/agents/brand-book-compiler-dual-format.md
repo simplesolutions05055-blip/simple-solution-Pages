@@ -97,15 +97,43 @@ Approach options (pick what's available):
 - Verify Simple Solutions credit footer appears on the LAST page only
 - Verify `brand-context.json` chapter renders with proper code formatting
 
-### Step 10 — Deliver
+### Step 10 — Deliver the COMPLETE first draft (this is the FIRST user-facing output since intake)
 Show the user:
-- Path to `BRAND-BOOK.html`
-- Path to `BRAND-BOOK.pdf`
-- Page count
-- File sizes
-- Self-uniqueness audit result
+```
+🎨 הטיוטה הראשונה מוכנה — [שם הלקוח]
 
-If user requests revisions → identify which chapter needs changes → loop back to the appropriate agent (3=verbal, 4=visual, etc.), NOT redo everything.
+📄 קבצים:
+   • BRAND-BOOK.html  → clients/<client-slug>/brand-book/BRAND-BOOK.html
+   • BRAND-BOOK.pdf   → clients/<client-slug>/brand-book/BRAND-BOOK.pdf
+   • brand-context.json (להעלאה ל-AI) → clients/<client-slug>/brand-book/brand-context.json
+
+📊 מפרט:
+   • גודל: [בסיסי / מתקדם] — [X] עמודים
+   • פונטים: [Display] + [Body]
+   • צבעים ראשיים: [HEX1] · [HEX2]
+   • ארכיטיפ: [Archetype]
+   • ערוצים: [List]
+   • Audit ייחודיות: PASS ✓
+
+🔁 רוצה שינויים? פרט נקודות ספציפיות:
+   • "החלף פונט ל-X"
+   • "תעבה את הצבע הראשי"
+   • "טאגליין אחר — יותר X"
+   • "שנה את הפרסונה — היא צריכה להיות צעירה יותר"
+   וכו'
+
+✅ אם הכל טוב — אאשר v1.0, אעדכן את ה-master-fonts-library (אם רלוונטי), ואעשה commit + push.
+```
+
+When user requests revisions → identify which chapter needs changes → loop back to the appropriate agent (3=verbal, 4=visual, etc.). Do NOT re-run the full pipeline.
+
+On approval → ask:
+> "האם להוסיף את זוג הפונטים `<Display + Body>` ל-master-fonts-library?
+> [a] כן — אישור מלא (📗 פעיל)
+> [b] ניסיוני — שמור אך סמן 🧪
+> [c] לא — דלג"
+
+Based on answer, update `master-fonts-library.md` accordingly. Then commit + push.
 
 ## Rules
 

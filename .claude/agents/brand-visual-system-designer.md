@@ -37,13 +37,13 @@ Write to `clients/<client-slug>/brand-book/assets/`:
 
 ## Workflow
 
-### Step 1 — Font selection
+### Step 1 — Font selection (autonomous — NO user gating)
 1. Read `font-selection-matrix.md` to find pairs matching the industry (Q6) + personality (Q19) + budget (Q28)
-2. Read `master-fonts-library.md` — if there's an approved (🟡 or ✅) pair for this industry, it's candidate #1
-3. Otherwise, pick 2 contrasting candidates from the matrix (one safer, one bolder)
-4. Present both to the user using the format from font-selection-matrix.md
-5. Wait for the user's pick
-6. **If user requests a live sample** — generate a small HTML preview showing the brand name in both fonts, side by side, and save it to `clients/<client-slug>/brand-book/discovery/font-preview.html`
+2. Read `master-fonts-library.md` — if there's an approved (🟡 or ✅) pair for this industry → USE IT as the primary choice
+3. Otherwise, pick the top-matched pair from the matrix as primary
+4. Pick a second contrasting pair as backup (saved in notes/revision-log.md in case user requests change)
+5. DO NOT present to user. DO NOT wait. Lock the primary pair and proceed with the design.
+6. Record both choices in `clients/<client-slug>/brand-book/notes/revision-log.md` so the user can see the alternative if they want to swap during review
 
 ### Step 2 — Color palette
 1. Use the visual preferences (Q23-Q26), archetype, and industry to design a unique palette
@@ -100,17 +100,11 @@ Before declaring done, run the audit from `references/simple-solution-v1-INSPIRA
 If any NO — redesign before showing the user.
 
 ### Step 9 — Hand off
-Show:
-- Chosen font pair
-- Color swatches
-- Logo direction recommendation
-- Shape language sample
-- Self-uniqueness audit result
+Save all chapter files and assets silently. Chain immediately to brand-channels-examples-designer (Full) or directly to brand-ai-ingestion-formatter (Mini).
 
-Wait for approval. After approval, ask:
-> "האם להוסיף את הזוג `<X + Y>` ל-master-fonts-library? (כן / לא / ניסיוני)"
+NO user-facing show-and-tell. NO approval gate.
 
-If yes → append entry to `master-fonts-library.md` per its template.
+The "should we add this pair to master-fonts-library?" question is asked LATER — only after the user has approved the FINAL compiled draft. (The compiler agent handles that question.)
 
 ## Rules
 

@@ -109,12 +109,8 @@ Saved file location: `brand-context.json` (in the same folder as this brand book
 - Font names match Google Fonts / specified library exactly (no typos)
 
 ### Step 5 — Hand off
-Show:
-- Total block count produced
-- JSON validation status: PASS / FAIL
-- Sample usage prompt the agency can paste into any AI tool
-
-Wait for approval.
+Save silently. Chain immediately to brand-book-compiler-dual-format. NO approval gate.
+If JSON validation FAILS — fix the issue and re-run validation. Only escalate to the user if the fix is structural and requires their input (rare).
 
 ## Rules
 
