@@ -103,15 +103,20 @@ Unlike `brand-book-creator` (single autonomous run), LP work has more decision p
 | `references/payment-providers-il.md` | Cardcom / Grow / משולם / Stripe — when each, how to integrate |
 | `references/deployment-playbook.md` | The 3 hosting paths + DNS via LiveDNS + Cloudflare + Vercel |
 | `references/self-uniqueness-audit.md` | The pre-delivery checklist (swap test, fingerprint test, DNA test) |
-| `agents/lp-discovery-runner.md` | Sub-agent 1 — intake + LP type diagnosis |
-| `agents/lp-copy-architect.md` | Sub-agent 2 — Hebrew conversion copy (uses `marketing-copywriting` patterns) |
-| `agents/lp-design-dna-blender.md` | Sub-agent 3 — blends 2-3 brand references into a unique DNA |
-| `agents/lp-section-architect.md` | Sub-agent 4 — final section blueprint + tokens |
-| `agents/lp-form-builder.md` | Sub-agent 5 — Google Sheet (MCP) + Webhook + Zapier/Make brief |
-| `agents/lp-payment-integrator.md` | Sub-agent 6 — Cardcom/Grow/Meshulam/Stripe (only when needed) |
-| `agents/lp-tracking-installer.md` | Sub-agent 7 — Meta Pixel + GA4 + PostHog |
-| `agents/lp-builder-compiler.md` | Sub-agent 8 — Next.js 15 project compilation |
-| `agents/lp-deployer.md` | Sub-agent 9 — GitHub + Vercel + DNS |
+
+Sub-agents live in `.claude/agents/` (project-level) — invoked by the orchestrator via the Agent tool:
+
+| Agent | Role |
+|---|---|
+| `lp-discovery-runner` | Sub-agent 1 — GATE 1 intake + LP type diagnosis + GATE 3 type-specific questions |
+| `lp-copy-architect` | Sub-agent 2 — Hebrew conversion copy (uses `marketing-copywriting` patterns) |
+| `lp-design-dna-blender` | Sub-agent 3 — blends 2-3 brand references into a unique DNA |
+| `lp-section-architect` | Sub-agent 4 — final section blueprint + tokens |
+| `lp-form-builder` | Sub-agent 5 — Google Sheet (MCP) + Webhook + Zapier/Make brief |
+| `lp-payment-integrator` | Sub-agent 6 — Cardcom / Grow / Meshulam / Stripe (only when checkout is needed) |
+| `lp-tracking-installer` | Sub-agent 7 — Meta Pixel + GA4 + PostHog |
+| `lp-builder-compiler` | Sub-agent 8 — Next.js 15 project compilation + Lighthouse + self-uniqueness audit |
+| `lp-deployer` | Sub-agent 9 — GitHub + Vercel + DNS (handles GATE 5 + GATE 6) |
 
 ---
 
