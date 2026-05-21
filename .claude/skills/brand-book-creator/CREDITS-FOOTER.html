@@ -1,0 +1,91 @@
+<!--
+  Simple Solutions credit footer.
+  Appended as the final block of EVERY brand book the agency produces.
+  Small, discreet, professional. Never replace, never remove.
+
+  The compiler injects this at the very bottom of BRAND-BOOK.html (last page),
+  AFTER the client's own brand footer. It uses the brand's neutral color
+  for text and Heebo (or the brand's body font) so it integrates visually
+  without imposing Simple Solutions's own brand colors on the client's book.
+-->
+
+<section class="ss-credit" dir="rtl" lang="he">
+  <style>
+    .ss-credit {
+      margin-top: 80px;
+      padding: 32px 48px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: 'Heebo', system-ui, -apple-system, sans-serif;
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+      page-break-before: always;
+    }
+    .ss-credit__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.55);
+      letter-spacing: 0.02em;
+    }
+    .ss-credit__logo svg {
+      width: 20px;
+      height: 20px;
+    }
+    .ss-credit__line {
+      margin: 4px 0;
+    }
+    .ss-credit__link {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
+    }
+    .ss-credit__link:hover {
+      color: rgba(0, 0, 0, 0.85);
+      border-bottom-color: rgba(0, 0, 0, 0.5);
+    }
+    .ss-credit__hebrew {
+      font-weight: 400;
+    }
+    .ss-credit__english {
+      direction: ltr;
+      display: inline-block;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+  </style>
+
+  <div class="ss-credit__logo">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="2" y="2" width="28" height="28" rx="6" fill="currentColor" opacity="0.15"/>
+      <path d="M10 16 L14 20 L22 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <span>Simple Solutions · סימפל סולושנס</span>
+  </div>
+
+  <div class="ss-credit__line ss-credit__hebrew">
+    ספר המותג נוצר על ידי <strong>Simple Solutions</strong> — סוכנות שיווק ופרסום
+  </div>
+
+  <div class="ss-credit__line">
+    <a class="ss-credit__link" href="https://www.simple-solution.co.il/" target="_blank" rel="noopener">
+      simple-solution.co.il
+    </a>
+    &nbsp;·&nbsp;
+    <a class="ss-credit__link" href="tel:+972549020253">
+      054-902-0253
+    </a>
+    &nbsp;·&nbsp;
+    <a class="ss-credit__link" href="mailto:simple.solutions05055@gmail.com">
+      simple.solutions05055@gmail.com
+    </a>
+  </div>
+
+  <div class="ss-credit__line ss-credit__english">
+    Brand Book crafted by Simple Solutions — Marketing &amp; Advertising Agency, Israel
+  </div>
+</section>
