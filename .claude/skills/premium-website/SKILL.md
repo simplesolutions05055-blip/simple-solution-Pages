@@ -13,7 +13,7 @@ Trigger phrases:
 - "build a website", "design a custom website", "multi-page site", "full corporate site"
 - "תבנה לי אתר", "תעצב אתר", "אתר תדמית", "אתר עסקי", "אתר חברה", "אתר לעסק"
 
-**Use `premium-landing-page` instead when:** the client only needs ONE page for a campaign.
+**Use `ultra-premium-landing-page` instead when:** the client only needs ONE page for a campaign.
 
 ## Inputs to gather
 
@@ -120,7 +120,7 @@ npm i framer-motion next-intl @sanity/client next-sanity
 - `<LanguageSwitcher />` if multilingual
 
 ### 7. Build pages
-Use `marketing-copywriting` for all section copy. Use `premium-landing-page` design principles for hero sections.
+Use `marketing-copywriting` for all section copy. Use `ultra-premium-landing-page` design principles for hero sections.
 
 ### 8. SEO foundations
 - Unique `<title>` and `<meta description>` per page

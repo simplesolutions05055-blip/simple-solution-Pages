@@ -26,7 +26,7 @@ Ad copy is **NOT** landing-page copy. It has ONE job: **stop the scroll and earn
 | Google RSA / PMax assets | `ad-copywriting` |
 | TikTok caption + hook text overlay | `ad-copywriting` |
 | YouTube in-stream / bumper script | `ad-copywriting` |
-| Landing-page hero + body | `marketing-copywriting` or `premium-landing-page` |
+| Landing-page hero + body | `marketing-copywriting` or `ultra-premium-landing-page` |
 | Email sequence | `marketing-copywriting` |
 | Blog / SEO article | `marketing-copywriting` |
 

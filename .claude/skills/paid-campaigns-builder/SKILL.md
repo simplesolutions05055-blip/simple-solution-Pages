@@ -58,7 +58,7 @@ Do not proceed until these are answered. Push back if the client wants to "just 
 
 **Offer & assets:**
 12. Offer(s) and price points — main offer + tripwires + upsells?
-13. Landing pages available — list each URL. (If none — stop and build via `premium-landing-page` first.)
+13. Landing pages available — list each URL. (If none — stop and build via `ultra-premium-landing-page` first.)
 14. Past creatives that worked (screenshots/links) — and what tanked?
 
 **Tracking infrastructure:**

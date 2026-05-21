@@ -13,7 +13,7 @@ Trigger phrases:
 - English: "build a SaaS", "scaffold an app", "design the architecture", "set up auth and billing", "create a web app"
 - עברית: "תבנה לי מערכת SaaS", "צור אפליקציה", "תכנן ארכיטקטורה", "תקים אפליקציה", "מערכת ניהול"
 
-**Don't use this skill for:** static marketing sites (use `premium-website`), single landing pages (use `premium-landing-page`).
+**Don't use this skill for:** static marketing sites (use `premium-website`), single landing pages (use `ultra-premium-landing-page`).
 
 ## Inputs to gather
 

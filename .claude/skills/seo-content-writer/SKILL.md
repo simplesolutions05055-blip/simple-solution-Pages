@@ -13,7 +13,7 @@ Trigger phrases:
 - "תכתוב לי מאמר", "מאמר SEO", "פוסט בלוג", "מאמר עוגן", "תוכן לאתר", "כתיבת תוכן", "pillar page", "מדריך מלא ל..."
 - "write SEO article", "long-form content", "blog post for SEO", "ultimate guide", "comparison article"
 
-**Don't use for:** ad copy (use `marketing-copywriting`), landing-page hero copy (use `premium-landing-page`), brand voice docs (use `brand-book-creator`).
+**Don't use for:** ad copy (use `marketing-copywriting`), landing-page hero copy (use `ultra-premium-landing-page`), brand voice docs (use `brand-book-creator`).
 
 ## Philosophy — why most Hebrew SEO content fails in 2026
 

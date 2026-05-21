@@ -24,7 +24,7 @@ cp -r .claude/skills/. ~/.claude/skills/
 | `skill-creator` | Meta — creates new skills | "תיצור לי סקיל ל..." |
 | `saas-builder` | Build SaaS systems & apps | "תבנה לי מערכת" |
 | `marketing-copywriting` | Conversion copy (HE+EN) | "כתוב לי טקסט שיווקי" |
-| `premium-landing-page` | Premium custom landing pages | "תעצב לי דף נחיתה" |
+| `ultra-premium-landing-page` | Ultra-premium custom landing pages (end-to-end) | "תעצב לי דף נחיתה" |
 | `premium-website` | Full multi-page websites | "תבנה לי אתר" |
 | `brand-book-creator` | Complete brand identity systems | "תיצור ספר מותג" |
 | `skill-auditor` | Safety audit of third-party skills before install | "תבדוק את הסקיל הזה" |
@@ -44,7 +44,7 @@ cp -r .claude/skills/. ~/.claude/skills/
 
 ## References (not skills — design knowledge base)
 
-`/.claude/references/awesome-design-md/` — 71 design-language guides for top brands (Apple, Airbnb, Linear, Vercel, Stripe…). Used by `premium-landing-page` and `premium-website` as design inspiration.
+`/.claude/references/awesome-design-md/` — 71 design-language guides for top brands (Apple, Airbnb, Linear, Vercel, Stripe…). Used by `ultra-premium-landing-page` and `premium-website` as design inspiration.
 
 ## How they chain together
 
@@ -54,7 +54,7 @@ Typical client engagement:
 brand-book-creator
         ↓ (design tokens, voice, logos)
         ├──→ premium-website         (full site, on-brand)
-        ├──→ premium-landing-page    (campaign pages, on-brand)
+        ├──→ ultra-premium-landing-page  (campaign pages, on-brand)
         └──→ marketing-copywriting   (all copy uses brand voice)
 ```
 

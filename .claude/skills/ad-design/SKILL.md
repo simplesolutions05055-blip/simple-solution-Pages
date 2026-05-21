@@ -1,6 +1,6 @@
 ---
 name: ad-design
-description: Design the VISUAL creative for paid ads — Meta feed/story/reel, TikTok, YouTube, Google Display — for Israeli clients in Hebrew. Covers brief intake, format specs, hooks, typography, photography direction, AI image-gen prompts (Nano Banana / Midjourney / SDXL), motion briefs, carousel storytelling, and self-check before delivery. Use for ad creative production, not for ad copy (use `ad-copywriting`) and not for landing pages (use `premium-landing-page`). Trigger phrases include "תעצב לי מודעה", "עיצוב למודעה", "ויזואל למודעה", "קריאייטיב למודעה", "תמונה למודעה", "קרוסלה למודעה", "וידאו למודעה", "מודעת אינסטגרם", "סטורי", "ריל", "design an ad", "ad creative", "Instagram story design", "carousel design", "ad visual", "video ad brief".
+description: Design the VISUAL creative for paid ads — Meta feed/story/reel, TikTok, YouTube, Google Display — for Israeli clients in Hebrew. Covers brief intake, format specs, hooks, typography, photography direction, AI image-gen prompts (Nano Banana / Midjourney / SDXL), motion briefs, carousel storytelling, and self-check before delivery. Use for ad creative production, not for ad copy (use `ad-copywriting`) and not for landing pages (use `ultra-premium-landing-page`). Trigger phrases include "תעצב לי מודעה", "עיצוב למודעה", "ויזואל למודעה", "קריאייטיב למודעה", "תמונה למודעה", "קרוסלה למודעה", "וידאו למודעה", "מודעת אינסטגרם", "סטורי", "ריל", "design an ad", "ad creative", "Instagram story design", "carousel design", "ad visual", "video ad brief".
 ---
 
 # Ad Design — Paid Creative Direction
@@ -20,7 +20,7 @@ Trigger phrases:
 - "תמונה למודעה", "קרוסלה למודעה", "וידאו למודעה"
 - "מודעת אינסטגרם", "סטורי", "ריל", "ad creative", "carousel design", "video ad brief"
 
-**Don't use for:** ad copy/headlines (use `ad-copywriting`), landing pages (use `premium-landing-page`), brand identity systems (use `brand-book-creator`).
+**Don't use for:** ad copy/headlines (use `ad-copywriting`), landing pages (use `ultra-premium-landing-page`), brand identity systems (use `brand-book-creator`).
 
 ## Brief intake (12 questions)
 
