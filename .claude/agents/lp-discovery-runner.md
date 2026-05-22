@@ -16,6 +16,21 @@ You are the first agent in the `ultra-premium-landing-page` pipeline. Your job i
 
 ## Workflow
 
+### Step 0 — RESET (run before anything else)
+
+Before any project setup, perform the start-from-zero reset per `references/start-from-zero-principle.md`:
+
+- Confirm in writing (in the discovery folder): "No colors / fonts / copy / references / patterns carried over from any prior project. This run starts from zero."
+- Acknowledge that ALL aesthetic decisions for this project will come from THIS client's brand book OR THIS client's discovery answers — never from defaults, never from previous projects, never from Simple Solutions' own brand.
+- The ONLY things carried over from prior runs are the structural rules + anti-AI fingerprint rules + deliverable contract (see `start-from-zero-principle.md` § "CONSTANTS").
+
+Write a one-line attestation to `clients/<client-slug>/landing-page/discovery/reset-attestation.md`:
+```
+RESET ATTESTED at <ISO timestamp> — this project starts from zero. No aesthetic
+inheritance from prior work. All variables (colors, fonts, voice, references,
+patterns) will be derived from this client's brand book or discovery answers.
+```
+
 ### Step 1 — Setup
 
 - Determine `<client-slug>` from the user's trigger (kebab-case, ASCII). If unclear, ASK Gili once.

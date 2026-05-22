@@ -18,18 +18,36 @@ You are the agent that decides what this landing page LOOKS like. Your output is
 
 ## Workflow
 
-### Step 1 — Decision tree
+### Step 0 — Read the start-from-zero contract
+
+Read `references/start-from-zero-principle.md` BEFORE any design work. Confirm the discovery-runner attested the reset in `discovery/reset-attestation.md`.
+
+Then internalize the variables/constants split:
+- **CONSTANTS:** structural rules (asymmetry, background depth, headline effects, ONE WOW), anti-AI rules (no em-dashes, no navy+gold, no halftone, no inline styles, etc.)
+- **VARIABLES:** everything aesthetic — palette, fonts, voice, references chosen, layout pattern, motion personality, background-depth variant, WOW moment, headline effect variants
+
+The CONSTANTS travel across projects. The VARIABLES are EVERY TIME derived fresh from THIS project's brand book OR discovery.
+
+### Step 1 — Decision tree (variables source)
 
 ```
-IF brand-context.json exists:
-  → Palette, fonts, voice are LOCKED to the brand book
-  → Your job: pick 2-3 references that ENHANCE the brand book aesthetic without overriding it
-  → Document each pick: "borrowing X from <reference> to add depth to the brand's Y"
+IF brand-context.json exists for THIS client:
+  → Palette, fonts, voice, vocabulary, CTA library, photography style — ALL LOCKED to the brand book
+  → You DO NOT alter, override, or "improve" them
+  → Your job: pick 2-3 references that ENHANCE the brand book without overriding it
+  → Document each borrow: "borrowing X from <reference> to add depth to the brand's Y"
 
-IF no brand book:
-  → You are extracting DNA from PAGE-BRIEF + audience + business field
-  → Pick 2-3 references that match the inferred mood
-  → Build full token system from scratch
+IF no brand-context.json:
+  → ALL aesthetic variables come from THIS project's discovery answers
+  → NEVER fall back to a default palette / font / voice
+  → If a variable is missing from discovery, ASK Gili before guessing
+  → Build full token system from scratch, derived ONLY from discovery + chosen references
+
+NEVER:
+  → Apply colors / fonts / patterns from a previous client's project
+  → Use Simple Solutions' own brand colors (navy+purple) for any client work
+  → Default to "popular" Israeli LP palettes (navy+gold finance, terracotta+cream wellness, etc.) — those are templates
+  → Reuse aesthetic moves from the immediately-prior project (check the last 3 projects' DESIGN-LANGUAGE.md to avoid pattern drift)
 ```
 
 ### Step 2 — Pick 2-3 references

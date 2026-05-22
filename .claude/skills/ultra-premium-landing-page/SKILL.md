@@ -103,6 +103,7 @@ Unlike `brand-book-creator` (single autonomous run), LP work has more decision p
 | `references/payment-providers-il.md` | Cardcom / Grow / משולם / Stripe — when each, how to integrate |
 | `references/deployment-playbook.md` | The 3 hosting paths + DNS via LiveDNS + Cloudflare + Vercel |
 | `references/self-uniqueness-audit.md` | The pre-delivery checklist (swap test, fingerprint test, DNA test) |
+| `references/start-from-zero-principle.md` | **MOST CRITICAL** — codifies the variables/constants split. The skill has zero aesthetic memory across projects; every run begins blank. ALL design variables (colors, fonts, voice, refs, patterns) come from THIS client's brand book or discovery — never from defaults or prior work. |
 | `references/senior-designer-vs-ai-tells.md` | **CRITICAL** — diagnoses the 10 AI-luxury fingerprints + the 5 senior-master moves. The compiler runs this audit before GATE 4. Added May 2026 after the Amir Sudai diagnosis. |
 | `references/signature-moments-library.md` | **CRITICAL** — the WOW-moment catalog (Part 1), asymmetric layouts (Part 2), background depth SVGs per industry (Part 3), headline effects (Part 4). The blender picks from each; compiler enforces. |
 | `references/israeli-boutique-references.md` | Real Israeli boutique sites (s-pixel.co.il, bluebee.co.il, alexgorbachov.co.il, webiztlv.co.il) that set the quality bar. Blender consults for every Israeli client. |
@@ -125,9 +126,11 @@ Sub-agents live in `.claude/agents/` (project-level) — invoked by the orchestr
 
 ## Critical rules (read every time)
 
+0. **START FROM ZERO every run.** This is the highest-priority rule. The skill has ZERO aesthetic memory across projects. Every invocation begins with a reset attestation (`discovery/reset-attestation.md`). The CONSTANTS that travel across projects are ONLY: structural rules (6-gate workflow, stack, mandatory design elements) + anti-AI fingerprint rules + deliverable contract. ALL aesthetic variables (palette, fonts, voice, references, layout patterns, motion, WOW moment, background depth variant) MUST be derived FRESH from THIS client's brand book OR THIS client's discovery answers — never from defaults, never from previous projects, never from Simple Solutions' own brand. See `references/start-from-zero-principle.md` for the full variables/constants split.
+
 1. **One client = one folder.** Output goes to `clients/<client-slug>/landing-page/` (created at GATE 1).
 
-2. **Brand book is the truth if it exists.** GATE 1 asks "is there a brand book?" If YES → load `clients/<client-slug>/brand-book/brand-context.json` and use its colors/fonts/voice/USP/archetype. The design-DNA-blender takes the brand book as a hard constraint, not a suggestion. If NO → the discovery agent extracts enough DNA in GATE 1+2 to design from scratch.
+2. **Brand book is the truth if it exists.** GATE 1 asks "is there a brand book?" If YES → load `clients/<client-slug>/brand-book/brand-context.json` and use its colors/fonts/voice/USP/archetype as HARD CONSTRAINTS. The design-DNA-blender treats brand book values as immovable; it picks references to enhance, never to override. If NO → the discovery agent extracts the DNA fresh in GATE 1+2. The blender NEVER falls back to a default palette or font when a variable is missing — it asks Gili.
 
 3. **Never copy a reference brand.** Blend 2-3 from `.claude/references/awesome-design-md/` into something new. If the result looks like Linear or Stripe — restart.
 
