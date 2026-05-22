@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אודות | Simple Solutions</title>
+<link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/main-site-redesign/styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.track-grid{grid-template-columns:1fr}}
+.track-card{position:relative;padding:42px 36px;border-radius:28px;background:#fff;border:1px solid var(--line-light);box-shadow:var(--shadow-sm);transition:transform .5s,border-color .5s,box-shadow .5s;display:flex;flex-direction:column}
+.track-card:hover{transform:translateY(-6px);border-color:var(--line-gold);box-shadow:var(--shadow-md)}
+.track-card.vip{background:linear-gradient(180deg,#1F0B33,#0F0420);color:#fff;border-color:var(--line-gold)}
+.track-card.vip h3,.track-card.vip .track-h{color:#fff}
+.track-card.vip p{color:rgba(255,255,255,.78)}
+.track-card.vip ul li{color:rgba(255,255,255,.85)}
+.track-badge{position:absolute;top:24px;left:24px;padding:7px 14px;border-radius:99px;font:600 11px/1 'Space Grotesk';letter-spacing:.12em;text-transform:uppercase}
+.track-badge.gold{background:linear-gradient(135deg,#d9b86c,#c9a961);color:var(--purple-900)}
+.track-badge.outline{border:1px solid var(--line-gold);color:var(--gold-700);background:rgba(201,169,97,.06)}
+.track-card .eyebrow{margin-top:18px}
+.track-card .track-h{font-size:32px;font-weight:800;margin:14px 0 14px;letter-spacing:-.02em;color:var(--ink)}
+.track-card p{font-size:15px;line-height:1.7;color:var(--ink-soft);margin-bottom:20px}
+.track-card ul{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:14px;flex:1}
+.track-card ul li{font-size:14.5px;line-height:1.55;padding-right:24px;position:relative;color:var(--ink)}
+.track-card ul li::before{content:"";position:absolute;right:0;top:9px;width:14px;height:2px;background:var(--gold);border-radius:2px}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cur-dot"></div>
+<div class="cursor-ring" id="cur-ring"></div>
+
+<nav class="side-rail" aria-label="ניווט סקציות">
+  <a class="rail-dot active" data-label="HERO" href="#top"></a>
+  <a class="rail-dot" data-label="מספרים" href="#numbers"></a>
+  <a class="rail-dot" data-label="בעיה" href="#problem"></a>
+  <a class="rail-dot" data-label="פתרון" href="#solution"></a>
+  <a class="rail-dot" data-label="חזון" href="#vision"></a>
+  <a class="rail-dot" data-label="מסלולים" href="#tracks"></a>
+  <a class="rail-dot" data-label="צור קשר" href="#contact"></a>
+</nav>
+
+<header id="header">
+  <a href="/main-site-redesign/"><img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="logo"></a>
+  <nav aria-label="ראשי">
+    <a href="/main-site-redesign/">בית</a>
+    <a href="/main-site-redesign/campaign-management/">קמפיינים</a>
+    <a href="/main-site-redesign/social-media/">סושיאל</a>
+    <a href="/main-site-redesign/automation/">אוטומציות</a>
+    <a href="/main-site-redesign/portfolio/">תיק עבודות</a>
+    <a href="/main-site-redesign/about/" class="active">אודות</a>
+    <a href="/main-site-redesign/contact/">צור קשר</a>
+  </nav>
+  <a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="btn-wa-mini" data-magnetic><i data-lucide="message-circle"></i><span>וואטסאפ</span></a>
+  <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow reveal">אודות</span>
+    <h1 class="reveal">החופש שאתה מחפש <span class="gold-text">נמצא במקום אחד.</span><br>איפה שמישהו אחר עושה את זה במקומך.</h1>
+    <p class="lede reveal">
+      רוב בעלי העסקים <strong>"חותרים"</strong> חזק מדי כדי להישאר במקום. ב-<strong>Simple Solutions</strong> תוכל לבנות את הספינה שתשיט אותך קדימה — על אוטומט.
+    </p>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="section section-light" id="numbers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">המספרים</span>
+      <h2>במקום לדבר על ניסיון — <span class="gold-text">בואו נדבר על מספרים.</span></h2>
+      <p>ב-2021 זיהינו את הכשל המרכזי בשוק: עסקים טובים טובעים בים של "כלים דיגיטליים" מבלי לראות שקל בבנק. מה השגנו מאז?</p>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal" style="text-align:center">
+        <span class="icn icn-gold icn-pulse" style="margin-bottom:14px"><i data-lucide="trending-up"></i></span>
+        <div class="stat-num" style="font-size:48px;margin-bottom:8px">60+</div>
+        <h3>תשתיות צמיחה</h3>
+        <p>שנבנו מאפס עבור עסקים מובילים.</p>
+      </article>
+      <article class="module-card reveal" style="text-align:center;transition-delay:.1s">
+        <span class="icn icn-gold icn-flow" style="margin-bottom:14px"><i data-lucide="arrow-right-left"></i></span>
+        <div class="stat-num" style="font-size:32px;margin-bottom:8px">לידים → עסקאות</div>
+        <h3>הפיכת לידים לעסקאות</h3>
+        <p>לא עוד לייקים בעמוד — מערכות שיווק שמתמקדות בתכלס.</p>
+      </article>
+      <article class="module-card reveal" style="text-align:center;transition-delay:.2s">
+        <span class="icn icn-gold icn-bounce" style="margin-bottom:14px"><i data-lucide="clock"></i></span>
+        <div class="stat-num" style="font-size:36px;margin-bottom:8px">עשרות שעות / שבוע</div>
+        <h3>קיצור זמן הביצוע</h3>
+        <p>מערכות שחוסכות עשרות שעות עבודה שבועיות לבעלי עסקים.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section section-light" id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">הבעיה</span>
+      <h2>אחרי ליווי של עשרות עסקים — <span class="gold-text">הבנו דבר אחד פשוט.</span></h2>
+    </div>
+
+    <div style="max-width:780px;margin:0 auto" class="reveal">
+      <p style="font-size:20px;line-height:1.7;color:var(--ink);font-weight:500;margin-bottom:24px">העסק שלך לא צריך <strong>"עוד כלי"</strong> AI מבטיח. הוא צריך <strong>מערכת שלמה.</strong></p>
+      <p style="font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px">ראינו את אותה טעות חוזרת על עצמה אצל כמעט כל לקוח שהגיע אלינו —</p>
+      <p style="font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px">תשלום ל-5 ספקים שונים שמנותקים אחד מהשני.</p>
+      <p style="font-size:18px;line-height:1.7;color:var(--ink);font-weight:600">התוצאה? <span class="gold-text">בלאגן שלם ובזבוז כסף.</span></p>
+    </div>
+
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <span class="eyebrow">אנחנו פותרים את זה</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section section-light" id="solution">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">הפתרון</span>
+      <h2>השקענו הון <span class="gold-text">במערכת אחת.</span><br>שחוסכת לך את כל הטירזוזים.</h2>
+      <p>במקום לשלם בכל חודש על CRM, מערכת דיוור, בוטים ואוטומציות בנפרד — יצרנו את הסל המדויק ביותר בשוק.</p>
+    </div>
+
+    <div class="modules-grid">
+      <article class="module-card reveal"><span class="icn icn-gold icn-pulse"><i data-lucide="piggy-bank"></i></span><h3>חיסכון מיידי</h3><p>תשלום אחד במקום חמישה. החיסכון מהחודש הראשון.</p></article>
+      <article class="module-card reveal" style="transition-delay:.1s"><span class="icn icn-gold icn-twinkle"><i data-lucide="target"></i></span><h3>דיוק מקסימלי</h3><p>הכלים מדברים זה עם זה. כל ליד מתויג. כל מהלך מתועד.</p></article>
+      <article class="module-card reveal" style="transition-delay:.2s"><span class="icn icn-gold icn-bounce"><i data-lucide="check-circle"></i></span><h3>פשטות מנצחת</h3><p>ממשק אחד. סיסמה אחת. הצוות שלך לומד בשעה.</p></article>
+      <article class="module-card reveal" style="transition-delay:.3s"><span class="icn icn-gold icn-heart"><i data-lucide="award"></i></span><h3>ערך גבוה מהתשלום</h3><p>כל פיצ'ר שמופיע — נבחר כי הוא משנה. בלי שומן. בלי "טוב שיש".</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="section authority" id="vision" data-dark>
+  <div class="wrap" style="text-align:center;max-width:880px">
+    <div class="reveal">
+      <span class="eyebrow on-dark">החזון</span>
+      <h2 style="margin:24px 0 28px">אנחנו לא כאן כדי למכור לך <span class="gold-text">עוד שירות שיווקי.</span></h2>
+      <p style="font-size:19px;line-height:1.8;color:rgba(255,255,255,.85);margin-bottom:20px">באנו לבנות לך <strong style="color:#fff">נכס דיגיטלי מניב.</strong></p>
+      <p style="font-size:16px;line-height:1.85;color:rgba(255,255,255,.7);margin-bottom:32px">החזון של <strong style="color:#fff">Simple Solutions</strong> — להוציא אותך ממעגל ה"חתירה" הידני, ולהעלות אותך על ספינה אוטומטית ששטה לעבר היעדים שלך.</p>
+      <p style="font-size:24px;font-weight:700;color:#fff;letter-spacing:-.01em">הפסק לחתור. <span class="gold-text">תתחיל להפליג.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- TWO TRACKS -->
+<section class="section section-light" id="tracks">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">המהפכה שלנו</span>
+      <h2>מתחלקת <span class="gold-text">לשתיים.</span></h2>
+      <p>תשתית פתוחה לכולם, ומעטפת VIP לבחורים — שתיהן מדברות אותה שפה.</p>
+    </div>
+
+    <div class="track-grid">
+      <article class="track-card reveal">
+        <span class="track-badge outline">התשתית</span>
+        <span class="eyebrow" style="align-self:flex-start">מסלול עצמאי</span>
+        <div class="track-h">Simple Plan</div>
+        <p>מערכת ה-All-in-One שפתוחה לכולם.</p>
+        <ul>
+          <li>CRM מלא + ניהול לידים</li>
+          <li>כלי וואטסאפ לדיוור המוני וצ'אט-בוטים חכמים</li>
+          <li>ספר מותג מקצועי</li>
+          <li>DNA של העסק נשמר בקליק</li>
+        </ul>
+        <a href="/main-site-redesign/contact/" class="btn btn-ghost" data-magnetic style="margin-top:auto;align-self:flex-start"><span class="arr">←</span><span>היכנסו לנסות</span></a>
+      </article>
+
+      <article class="track-card vip reveal" style="transition-delay:.1s">
+        <span class="track-badge gold">VIP</span>
+        <span class="eyebrow on-dark" style="align-self:flex-start">המעטפת</span>
+        <div class="track-h">VIP Service</div>
+        <p>ליווי אישי וביצועי — בתפירה אישית לצרכים שלך.</p>
+        <ul>
+          <li>ניהול קמפיינים ממומנים — מטא, טיקטוק, גוגל</li>
+          <li>ניהול סושיאל מדיה ובניית אוטוריטה</li>
+          <li>אוטומציות עסקיות מורכבות בתפירה אישית</li>
+        </ul>
+        <a href="/main-site-redesign/contact/" class="btn btn-gold" data-magnetic style="margin-top:auto;align-self:flex-start"><span class="arr">←</span><span>בדקו התאמה</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PUNCHLINE -->
+<section class="section section-light">
+  <div class="wrap" style="text-align:center;max-width:880px">
+    <div class="reveal">
+      <h2 style="margin-bottom:28px">בזמן שהם מסתבכים — <span class="gold-text">אתה משתלט על השוק.</span></h2>
+      <p style="font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px">יש עסקים שמחכים לנס. ויש עסקים שבונים לעצמם עתיד.</p>
+      <p style="font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px">בזמן שהמתחרים שלך טובעים בים של עשרות כלי AI מסורבלים ומנסים לחבר <strong>"פלסטרים"</strong> בדיגיטל —</p>
+      <p style="font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em">אתה לוחץ על כפתור אחד במערכת ויוצא <span class="gold-text">מלך.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- BANNERS -->
+<section class="section section-light" style="padding:40px 24px">
+  <div class="wrap">
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center" class="reveal">
+      <span class="eyebrow">שיטה. צוות. אחריות מקצה לקצה.</span>
+      <span class="eyebrow">עובדים עם בעלי חזון — לא עם מי שמחפש קסמים.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact" data-dark>
+  <span class="eyebrow on-dark reveal">חלון ההזדמנויות נסגר</span>
+  <h2 class="reveal">החופש שלך נמצא <span class="gold-text">במרחק לחיצה אחת.</span></h2>
+  <p class="final-cta-body reveal">בזמן שאתה קורא את זה, המתחרה שלך כבר מטמיע אוטומציות. כדי לשמור על סטנדרט הליווי האישי, אנחנו מקבלים מספר מצומצם של לקוחות חדשים בכל חודש. אל תחכה שיהיה שם קודם.</p>
+  <div class="cta-row static reveal">
+    <a href="https://wa.me/972509697776?text=שלום מאור! קראתי את האודות ואשמח להתייעצות." class="btn btn-gold" data-magnetic>
+      <i data-lucide="message-circle"></i><span>דברו איתנו ב-וואטסאפ</span>
+    </a>
+    <a href="/main-site-redesign/contact/" class="btn-link">לטופס מלא</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="footer-logo">
+      <p>יחידת קומנדו עסקית. בונים מערכות צמיחה לעסקים מבוססים — קמפיינים, סושיאל ואוטומציות שמדברים אחד עם השני.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/profile.php?id=61584515743546" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://instagram.com/simple.solutions__" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@simple.solutions2020" aria-label="TikTok"><i data-lucide="music-2"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>שירותים</h4><ul>
+      <li><a href="/main-site-redesign/campaign-management/">ניהול קמפיינים</a></li>
+      <li><a href="/main-site-redesign/social-media/">סושיאל מדיה</a></li>
+      <li><a href="/main-site-redesign/automation/">אוטומציות</a></li>
+      <li><a href="/main-site-redesign/portfolio/">תיק עבודות</a></li>
+      <li><a href="/main-site-redesign/about/">אודות</a></li>
+      <li><a href="/main-site-redesign/contact/">צור קשר</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>צור קשר</h4><ul>
+      <li><a href="https://wa.me/972509697776"><i data-lucide="message-circle"></i>050-969-7776</a></li>
+      <li><a href="tel:+972509697776"><i data-lucide="phone"></i>050-969-7776</a></li>
+      <li><a href="mailto:simple.solutions05055@gmail.com"><i data-lucide="mail"></i>simple.solutions05055@gmail.com</a></li>
+    </ul><p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.5)">מאור עטייה — מייסד ומנכ״ל</p></div>
+  </div>
+  <div class="footer-bar"><div>© 2026 Simple Solutions. כל הזכויות שמורות.</div><div class="links"><a href="/main-site-redesign/">חזרה לבית</a></div></div>
+</footer>
+
+<a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="fab-desktop" data-magnetic><i data-lucide="message-circle"></i><span>דברו איתי</span></a>
+<div class="fab-mobile"><a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות."><i data-lucide="message-circle"></i><span>דברו איתי בוואטסאפ</span></a></div>
+
+<script src="/main-site-redesign/app.js"></script>
+</body>
+</html>

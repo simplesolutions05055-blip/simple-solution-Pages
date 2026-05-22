@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תיק עבודות | Simple Solutions</title>
+<link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/main-site-redesign/styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
+.gallery-item{aspect-ratio:4/5;border-radius:22px;background:linear-gradient(135deg,#fffbed,#f4efe0);border:1px solid var(--line-gold);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:24px;transition:transform .5s,box-shadow .5s}
+.gallery-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.gallery-item::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(201,169,97,.20),transparent 65%)}
+.gallery-item .icn{position:absolute;top:24px;right:24px;color:var(--gold-700)}
+.gallery-item .icn svg{width:42px;height:42px}
+.gallery-item .caption{position:relative;font-size:14px;color:var(--ink-soft);line-height:1.6}
+.gallery-item .lbl{display:block;font:600 11px/1 'Space Grotesk';letter-spacing:.18em;text-transform:uppercase;color:var(--gold-700);margin-bottom:8px}
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(max-width:700px){.video-grid{grid-template-columns:1fr}}
+.video-item{aspect-ratio:16/9;border-radius:22px;background:linear-gradient(135deg,#1F0B33,#0F0420);border:1px solid var(--line-gold);position:relative;overflow:hidden;color:#fff;padding:32px;display:flex;align-items:flex-end;transition:transform .5s,box-shadow .5s}
+.video-item:hover{transform:translateY(-6px);box-shadow:0 30px 70px -20px rgba(0,0,0,.4)}
+.video-item::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(201,169,97,.35),transparent 60%)}
+.video-item .play{position:absolute;top:32px;right:32px;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#d9b86c,#c9a961);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-gold)}
+.video-item .play svg{width:24px;height:24px;color:var(--purple-900);margin-right:-3px}
+.video-item .caption{position:relative;font-size:14px;color:rgba(255,255,255,.78);line-height:1.6}
+.video-item .lbl{display:block;font:600 11px/1 'Space Grotesk';letter-spacing:.18em;text-transform:uppercase;color:var(--gold-50);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cur-dot"></div>
+<div class="cursor-ring" id="cur-ring"></div>
+
+<nav class="side-rail" aria-label="ניווט סקציות">
+  <a class="rail-dot active" data-label="HERO" href="#top"></a>
+  <a class="rail-dot" data-label="גלריה" href="#gallery"></a>
+  <a class="rail-dot" data-label="סיפורי לקוחות" href="#cases"></a>
+  <a class="rail-dot" data-label="וידאו" href="#videos"></a>
+  <a class="rail-dot" data-label="צור קשר" href="#contact"></a>
+</nav>
+
+<header id="header">
+  <a href="/main-site-redesign/"><img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="logo"></a>
+  <nav aria-label="ראשי">
+    <a href="/main-site-redesign/">בית</a>
+    <a href="/main-site-redesign/campaign-management/">קמפיינים</a>
+    <a href="/main-site-redesign/social-media/">סושיאל</a>
+    <a href="/main-site-redesign/automation/">אוטומציות</a>
+    <a href="/main-site-redesign/portfolio/" class="active">תיק עבודות</a>
+    <a href="/main-site-redesign/about/">אודות</a>
+    <a href="/main-site-redesign/contact/">צור קשר</a>
+  </nav>
+  <a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="btn-wa-mini" data-magnetic><i data-lucide="message-circle"></i><span>וואטסאפ</span></a>
+  <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow reveal">תיק עבודות</span>
+    <h1 class="reveal">תוצאות.<br><span class="gold-text">לא הבטחות.</span></h1>
+    <p class="lede reveal">
+      כל לקוח שלנו = Case Study. הנה כמה מהסיפורים — עם <strong>מספרים, גרפים ועדויות.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section section-light" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">גלריה</span>
+      <h2>לקוחות <span class="gold-text">שלא מתחרטים.</span></h2>
+      <p>מבחר תוצרים מקמפיינים, סושיאל, אוטומציות — נותני שירות שונים, סטנדרט אחד.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-view><span class="icn icn-pulse"><i data-lucide="instagram"></i></span><div class="caption"><span class="lbl">סושיאל</span>גלריית רילס מהאינסטגרם של מכון לייזר — שלוש תמונות עם hooks חזקים בעברית, ויזואליה אחידה.</div></div>
+      <div class="gallery-item reveal" data-view style="transition-delay:.06s"><span class="icn icn-bounce"><i data-lucide="megaphone"></i></span><div class="caption"><span class="lbl">קמפיין</span>צילום מסך של מודעות Meta של משרד עורכי דין — Carousel עם 5 שקפים, קופי קצר, CTA ברור.</div></div>
+      <div class="gallery-item reveal" data-view style="transition-delay:.12s"><span class="icn icn-flow"><i data-lucide="bot"></i></span><div class="caption"><span class="lbl">אוטומציה</span>דוגמת זרימה של ManyChat — מסכי בוט מצולמים מהטלפון, שיחה אמיתית בין בוט ללקוח.</div></div>
+      <div class="gallery-item reveal" data-view style="transition-delay:.18s"><span class="icn icn-grow"><i data-lucide="chart-line"></i></span><div class="caption"><span class="lbl">תוצאות</span>גרף ROAS של קמפיין — קו עולה לאורך 90 יום, מ-1.2 ל-4.8, סימוני אופטימיזציות.</div></div>
+      <div class="gallery-item reveal" data-view style="transition-delay:.24s"><span class="icn icn-twinkle"><i data-lucide="layout-grid"></i></span><div class="caption"><span class="lbl">סושיאל</span>פיד אינסטגרם של עורך דין — 9 פוסטים אחידים בגוונים מקצועיים, ציטוטים משפטיים.</div></div>
+      <div class="gallery-item reveal" data-view style="transition-delay:.3s"><span class="icn icn-heart"><i data-lucide="quote"></i></span><div class="caption"><span class="lbl">לקוחות מספרים</span>המלצת לקוח מצולמת — ציטוט קצר על השירות, תמונת לקוח, רקע ברנדינג.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="section section-light" id="cases">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Case Studies</span>
+      <h2>שלושה סיפורים. <span class="gold-text">תוצאות חד-משמעיות.</span></h2>
+      <p style="font-size:13px;color:var(--ink-mute)">* שמות מותגים אנונימיים. הנתונים אמיתיים. הסיפור המלא זמין בשיחת היכרות.</p>
+    </div>
+
+    <div class="case-grid" style="grid-template-columns:1fr">
+      <!-- Case 1 -->
+      <article class="case-card reveal" data-view>
+        <div class="case-cover">
+          <div class="case-cover-emoji"><i data-lucide="sparkles"></i></div>
+          <div style="position:absolute;top:24px;left:24px;padding:8px 16px;border-radius:99px;background:linear-gradient(135deg,#d9b86c,#c9a961);color:var(--purple-900);font:700 12px/1 'Space Grotesk';letter-spacing:.1em">x4 ROAS</div>
+          <div class="case-cover-title">מכון לייזר באזור המרכז</div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag">אסתטיקה רפואית</div>
+          <p style="font-weight:600;color:var(--ink);font-size:15px;margin-bottom:8px">האתגר</p>
+          <p>פגישות ייעוץ יקרות. לידים לא איכותיים. צוות מתאם בעבודה ידנית 4 שעות ביום.</p>
+          <p style="font-weight:600;color:var(--ink);font-size:15px;margin:18px 0 8px">הפתרון</p>
+          <p>קמפיינים ממוקדים בטיקטוק עם UGC + Funnel וואטסאפ עם בוט סינון. רק לידים מוסמכים מגיעים לשולחן.</p>
+          <div class="case-metrics" style="margin-top:24px">
+            <div class="case-metric"><div class="num">+500%</div><div class="lbl">פגישות / חודש (30→180)</div></div>
+            <div class="case-metric"><div class="num">+300%</div><div class="lbl">ROAS (1.2→4.8)</div></div>
+            <div class="case-metric"><div class="num">-100%</div><div class="lbl">זמן סינון ידני (4ש׳/יום→0)</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 2 -->
+      <article class="case-card reveal" data-view style="transition-delay:.1s">
+        <div class="case-cover" style="background:linear-gradient(135deg,#1F0B33,#3D1466)">
+          <div class="case-cover-emoji"><i data-lucide="scale"></i></div>
+          <div style="position:absolute;top:24px;left:24px;padding:8px 16px;border-radius:99px;background:linear-gradient(135deg,#d9b86c,#c9a961);color:var(--purple-900);font:700 12px/1 'Space Grotesk';letter-spacing:.1em">+220% פניות איכותיות</div>
+          <div class="case-cover-title">משרד עורכי דין מסחרי</div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag">עו״ד וייצוג משפטי</div>
+          <p style="font-weight:600;color:var(--ink);font-size:15px;margin-bottom:8px">האתגר</p>
+          <p>תלות בהמלצות מפה לאוזן. אין נוכחות דיגיטלית. הצוות מבזבז שעות על פניות לא רלוונטיות.</p>
+          <p style="font-weight:600;color:var(--ink);font-size:15px;margin:18px 0 8px">הפתרון</p>
+          <p>סושיאל לבניית סמכות + בוט וואטסאפ שמסנן תיקים לפי תחום ודחיפות. רק תיקים רלוונטיים מגיעים לשותף הנכון.</p>
+          <div class="case-metrics" style="margin-top:24px">
+            <div class="case-metric"><div class="num">+220%</div><div class="lbl">פניות איכותיות (12→38)</div></div>
+            <div class="case-metric"><div class="num">-90%</div><div class="lbl">זמן סינון (3ש׳→20דק׳)</div></div>
+            <div class="case-metric"><div class="num">+65%</div><div class="lbl">שווי תיק ממוצע (8.5K→14K)</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 3 -->
+      <article class="case-card reveal" data-view style="transition-delay:.2s">
+        <div class="case-cover" style="background:linear-gradient(135deg,#0E2D3A,#1B4B5E)">
+          <div class="case-cover-emoji"><i data-lucide="car"></i></div>
+          <div style="position:absolute;top:24px;left:24px;padding:8px 16px;border-radius:99px;background:linear-gradient(135deg,#d9b86c,#c9a961);color:var(--purple-900);font:700 12px/1 'Space Grotesk';letter-spacing:.1em">x3 נסיעות מבחן</div>
+          <div class="case-cover-title">סוכנות רכב משומש פרימיום</div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag">תעשיית הרכב</div>
+          <p style="font-weight:600;color:var(--ink);font-size:15px;margin-bottom:8px">האתגר</p>
+          <p>לידים מתעניינים אבל לא קובעים נסיעת מבחן. אובדן לקוחות בשעות שאין מי שעונה. סוכנים עסוקים בתיאומי לוח זמנים.</p>
+          <p style="font-weight:600;color:var(--ink);font-size:15px;margin:18px 0 8px">הפתרון</p>
+          <p>Click-to-WhatsApp ממטא + בוט שמתאם נסיעת מבחן ביומן הסוכן הפנוי + תזכורות אוטומטיות יום לפני.</p>
+          <div class="case-metrics" style="margin-top:24px">
+            <div class="case-metric"><div class="num">+225%</div><div class="lbl">נסיעות מבחן/שבוע (8→26)</div></div>
+            <div class="case-metric"><div class="num">+67%</div><div class="lbl">Show-up Rate (55%→92%)</div></div>
+            <div class="case-metric"><div class="num">אוטומטי</div><div class="lbl">זמן תיאום (12דק׳→0)</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section section-light" id="videos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">וידאו</span>
+      <h2>ראו את הסיפור <span class="gold-text">בעצמכם.</span></h2>
+      <p>ראיונות לקוחות. סקירות תהליך. Behind the scenes מהסטודיו.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-item reveal" data-view><div class="play"><i data-lucide="play"></i></div><div class="caption"><span class="lbl">ראיון לקוח</span>מכון לייזר באזור המרכז — בעלת המכון מספרת איך עברו מ-30 ל-180 פגישות בחודש.</div></div>
+      <div class="video-item reveal" data-view style="transition-delay:.1s"><div class="play"><i data-lucide="play"></i></div><div class="caption"><span class="lbl">דמו</span>WhatsApp Funnel — דמו מקצה לקצה, בקריינות של מאור עטייה.</div></div>
+      <div class="video-item reveal" data-view style="transition-delay:.2s"><div class="play"><i data-lucide="play"></i></div><div class="caption"><span class="lbl">לפני / אחרי</span>סיפור Case Study מצולם של משרד עורכי דין — איך הוסיפו +220% פניות איכותיות ב-90 יום.</div></div>
+      <div class="video-item reveal" data-view style="transition-delay:.3s"><div class="play"><i data-lucide="play"></i></div><div class="caption"><span class="lbl">מאחורי הקלעים</span>סטודיו Simple Solutions — איך אנחנו עובדים, יום אחד בחיי הצוות.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact" data-dark>
+  <span class="eyebrow on-dark reveal">הסיפור הבא שלכם</span>
+  <h2 class="reveal">התוצאות האלה <span class="gold-text">יכולות להיות שלכם.</span></h2>
+  <p class="final-cta-body reveal">כל לקוח שלנו התחיל באותה נקודה. שיחה אחת. בואו נדבר.</p>
+  <div class="cta-row static reveal">
+    <a href="https://wa.me/972509697776?text=שלום מאור! ראיתי את התיק עבודות ואשמח להתייעצות." class="btn btn-gold" data-magnetic>
+      <i data-lucide="message-circle"></i><span>דברו איתנו ב-וואטסאפ</span>
+    </a>
+    <a href="/main-site-redesign/contact/" class="btn-link">לטופס מלא</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="footer-logo">
+      <p>יחידת קומנדו עסקית. בונים מערכות צמיחה לעסקים מבוססים — קמפיינים, סושיאל ואוטומציות שמדברים אחד עם השני.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/profile.php?id=61584515743546" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://instagram.com/simple.solutions__" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@simple.solutions2020" aria-label="TikTok"><i data-lucide="music-2"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>שירותים</h4><ul>
+      <li><a href="/main-site-redesign/campaign-management/">ניהול קמפיינים</a></li>
+      <li><a href="/main-site-redesign/social-media/">סושיאל מדיה</a></li>
+      <li><a href="/main-site-redesign/automation/">אוטומציות</a></li>
+      <li><a href="/main-site-redesign/portfolio/">תיק עבודות</a></li>
+      <li><a href="/main-site-redesign/about/">אודות</a></li>
+      <li><a href="/main-site-redesign/contact/">צור קשר</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>צור קשר</h4><ul>
+      <li><a href="https://wa.me/972509697776"><i data-lucide="message-circle"></i>050-969-7776</a></li>
+      <li><a href="tel:+972509697776"><i data-lucide="phone"></i>050-969-7776</a></li>
+      <li><a href="mailto:simple.solutions05055@gmail.com"><i data-lucide="mail"></i>simple.solutions05055@gmail.com</a></li>
+    </ul><p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.5)">מאור עטייה — מייסד ומנכ״ל</p></div>
+  </div>
+  <div class="footer-bar"><div>© 2026 Simple Solutions. כל הזכויות שמורות.</div><div class="links"><a href="/main-site-redesign/">חזרה לבית</a></div></div>
+</footer>
+
+<a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="fab-desktop" data-magnetic><i data-lucide="message-circle"></i><span>דברו איתי</span></a>
+<div class="fab-mobile"><a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות."><i data-lucide="message-circle"></i><span>דברו איתי בוואטסאפ</span></a></div>
+
+<script src="/main-site-redesign/app.js"></script>
+</body>
+</html>
