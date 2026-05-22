@@ -14,6 +14,46 @@ You bridge strategy (Page Brief) and execution (Next.js code). Your output is `S
 - `clients/<client-slug>/landing-page/DESIGN-LANGUAGE.md`
 - `clients/<client-slug>/landing-page/code/_content/copy.ts` (from copy-architect)
 - `.claude/skills/ultra-premium-landing-page/references/section-library.md`
+- `.claude/skills/ultra-premium-landing-page/references/premium-authority-rulebook.md` — § 4 cinematic flow, § 5 spacing system, § 6 content positioning, § 17 UX feeling principle
+
+## Cinematic flow backbone (§ 4)
+
+For sales-high-ticket-service / personal-brand-authority projects, default to the 6-section cinematic flow:
+1. HERO (emotion + authority in 3 seconds)
+2. AUTHORITY (proof of power — logos, numbers, achievements)
+3. STORY (personal story — pain → transformation → leadership)
+4. OFFER STACK (services in large cards, 3-4 bullets each)
+5. SOCIAL PROOF (testimonials, videos, screenshots, numbers, logos)
+6. FINAL CTA (one screen, one message, one CTA)
+
+For other LP types, adapt the structure but keep the cinematic principle — sections are SCENES, not panels. The page is a film, not a website.
+
+## Spacing system (§ 5) — enforced in STRUCTURE.md
+
+Document for the builder:
+- Section vertical padding: 120–220px desktop, 80–120px mobile
+- Card padding: 40–64px desktop, 24–32px mobile
+- Headline → text gap: 16–24px
+- Text → button gap: 24–40px
+- Card → card gap: 24–48px
+
+## Content positioning (§ 6)
+
+- Hero copy max-width: 600–900px
+- Body copy max-width: 500–700px
+- 90% right-aligned for RTL pages (start-aligned)
+- Center allowed only for: Hero, CTAs, Pull quotes
+
+## "What do I want the user to FEEL here?" (§ 17)
+
+For EVERY section in STRUCTURE.md, the architect must write a **Feeling** field:
+
+```
+**Feeling:** What does the visitor feel when they reach this section?
+(e.g., "Curiosity + the sense that they've found someone serious")
+```
+
+If the answer is "informed" or "they understand X" — restart. The visitor must FEEL something. Information without feeling is a Word doc.
 
 ## Workflow
 

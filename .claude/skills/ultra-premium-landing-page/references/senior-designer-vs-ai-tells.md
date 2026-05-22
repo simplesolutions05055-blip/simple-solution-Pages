@@ -58,6 +58,12 @@ Built from real diagnoses of failed LPs (the Amir Sudai project, May 2026) — t
 **Why it's AI:** Designer template attempting to "look like a Bloomberg terminal" or financial ticker. Doesn't fit most contexts.
 **Senior move:** If you want a marquee — use it as PURE typography (a manifesto sentence scrolling) without data labels or arrows. Or skip it entirely.
 
+### 11. Frank Ruhl Libre (and similar script-Hebrew serifs) as quote / body / display
+**The tell:** Quote sections or italic emphasis using `Frank Ruhl Libre`, `David Italic`, or any Hebrew script/handwriting font. Renders as cursive-handwriting-style Hebrew letterforms that LOOK italic even when not styled italic.
+**Why it's AI:** Models picked these fonts because their English-language Latin script-fonts (italic serif quote treatment) is a long-established premium pattern — and the Hebrew Frank Ruhl Libre IS technically a serif. But in Hebrew, the result is a handwriting/cursive feel that undermines authority and reads as "trying too hard to feel elegant".
+**Senior move:** Use sans-serif Hebrew (Heebo / Rubik / Assistant / Ploni / Simpler) at appropriate weight for quotes. Differentiate quotes through SIZE + WEIGHT + COLOR, not through a script font. See `premium-authority-rulebook.md` § 3 for the approved pairings.
+**HARD BAN:** Frank Ruhl Libre is banned in any project, in any context (quote, headline, body, emphasis). Identified in the Amir Sudai project May 2026.
+
 ---
 
 ## Part 2 — The 5 senior-master moves that AI rarely makes
@@ -109,6 +115,7 @@ Real Hebrew copy uses period rhythm, not em-dash rhythm. "כסף הוא ההשת
 - [ ] Any em-dash (`—`) in body copy (excluding h1/h2)? → FAIL
 - [ ] Brand initials with bullet (`A·S`-style) in body copy? → FAIL
 - [ ] Ticker/marquee with data labels + arrows? → FAIL
+- [ ] `Frank Ruhl Libre`, `David Italic`, or any Hebrew script/handwriting font used anywhere? → FAIL
 
 ### Senior moves check — ALL must be TRUE
 - [ ] At least 2 sections break the symmetric grid (asymmetric layout)? → required

@@ -18,9 +18,15 @@ You are the agent that decides what this landing page LOOKS like. Your output is
 
 ## Workflow
 
-### Step 0 — Read the start-from-zero contract
+### Step 0 — Read the foundational rulebooks (in order)
 
-Read `references/start-from-zero-principle.md` BEFORE any design work. Confirm the discovery-runner attested the reset in `discovery/reset-attestation.md`.
+1. `references/start-from-zero-principle.md` — confirms the variables/constants split
+2. `references/premium-authority-rulebook.md` — the agency's house rulebook (typography pairings § 3, color distribution § 7, atmosphere tools § 16, banned fonts including Frank Ruhl Libre)
+3. `references/senior-designer-vs-ai-tells.md` — fingerprints to avoid
+
+Confirm the discovery-runner attested the reset in `discovery/reset-attestation.md`.
+
+The premium-authority-rulebook is a CONSTANT — its rules apply to every project. Your job is to fill its rules with this client's specific values (the brand book's colors, the chosen font pairing from § 3, etc.), never override the rules themselves.
 
 Then internalize the variables/constants split:
 - **CONSTANTS:** structural rules (asymmetry, background depth, headline effects, ONE WOW), anti-AI rules (no em-dashes, no navy+gold, no halftone, no inline styles, etc.)
@@ -229,6 +235,31 @@ Cap the visual decoration budget at:
 - Custom cursor: 0 or 1 (counts as the WOW moment if used)
 
 If you're tempted to add ornament — stop. Add whitespace instead.
+
+### M9 — Typography pairing from approved list
+Pick ONE Hebrew font pairing from `premium-authority-rulebook.md` § 3 (Option A Premium Clean, Option B Cinematic Authority, OR Option C High-End Modern). The choice is informed by the brand book's tone OR the discovery's mood-from-business-field. Never invent a new pairing outside these three.
+
+If the brand book specifies a different pair (e.g., the client already chose `Suez One` + `Assistant`), the brand book wins — but check it doesn't include any banned font.
+
+### M10 — Banned fonts (hard fail)
+The following fonts are BANNED in any project, in any context:
+- `Frank Ruhl Libre` (identified in Amir Sudai project — produces script/handwriting Hebrew that reads as trying-too-hard-elegant and undermines authority)
+- `David Italic`
+- Any Hebrew script / handwriting / brush font outside of approved logo work
+- Hairline weights (< 400) in Hebrew body
+
+If the brand book specifies one of these, push back to Gili — never silently override, never use it.
+
+### M11 — 70/20/10 color distribution
+Per `premium-authority-rulebook.md` § 7. Map the brand book palette into the distribution:
+- 70% dark/neutral surface — comes from brand book's `bg` + `ink` + `surface` tokens
+- 20% secondary tone — comes from brand book's `muted` token
+- 10% accent — comes from brand book's `brand` (and optionally `accent`) token
+
+If the brand book's "brand color" is so vibrant it can't survive at 10% of the page (e.g., a hot pink) — reduce its surface area further, NEVER expand it to fit the 70/20/10 wrong way around.
+
+### M12 — Atmosphere selection
+Per `premium-authority-rulebook.md` § 16. Pick 2–3 atmospheric tools per page (grain, vignette, gradient washes, blur lights, depth layers, ambient glow). Never all six stacked. Atmosphere is ALWAYS background — never applied to text.
 
 ---
 

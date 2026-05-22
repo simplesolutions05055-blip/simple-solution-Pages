@@ -104,6 +104,7 @@ Unlike `brand-book-creator` (single autonomous run), LP work has more decision p
 | `references/deployment-playbook.md` | The 3 hosting paths + DNS via LiveDNS + Cloudflare + Vercel |
 | `references/self-uniqueness-audit.md` | The pre-delivery checklist (swap test, fingerprint test, DNA test) |
 | `references/start-from-zero-principle.md` | **MOST CRITICAL** — codifies the variables/constants split. The skill has zero aesthetic memory across projects; every run begins blank. ALL design variables (colors, fonts, voice, refs, patterns) come from THIS client's brand book or discovery — never from defaults or prior work. |
+| `references/premium-authority-rulebook.md` | **HOUSE RULEBOOK** — 20-section design rulebook (Personal Brand Authority + Cinematic Premium + High Conversion). Covers typography pairings (only 3 approved combinations), spacing, color 70/20/10, button dimensions, cinematic flow, banned fonts (`Frank Ruhl Libre` etc.), atmosphere tools, mobile UX, copy structure (HOOK→TENSION→AUTHORITY→TRANSFORMATION→CTA). All sub-agents must read this. |
 | `references/senior-designer-vs-ai-tells.md` | **CRITICAL** — diagnoses the 10 AI-luxury fingerprints + the 5 senior-master moves. The compiler runs this audit before GATE 4. Added May 2026 after the Amir Sudai diagnosis. |
 | `references/signature-moments-library.md` | **CRITICAL** — the WOW-moment catalog (Part 1), asymmetric layouts (Part 2), background depth SVGs per industry (Part 3), headline effects (Part 4). The blender picks from each; compiler enforces. |
 | `references/israeli-boutique-references.md` | Real Israeli boutique sites (s-pixel.co.il, bluebee.co.il, alexgorbachov.co.il, webiztlv.co.il) that set the quality bar. Blender consults for every Israeli client. |
@@ -159,6 +160,10 @@ Sub-agents live in `.claude/agents/` (project-level) — invoked by the orchestr
 13. **Hebrew copy must NOT use em-dashes (`—`) in body.** This is the #1 AI Hebrew fingerprint. Allowed only in h1/h2 max once per page. The compiler greps and rejects violations. See `lp-copy-architect.md` rules 7-12.
 
 14. **Banned palette combinations** — Navy + Gold + shimmer text (the "luxury finance template"); default Tailwind indigo/violet; black + neon-purple; three-stop gradient hero. See `lp-design-dna-blender.md` § M6.
+
+15. **Banned fonts (hard fail)** — `Frank Ruhl Libre`, `David Italic`, any Hebrew script/handwriting font. Identified in the Amir Sudai project May 2026 as producing italic-handwriting Hebrew letterforms that undermine authority. The compiler greps every project; any hit fails GATE 4. See `senior-designer-vs-ai-tells.md` § 11 and `premium-authority-rulebook.md` § 3.
+
+16. **Premium-authority rulebook applies to every project** — the 20-section rulebook in `references/premium-authority-rulebook.md` is the agency's house rulebook. Sub-agents fill its rules with this client's variables (colors, fonts, copy) but never override the rules themselves. Key enforced specs: max 2 fonts per page, 70/20/10 color distribution, button height 52–64px, animation timing 300–800ms, hero copy max-width 600–900px, section padding 120–220px desktop / 80–120px mobile, 90% right-aligned RTL, HOOK→TENSION→AUTHORITY→TRANSFORMATION→CTA writing structure.
 
 ---
 

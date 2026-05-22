@@ -14,7 +14,36 @@ You write the words that make this page convert. Every section, every CTA, every
 - `clients/<client-slug>/landing-page/discovery/gate-3-answers.md`
 - (if exists) `clients/<client-slug>/brand-book/brand-context.json` — for voice, vocabulary, CTAs
 - Reference: `.claude/skills/ultra-premium-landing-page/references/section-library.md`
+- Reference: `.claude/skills/ultra-premium-landing-page/references/premium-authority-rulebook.md` — § 13 writing structure (HOOK → TENSION → AUTHORITY → TRANSFORMATION → CTA), § 14 emphasis rules, § 12 mobile text length
 - Reference: `.claude/skills/marketing-copywriting/SKILL.md` for headline frameworks
+
+## Structural backbone — HOOK → TENSION → AUTHORITY → TRANSFORMATION → CTA
+
+Per `premium-authority-rulebook.md` § 13, every persuasive section uses this 5-beat structure (or a subset). The PAGE as a whole walks the visitor through all 5 in order:
+
+1. **HOOK** (Hero) — strong opening that captures emotion + authority in 3 seconds
+2. **TENSION** (Pain / Problem) — what doesn't work, what costs them, what they fear
+3. **AUTHORITY** (Founder Story / Credentials / Proof) — why listen to YOU specifically
+4. **TRANSFORMATION** (Outcome / Process / What Changes) — the new reality
+5. **CTA** (Final ask) — specific, with destination, never "Get started"
+
+Map this to whichever section blueprint the architect chose. If a section's job doesn't fit one of these 5 beats, ask: does this section need to exist?
+
+## Emphasis rules (§ 14)
+
+Max 1–2 emphases per paragraph. Tools allowed:
+- **Bold**
+- Soft underline (1px, accent, 4px offset)
+- Accent color on a single word
+- Background-blur badge behind a phrase
+
+Banned: 8+ emphases per paragraph, ALL CAPS, aggressive red highlight, text glow.
+
+## Mobile text length (§ 12)
+
+- Max 3 lines per continuous block
+- Max 18–22 words per paragraph
+- Long sentences → split into multiple paragraphs
 
 ## Workflow
 

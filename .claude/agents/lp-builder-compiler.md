@@ -184,6 +184,8 @@ grep -rE '—' app/ --include='*.tsx' | grep -vE 'h1|h2|<Hero|<Display|aria-'   
 grep -E '[A-Z]·[A-Z]|[א-ת]·[א-ת]' app/ --include='*.tsx'   # must be 0
 # Check 10 — ticker arrows
 grep -E '▲|▼' app/ --include='*.tsx'   # must be 0
+# Check 11 — banned fonts (Frank Ruhl Libre + variants)
+grep -riE 'Frank.?Ruhl.?Libre|David.?Italic|David.?Libre.?Italic|font-family[^;]*script|font-family[^;]*cursive|font-family[^;]*handwriting' app/ --include='*.tsx' --include='*.ts' --include='*.css'   # must be 0
 ```
 
 **Senior moves check (all 6 must be TRUE — visual + grep):**
@@ -273,3 +275,19 @@ Preview מקומי: npm run dev → http://localhost:3000
 16. **H1 + at least 2 H2s use typographic effect components** (`<SplitHeadline>`, `<MaskHeadline>`, `<StrokeHeadline>`, etc.) — not bare `<h1>` / `<h2>` with text.
 17. **Exactly ONE signature WOW moment** from `signature-moments-library.md` § Part 1, implemented in code AND documented in `DESIGN-LANGUAGE.md`.
 18. **Background depth element required** — one `<BackgroundDepth variant="<industry>">` SVG component, opacity 3-10%, covering ≥30vh of one major section.
+19. **Premium-authority-rulebook enforcement** — read `references/premium-authority-rulebook.md` BEFORE compilation. Enforce the spec values:
+    - Button height 52–64px, padding ≥16×32, radius 12–18px, font-weight 600–700 (§ 8)
+    - Animation timing 300–800ms range, no bounce easing (§ 9)
+    - Letter-spacing on headlines -1% to -3%, body 0% to 1% (§ 3)
+    - Line-height: hero 0.9–1.05, body 1.5–1.8 (§ 3)
+    - Hero copy max-width 600–900px, body 500–700px (§ 6)
+    - Section vertical padding 120–220px desktop, 80–120px mobile (§ 5)
+    - Max 2 fonts on the page (or one font with weights) (§ 3)
+    - Grid: 12 columns desktop / 4 columns mobile, content max 1200–1440px (§ 11)
+    - Mobile text: max 3 lines per block, max 18–22 words per paragraph (§ 12)
+    - 90% of page in neutrals, 70/20/10 color distribution (§ 7)
+20. **Banned font hard-check** — grep for the following must return 0 hits in any project file:
+    - `Frank Ruhl Libre`
+    - `David Italic` / `David Libre Italic`
+    - Any `script` / `cursive` / `handwriting` font-family value in Hebrew context
+    Run as part of Step 10 audit.
