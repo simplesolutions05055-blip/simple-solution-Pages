@@ -7,56 +7,524 @@
 <title>Simple Solutions — Landing Pages</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg:#0F1738;
+    --bg-2:#0a0f24;
+    --accent:#3DDED2;
+    --cream:#FBF7EE;
+    --muted:rgba(251,247,238,.55);
+    --line:rgba(251,247,238,.08);
+    --glass:rgba(251,247,238,.04);
+  }
   *{margin:0;padding:0;box-sizing:border-box}
+  html,body{overflow-x:hidden}
+  html{scroll-behavior:smooth}
   body{
     font-family:'Heebo',sans-serif;
-    background:#0F1738;
-    color:#FBF7EE;
+    background:var(--bg);
+    color:var(--cream);
     min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
+    position:relative;
+    cursor:none;
+    -webkit-font-smoothing:antialiased;
   }
-  .box{
-    max-width:560px;
-    text-align:center;
+
+  /* ====== Gradient mesh orbs (animated background) ====== */
+  .mesh{position:fixed;inset:0;z-index:-3;overflow:hidden;pointer-events:none}
+  .orb{
+    position:absolute;border-radius:50%;
+    filter:blur(80px);opacity:.55;
+    will-change:transform;
   }
-  .logo{
-    font-size:14px;
-    letter-spacing:0.3em;
-    color:#3DDED2;
-    margin-bottom:24px;
-    font-weight:700;
+  .orb-1{
+    width:520px;height:520px;
+    background:radial-gradient(circle, #3DDED2 0%, transparent 70%);
+    top:-120px;right:-80px;
+    animation:float1 18s ease-in-out infinite;
   }
-  h1{
-    font-size:clamp(28px,5vw,44px);
+  .orb-2{
+    width:620px;height:620px;
+    background:radial-gradient(circle, #6f5cff 0%, transparent 70%);
+    bottom:-180px;left:-160px;
+    animation:float2 22s ease-in-out infinite;
+    opacity:.35;
+  }
+  .orb-3{
+    width:380px;height:380px;
+    background:radial-gradient(circle, #ff6fa5 0%, transparent 70%);
+    top:40%;left:50%;
+    animation:float3 26s ease-in-out infinite;
+    opacity:.18;
+  }
+  @keyframes float1{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(-60px,80px) scale(1.15)}
+  }
+  @keyframes float2{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(100px,-60px) scale(1.1)}
+  }
+  @keyframes float3{
+    0%,100%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-30%,-70%) scale(1.2)}
+  }
+
+  /* ====== Grid overlay ====== */
+  .grid-overlay{
+    position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:80px 80px;
+    mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  /* ====== Noise texture ====== */
+  .noise{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    opacity:.04;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='1'/></svg>");
+  }
+
+  /* ====== Custom cursor ====== */
+  .cursor-dot,.cursor-ring{
+    position:fixed;pointer-events:none;z-index:9999;
+    top:0;left:0;border-radius:50%;
+    transform:translate(-50%,-50%);
+    mix-blend-mode:difference;
+  }
+  .cursor-dot{
+    width:6px;height:6px;background:var(--cream);
+    transition:transform .12s ease-out;
+  }
+  .cursor-ring{
+    width:36px;height:36px;border:1px solid var(--cream);
+    transition:transform .25s ease-out, width .25s, height .25s, border-color .25s;
+  }
+  .cursor-ring.hover{
+    width:64px;height:64px;
+    border-color:var(--accent);
+    background:rgba(61,222,210,.08);
+  }
+  @media (max-width:768px){
+    body{cursor:auto}
+    .cursor-dot,.cursor-ring{display:none}
+  }
+
+  /* ====== Top status bar ====== */
+  .top-bar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:20px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:12px;letter-spacing:0.15em;text-transform:uppercase;
+    color:var(--muted);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    background:linear-gradient(to bottom, rgba(15,23,56,.6), transparent);
+  }
+  .live{display:flex;align-items:center;gap:8px;color:var(--accent)}
+  .live-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 0 var(--accent);
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(61,222,210,.7)}
+    70%{box-shadow:0 0 0 10px rgba(61,222,210,0)}
+    100%{box-shadow:0 0 0 0 rgba(61,222,210,0)}
+  }
+
+  /* ====== Main hero ====== */
+  .stage{
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:120px 24px 80px;
+    position:relative;
+    perspective:1000px;
+  }
+  .parallax-layer{
+    will-change:transform;
+    transform-style:preserve-3d;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:8px 18px;
+    border:1px solid var(--line);
+    border-radius:99px;
+    background:var(--glass);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:11px;letter-spacing:0.3em;
+    color:var(--accent);
+    margin-bottom:36px;
+    opacity:0;animation:fadeUp .9s .2s forwards;
+  }
+  .eyebrow::before{
+    content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 12px var(--accent);
+  }
+
+  h1.display{
     font-weight:900;
-    line-height:1.15;
-    margin-bottom:16px;
+    font-size:clamp(56px, 13vw, 180px);
+    line-height:.92;
+    letter-spacing:-.03em;
+    text-align:center;
+    margin-bottom:28px;
+    background:linear-gradient(180deg, var(--cream) 0%, var(--cream) 55%, rgba(251,247,238,.35) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
-  p{
-    font-size:18px;
-    opacity:0.7;
-    line-height:1.6;
+  h1.display .char{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(60%) rotateX(-40deg);
+    transform-origin:bottom;
+    animation:charIn .7s cubic-bezier(.2,.7,.2,1) forwards;
   }
-  a{
-    color:#3DDED2;
+  h1.display .accent-char{
+    background:linear-gradient(135deg, var(--accent) 0%, #79f0e6 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  @keyframes charIn{
+    to{opacity:1;transform:translateY(0) rotateX(0)}
+  }
+
+  .lede{
+    max-width:620px;
+    text-align:center;
+    font-size:clamp(16px,1.6vw,19px);
+    line-height:1.7;
+    color:rgba(251,247,238,.7);
+    margin-bottom:48px;
+    opacity:0;animation:fadeUp 1s 1.3s forwards;
+  }
+  .lede strong{color:var(--cream);font-weight:500}
+
+  /* ====== Magnetic CTA ====== */
+  .cta-row{
+    display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+    opacity:0;animation:fadeUp 1s 1.5s forwards;
+  }
+  .btn{
+    position:relative;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:18px 32px;
+    font-family:'Heebo',sans-serif;
+    font-weight:700;font-size:15px;
+    border-radius:99px;
     text-decoration:none;
-    font-weight:700;
-    border-bottom:1px solid currentColor;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+    cursor:none;
   }
-  a:hover{opacity:0.8}
+  .btn-primary{
+    background:var(--accent);color:#06112a;
+    box-shadow:0 10px 40px -10px rgba(61,222,210,.6);
+  }
+  .btn-primary:hover{
+    box-shadow:0 14px 50px -8px rgba(61,222,210,.9);
+  }
+  .btn-primary .arrow{
+    display:inline-block;
+    transition:transform .3s;
+  }
+  .btn-primary:hover .arrow{transform:translateX(-6px)}
+  .btn-ghost{
+    background:var(--glass);
+    color:var(--cream);
+    border:1px solid var(--line);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(28px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* ====== Stats / info strip ====== */
+  .info-grid{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:1px;
+    max-width:980px;width:100%;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:24px;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    opacity:0;animation:fadeUp 1s 1.7s forwards;
+  }
+  .info-cell{
+    background:rgba(10,15,36,.5);
+    padding:32px 28px;
+    transition:background .4s;
+  }
+  .info-cell:hover{background:rgba(61,222,210,.05)}
+  .info-cell .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:42px;font-weight:600;
+    color:var(--cream);
+    letter-spacing:-.02em;
+    margin-bottom:8px;
+  }
+  .info-cell .num em{
+    color:var(--accent);font-style:normal;
+  }
+  .info-cell .label{
+    font-size:13px;color:var(--muted);
+    letter-spacing:0.08em;
+  }
+  @media(max-width:720px){
+    .info-grid{grid-template-columns:1fr}
+  }
+
+  /* ====== Marquee ====== */
+  .marquee{
+    margin-top:80px;
+    overflow:hidden;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:24px 0;
+    mask-image:linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  }
+  .marquee-track{
+    display:flex;gap:60px;
+    width:max-content;
+    animation:scroll 32s linear infinite;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(22px,3vw,38px);
+    font-weight:500;
+    color:rgba(251,247,238,.5);
+    letter-spacing:-.01em;
+    white-space:nowrap;
+  }
+  .marquee-track span{display:inline-flex;align-items:center;gap:60px}
+  .marquee-track .sep{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+  }
+  @keyframes scroll{
+    to{transform:translateX(50%)}
+  }
+  [dir="rtl"] @keyframes scroll{
+    to{transform:translateX(-50%)}
+  }
+
+  /* ====== Footer ====== */
+  footer{
+    padding:48px 32px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+    margin-top:60px;
+  }
+  footer a{color:var(--accent);text-decoration:none}
+  footer a:hover{color:var(--cream)}
+
+  /* ====== Scroll hint ====== */
+  .scroll-hint{
+    position:absolute;bottom:30px;left:50%;
+    transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    color:var(--muted);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:10px;letter-spacing:0.3em;
+    opacity:0;animation:fadeUp 1s 2s forwards;
+  }
+  .scroll-hint .line{
+    width:1px;height:40px;
+    background:linear-gradient(to bottom, var(--accent), transparent);
+    animation:lineDrop 2s ease-in-out infinite;
+  }
+  @keyframes lineDrop{
+    0%,100%{transform:scaleY(0.4);transform-origin:top}
+    50%{transform:scaleY(1);transform-origin:top}
+  }
 </style>
 </head>
 <body>
-  <div class="box">
-    <div class="logo">SIMPLE SOLUTIONS</div>
-    <h1>דפי נחיתה</h1>
-    <p>זה דומיין פנימי של דפי נחיתה לקמפיינים וללקוחות.<br>
-    אם הגעת לכאן בטעות, חזור ל-<a href="https://www.simple-solution.co.il">אתר הראשי</a>.</p>
+
+<!-- backgrounds -->
+<div class="mesh">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="grid-overlay"></div>
+<div class="noise"></div>
+
+<!-- custom cursor -->
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- top bar -->
+<div class="top-bar">
+  <div>SIMPLE&nbsp;SOLUTIONS · LANDING&nbsp;SYSTEM</div>
+  <div class="live"><span class="live-dot"></span><span>ONLINE</span></div>
+</div>
+
+<!-- hero -->
+<section class="stage">
+  <div class="parallax-layer" id="parallax">
+    <div class="eyebrow">SIMPLE&nbsp;SOLUTIONS · INTERNAL&nbsp;DOMAIN</div>
+    <h1 class="display" id="hero-title">דפי&nbsp;<span class="accent-word">נחיתה</span></h1>
+    <p class="lede">
+      <strong>זה דומיין פנימי</strong> של דפי נחיתה לקמפיינים וללקוחות.<br>
+      אם הגעת לכאן בטעות, חזור לאתר הראשי.
+    </p>
+    <div class="cta-row">
+      <a href="https://www.simple-solution.co.il" class="btn btn-primary" data-magnetic>
+        <span class="arrow">←</span>
+        <span>חזרה לאתר הראשי</span>
+      </a>
+      <a href="#info" class="btn btn-ghost" data-magnetic>
+        <span>מידע נוסף</span>
+      </a>
+    </div>
   </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- info strip -->
+<section id="info" style="padding:0 24px;display:flex;justify-content:center">
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="num"><em>·</em> פנימי</div>
+      <div class="label">תחום מטרה</div>
+    </div>
+    <div class="info-cell">
+      <div class="num">100<em>%</em></div>
+      <div class="label">קמפיינים ולקוחות</div>
+    </div>
+    <div class="info-cell">
+      <div class="num">24<em>/</em>7</div>
+      <div class="label">זמינות תשתית</div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>LANDING PAGES <i class="sep"></i> CAMPAIGNS <i class="sep"></i> CREATIVE <i class="sep"></i> STRATEGY <i class="sep"></i> SIMPLE SOLUTIONS <i class="sep"></i></span>
+    <span>LANDING PAGES <i class="sep"></i> CAMPAIGNS <i class="sep"></i> CREATIVE <i class="sep"></i> STRATEGY <i class="sep"></i> SIMPLE SOLUTIONS <i class="sep"></i></span>
+  </div>
+</div>
+
+<footer>
+  <div>© SIMPLE&nbsp;SOLUTIONS · INTERNAL&nbsp;NETWORK</div>
+  <div><a href="https://www.simple-solution.co.il">www.simple-solution.co.il →</a></div>
+</footer>
+
+<script>
+  /* ===== Split title into animated chars ===== */
+  (function(){
+    const el = document.getElementById('hero-title');
+    if(!el) return;
+    const html = el.innerHTML;
+    // Split by characters but preserve <span class="accent-word"> wrapper
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html;
+    let i = 0;
+    function splitNode(node, isAccent){
+      const children = Array.from(node.childNodes);
+      node.innerHTML = '';
+      children.forEach(child=>{
+        if(child.nodeType === 3){
+          const text = child.textContent;
+          for(const ch of text){
+            const s = document.createElement('span');
+            s.className = 'char' + (isAccent ? ' accent-char' : '');
+            s.textContent = ch === ' ' ? ' ' : ch;
+            s.style.animationDelay = (0.25 + i*0.05) + 's';
+            node.appendChild(s);
+            i++;
+          }
+        } else if(child.nodeType === 1){
+          const clone = child.cloneNode(false);
+          node.appendChild(clone);
+          splitNode(clone, clone.classList.contains('accent-word'));
+        }
+      });
+    }
+    splitNode(wrap, false);
+    el.innerHTML = wrap.innerHTML;
+  })();
+
+  /* ===== Custom cursor ===== */
+  (function(){
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    if(!dot || !ring) return;
+    let mx=0,my=0,rx=0,ry=0;
+    window.addEventListener('mousemove',e=>{
+      mx=e.clientX;my=e.clientY;
+      dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    });
+    function loop(){
+      rx += (mx-rx)*0.18;
+      ry += (my-ry)*0.18;
+      ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    }
+    loop();
+    document.querySelectorAll('a, .btn, [data-magnetic]').forEach(el=>{
+      el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+      el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+    });
+  })();
+
+  /* ===== Magnetic buttons ===== */
+  (function(){
+    const items = document.querySelectorAll('[data-magnetic]');
+    items.forEach(el=>{
+      el.addEventListener('mousemove',e=>{
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width/2);
+        const y = e.clientY - (r.top + r.height/2);
+        el.style.transform = `translate(${x*0.18}px, ${y*0.22}px)`;
+      });
+      el.addEventListener('mouseleave',()=>{
+        el.style.transform = '';
+      });
+    });
+  })();
+
+  /* ===== Parallax hero on mousemove ===== */
+  (function(){
+    const layer = document.getElementById('parallax');
+    if(!layer) return;
+    window.addEventListener('mousemove', e=>{
+      const x = (e.clientX / window.innerWidth - .5) * 14;
+      const y = (e.clientY / window.innerHeight - .5) * 10;
+      layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+  })();
+</script>
 </body>
 </html>
