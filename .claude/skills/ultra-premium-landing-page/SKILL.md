@@ -103,6 +103,9 @@ Unlike `brand-book-creator` (single autonomous run), LP work has more decision p
 | `references/payment-providers-il.md` | Cardcom / Grow / משולם / Stripe — when each, how to integrate |
 | `references/deployment-playbook.md` | The 3 hosting paths + DNS via LiveDNS + Cloudflare + Vercel |
 | `references/self-uniqueness-audit.md` | The pre-delivery checklist (swap test, fingerprint test, DNA test) |
+| `references/senior-designer-vs-ai-tells.md` | **CRITICAL** — diagnoses the 10 AI-luxury fingerprints + the 5 senior-master moves. The compiler runs this audit before GATE 4. Added May 2026 after the Amir Sudai diagnosis. |
+| `references/signature-moments-library.md` | **CRITICAL** — the WOW-moment catalog (Part 1), asymmetric layouts (Part 2), background depth SVGs per industry (Part 3), headline effects (Part 4). The blender picks from each; compiler enforces. |
+| `references/israeli-boutique-references.md` | Real Israeli boutique sites (s-pixel.co.il, bluebee.co.il, alexgorbachov.co.il, webiztlv.co.il) that set the quality bar. Blender consults for every Israeli client. |
 
 Sub-agents live in `.claude/agents/` (project-level) — invoked by the orchestrator via the Agent tool:
 
@@ -141,6 +144,18 @@ Sub-agents live in `.claude/agents/` (project-level) — invoked by the orchestr
 9. **Self-uniqueness audit is non-negotiable** before GATE 4. The compiler MUST run the swap-test and fingerprint-test from `references/self-uniqueness-audit.md`. If anything fails, the relevant agent re-runs before Gili sees the preview.
 
 10. **Performance gate before GATE 5.** Lighthouse mobile must hit Performance ≥95, Accessibility ≥95, Best Practices 100, SEO 100. LCP ≤1.8s, CLS ≤0.05, INP ≤200ms. Total transfer ≤1.2MB.
+
+11. **AI-tells audit is mandatory before GATE 4** (added May 2026). The compiler runs `references/senior-designer-vs-ai-tells.md` Part 3 audit. Every fingerprint check must be FALSE; every senior-moves check must be TRUE. The page fails GATE 4 otherwise.
+
+12. **The 4 mandatory design elements** (no exceptions):
+    - **Asymmetric layouts** in ≥2 sections (see `signature-moments-library.md` § Part 2)
+    - **Background depth** — one industry-specific SVG outline (see § Part 3). NEVER halftone/dot-pattern.
+    - **Headline effects** on h1 + ≥2 h2s (see § Part 4). NEVER plain static headlines.
+    - **One signature WOW moment** from § Part 1. Exactly one — never more, never zero.
+
+13. **Hebrew copy must NOT use em-dashes (`—`) in body.** This is the #1 AI Hebrew fingerprint. Allowed only in h1/h2 max once per page. The compiler greps and rejects violations. See `lp-copy-architect.md` rules 7-12.
+
+14. **Banned palette combinations** — Navy + Gold + shimmer text (the "luxury finance template"); default Tailwind indigo/violet; black + neon-purple; three-stop gradient hero. See `lp-design-dna-blender.md` § M6.
 
 ---
 

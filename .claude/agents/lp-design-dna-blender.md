@@ -159,6 +159,61 @@ If any "no" → revise before passing control.
 
 Write the CSS variables block to `clients/<client-slug>/landing-page/code/app/tokens.css` so the builder agent picks it up directly. (Builder will import it from `globals.css`.)
 
+## Mandatory requirements (added May 2026 after Amir Sudai diagnosis)
+
+These are the lessons from the failed "premium finance LP" — the page that was technically clean but visually AI-generated. Every requirement here is non-negotiable.
+
+### M1 — Read the Israeli boutique references FIRST
+For every Israeli client, read `references/israeli-boutique-references.md` BEFORE consulting the international `design-references-index.md`. Pick at least ONE Israeli reference as a quality anchor and document the lesson borrowed.
+
+### M2 — Asymmetric layouts mandatory
+At least 2 sections per page MUST use one of the asymmetric patterns from `references/signature-moments-library.md` § Part 2 (5/7 split, 7/4 split, full-bleed editorial spread, diagonal split, off-center hero, vertical headline). Symmetric 3-column-card grids cap at 1 per page.
+
+### M3 — Background depth element mandatory
+Every page MUST include exactly ONE background depth element keyed to the client's industry — see `references/signature-moments-library.md` § Part 3. The element is a bespoke SVG outline (legal seal, anatomical line, topographic contours, isometric circuit, etc.) at 3-10% opacity, covering at least 30vh of one major section.
+
+**BANNED background elements (these are AI tells):**
+- Halftone / dot-pattern decorations in corners (`halftone-tl`, `dot-pattern-tr`)
+- Gradient blob shapes anywhere in the hero
+- Repeating geometric pattern as filler
+- Generic "abstract shapes" SVG packs
+
+### M4 — Headline effects mandatory
+Every h1 AND at least 2 h2s per page MUST have a typographic effect from `references/signature-moments-library.md` § Part 4 (split-text, mask reveal, stroke-to-fill, gradient shift, mixed-font headline, letter-spacing breath, kinetic word swap). Plain static headlines are BANNED.
+
+### M5 — Exactly ONE signature WOW moment
+Pick EXACTLY ONE moment from `references/signature-moments-library.md` § Part 1 (magnetic cursor, GSAP split-text, video full-bleed mask, scroll-pinned story, custom contextual cursor, image distortion, horizontal scroll, etc.). Document the choice + reasoning. Two or more signature moments cancel each other out — they MUST be one.
+
+### M6 — Banned palette combinations
+**Forbidden for any client:**
+- Navy `#0F1F3D`-ish + Gold `#C9A858`-ish + shimmer gradient text — the "luxury finance template" combo. If the client demands navy, you must twist hard: navy + cream + a non-gold accent (terracotta, oxblood, sage), zero shimmer effects.
+- Default Tailwind `indigo-600`, `violet-600`, `purple-600`, `zinc` — generic shadcn defaults.
+- Black hero with neon-purple accent — recycled crypto/AI startup template.
+- Three-stop gradient hero (purple → pink → orange) — Stripe/Linear 2021 fingerprint applied wholesale.
+
+### M7 — "Decisions NOT made" list
+Before writing tokens, write a `## Restraint commitments` block in `DESIGN-LANGUAGE.md` listing 5 things this page will deliberately NOT do. Example:
+```
+## Restraint commitments
+- NO gold shimmer text gradients
+- NO halftone corner decorations
+- NO three-column persona cards
+- NO `reveal delay-1/2/3` cascades beyond 3 instances total
+- NO ticker with data labels and arrows
+```
+This forces commitment to minimalism over decoration.
+
+### M8 — Decoration restraint
+Cap the visual decoration budget at:
+- Background depth element: 1 (from § M3)
+- Cascading reveal animations: 3 max in the entire page
+- Texture overlay (paper grain, etc.): 1 max
+- Custom cursor: 0 or 1 (counts as the WOW moment if used)
+
+If you're tempted to add ornament — stop. Add whitespace instead.
+
+---
+
 ## Critical rules
 
 1. **Never just pick one reference.** Always 2-3, with explicit percentages and roles.
@@ -166,3 +221,4 @@ Write the CSS variables block to `clients/<client-slug>/landing-page/code/app/to
 3. **Document what you DIDN'T borrow.** This proves you understood the reference, not just copied it.
 4. **No repeat primary references** for consecutive projects. Check `clients/*/landing-page/DESIGN-LANGUAGE.md` for the last 3 projects.
 5. **Name the unmistakable detail.** If you can't name a specific element that's unique to this page — go back and design one.
+6. **All M1-M8 requirements above are non-negotiable.** The compiler agent runs the audit from `references/senior-designer-vs-ai-tells.md` and rejects pages that fail any.

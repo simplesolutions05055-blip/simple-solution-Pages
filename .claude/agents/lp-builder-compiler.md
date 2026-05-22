@@ -160,17 +160,54 @@ npm run build
 
 Must complete with zero errors. Warnings allowed only if non-actionable (e.g., Tailwind warning about unused custom theme keys).
 
-### Step 10 — Run the self-uniqueness audit
+### Step 10 — Run the AI-tells audit (CRITICAL — added after Amir Sudai failure)
 
-Read `.claude/skills/ultra-premium-landing-page/references/self-uniqueness-audit.md`. Fill the checklist by reading the compiled code:
-- Display font check (no Poppins/Inter/Montserrat/Roboto)
-- Brand color check (no default indigo/violet)
-- Anti-template moves count (3-5)
-- Unmistakable detail named
-- RTL grep clean
-- Performance estimate
+Read `references/senior-designer-vs-ai-tells.md`. Run BOTH checklists from § Part 3:
 
-Write the filled checklist to `clients/<client-slug>/landing-page/reports/self-uniqueness-audit.md`.
+**Fingerprint check (all 10 must be FALSE):**
+Grep the compiled code:
+```bash
+# Check 1 — Navy + gold + shimmer text
+grep -ri 'navy\|#14253D\|#0F1F3D\|#C9A858\|#B79A6B' app/ | grep -i 'gold\|shimmer\|gradient.*-webkit-background-clip'
+# Check 2 — repeated eyebrow → h2 → lede → grid scaffold (visual review)
+# Check 3 — cascading reveals beyond 3 instances
+grep -rE 'reveal[- ]delay-[0-9]|delay-[0-9].*reveal' app/ | wc -l   # must be ≤ 3
+# Check 4 — banned decorations
+grep -ri 'halftone\|dot-pattern\|corner-ornament' app/
+# Check 5 — stats row with shimmer numbers (visual)
+# Check 6 — persona circle-letter cards (visual)
+# Check 7 — inline style attributes
+grep -rE 'style="[^"]*color\s*:|style=\{\{' app/ --include='*.tsx'   # must be 0
+# Check 8 — em-dashes in body copy
+grep -rE '—' app/ --include='*.tsx' | grep -vE 'h1|h2|<Hero|<Display|aria-'   # must be 0
+# Check 9 — brand initials with bullets
+grep -E '[A-Z]·[A-Z]|[א-ת]·[א-ת]' app/ --include='*.tsx'   # must be 0
+# Check 10 — ticker arrows
+grep -E '▲|▼' app/ --include='*.tsx'   # must be 0
+```
+
+**Senior moves check (all 6 must be TRUE — visual + grep):**
+- Asymmetric layouts in ≥2 sections (grid-cols-12 with non-equal col-spans)
+- Background depth element present (one `<BackgroundDepth variant="...">` per page)
+- Exactly ONE signature moment (documented in DESIGN-LANGUAGE.md, implemented in code)
+- H1 has typographic effect (component is one of `<SplitHeadline>`, `<MaskHeadline>`, etc., NOT bare `<h1>`)
+- ≥2 H2s have typographic effects
+- Body copy em-dash count is 0
+
+If ANY fingerprint check fails OR any senior-moves check is missing:
+- Halftone/dot-pattern decorations found → route to `lp-design-dna-blender` to replace with proper background depth element
+- Em-dashes in body → route to `lp-copy-architect` to rewrite that section's copy
+- Missing asymmetry → route to `lp-section-architect` + `lp-design-dna-blender` to add asymmetric variants
+- Missing background depth → route to `lp-design-dna-blender` to add the SVG element
+- Plain headlines → route to `lp-design-dna-blender` to assign effect variants
+
+Re-run the audit until 100% clean. Only then continue to Step 11.
+
+Write the filled audit to `clients/<client-slug>/landing-page/reports/ai-tells-audit.md` with each check + result.
+
+### Step 10b — Run the legacy self-uniqueness audit
+
+Read `references/self-uniqueness-audit.md` and fill it (this is the broader audit covering RTL, performance, fingerprint, DNA tests). Write to `reports/self-uniqueness-audit.md`.
 
 If anything FAILS — route back to the responsible agent and re-run before showing Gili.
 
@@ -228,3 +265,11 @@ Preview מקומי: npm run dev → http://localhost:3000
 8. **Self-uniqueness audit MUST pass** before GATE 4 — re-run agents if needed.
 9. **404 + thank-you pages are part of the deliverable** — never the Next.js defaults.
 10. **OG image rendered at build time** with Hebrew copy via satori — not a static asset.
+11. **NO inline `style="..."` or `style={{...}}` attributes** in any JSX. Zero exceptions. Use Tailwind classes that reference CSS variables, or add a modifier class in the stylesheet.
+12. **NO em-dashes (`—`) in body copy.** Allowed only in h1/h2 display headlines, max once per page. Compiler greps and fails on violations.
+13. **NO `halftone`, `dot-pattern`, `corner-ornament`** decorations. Background depth must use the bespoke industry SVG from `signature-moments-library.md` § Part 3.
+14. **MAX 3 cascading-reveal animations** in the entire page. Count `reveal delay-*` class instances; reject if over 3.
+15. **AT LEAST 2 asymmetric sections** per page (from `signature-moments-library.md` § Part 2). Symmetric 3-column grids cap at 1 per page.
+16. **H1 + at least 2 H2s use typographic effect components** (`<SplitHeadline>`, `<MaskHeadline>`, `<StrokeHeadline>`, etc.) — not bare `<h1>` / `<h2>` with text.
+17. **Exactly ONE signature WOW moment** from `signature-moments-library.md` § Part 1, implemented in code AND documented in `DESIGN-LANGUAGE.md`.
+18. **Background depth element required** — one `<BackgroundDepth variant="<industry>">` SVG component, opacity 3-10%, covering ≥30vh of one major section.

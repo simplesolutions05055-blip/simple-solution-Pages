@@ -65,6 +65,25 @@ The Israeli LP market is flooded with recycled shadcn templates. A client paying
 
 ---
 
+## Part 2b — 10 AI-luxury fingerprints (added May 2026 — from the Amir Sudai diagnosis)
+
+These are additional template fingerprints specific to AI-generated "premium" Hebrew LPs. They look polished individually but combined they scream AI. The `lp-builder-compiler` audits against this list before GATE 4.
+
+For the full diagnosis + fix patterns, see `senior-designer-vs-ai-tells.md`. Headline summary:
+
+21. **Navy `#14253D` + Gold `#C9A858` + shimmer text gradient.** The "luxury finance template" combo. Every accountant/coach/consultant LP in Israel has it. Pick a distinctive palette instead — see `senior-designer-vs-ai-tells.md` § 1.
+22. **Every section uses the same `eyebrow → h2 → lede → grid of 3` scaffold.** When repeated 8 times, the page reads as templated. Vary structure per section.
+23. **`reveal delay-1/2/3` cascade animations on every section.** Cap at 3 cascading reveals in the whole page.
+24. **Halftone / dot-pattern decorations in corners.** Replace with industry-specific background depth SVG (see `signature-moments-library.md` § Part 3).
+25. **Stats row with shimmer-gradient numbers + uppercase Latin labels.** Use narrative-embedded numbers instead: "שירלי הגדילה את שולי הרווח שלה מ-12% ל-31%".
+26. **Persona cards with circle-letters** (ר, ש, י as avatars). Use real names + real photos + real quotes, OR a single editorial story.
+27. **Inline `style="color: var(--...)"` attributes** patched onto clean components. Zero inline styles allowed — all overrides via classes.
+28. **Em-dashes (`—`) everywhere in Hebrew body copy.** The #1 AI Hebrew fingerprint. Banned in body copy entirely; allowed only in h1/h2 max once per page.
+29. **Brand initials with bullets** (`A·S`, `S·P`). Use the brand's real name in body copy; initials live in the logo only.
+30. **Ticker/marquee with data labels and `▲▼` arrows.** Marquees must be pure prose if used at all.
+
+---
+
 ## Part 3 — Final check before delivery
 
 Run this mental test:

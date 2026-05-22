@@ -93,6 +93,37 @@ Run before GATE 4. If any item FAILS, restart the relevant section (don't ship a
 
 ---
 
+## Part 7b — AI-tells fingerprint test (added May 2026)
+
+The full diagnostic + audit lives in `senior-designer-vs-ai-tells.md`. This section is the abbreviated checklist that must pass before GATE 4.
+
+### Fingerprint check — ALL must be FALSE
+
+- [ ] Navy + Gold + shimmer-gradient text combo present? → FAIL
+- [ ] More than 3 sections use the same `eyebrow → h2 → lede → grid` scaffold? → FAIL
+- [ ] More than 3 `reveal delay-*` cascade animations on the page? → FAIL
+- [ ] Any `halftone`, `dot-pattern`, `corner-ornament` class names? → FAIL
+- [ ] Stats row with shimmer numbers + Latin uppercase labels? → FAIL
+- [ ] Persona cards with circle-letter avatars? → FAIL
+- [ ] Any inline `style="..."` or `style={{...}}` in JSX? → FAIL
+- [ ] Em-dash (`—`) count in body copy is > 0? → FAIL
+- [ ] Brand initials with bullets (`A·S`-style) in body copy? → FAIL
+- [ ] Ticker/marquee with `▲`/`▼` arrows or data labels? → FAIL
+
+### Senior moves check — ALL must be TRUE
+
+- [ ] At least 2 sections use asymmetric layout (5/7, 7/5, full-bleed, diagonal, off-center, or vertical) → required
+- [ ] One background depth element keyed to client's industry (SVG, 3-10% opacity, ≥30vh coverage) → required
+- [ ] Exactly ONE signature WOW moment from `signature-moments-library.md` § Part 1 → required
+- [ ] H1 uses typographic-effect component (split-text, mask, stroke, gradient-shift, mixed-font, letter-spacing, or kinetic) → required
+- [ ] At least 2 H2s use typographic-effect components → required
+- [ ] Body copy reads in period-rhythm Hebrew, em-dash count = 0 → required
+- [ ] "Restraint commitments" block written in DESIGN-LANGUAGE.md listing 5 NOT-DOing decisions → required
+
+If ANY fingerprint fails or ANY senior move is missing → re-route to the responsible agent before GATE 4 opens.
+
+---
+
 ## Part 8 — The final mental test
 
 Send the page (mentally or via screenshot) to two clients in completely different verticals — e.g., **a lawyer in Herzliya** AND **a vegan café in Florentin** — and ask each: "could this be yours?"
