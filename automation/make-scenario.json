@@ -1,0 +1,171 @@
+{
+  "_meta": {
+    "name": "Simple Solutions — Article Generation Pipeline",
+    "version": "1.0",
+    "author": "Simple Solutions",
+    "description": "Triggered twice weekly (Mon + Thu 09:00 IL). Picks next topic from Supabase queue, generates article via Claude API, generates 3 images via Nano Banana, uploads to Cloudinary, posts to /api/articles/receive for email approval.",
+    "instructions": "Import this JSON into Make.com via Scenarios → Import Blueprint. Then connect your API keys for each module."
+  },
+  "scenario": {
+    "name": "Simple Solutions — Article Pipeline",
+    "modules": [
+      {
+        "id": 1,
+        "module": "scheduler",
+        "name": "Trigger — Mon & Thu 09:00 IL",
+        "schedule": {
+          "type": "cron",
+          "cron": "0 9 * * 1,4",
+          "tz": "Asia/Jerusalem"
+        }
+      },
+      {
+        "id": 2,
+        "module": "supabase:select",
+        "name": "Get next topic from queue",
+        "params": {
+          "table": "topic_queue",
+          "filter": "status=eq.pending",
+          "order": "priority.desc,created_at.asc",
+          "limit": 1
+        },
+        "outputs": ["topic"]
+      },
+      {
+        "id": 3,
+        "module": "supabase:update",
+        "name": "Mark topic as 'generating'",
+        "params": {
+          "table": "topic_queue",
+          "id": "{{2.topic.id}}",
+          "set": { "status": "generating" }
+        }
+      },
+      {
+        "id": 4,
+        "module": "anthropic:messages",
+        "name": "Generate article via Claude 4.7",
+        "params": {
+          "model": "claude-opus-4-7",
+          "max_tokens": 4000,
+          "system": "אתה כותב מאמרי SEO בעברית עבור Simple Solutions — סוכנות שיווק דיגיטלי. הסגנון: אישי, מקצועי, עם מספרים אמיתיים. המבנה: H2 לכל סקציה, פסקאות קצרות (2-4 משפטים), רשימות bullet, בלוקים של quote לדגשים. הימנע מ-clichés שיווקיים. כתוב כמו אדם שיש לו ניסיון אמיתי.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "כתוב מאמר ל-SEO במבנה JSON עבור הנושא הבא:\n\nכותרת: {{2.topic.title}}\nמילת מפתח ראשית: {{2.topic.primary_keyword}}\nקטגוריה: {{2.topic.category}}\nמילות מפתח משניות: {{2.topic.secondary_keywords}}\n\nהחזר אובייקט JSON עם המבנה המדויק:\n{\n  \"title\": \"כותרת המאמר\",\n  \"slug\": \"slug-בלי-עברית\",\n  \"excerpt\": \"תקציר ב-180 תווים\",\n  \"answer_short\": \"תשובה ישירה לשאלה ב-2-3 משפטים — לטובת Google AI Overview\",\n  \"meta_description\": \"meta description ב-155 תווים\",\n  \"icon\": \"שם אייקון lucide מתאים\",\n  \"read_time\": \"7 דק׳\",\n  \"body_html\": \"גוף המאמר ב-HTML — שימוש ב-h2, p, ul, blockquote, strong. בין 600-1000 מילים. 4-6 סקציות H2.\",\n  \"faq\": [\n    {\"q\":\"שאלה?\", \"a\":\"תשובה.\"},\n    {\"q\":\"שאלה?\", \"a\":\"תשובה.\"}\n  ]\n}"
+            }
+          ]
+        },
+        "outputs": ["article_json"]
+      },
+      {
+        "id": 5,
+        "module": "json:parse",
+        "name": "Parse Claude output",
+        "params": { "input": "{{4.article_json.content[0].text}}" },
+        "outputs": ["article"]
+      },
+      {
+        "id": 6,
+        "module": "router",
+        "name": "Fan-out → 3 image generations",
+        "branches": [
+          { "label": "hero",   "filter": null },
+          { "label": "body_1", "filter": null },
+          { "label": "body_2", "filter": null }
+        ]
+      },
+      {
+        "id": 7,
+        "module": "google-ai:gemini-image",
+        "name": "Generate Hero image (Nano Banana)",
+        "params": {
+          "model": "gemini-2.5-flash-image",
+          "prompt": "Editorial illustration for Hebrew business article titled '{{5.article.title}}'. Modern minimalist composition. Color palette: deep purple #3D1466 and gold #C9A961 on lavender background. Abstract geometric pattern. NO TEXT in image. Aspect ratio 21:9. Professional Israeli business aesthetic.",
+          "n": 1,
+          "size": "1792x768"
+        },
+        "outputs": ["image_base64"]
+      },
+      {
+        "id": 8,
+        "module": "google-ai:gemini-image",
+        "name": "Generate Body Image 1 (data viz)",
+        "params": {
+          "model": "gemini-2.5-flash-image",
+          "prompt": "Clean data visualization or chart illustration related to {{2.topic.category}}. Bar chart or dashboard mockup. Purple and gold gradient bars. Light lavender background. Minimalist Israeli business dashboard style. NO TEXT in image. Aspect ratio 16:9.",
+          "n": 1,
+          "size": "1280x720"
+        }
+      },
+      {
+        "id": 9,
+        "module": "google-ai:gemini-image",
+        "name": "Generate Body Image 2 (concept)",
+        "params": {
+          "model": "gemini-2.5-flash-image",
+          "prompt": "Conceptual illustration supporting the article '{{5.article.title}}'. Abstract geometric design. Purple and gold accents. Minimalist style. NO TEXT. 16:9.",
+          "n": 1,
+          "size": "1280x720"
+        }
+      },
+      {
+        "id": 10,
+        "module": "cloudinary:upload",
+        "name": "Upload all 3 images to Cloudinary",
+        "params": {
+          "cloud_name": "{{env.CLOUDINARY_CLOUD_NAME}}",
+          "folder": "simple-solutions/articles/{{5.article.slug}}",
+          "files": ["{{7.image_base64}}", "{{8.image_base64}}", "{{9.image_base64}}"]
+        },
+        "outputs": ["image_urls"]
+      },
+      {
+        "id": 11,
+        "module": "aggregator",
+        "name": "Aggregate router branches",
+        "outputs": ["images_aggregated"]
+      },
+      {
+        "id": 12,
+        "module": "http:post",
+        "name": "POST to Vercel /api/articles/receive",
+        "params": {
+          "url": "{{env.SITE_URL}}/api/articles/receive",
+          "headers": {
+            "Content-Type": "application/json",
+            "X-Webhook-Secret": "{{env.WEBHOOK_SECRET}}"
+          },
+          "body": {
+            "topic_id": "{{2.topic.id}}",
+            "slug": "{{5.article.slug}}",
+            "title": "{{5.article.title}}",
+            "category": "{{2.topic.category}}",
+            "excerpt": "{{5.article.excerpt}}",
+            "answer_short": "{{5.article.answer_short}}",
+            "body_html": "{{5.article.body_html}}",
+            "faq": "{{5.article.faq}}",
+            "icon": "{{5.article.icon}}",
+            "read_time": "{{5.article.read_time}}",
+            "meta_description": "{{5.article.meta_description}}",
+            "images": [
+              { "slot": "hero",   "prompt": "{{7.prompt}}", "image_url": "{{11.images_aggregated[0]}}" },
+              { "slot": "body_1", "prompt": "{{8.prompt}}", "image_url": "{{11.images_aggregated[1]}}" },
+              { "slot": "body_2", "prompt": "{{9.prompt}}", "image_url": "{{11.images_aggregated[2]}}" }
+            ]
+          }
+        }
+      },
+      {
+        "id": 13,
+        "module": "supabase:update",
+        "name": "Mark topic 'draft' (Vercel will send approval email)",
+        "params": {
+          "table": "topic_queue",
+          "id": "{{2.topic.id}}",
+          "set": { "status": "draft" }
+        }
+      }
+    ]
+  }
+}
