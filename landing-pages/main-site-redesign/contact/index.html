@@ -4,12 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>צור קשר | Simple Solutions</title>
+<meta name="description" content="צור קשר עם מאור עטייה, מייסד Simple Solutions — וואטסאפ ישיר, טלפון, אימייל וטופס. בלי מתווכים, בלי נציגים.">
 <link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="canonical" href="https://www.simple-solution.co.il/contact">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/main-site-redesign/styles.css">
 <script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"בית","item":"https://www.simple-solution.co.il/"},
+  {"@type":"ListItem","position":2,"name":"צור קשר","item":"https://www.simple-solution.co.il/contact"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ContactPage","name":"צור קשר — Simple Solutions","description":"פרטי יצירת קשר ישירים אל מאור עטייה, מייסד Simple Solutions.","mainEntity":{"@type":"Organization","name":"Simple Solutions","telephone":"+972509697776","email":"simple.solutions05055@gmail.com","url":"https://www.simple-solution.co.il/","founder":{"@type":"Person","name":"מאור עטייה"},"areaServed":"IL"}}
+</script>
 </head>
 <body>
 
@@ -37,11 +49,22 @@
   <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
 </header>
 
-<!-- PAGE HERO -->
+<!-- CLEAN VIDEO BANNER -->
+<section class="video-banner" aria-label="באנר צור קשר">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/main-site-redesign/videos/contact.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- PAGE CONTENT HERO -->
 <section class="page-hero" id="top">
   <div class="wrap">
-    <span class="eyebrow reveal">צור קשר</span>
-    <h1 class="reveal">שיחה אחת.<br><span class="gold-text">שינוי שלם.</span></h1>
+    <nav class="breadcrumbs reveal" aria-label="פירורי לחם">
+      <a href="/main-site-redesign/">בית</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span aria-current="page">צור קשר</span>
+    </nav>
+    <h1 class="reveal">שיחה אחת. <span class="gold-text">שינוי שלם.</span></h1>
     <p class="lede reveal">
       ישירות אל מאור. בלי מתווכים. בלי נציגים. <strong>בן אדם. וואטסאפ. ועסקים שמדברים בגובה העיניים.</strong>
     </p>
