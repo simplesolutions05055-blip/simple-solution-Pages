@@ -137,3 +137,34 @@ function animateCount(el){
     }
   });
 })();
+
+/* Mega menu — click toggle as backup for hover */
+(function(){
+  document.querySelectorAll('.has-mega').forEach(item=>{
+    const trigger = item.querySelector('.nav-trigger');
+    if(!trigger) return;
+    trigger.addEventListener('click', e=>{
+      e.preventDefault();
+      const open = item.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  // Close on outside click
+  document.addEventListener('click', e=>{
+    document.querySelectorAll('.has-mega.open').forEach(item=>{
+      if(!item.contains(e.target)){
+        item.classList.remove('open');
+        item.querySelector('.nav-trigger')?.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  // Close on Escape
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.has-mega.open').forEach(item=>{
+        item.classList.remove('open');
+        item.querySelector('.nav-trigger')?.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
