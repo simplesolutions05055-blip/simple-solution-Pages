@@ -4,12 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>תיק עבודות | Simple Solutions</title>
+<meta name="description" content="תיק עבודות Simple Solutions: case studies מנותני שירות מובילים — קמפיינים, סושיאל ואוטומציות עם מספרים אמיתיים.">
 <link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="canonical" href="https://www.simple-solution.co.il/portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/main-site-redesign/styles.css">
 <script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"בית","item":"https://www.simple-solution.co.il/"},
+  {"@type":"ListItem","position":2,"name":"תיק עבודות","item":"https://www.simple-solution.co.il/portfolio"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CollectionPage","name":"תיק עבודות Simple Solutions","description":"Case studies מלקוחות פעילים — מכון לייזר, משרד עורכי דין, סוכנות רכב — עם מספרים אמיתיים של ROAS וצמיחה."}
+</script>
 <style>
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
@@ -60,11 +72,22 @@
   <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
 </header>
 
-<!-- PAGE HERO -->
+<!-- CLEAN VIDEO BANNER -->
+<section class="video-banner" aria-label="באנר תיק עבודות">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/main-site-redesign/videos/portfolio.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- PAGE CONTENT HERO -->
 <section class="page-hero" id="top">
   <div class="wrap">
-    <span class="eyebrow reveal">תיק עבודות</span>
-    <h1 class="reveal">תוצאות.<br><span class="gold-text">לא הבטחות.</span></h1>
+    <nav class="breadcrumbs reveal" aria-label="פירורי לחם">
+      <a href="/main-site-redesign/">בית</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span aria-current="page">תיק עבודות</span>
+    </nav>
+    <h1 class="reveal">תוצאות. <span class="gold-text">לא הבטחות.</span></h1>
     <p class="lede reveal">
       כל לקוח שלנו = Case Study. הנה כמה מהסיפורים — עם <strong>מספרים, גרפים ועדויות.</strong>
     </p>
