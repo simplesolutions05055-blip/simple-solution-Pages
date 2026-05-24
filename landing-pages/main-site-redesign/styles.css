@@ -278,24 +278,30 @@ h1.display .word>span{display:inline-block;transform:translateY(110%);opacity:0;
 .page-hero .wrap{position:relative;z-index:2;max-width:880px;text-align:center}
 
 /* VIDEO HERO variant — applied when .page-hero has .has-video */
-.page-hero.has-video{padding:200px 24px 120px;color:#fff;min-height:88vh;display:flex;align-items:center;justify-content:center;background:#0a0518}
+.page-hero.has-video{
+  padding:140px 24px 64px;color:#fff;
+  min-height:92vh;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:#0a0518;
+}
 .page-hero.has-video .hero-video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.75;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.78;
 }
 .page-hero.has-video .hero-video-overlay{
   position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
-    linear-gradient(180deg, rgba(10,5,24,.45) 0%, rgba(10,5,24,.20) 35%, rgba(10,5,24,.55) 100%),
-    radial-gradient(circle at 50% 50%, transparent 30%, rgba(10,5,24,.45) 85%);
+    linear-gradient(180deg, rgba(10,5,24,.20) 0%, rgba(10,5,24,.05) 30%, rgba(10,5,24,.85) 88%, rgba(10,5,24,1) 100%),
+    radial-gradient(ellipse at 50% 100%, rgba(31,11,51,.6) 0%, transparent 70%);
 }
 .page-hero.has-video::before,
 .page-hero.has-video::after{display:none}
-.page-hero.has-video h1{color:#fff;text-shadow:0 4px 32px rgba(0,0,0,.4)}
-.page-hero.has-video .lede{color:rgba(255,255,255,.88)}
+.page-hero.has-video .wrap{padding-bottom:0}
+.page-hero.has-video h1{color:#fff;text-shadow:0 4px 32px rgba(0,0,0,.45);margin-top:14px;margin-bottom:18px}
+.page-hero.has-video .lede{color:rgba(255,255,255,.88);margin-bottom:28px}
 .page-hero.has-video .lede strong{color:#fff}
-.page-hero.has-video .eyebrow{color:var(--gold-50);border-color:rgba(201,169,97,.5);background:rgba(31,11,51,.4);backdrop-filter:blur(10px)}
 .page-hero.has-video .btn-link{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.4)}
 .page-hero.has-video .btn-link:hover{color:var(--gold-50);border-color:var(--gold)}
+.page-hero.has-video .cta-row{margin-top:8px}
 
 /* Breadcrumbs (SEO + visible) */
 .breadcrumbs{
