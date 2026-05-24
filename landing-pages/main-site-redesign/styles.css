@@ -1131,3 +1131,167 @@ header.on-dark-bg .has-mega.is-current .nav-trigger{color:var(--gold-50)}
   transition:transform .3s,box-shadow .3s;
 }
 .mini-contact .submit:hover{transform:translateY(-2px);box-shadow:0 8px 20px -4px rgba(201,169,97,.5)}
+
+/* ===================== ARTICLE V3 — Maor photo + data chart + better stick ===================== */
+
+/* Expert card with photo */
+.expert-card .photo{
+  width:96px;height:96px;border-radius:50%;margin:0 auto 14px;
+  overflow:hidden;position:relative;
+  border:3px solid #fff;
+  box-shadow:0 8px 24px -6px rgba(61,20,102,.3), 0 0 0 1px var(--line-gold);
+}
+.expert-card .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.expert-card .photo::before{
+  content:"";position:absolute;inset:-3px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--purple),var(--gold));
+  z-index:-1;animation:rotateRing 8s linear infinite;
+}
+@keyframes rotateRing{to{transform:rotate(360deg)}}
+
+/* Stronger sticky behavior + scroll-overflow */
+.article-aside{
+  align-self:start;
+  position:sticky;top:90px;
+  max-height:calc(100vh - 100px);
+  overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--line-gold) transparent;
+  padding-left:4px;
+}
+.article-aside::-webkit-scrollbar{width:6px}
+.article-aside::-webkit-scrollbar-thumb{background:var(--line-gold);border-radius:3px}
+
+/* Scroll progress bar at top of page */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:3px;
+  background:transparent;z-index:51;pointer-events:none;
+}
+.scroll-progress .bar{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--gold-700),var(--gold),var(--gold-50));
+  transition:width .12s ease-out;
+  box-shadow:0 0 12px rgba(201,169,97,.6);
+}
+
+/* Back-to-top floating button */
+.back-to-top{
+  position:fixed;bottom:32px;right:32px;z-index:55;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.92);border:1px solid var(--line-gold);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-md);backdrop-filter:blur(10px);
+  cursor:none;opacity:0;visibility:hidden;
+  transform:translateY(20px);
+  transition:opacity .3s,transform .3s,visibility 0s linear .3s;
+}
+.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .3s,transform .3s}
+.back-to-top:hover{background:linear-gradient(135deg,#d9b86c,#c9a961);border-color:transparent;color:var(--purple-900);transform:translateY(-4px)}
+.back-to-top svg{width:20px;height:20px;color:var(--gold-700);transition:color .3s}
+.back-to-top:hover svg{color:var(--purple-900)}
+@media(max-width:900px){.back-to-top{bottom:90px;right:20px}}
+
+/* Inline data chart */
+.data-chart{
+  margin:32px 0;padding:28px 28px 24px;border-radius:18px;
+  background:linear-gradient(180deg,#fff 0%,#FFFBED 100%);
+  border:1px solid var(--line-gold);
+  box-shadow:0 12px 32px -16px rgba(201,169,97,.25);
+  position:relative;overflow:hidden;
+}
+.data-chart::before{
+  content:"";position:absolute;top:0;right:0;left:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.data-chart .chart-head{
+  display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;
+}
+.data-chart .chart-tag{
+  font:700 11px/1 'Space Grotesk';letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-700);padding:5px 12px;border-radius:99px;
+  background:rgba(201,169,97,.12);border:1px solid var(--line-gold);
+}
+.data-chart .chart-title{font-size:16px;font-weight:700;color:var(--ink);line-height:1.3;flex:1;min-width:0;text-wrap:balance}
+.data-chart .chart-caption{font-size:12.5px;color:var(--ink-mute);margin-top:14px;line-height:1.5;text-align:center;font-style:italic}
+
+/* Bar chart */
+.bar-chart{display:flex;flex-direction:column;gap:14px}
+.bar-chart .row{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center}
+@media(max-width:600px){.bar-chart .row{grid-template-columns:90px 1fr auto}}
+.bar-chart .label{font-size:13px;color:var(--ink);font-weight:600;text-align:left}
+.bar-chart .bar-track{
+  height:32px;border-radius:8px;background:rgba(61,20,102,.06);
+  overflow:hidden;position:relative;
+}
+.bar-chart .bar-fill{
+  height:100%;border-radius:8px;
+  background:linear-gradient(90deg,var(--gold-700),var(--gold));
+  position:relative;display:flex;align-items:center;justify-content:flex-end;padding-left:10px;
+  transition:width 1.5s cubic-bezier(.2,.7,.2,1);
+}
+.bar-chart .bar-fill.purple{background:linear-gradient(90deg,var(--purple),var(--purple-400))}
+.bar-chart .bar-fill::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);
+  animation:barShine 3.5s ease-in-out infinite;
+}
+@keyframes barShine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.bar-chart .value{font:700 14px/1 'Space Grotesk';color:var(--gold-700);min-width:60px;text-align:left;letter-spacing:-.01em}
+
+/* Stat block (3 large numbers) */
+.stat-block{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:600px){.stat-block{grid-template-columns:1fr}}
+.stat-block .stat-item{
+  text-align:center;padding:18px 12px;border-radius:14px;
+  background:rgba(255,255,255,.7);border:1px solid var(--line-light);
+}
+.stat-block .stat-item .num{
+  font:800 32px/1 'Space Grotesk';
+  background:linear-gradient(180deg,#d9b86c,#a88845);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-.03em;margin-bottom:6px;
+}
+.stat-block .stat-item .lbl{font-size:12px;color:var(--ink-mute);line-height:1.4}
+
+/* Updated share buttons — brand colors per platform */
+.share-btn.fb:hover{background:#1877F2;border-color:#1877F2;color:#fff}
+.share-btn.ig:hover{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);border-color:transparent;color:#fff}
+.share-btn.tt:hover{background:#000;border-color:#000;color:#fff}
+.share-btn.wa:hover{background:#25D366;border-color:#25D366;color:#fff}
+.share-btn.em:hover{background:linear-gradient(135deg,#d9b86c,#c9a961);border-color:transparent;color:var(--purple-900)}
+.share-btn .ig-icon{
+  width:20px;height:20px;display:flex;align-items:center;justify-content:center;
+}
+
+/* Hero image — richer composition */
+.article-cover-image .frame{position:relative}
+.article-cover-image .frame .deco{position:absolute;pointer-events:none}
+.article-cover-image .frame .deco-top-right{
+  top:24px;right:24px;display:flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:99px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);color:#fff;
+  font:600 12px/1 'Space Grotesk';letter-spacing:.12em;text-transform:uppercase;
+}
+.article-cover-image .frame .deco-top-right svg{width:14px;height:14px;color:var(--gold-50)}
+.article-cover-image .frame .grid-pattern{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+}
+.article-cover-image .frame .floating-icons{
+  position:absolute;inset:0;pointer-events:none;
+}
+.article-cover-image .frame .float-icon{
+  position:absolute;width:44px;height:44px;border-radius:12px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);
+  animation:floatY 6s ease-in-out infinite;
+}
+.article-cover-image .frame .float-icon svg{width:22px;height:22px;color:rgba(255,255,255,.85)}
+.article-cover-image .frame .float-icon.f1{top:18%;right:14%;animation-delay:0s}
+.article-cover-image .frame .float-icon.f2{top:62%;right:22%;animation-delay:1.5s}
+.article-cover-image .frame .float-icon.f3{top:28%;left:18%;animation-delay:3s}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
