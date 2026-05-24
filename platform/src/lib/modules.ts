@@ -1,0 +1,62 @@
+import type { Module } from "@/types";
+
+export const MODULES: Module[] = [
+  {
+    id: "brand-book",
+    name: "ספר מותג",
+    description: "בנה את זהות המותג שלך בעזרת AI",
+    icon: "📖",
+    color: "#3DDED2",
+    available: true,
+    badge: "חיוני",
+  },
+  {
+    id: "crm",
+    name: "CRM",
+    description: "נהל לקוחות, ליידים ומכירות",
+    icon: "👥",
+    color: "#6C63FF",
+    available: true,
+  },
+  {
+    id: "whatsapp",
+    name: "ווצאפ",
+    description: "דיוור ישיר ותפוצות ווצאפ",
+    icon: "💬",
+    color: "#25D366",
+    available: true,
+  },
+  {
+    id: "social",
+    name: "סושיאל",
+    description: "ניהול רשתות חברתיות ותזמון",
+    icon: "📱",
+    color: "#E1306C",
+    available: true,
+  },
+  {
+    id: "ads",
+    name: "מודעות",
+    description: "עיצוב מודעות ופוסטים פרסומיים",
+    icon: "🎨",
+    color: "#F5C842",
+    available: true,
+  },
+  {
+    id: "video",
+    name: "וידאו",
+    description: "יצירה ועריכה של תכני וידאו",
+    icon: "🎬",
+    color: "#FF4D6D",
+    available: false,
+    badge: "בקרוב",
+  },
+  {
+    id: "seo",
+    name: "SEO",
+    description: "קידום אורגני ומאמרים אוטומטיים",
+    icon: "🔍",
+    color: "#FF8C00",
+    available: true,
+  },
+];
