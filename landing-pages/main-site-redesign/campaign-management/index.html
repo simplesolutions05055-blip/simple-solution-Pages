@@ -82,13 +82,15 @@
   <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
 </header>
 
-<!-- PAGE HERO (with background video + breadcrumbs) -->
-<section class="page-hero has-video" id="top" data-dark data-page-start-dark>
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+<!-- CLEAN VIDEO BANNER (no text overlay) -->
+<section class="video-banner" aria-label="באנר ניהול קמפיינים">
+  <video autoplay muted loop playsinline preload="metadata">
     <source src="/main-site-redesign/videos/campaign-management.mp4" type="video/mp4">
   </video>
-  <div class="hero-video-overlay"></div>
+</section>
 
+<!-- PAGE CONTENT HERO (text below the video) -->
+<section class="page-hero" id="top">
   <div class="wrap">
     <nav class="breadcrumbs reveal" aria-label="פירורי לחם">
       <a href="/main-site-redesign/">בית</a>
