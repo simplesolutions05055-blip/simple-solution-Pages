@@ -28,7 +28,7 @@
   <a class="rail-dot" data-label="צור קשר" href="#contact"></a>
 </nav>
 
-<header id="header" class="on-dark-bg">
+<header id="header">
   <a href="/main-site-redesign/"><img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="logo"></a>
   <nav aria-label="ראשי">
     <a href="/main-site-redesign/" class="active">בית</a>
@@ -45,15 +45,16 @@
   <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="top" data-dark data-page-start-dark>
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+<!-- CLEAN VIDEO BANNER (no overlay, original colors) -->
+<section class="video-banner" aria-label="באנר ראשי">
+  <video autoplay muted loop playsinline preload="metadata">
     <source src="/main-site-redesign/videos/home.mp4" type="video/mp4">
   </video>
-  <div class="hero-grad"></div>
-  <div class="hero-orbs"><div class="orb orb-gold"></div><div class="orb orb-purple"></div></div>
+</section>
 
-  <div class="hero-inner" id="hero-parallax">
+<!-- HOME CONTENT HERO (all text below the video) -->
+<section class="page-hero home-hero" id="top">
+  <div class="wrap" id="hero-parallax">
     <div class="brand-pill"><span class="gold-text">SIMPLE&nbsp;SOLUTIONS</span> · BUSINESS&nbsp;OS</div>
 
     <h1 class="display">
@@ -82,8 +83,6 @@
       <a href="#services" class="btn-link">גלו את השירותים</a>
     </div>
   </div>
-
-  <div class="scroll-hint"><span>גלול למטה</span><span class="l"></span></div>
 </section>
 
 <!-- MARQUEE -->
