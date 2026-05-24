@@ -4,12 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>אודות | Simple Solutions</title>
+<meta name="description" content="Simple Solutions נוסדה ב-2021 על-ידי מאור עטייה. יחידת קומנדו עסקית — קמפיינים, סושיאל ואוטומציות תחת מערכת אחת. +60 לקוחות, Simple Plan כ-Business OS.">
 <link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="canonical" href="https://www.simple-solution.co.il/about">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/main-site-redesign/styles.css">
 <script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"בית","item":"https://www.simple-solution.co.il/"},
+  {"@type":"ListItem","position":2,"name":"אודות","item":"https://www.simple-solution.co.il/about"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AboutPage","name":"אודות Simple Solutions","description":"סיפור החברה, החזון, והמסלולים — Simple Plan ו-VIP Service.","mainEntity":{"@type":"Organization","name":"Simple Solutions","foundingDate":"2021","founder":{"@type":"Person","name":"מאור עטייה","jobTitle":"מייסד ומנכ״ל"},"url":"https://www.simple-solution.co.il/","areaServed":"IL","slogan":"הפסק לחתור. תתחיל להפליג."}}
+</script>
 <style>
 .track-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:800px){.track-grid{grid-template-columns:1fr}}
@@ -60,11 +72,22 @@
   <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
 </header>
 
-<!-- PAGE HERO -->
+<!-- CLEAN VIDEO BANNER -->
+<section class="video-banner" aria-label="באנר אודות">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/main-site-redesign/videos/about.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- PAGE CONTENT HERO -->
 <section class="page-hero" id="top">
   <div class="wrap">
-    <span class="eyebrow reveal">אודות</span>
-    <h1 class="reveal">החופש שאתה מחפש <span class="gold-text">נמצא במקום אחד.</span><br>איפה שמישהו אחר עושה את זה במקומך.</h1>
+    <nav class="breadcrumbs reveal" aria-label="פירורי לחם">
+      <a href="/main-site-redesign/">בית</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span aria-current="page">אודות</span>
+    </nav>
+    <h1 class="reveal">החופש שאתה מחפש <span class="gold-text">נמצא במקום אחד.</span> איפה שמישהו אחר עושה את זה במקומך.</h1>
     <p class="lede reveal">
       רוב בעלי העסקים <strong>"חותרים"</strong> חזק מדי כדי להישאר במקום. ב-<strong>Simple Solutions</strong> תוכל לבנות את הספינה שתשיט אותך קדימה — על אוטומט.
     </p>
