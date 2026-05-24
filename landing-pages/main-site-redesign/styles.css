@@ -29,14 +29,14 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   font-family:'Heebo',sans-serif;
   background:var(--lavender-bg);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  overflow-x:hidden;
+  overflow-x:clip;
   cursor:none;
 }
 img{max-width:100%;display:block}
@@ -917,8 +917,8 @@ header.on-dark-bg .has-mega.is-current .nav-trigger{color:var(--gold-50)}
 @media(max-width:900px){.article-layout{grid-template-columns:1fr;gap:32px}}
 
 .article-main{min-width:0}
-.article-aside{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px}
-@media(max-width:900px){.article-aside{position:static;order:2}}
+.article-aside{position:sticky;top:90px;align-self:start;display:flex;flex-direction:column;gap:20px}
+@media(max-width:900px){.article-aside{position:static;top:auto;order:2;align-self:auto}}
 
 /* Hero in article (above the grid) */
 .article-hero-v2{
@@ -1149,17 +1149,18 @@ header.on-dark-bg .has-mega.is-current .nav-trigger{color:var(--gold-50)}
 }
 @keyframes rotateRing{to{transform:rotate(360deg)}}
 
-/* Stronger sticky behavior + scroll-overflow */
+/* Sticky aside — tracks scroll throughout the article */
 .article-aside{
   align-self:start;
-  position:sticky;top:90px;
-  max-height:calc(100vh - 100px);
-  overflow-y:auto;
-  scrollbar-width:thin;scrollbar-color:var(--line-gold) transparent;
+  position:sticky;
+  top:90px;
   padding-left:4px;
 }
-.article-aside::-webkit-scrollbar{width:6px}
-.article-aside::-webkit-scrollbar-thumb{background:var(--line-gold);border-radius:3px}
+@media(max-width:900px){
+  .article-aside{position:static;top:auto}
+}
+/* Empty rules (kept to override v2 overflow that broke sticky) */
+.article-aside::-webkit-scrollbar{display:none}
 
 /* Scroll progress bar at top of page */
 .scroll-progress{
