@@ -122,8 +122,11 @@ create or replace function bump_updated_at() returns trigger as $$
 begin new.updated_at = now(); return new; end;
 $$ language plpgsql;
 
+drop trigger if exists trg_topic_updated_at on topic_queue;
 create trigger trg_topic_updated_at before update on topic_queue
   for each row execute function bump_updated_at();
+
+drop trigger if exists trg_draft_updated_at on article_drafts;
 create trigger trg_draft_updated_at before update on article_drafts
   for each row execute function bump_updated_at();
 
