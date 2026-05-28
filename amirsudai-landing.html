@@ -2017,27 +2017,17 @@
     font-weight: 400;
   }
   .footer-ss-credit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 16px 0 8px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; padding: 16px 0 8px;
     border-top: 1px solid rgba(201,163,64,0.12);
-    margin-top: 12px;
-    flex-direction: row-reverse;
+    margin-top: 12px; flex-direction: row-reverse;
   }
   .footer-ss-logo { flex-shrink: 0; opacity: 0.88; }
   .footer-ss-text {
-    font-family: var(--font-body);
-    font-size: 12px;
-    color: var(--charcoal-light);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    direction: rtl;
+    font-family: var(--font-body); font-size: 12px;
+    color: var(--charcoal-light); direction: rtl;
   }
-  @media (max-width: 560px) {
-    .footer-ss-credit { flex-direction: column; gap: 8px; }
-  }
+  @media (max-width: 560px) { .footer-ss-credit { flex-direction: column; gap: 8px; } }
 
   /* ============================================================
      STICKY MOBILE CTA + FLOATING WA
@@ -2294,47 +2284,19 @@
     }
   }
 
-  /* ── WAVE LETTER ANIMATION ───────────────────────────────────── */
+  
   @keyframes letterWave {
     0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-7px); }
+    50%       { transform: translateY(-6px); }
   }
-  .bounce-letter {
-    display: inline-block;
-  }
-  .is-visible .bounce-letter,
-  .bounce-letter.anim {
-    animation: letterWave 1.6s ease-in-out infinite;
-  }
-
-  /* ── LIMIT NOTICE BOUNCE ─────────────────────────────────────── */
+  .bounce-letter { display: inline-block; }
+  .is-visible .bounce-letter { animation: letterWave 1.6s ease-in-out infinite; }
   @keyframes noticePulse {
-    0%, 100% { transform: translateY(0) scale(1);
-               box-shadow: 0 4px 20px rgba(201,163,64,0.2); }
-    45%       { transform: translateY(-9px) scale(1.02);
-               box-shadow: 0 14px 36px rgba(201,163,64,0.45); }
-    75%       { transform: translateY(-4px) scale(1.008);
-               box-shadow: 0 8px 24px rgba(201,163,64,0.3); }
+    0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 4px 20px rgba(201,163,64,0.2); }
+    45%       { transform: translateY(-9px) scale(1.02); box-shadow: 0 14px 36px rgba(201,163,64,0.45); }
   }
-  .limit-notice {
-    animation: noticePulse 3s ease-in-out infinite !important;
-  }
-  .limit-notice__main {
-    display: block;
-    font-size: inherit;
-    font-weight: inherit;
-  }
-  .limit-notice__sub {
-    display: block;
-    font-size: 13px;
-    font-weight: 400;
-    opacity: 0.75;
-    margin-top: 8px;
-    letter-spacing: 0.02em;
-    color: rgba(255,255,255,0.85);
-  }
+  .limit-notice { animation: noticePulse 3s ease-in-out infinite !important; }
 
-  /* ── REDUCED SECTION SPACING ─────────────────────────────────── */
   .statement   { padding: 48px 0 !important; }
   .outcomes    { padding: 52px 0 !important; }
   .myths       { padding: 52px 0 !important; }
@@ -2343,11 +2305,8 @@
   .about       { padding: 52px 0 !important; }
   .price-section{ padding: 52px 0 68px !important; }
   .faq         { padding: 52px 0 !important; }
-  .testimonials-section { padding: 56px 0 48px !important; }
   .hero        { padding: 44px 0 56px !important; }
-
-
-  </style>
+</style>
 </head>
 <body>
 
@@ -2503,7 +2462,7 @@
           <div class="outcome__num">01</div>
           <div class="outcome__icon">✓</div>
           <h3 class="outcome__title">
-            תדע <em>בדיוק</em> לאן הולך הכסף
+            תדעו <em>בדיוק</em> לאן הולך הכסף
           </h3>
         </article>
 
@@ -2511,7 +2470,7 @@
           <div class="outcome__num">02</div>
           <div class="outcome__icon">→</div>
           <h3 class="outcome__title">
-            תצא עם <em>מהלך אחד</em> פרקטי לבצע השבוע
+            יוצאים עם <em>מהלך אחד</em> פרקטי לבצע השבוע
           </h3>
         </article>
 
@@ -2519,7 +2478,7 @@
           <div class="outcome__num">03</div>
           <div class="outcome__icon">★</div>
           <h3 class="outcome__title">
-            תקבל <em>סדר</em> בראש — ושקט בהחלטות
+            מקבלים <em>סדר</em> בראש — ושקט בהחלטות
           </h3>
         </article>
 
@@ -2532,7 +2491,7 @@
     <div class="container-narrow">
       <div class="myths__heading">
         <h2 class="reveal">
-          שלושת הדברים שעצרו אותך — <em>ושאני מבקש לנפץ</em>
+          שלושת השקרים שעצרו אותך — ושאני מבקש לנפץ
         </h2>
       </div>
 
@@ -2607,7 +2566,9 @@
           פגישת אבחון אחת — שעתיים של עבודה אמיתית על המספרים והאדם שמאחוריהם, ועוד <em>דף סיכום בכתב</em> תוך 24 שעות.
         </h2>
 
-
+        <h3 class="statement__h3 reveal" style="--reveal-delay: 200ms;">
+          בלי הבטחות. בלי "כסף בחזרה אם לא מבסוט". <em>רק עבודה אמיתית.</em>
+        </h3>
 
         <div class="price-card reveal--scale" style="--reveal-delay: 300ms;">
 
@@ -2623,7 +2584,7 @@
           </div>
 
           <p class="price-card__tag" style="position:relative;z-index:2;color:rgba(228,193,88,0.9);margin:4px 0 0;">פגישת אבחון אחת</p>
-
+          <p class="price-card__sub" style="position:relative;z-index:2;margin:2px 0 0;">תשלום חד-פעמי · מאובטח</p>
 
           <div class="cc-bottom">
             <div>
@@ -2654,7 +2615,7 @@
       <div class="steps-recap__heading">
         <div class="section-mark reveal">A·S · Process</div>
         <h2 class="reveal" style="--reveal-delay: 100ms;">
-          אז מה נשאר <em>לעשות?</em>
+          אז מה נשאר לך <em>לעשות?</em>
         </h2>
       </div>
 
@@ -2744,8 +2705,7 @@
 
   <!-- LIMIT NOTICE -->
   <div class="limit-notice">
-    <span class="limit-notice__main">שים לב — <strong>8 מקומות נותרו בלבד</strong> לחודש קרוב</span>
-    <span class="limit-notice__sub">שריין את מקומך עד היום וצפה לשינוי אמיתי</span>
+    שים לב — <strong>8 מקומות נותרו בלבד</strong> לחודש קרוב
   </div>
 
   <!-- ABOUT -->
@@ -2849,7 +2809,6 @@
       <div class="footer-min__tagline">בהירות. אחריות. תנועה.</div>
             <div class="footer-ss-credit">
         <div class="footer-ss-logo">
-          <!-- SIMPLE SOLUTIONS LOGO — Replace this SVG with actual transparent logo when available -->
           <svg width="130" height="42" viewBox="0 0 130 42" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="ssG" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2922,7 +2881,7 @@
               io.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
         document.querySelectorAll('.reveal, .reveal--scale').forEach((el) => io.observe(el));
       } else {
         document.querySelectorAll('.reveal, .reveal--scale').forEach((el) => el.classList.add('is-visible'));
@@ -2946,43 +2905,18 @@
         });
       }
 
-    })();
+    
+// Ensure on-screen elements reveal immediately on load
+window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.querySelectorAll('.reveal, .reveal--scale').forEach(function(el) {
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight + 200) el.classList.add('is-visible');
+        });
+    }, 80);
+});
+})();
 
-
-  <script>
-
-    // ── Wave Letters on Hero & Key Headings ─────────────────────────
-    (function() {
-      function splitWave(el) {
-        if (el.dataset.waved) return;
-        el.dataset.waved = '1';
-        var delay = 0;
-        function processNode(node) {
-          if (node.nodeType === 3) {
-            var frag = document.createDocumentFragment();
-            Array.from(node.textContent).forEach(function(ch) {
-              if (/[\s\n\r]/.test(ch)) {
-                frag.appendChild(document.createTextNode(ch));
-              } else {
-                var s = document.createElement('span');
-                s.className = 'bounce-letter';
-                s.textContent = ch;
-                s.style.animationDelay = (delay * 0.055) + 's';
-                delay++;
-                frag.appendChild(s);
-              }
-            });
-            if (node.parentNode) node.parentNode.replaceChild(frag, node);
-          } else if (node.nodeType === 1 && node.tagName !== 'BR') {
-            Array.from(node.childNodes).forEach(processNode);
-          }
-        }
-        Array.from(el.childNodes).forEach(processNode);
-      }
-      ['.hero__statement', '.outcomes__title', '.myths__heading h2'].forEach(function(sel) {
-        document.querySelectorAll(sel).forEach(splitWave);
-      });
-    })();
 
   </script>
 
