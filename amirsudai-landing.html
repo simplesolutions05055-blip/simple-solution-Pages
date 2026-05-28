@@ -1976,7 +1976,7 @@
   .footer-min {
     background: transparent;
     color: var(--charcoal-medium);
-    padding: 32px 0 24px;
+    padding: 28px 0 20px;
     text-align: center;
     font-size: 13px;
     position: relative;
@@ -2020,16 +2020,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    padding: 18px 0 10px;
-    border-top: 1px solid rgba(201,163,64,0.15);
-    margin-top: 14px;
+    gap: 12px;
+    padding: 16px 0 8px;
+    border-top: 1px solid rgba(201,163,64,0.12);
+    margin-top: 12px;
     flex-direction: row-reverse;
   }
-  .footer-ss-logo {
-    flex-shrink: 0;
-    opacity: 0.85;
-  }
+  .footer-ss-logo { flex-shrink: 0; opacity: 0.88; }
   .footer-ss-text {
     font-family: var(--font-body);
     font-size: 12px;
@@ -2766,7 +2763,7 @@
         </div>
 
         <p class="about__body reveal" style="--reveal-delay: 200ms;">
-          לא הגעתי לעולם הכלכלי רק מתוך אהבה למספרים. הגעתי אליו מתוך ההבנה ש<strong>כסף משפיע על החיים של אנשים</strong> הרבה יותר ממה שהם מוכנים להודות. ראיתי עסקים שעובדים קשה ונשארים בלי אוויר. ראיתי אנשים מוכשרים, חכמים וטובים, שלא מתקדמים — לא בגלל שאין להם יכולת, אלא בגלל שאין להם <em>סדר, תכנון וקבלת החלטות נכונות.</em>
+          לא הגעתי לעולם הכלכלי רק מתוך אהבה למספרים. הגעתי אליו מתוך ההבנה ש<strong>כסף משפיע על החיים של אנשים</strong> הרבה יותר ממה שהם מוכנים להודות. ראיתי עסקים שעובדים קשה ונשארים בלי אוויר. ראיתי אנשים מוכשרים, חכמים וטובים, שלא מתקדמים — לא בגלל שאין להם יכולת, אלא בגלל שאין להם <em>כיוון ברור, סדר ומהלך מעשי.</em>
         </p>
 
         <p class="about__body reveal" style="--reveal-delay: 300ms;">
@@ -2778,7 +2775,7 @@
         </div>
 
         <p class="about__body reveal" style="--reveal-delay: 500ms;">
-          השורה התחתונה? <strong>אחרי מאות פגישות עם בעלי עסקים בישראל</strong>, אני יודע משהו אחד בוודאות — מי שמגיע באמת מוכן לעבוד, יוצא מהפגישה עם תמונה ברורה, סדר ומהלך ממשי שאפשר להתחיל איתו מחר. וזה הצעד הראשון לכל מה שאחר כך.
+          השורה התחתונה? <strong>אחרי מאות פגישות עם בעלי עסקים בישראל</strong>, אני יודע משהו אחד בוודאות — מי שמגיע באמת מוכן לעבוד, יוצא מהפגישה עם כיוון וסדר שלא היו לו קודם. וזה הצעד הראשון לכל מה שאחר כך.
         </p>
       </div>
     </div>
@@ -2796,6 +2793,7 @@
 
       <div class="faq__list">
 
+        
 
         <details class="faq__item reveal" style="--reveal-delay: 100ms;">
           <summary class="faq__q">איך זה שונה מליווי עם רואה חשבון?</summary>
@@ -2847,21 +2845,24 @@
   <!-- MINIMAL FOOTER -->
   <footer class="footer-min">
     <div class="container">
+      <div class="footer-min__brand"></div>
       <div class="footer-min__tagline">בהירות. אחריות. תנועה.</div>
-      
-      <div class="footer-ss-credit">
-        <div class="footer-ss-logo"><svg width="110" height="36" viewBox="0 0 110 36" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;">
-        <defs>
-          <linearGradient id="ssGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7C3AED"/>
-            <stop offset="100%" stop-color="#3B82F6"/>
-          </linearGradient>
-        </defs>
-        <rect x="0" y="2" width="32" height="32" rx="8" fill="url(#ssGrad)"/>
-        <text x="16" y="24" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="900" fill="white" text-anchor="middle">S</text>
-        <text x="40" y="16" font-family="Arial,Helvetica,sans-serif" font-size="7.5" font-weight="700" fill="#7C3AED" letter-spacing="0.5">SIMPLE</text>
-        <text x="40" y="27" font-family="Arial,Helvetica,sans-serif" font-size="7.5" font-weight="700" fill="#3B82F6" letter-spacing="0.5">SOLUTIONS</text>
-      </svg></div>
+            <div class="footer-ss-credit">
+        <div class="footer-ss-logo">
+          <!-- SIMPLE SOLUTIONS LOGO — Replace this SVG with actual transparent logo when available -->
+          <svg width="130" height="42" viewBox="0 0 130 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ssG" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7C3AED"/>
+                <stop offset="100%" stop-color="#3B82F6"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="4" width="34" height="34" rx="9" fill="url(#ssG)"/>
+            <text x="17" y="28" font-family="'Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle">S</text>
+            <text x="42" y="18" font-family="'Helvetica Neue',Arial,sans-serif" font-size="8" font-weight="700" fill="#6D28D9" letter-spacing="0.8">SIMPLE</text>
+            <text x="42" y="30" font-family="'Helvetica Neue',Arial,sans-serif" font-size="8" font-weight="700" fill="#2563EB" letter-spacing="0.5">SOLUTIONS</text>
+          </svg>
+        </div>
         <div class="footer-ss-text">שיווק דיגיטלי | אוטומציות | simple plan</div>
       </div>
 <div class="footer-min__copy">© 2026 אמיר סודאי · אסטרטג לצמיחה כלכלית · כל הזכויות שמורות</div>
