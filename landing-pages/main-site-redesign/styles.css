@@ -1296,3 +1296,16 @@ header.on-dark-bg .has-mega.is-current .nav-trigger{color:var(--gold-50)}
 .article-cover-image .frame .float-icon.f2{top:62%;right:22%;animation-delay:1.5s}
 .article-cover-image .frame .float-icon.f3{top:28%;left:18%;animation-delay:3s}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* Manifesto icon — lavender glow (instead of gold) per user request */
+.icn-shine.shine-purple::after{
+  background:radial-gradient(circle,rgba(157,108,231,.42),transparent 65%);
+}
+/* Manifesto tagline — standalone emphasized line */
+.manifesto-tagline{margin-top:14px !important}
+.manifesto-tagline strong{
+  display:inline-block;
+  font-size:clamp(17px,1.8vw,20px);
+  color:var(--purple);font-weight:800;
+  letter-spacing:-.01em;
+}
