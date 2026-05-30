@@ -1,6 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/amirsudai-landing.html" },
-    { "source": "/(.*)", "destination": "/amirsudai-landing.html" }
-  ]
+  "cleanUrls": true
 }
