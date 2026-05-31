@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ניהול סושיאל מדיה | Simple Solutions</title>
+<meta name="description" content="ניהול סושיאל מדיה לנותני שירות: 10,000 עוקבים בטיקטוק תוך 3 חודשים — או החזר יחסי. סטודיו צילום + אסטרטגיית תוכן.">
+<link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="canonical" href="https://www.simple-solution.co.il/social-media">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/main-site-redesign/styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"בית","item":"https://www.simple-solution.co.il/"},
+  {"@type":"ListItem","position":2,"name":"ניהול סושיאל מדיה","item":"https://www.simple-solution.co.il/social-media"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"ניהול סושיאל מדיה","provider":{"@type":"Organization","name":"Simple Solutions","url":"https://www.simple-solution.co.il/"},"areaServed":"IL","description":"ניהול סושיאל מדיה לנותני שירות: תוכן, צילום, פרסום ומעקב — עם הבטחת 10K עוקבים בטיקטוק תוך 3 חודשים."}
+</script>
+<style>
+.guarantee-table{max-width:780px;margin:0 auto;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line-gold);box-shadow:var(--shadow-md)}
+.guarantee-table .row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;padding:18px 24px;border-bottom:1px solid var(--line-light);align-items:center;font-size:15px;transition:background .3s}
+.guarantee-table .row:last-child{border-bottom:none}
+.guarantee-table .row.head{background:linear-gradient(180deg,#fffbed,#f4efe0);font-weight:600;font-size:13px;color:var(--gold-700);letter-spacing:.08em}
+.guarantee-table .row .lbl{font-size:12px;color:var(--ink-mute);display:none}
+@media(max-width:600px){.guarantee-table .row{grid-template-columns:1fr 1fr;gap:8px}.guarantee-table .row.head{display:none}.guarantee-table .row .lbl{display:block;font-weight:600}}
+.guarantee-table .row:hover:not(.head){background:rgba(201,169,97,.04)}
+.guarantee-table .v-result{font-weight:700;color:var(--ink)}
+.guarantee-table .v-pct{font-weight:600;color:var(--gold-700)}
+.guarantee-table .v-refund{font-weight:700}
+.guarantee-table .v-note{font-size:13px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cur-dot"></div>
+<div class="cursor-ring" id="cur-ring"></div>
+
+<nav class="side-rail" aria-label="ניווט סקציות">
+  <a class="rail-dot active" data-label="HERO" href="#top"></a>
+  <a class="rail-dot" data-label="הבטחה" href="#guarantee"></a>
+  <a class="rail-dot" data-label="למה TikTok" href="#why-tiktok"></a>
+  <a class="rail-dot" data-label="סמכות" href="#authority"></a>
+  <a class="rail-dot" data-label="עמודי תוכן" href="#pillars"></a>
+  <a class="rail-dot" data-label="תהליך" href="#process"></a>
+  <a class="rail-dot" data-label="ערוצים" href="#channels"></a>
+  <a class="rail-dot" data-label="בונוס" href="#bonus"></a>
+  <a class="rail-dot" data-label="צור קשר" href="#contact"></a>
+</nav>
+
+<header id="header">
+  <a href="/main-site-redesign/"><img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="logo"></a>
+  <nav aria-label="ראשי">
+    <a href="/main-site-redesign/">בית</a>
+    <div class="has-mega is-current">
+      <button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        שירות עסקים
+        <i data-lucide="chevron-down" class="chev"></i>
+      </button>
+      <div class="mega-menu" role="menu" aria-label="שירותי עסקים">
+        <div class="mega-eyebrow">שלוש זרועות · צמיחה אחת</div>
+        <div class="mega-grid">
+          <a href="/main-site-redesign/campaign-management/" class="mega-card" data-magnetic>
+            <span class="icn icn-gold icn-swing"><i data-lucide="megaphone"></i></span>
+            <h4>קמפיינים</h4>
+            <p>Meta + TikTok. אופטימיזציה יומיומית. ROAS שמדבר במספרים.</p>
+            <span class="mega-arrow"><span>קראו עוד</span><span>←</span></span>
+          </a>
+          <a href="/main-site-redesign/social-media/" class="mega-card current" data-magnetic>
+            <span class="icn icn-gold icn-pulse"><i data-lucide="share-2"></i></span>
+            <h4>ניהול סושיאל</h4>
+            <p>אסטרטגיית סמכות. תוכן ויראלי. 10K עוקבים — או החזר יחסי.</p>
+            <span class="mega-arrow"><span>קראו עוד</span><span>←</span></span>
+          </a>
+          <a href="/main-site-redesign/automation/" class="mega-card" data-magnetic>
+            <span class="icn icn-gold icn-wobble"><i data-lucide="bot"></i></span>
+            <h4>מערך אוטומציות</h4>
+            <p>וואטסאפ + צ׳אט-בוטים. מענה תוך שניות 24/7.</p>
+            <span class="mega-arrow"><span>קראו עוד</span><span>←</span></span>
+          </a>
+        </div>
+        <div class="mega-footer">
+          <span class="lbl">לא בטוח איזה שירות מתאים? <b>נדבר ונבדוק יחד.</b></span>
+          <a href="/main-site-redesign/contact/" class="btn btn-gold" data-magnetic>
+            <i data-lucide="message-circle"></i><span>שיחת ייעוץ חינם</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="/main-site-redesign/articles/">מאמרים</a>
+    <a href="/main-site-redesign/about/">אודות</a>
+    <a href="/main-site-redesign/contact/">צור קשר</a>
+  </nav>
+  <a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="btn-wa-mini" data-magnetic><i data-lucide="message-circle"></i><span>וואטסאפ</span></a>
+  <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
+</header>
+
+<!-- CLEAN VIDEO BANNER -->
+<section class="video-banner" aria-label="באנר ניהול סושיאל">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/main-site-redesign/videos/social-media.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- PAGE CONTENT HERO -->
+<section class="page-hero" id="top">
+  <div class="wrap">
+    <nav class="breadcrumbs reveal" aria-label="פירורי לחם">
+      <a href="/main-site-redesign/">בית</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span aria-current="page">ניהול סושיאל מדיה</span>
+    </nav>
+    <h1 class="reveal">העמוד שלך תקוע? <span class="gold-text">בוא נגיע ל-10,000 עוקבים בטיקטוק תוך 3 חודשים.</span></h1>
+    <p class="lede reveal">
+      ב-TikTok, הקסם האמיתי קורה אחרי <strong>10,000 עוקבים</strong>. שם האלגוריתם מתחיל לדחוף את התוכן שלך — חינם, אורגנית, לקהלים שלא הכרת. מתחת לסף הזה אתה כמעט בלתי-נראה. מעליו — משחק אחר לגמרי.
+    </p>
+    <p class="lede reveal" style="margin-top:-12px"><strong>לא הגעת ל-10,000? קיבלת החזר יחסי.</strong> אתה משלם רק על מה שקיבלת.</p>
+    <div class="cta-row static reveal">
+      <a href="/main-site-redesign/contact/" class="btn btn-gold" data-magnetic>
+        <span class="arr">←</span><span>שיחת אבחון חינם — בלי התחייבות</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE TABLE -->
+<section class="section section-light" id="guarantee">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">ההבטחה</span>
+      <h2>משלמים <span class="gold-text">רק על מה שמקבלים.</span></h2>
+      <p>אם לא הגעת ל-10,000 עוקבים אורגניים בטיקטוק תוך 3 חודשי עבודה — תקבל החזר יחסי. פרופורציה ישירה לתוצאה.</p>
+    </div>
+
+    <div class="guarantee-table reveal">
+      <div class="row head">
+        <div>תוצאה (עוקבים)</div>
+        <div>אחוז ביצוע</div>
+        <div>החזר</div>
+        <div>הערה</div>
+      </div>
+      <div class="row">
+        <div class="v-result"><span class="lbl">תוצאה:</span> 10,000</div>
+        <div class="v-pct"><span class="lbl">ביצוע:</span> 100%</div>
+        <div class="v-refund" style="color:var(--ink-soft)"><span class="lbl">החזר:</span> 0%</div>
+        <div class="v-note"><span class="lbl">הערה:</span> היעד הושג</div>
+      </div>
+      <div class="row">
+        <div class="v-result"><span class="lbl">תוצאה:</span> 8,000</div>
+        <div class="v-pct"><span class="lbl">ביצוע:</span> 80%</div>
+        <div class="v-refund" style="color:var(--gold-700)"><span class="lbl">החזר:</span> 20%</div>
+        <div class="v-note"></div>
+      </div>
+      <div class="row">
+        <div class="v-result"><span class="lbl">תוצאה:</span> 5,000</div>
+        <div class="v-pct"><span class="lbl">ביצוע:</span> 50%</div>
+        <div class="v-refund" style="color:var(--gold-700)"><span class="lbl">החזר:</span> 50%</div>
+        <div class="v-note"></div>
+      </div>
+      <div class="row">
+        <div class="v-result"><span class="lbl">תוצאה:</span> 0</div>
+        <div class="v-pct"><span class="lbl">ביצוע:</span> 0%</div>
+        <div class="v-refund" style="color:var(--gold-700)"><span class="lbl">החזר:</span> 100%</div>
+        <div class="v-note"></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px" class="reveal">
+      <span class="eyebrow">אפס סיכון. רק תוצאה.</span>
+    </div>
+    <p style="text-align:center;max-width:780px;margin:24px auto 0;font-size:13px;color:var(--ink-mute);line-height:1.65" class="reveal">
+      * תקף ללקוחות שעמדו בכל הדרישות (יום צילום, אישור תכנים בזמן, פרסום לפי לוח). המודל מתייחס לעוקבים אורגניים בלבד — לא בוטים או עוקבים בתשלום.
+    </p>
+  </div>
+</section>
+
+<!-- WHY TIKTOK -->
+<section class="section section-light" id="why-tiktok">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">הבחירה</span>
+      <h2>TikTok זה לא עוד רשת. <span class="gold-text">זו פריצת דרך — אם עוברים את הסף.</span></h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal">
+        <span class="icn icn-gold icn-bounce"><i data-lucide="trending-up"></i></span>
+        <h3>מעבר ל-10K = האלגוריתם עובד בשבילך</h3>
+        <p>מתחת לסף — חשיפה ידנית. מעליו — TikTok דוחף את התוכן שלך לקהלים חדשים בלי לשלם שקל.</p>
+      </article>
+      <article class="module-card reveal" style="transition-delay:.1s">
+        <span class="icn icn-gold icn-pulse"><i data-lucide="users"></i></span>
+        <h3>הקהל ב-2026 חי בטיקטוק</h3>
+        <p>הקהל הצעיר עבר לטיקטוק. הקהל הבוגר מצטרף. שם נמצא תשומת הלב — שם צריכה להיות הסמכות שלך.</p>
+      </article>
+      <article class="module-card reveal" style="transition-delay:.2s">
+        <span class="icn icn-gold icn-twinkle"><i data-lucide="zap"></i></span>
+        <h3>גלי תוכן ויראליים</h3>
+        <p>פוסט אחד שעובד יכול להגיע ל-100K צפיות תוך 24 שעות. ב-Meta זה לא קורה. ב-TikTok זה השגרה.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<section class="section section-light" id="authority">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>הקהל לא קונה ממוכרים. <span class="gold-text">הוא קונה ממומחים.</span></h2>
+    </div>
+
+    <div style="max-width:780px;margin:0 auto" class="reveal">
+      <p style="font-size:17px;line-height:1.85;color:var(--ink-soft);margin-bottom:22px">בעידן של רעש דיגיטלי אינסופי, הלקוחות פיתחו חוש שישי לזיהוי "מוכרים". הם לא קונים ממי שמוכר להם — הם קונים ממי שיודע.</p>
+      <p style="font-size:17px;line-height:1.85;color:var(--ink-soft);margin-bottom:22px">החלוק הלבן שלך זה <strong>הידע</strong>. כשאתה משתף ידע אמיתי, חינמי, יומיומי — אתה הופך לכתובת. הלקוח לא מתלבט "האם זה אמין"; הוא כבר ראה אותך 47 פעמים.</p>
+      <p style="font-size:17px;line-height:1.85;color:var(--ink-soft)">זו <strong>סמכות שאי-אפשר לקנות עם Boost</strong>. אפשר רק לבנות אותה — וידאו אחרי וידאו.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 PILLARS -->
+<section class="section section-light" id="pillars">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">6 עמודי תוכן</span>
+      <h2>כל פוסט <span class="gold-text">תורם לתמונה גדולה.</span></h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal"><span class="icn icn-gold icn-twinkle"><i data-lucide="graduation-cap"></i></span><h3>תוכן חינוכי</h3><p>הסברים, מדריכים, טעויות נפוצות. הקהל לומד — והופך אותך לסמכות.</p></article>
+      <article class="module-card reveal" style="transition-delay:.08s"><span class="icn icn-gold icn-bounce"><i data-lucide="camera"></i></span><h3>מאחורי הקלעים</h3><p>איך באמת נראית העבודה. החיבור האמיתי שמקרב את הקהל אליך.</p></article>
+      <article class="module-card reveal" style="transition-delay:.16s"><span class="icn icn-gold icn-grow"><i data-lucide="bar-chart-3"></i></span><h3>Case Studies</h3><p>תיק עבודות חי. לקוח, אתגר, פתרון, תוצאה. ההוכחה הכי חזקה.</p></article>
+      <article class="module-card reveal" style="transition-delay:.24s"><span class="icn icn-gold icn-heart"><i data-lucide="thumbs-up"></i></span><h3>המלצות וחוויות</h3><p>הקול של הלקוח. UGC. עדויות. הוכחה חברתית שמדברת בעבורך.</p></article>
+      <article class="module-card reveal" style="transition-delay:.32s"><span class="icn icn-gold icn-pulse"><i data-lucide="user"></i></span><h3>תוכן אישי</h3><p>אתה. הסיפור שלך. הערכים שלך. אנשים קונים מאנשים — לא ממותגים.</p></article>
+      <article class="module-card reveal" style="transition-delay:.4s"><span class="icn icn-gold icn-wobble"><i data-lucide="book-open"></i></span><h3>Storytelling</h3><p>סיפורי לקוחות, סיפורי כשלון, סיפורי דרך. סיפור = זיכרון = מכירה.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 6 STEP PROCESS -->
+<section class="section section-light" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">איך זה עובד</span>
+      <h2>מאפיון עד פוסט ויראלי — <span class="gold-text">בלי שאתה צריך לחשוב.</span></h2>
+    </div>
+
+    <div class="steps-grid">
+      <article class="step-card reveal"><div class="step-num">01</div><h3>אפיון עסקי + ניתוח עמודים</h3><p>מי אתה, מה אתה מוכר, איפה אתה היום, ומה הפער עד 10K.</p></article>
+      <article class="step-card reveal" style="transition-delay:.06s"><div class="step-num">02</div><h3>אסטרטגיית תוכן — לאישור שלך</h3><p>חודש שלם של רעיונות. אתה רואה. אתה מאשר. אנחנו רצים.</p></article>
+      <article class="step-card reveal" style="transition-delay:.12s"><div class="step-num">03</div><h3>לוח תוכן חודשי</h3><p>6 קונספטים לוידאו + 6 לגרפיקה. הכל בלוח אחד. הכל מאושר מראש.</p></article>
+      <article class="step-card reveal" style="transition-delay:.18s"><div class="step-num">04</div><h3>יום צילום מרוכז</h3><p>יום אחד בחודש. אצלך או אצלנו. צוות מצלם, אתה מדבר. סיימנו.</p></article>
+      <article class="step-card reveal" style="transition-delay:.24s"><div class="step-num">05</div><h3>עריכה, עיצוב, אישור</h3><p>עורכים את הוידאו, מעצבים את הגרפיקות, שולחים לאישור. שינויים בלי הגבלה.</p></article>
+      <article class="step-card reveal" style="transition-delay:.3s"><div class="step-num">06</div><h3>תזמון, מעקב ולמידה</h3><p>פרסום בזמן הנכון. ניתוח ביצועים. הסקת מסקנות. שיפור.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 3 CHANNELS -->
+<section class="section section-light" id="channels">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">איפה אנחנו עובדים</span>
+      <h2>3 ערוצים. <span class="gold-text">TikTok בקדמת הבמה.</span></h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal" style="border-color:var(--line-gold);box-shadow:var(--shadow-md)">
+        <div style="display:inline-block;padding:6px 14px;border-radius:99px;background:linear-gradient(135deg,#d9b86c,#c9a961);color:var(--purple-900);font:600 11px/1 'Space Grotesk';letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px">הערוץ הראשי</div>
+        <span class="icn icn-gold icn-bounce" style="display:block"><i data-lucide="music-2"></i></span>
+        <h3 style="margin-top:18px">TikTok</h3>
+        <p>שם נמצא המנוע. שם נמצא היעד. שם אנחנו משקיעים את עיקר המאמץ.</p>
+      </article>
+      <article class="module-card reveal" style="transition-delay:.1s">
+        <span class="icn icn-gold icn-pulse"><i data-lucide="facebook"></i></span>
+        <h3>Facebook</h3>
+        <p>תמיכה לקהל ה-35+. תוכן ארוך, ערך מעמיק, חיבור קהילתי.</p>
+      </article>
+      <article class="module-card reveal" style="transition-delay:.2s">
+        <span class="icn icn-gold icn-twinkle"><i data-lucide="instagram"></i></span>
+        <h3>Instagram</h3>
+        <p>Reels, סטוריס, פיד. הפלטפורמה היותר ויזואלית — לבניית מותג חזותי.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="section section-light">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">היתרון</span>
+      <h2>לא הכי גדולים. <span class="gold-text">הכי מסודרים.</span></h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal"><span class="icn icn-gold icn-flow"><i data-lucide="layers"></i></span><h3>ניהול רב-ערוצי שיודע לאורגן בלגן</h3><p>תוכן אחד מומר ל-3 ערוצים בצורה הנכונה לכל פלטפורמה. בלי כפילויות.</p></article>
+      <article class="module-card reveal" style="transition-delay:.1s"><span class="icn icn-gold icn-blink"><i data-lucide="video"></i></span><h3>תוכן אותנטי — לא "סטוקי"</h3><p>בלי תמונות סטוק, בלי וידאו AI. אתה. במציאות שלך. זה מה שעובד.</p></article>
+      <article class="module-card reveal" style="transition-delay:.2s"><span class="icn icn-gold icn-pulse"><i data-lucide="hammer"></i></span><h3>אנחנו עושים את העבודה הכבדה</h3><p>צילום, עריכה, עיצוב, פרסום, ניתוח. כל מה שאתה צריך לעשות זה לדבר.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="section section-light" id="bonus">
+  <div class="wrap">
+    <div class="manifesto-card reveal" style="max-width:880px;margin-inline:auto">
+      <span class="eyebrow" style="margin-bottom:18px">בונוס לקוח חדש</span>
+      <h3>לקוח חדש? <span class="gold-text">החודש הראשון של ניהול הקמפיינים — עלינו.</span></h3>
+      <p>הצירוף של אורגני + ממומן נותן את התוצאה הכי חזקה. ככה אתה רואה את הקסם מהיום הראשון — בלי להוסיף עלות עבודה.</p>
+      <p style="font-size:13px;color:var(--ink-mute);margin-top:14px">* ההטבה מתייחסת לעבודה שלנו בלבד. תקציב המדיה שולם על-ידך ישירות לפלטפורמות.</p>
+      <div class="cta-row static" style="justify-content:center;margin-top:28px">
+        <a href="/main-site-redesign/contact/" class="btn btn-gold" data-magnetic><span class="arr">←</span><span>אני רוצה את הבונוס</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact" data-dark>
+  <span class="eyebrow on-dark reveal">הצעד הבא</span>
+  <h2 class="reveal">שיחת אבחון חינם — <span class="gold-text">אנחנו מסתכלים, אתה מחליט.</span></h2>
+  <p class="final-cta-body reveal">נכנסים לעמודים הקיימים שלך. מנתחים את הפער ל-10K. נותנים תוכנית מסודרת. הכל בלי התחייבות.</p>
+  <div class="cta-row static reveal">
+    <a href="https://wa.me/972509697776?text=שלום מאור! אני מעוניין/ת בשיחת אבחון על סושיאל." class="btn btn-gold" data-magnetic>
+      <i data-lucide="message-circle"></i><span>דברו איתנו ב-וואטסאפ</span>
+    </a>
+    <a href="/main-site-redesign/contact/" class="btn-link">לטופס מלא</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="footer-logo">
+      <p>יחידת קומנדו עסקית. בונים מערכות צמיחה לעסקים מבוססים — קמפיינים, סושיאל ואוטומציות שמדברים אחד עם השני.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/profile.php?id=61584515743546" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://instagram.com/simple.solutions__" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@simple.solutions2020" aria-label="TikTok"><i data-lucide="music-2"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>שירותים</h4>
+      <ul>
+        <li><a href="/main-site-redesign/campaign-management/">ניהול קמפיינים</a></li>
+        <li><a href="/main-site-redesign/social-media/">סושיאל מדיה</a></li>
+        <li><a href="/main-site-redesign/automation/">אוטומציות</a></li>
+        <li></li>
+        <li><a href="/main-site-redesign/articles/">מאמרים</a></li>
+        <li><a href="/main-site-redesign/about/">אודות</a></li>
+        <li><a href="/main-site-redesign/contact/">צור קשר</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>צור קשר</h4>
+      <ul>
+        <li><a href="https://wa.me/972509697776"><i data-lucide="message-circle"></i>050-969-7776</a></li>
+        <li><a href="tel:+972509697776"><i data-lucide="phone"></i>050-969-7776</a></li>
+        <li><a href="mailto:simple.solutions05055@gmail.com"><i data-lucide="mail"></i>simple.solutions05055@gmail.com</a></li>
+      </ul>
+      <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.5)">מאור עטייה — מייסד ומנכ״ל</p>
+    </div>
+  </div>
+  <div class="footer-bar"><div>© 2026 Simple Solutions. כל הזכויות שמורות.</div><div class="links"><a href="/main-site-redesign/">חזרה לבית</a></div></div>
+</footer>
+
+<a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="fab-desktop" data-magnetic><i data-lucide="message-circle"></i><span>דברו איתי</span></a>
+<div class="fab-mobile"><a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות."><i data-lucide="message-circle"></i><span>דברו איתי בוואטסאפ</span></a></div>
+
+<script src="/main-site-redesign/app.js"></script>
+</body>
+</html>

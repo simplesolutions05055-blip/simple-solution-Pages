@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אוטומציות עסקיות | Simple Solutions</title>
+<meta name="description" content="אוטומציות וואטסאפ מותאמות אישית לעסקי שירות: מענה מיידי, סינון לידים, פולואפ אוטומטי — בלי שאתה תרים אצבע.">
+<link rel="icon" href="https://simple-solutions-site.vercel.app/favicon.ico">
+<link rel="canonical" href="https://www.simple-solution.co.il/automation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/main-site-redesign/styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"בית","item":"https://www.simple-solution.co.il/"},
+  {"@type":"ListItem","position":2,"name":"אוטומציות עסקיות","item":"https://www.simple-solution.co.il/automation"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"אוטומציות עסקיות","provider":{"@type":"Organization","name":"Simple Solutions","url":"https://www.simple-solution.co.il/"},"areaServed":"IL","description":"אוטומציות וואטסאפ מותאמות אישית לעסקי שירות — מענה מיידי, סינון לידים, פולואפ אוטומטי, אינטגרציה ל-CRM."}
+</script>
+<style>
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:0 auto}
+@media(max-width:800px){.stack-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.stack-grid{grid-template-columns:1fr}}
+.stack-item{padding:24px 22px;border-radius:18px;background:#fff;border:1px solid var(--line-light);box-shadow:var(--shadow-sm);display:flex;gap:16px;align-items:flex-start;transition:transform .4s,border-color .4s,box-shadow .4s}
+.stack-item:hover{transform:translateY(-4px);border-color:var(--line-gold);box-shadow:var(--shadow-md)}
+.stack-item .icn svg{width:28px;height:28px}
+.stack-item h4{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--ink)}
+.stack-item p{font-size:13px;color:var(--ink-soft);line-height:1.55}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cur-dot"></div>
+<div class="cursor-ring" id="cur-ring"></div>
+
+<nav class="side-rail" aria-label="ניווט סקציות">
+  <a class="rail-dot active" data-label="HERO" href="#top"></a>
+  <a class="rail-dot" data-label="התחלה" href="#discovery"></a>
+  <a class="rail-dot" data-label="מה אנחנו בונים" href="#build"></a>
+  <a class="rail-dot" data-label="שימושים" href="#use-cases"></a>
+  <a class="rail-dot" data-label="סטאק" href="#stack"></a>
+  <a class="rail-dot" data-label="יתרון" href="#edge"></a>
+  <a class="rail-dot" data-label="צור קשר" href="#contact"></a>
+</nav>
+
+<header id="header">
+  <a href="/main-site-redesign/"><img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="logo"></a>
+  <nav aria-label="ראשי">
+    <a href="/main-site-redesign/">בית</a>
+    <div class="has-mega is-current">
+      <button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        שירות עסקים
+        <i data-lucide="chevron-down" class="chev"></i>
+      </button>
+      <div class="mega-menu" role="menu" aria-label="שירותי עסקים">
+        <div class="mega-eyebrow">שלוש זרועות · צמיחה אחת</div>
+        <div class="mega-grid">
+          <a href="/main-site-redesign/campaign-management/" class="mega-card" data-magnetic>
+            <span class="icn icn-gold icn-swing"><i data-lucide="megaphone"></i></span>
+            <h4>קמפיינים</h4>
+            <p>Meta + TikTok. אופטימיזציה יומיומית. ROAS שמדבר במספרים.</p>
+            <span class="mega-arrow"><span>קראו עוד</span><span>←</span></span>
+          </a>
+          <a href="/main-site-redesign/social-media/" class="mega-card" data-magnetic>
+            <span class="icn icn-gold icn-pulse"><i data-lucide="share-2"></i></span>
+            <h4>ניהול סושיאל</h4>
+            <p>אסטרטגיית סמכות. תוכן ויראלי. 10K עוקבים — או החזר יחסי.</p>
+            <span class="mega-arrow"><span>קראו עוד</span><span>←</span></span>
+          </a>
+          <a href="/main-site-redesign/automation/" class="mega-card current" data-magnetic>
+            <span class="icn icn-gold icn-wobble"><i data-lucide="bot"></i></span>
+            <h4>מערך אוטומציות</h4>
+            <p>וואטסאפ + צ׳אט-בוטים. מענה תוך שניות 24/7.</p>
+            <span class="mega-arrow"><span>קראו עוד</span><span>←</span></span>
+          </a>
+        </div>
+        <div class="mega-footer">
+          <span class="lbl">לא בטוח איזה שירות מתאים? <b>נדבר ונבדוק יחד.</b></span>
+          <a href="/main-site-redesign/contact/" class="btn btn-gold" data-magnetic>
+            <i data-lucide="message-circle"></i><span>שיחת ייעוץ חינם</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="/main-site-redesign/articles/">מאמרים</a>
+    <a href="/main-site-redesign/about/">אודות</a>
+    <a href="/main-site-redesign/contact/">צור קשר</a>
+  </nav>
+  <a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="btn-wa-mini" data-magnetic><i data-lucide="message-circle"></i><span>וואטסאפ</span></a>
+  <button class="hamburger" aria-label="תפריט"><i data-lucide="menu"></i></button>
+</header>
+
+<!-- CLEAN VIDEO BANNER -->
+<section class="video-banner" aria-label="באנר אוטומציות עסקיות">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/main-site-redesign/videos/automation.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- PAGE CONTENT HERO -->
+<section class="page-hero" id="top">
+  <div class="wrap">
+    <nav class="breadcrumbs reveal" aria-label="פירורי לחם">
+      <a href="/main-site-redesign/">בית</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span aria-current="page">אוטומציות עסקיות</span>
+    </nav>
+    <h1 class="reveal">העסק שלך לא מפסיד לקוחות בגלל המחיר. <span class="gold-text">הוא מפסיד אותם כי אף אחד לא ענה בזמן.</span></h1>
+    <p class="lede reveal">
+      לקוח ממוצע בישראל ב-2026 לא יחכה לך 4 שעות. אצל <strong>80% מהעסקים</strong> שאנחנו בודקים, לפחות <strong>30% מהפניות נופלות</strong> בגלל זמן תגובה ארוך — כסף שיוצא דרך הסדק.
+    </p>
+    <p class="lede reveal" style="margin-top:-12px">
+      אנחנו בונים אוטומציות וואטסאפ מותאמות אישית. שעונות תוך שניות, מחממות, ומלוות עד שהלקוח מוכן לדבר איתך.
+    </p>
+    <div class="cta-row static reveal">
+      <a href="/main-site-redesign/contact/" class="btn btn-gold" data-magnetic>
+        <span class="arr">←</span><span>פגישת אפיון לבניית אוטומציה איכותית</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOVERY MEETING -->
+<section class="section section-light" id="discovery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">איך מתחילים</span>
+      <h2>פגישת אפיון. <span class="gold-text">פתרונות במקום, פלואו ביד.</span></h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal">
+        <span class="icn icn-gold icn-pulse"><i data-lucide="search"></i></span>
+        <h3>ניתוח נקודות הכשל</h3>
+        <p>אנחנו עוברים על המסע של הלקוח שלך מהפנייה הראשונה ועד הסגירה. איפה הוא נופל. למה. ומה לעשות.</p>
+      </article>
+      <article class="module-card reveal" style="transition-delay:.1s">
+        <span class="icn icn-gold icn-flow"><i data-lucide="workflow"></i></span>
+        <h3>פלואו ויזואלי לעסק שלך</h3>
+        <p>שרטוט פלואו מלא של אוטומציה מותאמת. כל מסר. כל סינון. כל קישור. ביד שלך לפני שאתה יוצא מהפגישה.</p>
+      </article>
+      <article class="module-card reveal" style="transition-delay:.2s">
+        <span class="icn icn-gold icn-bounce"><i data-lucide="list-checks"></i></span>
+        <h3>רשימת אוטומציות ליישום מיידי</h3>
+        <p>מה הכי דחוף. מה ייתן את ה-Return הכי גבוה. מה אפשר להפעיל מחר.</p>
+      </article>
+    </div>
+
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <p style="font-size:18px;font-weight:600;color:var(--ink);max-width:680px;margin:0 auto;line-height:1.65">
+        תרצה שנבנה? <span class="gold-text">מתחילים.</span> תרצה לקחת ולרוץ לבד? קח, רוץ — תחזור לעדכן איך הלך.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="section section-light" id="build">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">מה אנחנו בונים</span>
+      <h2>הצ'אטבוט <span class="gold-text">שלא מרגיש כמו צ'אטבוט.</span></h2>
+    </div>
+
+    <div class="steps-grid">
+      <article class="step-card reveal"><div class="step-num">01</div><h3>מענה תוך שניות</h3><p>כל פנייה נענית מיידית. בלי תורים. בלי שעות עבודה. בלי "נחזור אליכם בקרוב".</p></article>
+      <article class="step-card reveal" style="transition-delay:.06s"><div class="step-num">02</div><h3>הצגת השירות</h3><p>הסבר תמציתי וברור על מה אתה עושה. מי אתה. למה אתה הבחירה הנכונה.</p></article>
+      <article class="step-card reveal" style="transition-delay:.12s"><div class="step-num">03</div><h3>בידול ויתרונות</h3><p>מה מבדל אותך מהמתחרים? הבוט שואל את השאלות הנכונות. הלקוח מקבל את התשובות הנכונות.</p></article>
+      <article class="step-card reveal" style="transition-delay:.18s"><div class="step-num">04</div><h3>ערך ללקוח</h3><p>תוכן, מדריך, מתנה. משהו שיוצר חיבור עוד לפני שדיברתם בטלפון.</p></article>
+      <article class="step-card reveal" style="transition-delay:.24s"><div class="step-num">05</div><h3>חומרים שבונים אמון</h3><p>תיק עבודות, המלצות, מדריכים. הבוט יודע מתי לשלוח כל אחד.</p></article>
+      <article class="step-card reveal" style="transition-delay:.3s"><div class="step-num">06</div><h3>פולואפ + הצעות ערך</h3><p>הלקוח לא ענה? הבוט חוזר. ברגע הנכון. עם המסר הנכון. עד שמגיעים לסגירה.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="section section-light" id="use-cases">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">השימושים</span>
+      <h2><span class="gold-text">3 מצבים</span> שבהם אוטומציה משנה את העסק.</h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal"><span class="icn icn-gold icn-pulse"><i data-lucide="inbox"></i></span><h3>עסק עם ריבוי פניות</h3><p>אתה מקבל יותר פניות ממה שאתה מצליח לטפל. הבוט סורק, מסנן, ומעביר לך רק את הרציניים.</p></article>
+      <article class="module-card reveal" style="transition-delay:.1s"><span class="icn icn-gold icn-bounce"><i data-lucide="megaphone"></i></span><h3>מבצע / קמפיין שמתקרב</h3><p>גל פניות גדול בטווח קצר. הבוט מטפל בכולן בו-זמנית. אתה לא מפסיד אף אחד.</p></article>
+      <article class="module-card reveal" style="transition-delay:.2s"><span class="icn icn-gold icn-flow"><i data-lucide="message-square"></i></span><h3>מענה אוטומטי ברשתות</h3><p>תגובות בסטוריס, DM באינסטגרם, הודעות בפייסבוק. כל פנייה מקבלת מענה מיידי בערוץ שלה.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="section section-light" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">הכלים</span>
+      <h2>סטאק <span class="gold-text">שעובד.</span></h2>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-item reveal"><span class="icn icn-gold icn-pulse"><i data-lucide="message-circle"></i></span><div><h4>WhatsApp Business רשמי</h4><p>תקשורת — בלי scraping, בלי בוטים לא חוקיים. אישור Meta מלא.</p></div></div>
+      <div class="stack-item reveal" style="transition-delay:.05s"><span class="icn icn-gold icn-flow"><i data-lucide="bot"></i></span><div><h4>ManyChat</h4><p>בניית פלואו מהיר ויעיל לערוצי Meta + WhatsApp.</p></div></div>
+      <div class="stack-item reveal" style="transition-delay:.1s"><span class="icn icn-gold icn-workflow"><i data-lucide="workflow"></i></span><div><h4>Make</h4><p>אוטומציות מותאמות. כל אינטגרציה. כל לוגיקה.</p></div></div>
+      <div class="stack-item reveal" style="transition-delay:.15s"><span class="icn icn-gold icn-bounce"><i data-lucide="zap"></i></span><div><h4>Zapier</h4><p>חיבורים מהירים בין כלים. ללא קוד. ללא חיכוך.</p></div></div>
+      <div class="stack-item reveal" style="transition-delay:.2s"><span class="icn icn-gold icn-pulse"><i data-lucide="database"></i></span><div><h4>CRM</h4><p>שלך — או שלנו אם אין לך. כל ליד נשמר. כל אינטראקציה מתועדת.</p></div></div>
+      <div class="stack-item reveal" style="transition-delay:.25s"><span class="icn icn-gold icn-blink"><i data-lucide="code"></i></span><div><h4>Meta API</h4><p>אינטגרציה ישירה לפייסבוק ואינסטגרם — מענה, סטוריס, DM.</p></div></div>
+      <div class="stack-item reveal" style="transition-delay:.3s"><span class="icn icn-gold icn-spin"><i data-lucide="calendar"></i></span><div><h4>Google Calendar</h4><p>תיאום פגישות אוטומטי. הבוט מציע זמנים. הלקוח בוחר. מסונכרן ליומן שלך.</p></div></div>
+    </div>
+
+    <p style="text-align:center;max-width:780px;margin:32px auto 0;font-size:15px;color:var(--ink-soft);line-height:1.7" class="reveal">
+      יש לך CRM משלך? תלוי באיזו מערכת אתה משתמש — דבר איתנו ונגיד לך אם נוכל להתחבר.
+    </p>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="section section-light" id="edge">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">היתרון</span>
+      <h2>לא תבנית. לא קסם. <span class="gold-text">שיטה.</span></h2>
+    </div>
+
+    <div class="modules-grid cols-3">
+      <article class="module-card reveal"><span class="icn icn-gold icn-twinkle"><i data-lucide="scissors"></i></span><h3>תפירה אישית — לא תבנית מהמדף</h3><p>כל פלואו נבנה מאפס לעסק שלך. הטון, הרמה, הסגנון — של המותג שלך.</p></article>
+      <article class="module-card reveal" style="transition-delay:.1s"><span class="icn icn-gold icn-pulse"><i data-lucide="shield-check"></i></span><h3>WhatsApp רשמי — בלי קסמים אפורים</h3><p>אנחנו עובדים רק עם WhatsApp Business API מאושר. בלי risk של חסימה. בלי תרגילים.</p></article>
+      <article class="module-card reveal" style="transition-delay:.2s"><span class="icn icn-gold icn-flow"><i data-lucide="route"></i></span><h3>מסע מלא — לא רק מענה ראשוני</h3><p>הבוט לא רק עונה. הוא מוביל. ממסר ראשון, דרך חימום, ועד שאתה מקבל לקוח חם בטלפון.</p></article>
+    </div>
+
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <span class="eyebrow">אין מינימום. כל פרויקט מתחיל בהתאמה אישית.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact" data-dark>
+  <span class="eyebrow on-dark reveal">הצעד הבא</span>
+  <h2 class="reveal">פגישת אפיון <span class="gold-text">לבניית אוטומציה איכותית.</span></h2>
+  <p class="final-cta-body reveal">60 דקות. אנחנו נכנסים לעסק שלך, מאתרים את נקודות הכשל, ויוצאים עם פלואו מלא בידיים. אתה מחליט אם להמשיך איתנו או לרוץ לבד.</p>
+  <div class="cta-row static reveal">
+    <a href="https://wa.me/972509697776?text=שלום מאור! אני מעוניין/ת בפגישת אפיון לאוטומציה." class="btn btn-gold" data-magnetic>
+      <i data-lucide="message-circle"></i><span>דברו איתנו ב-וואטסאפ</span>
+    </a>
+    <a href="/main-site-redesign/contact/" class="btn-link">לטופס מלא</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img src="https://simple-solutions-site.vercel.app/logo-simple-solutions.png" alt="Simple Solutions" class="footer-logo">
+      <p>יחידת קומנדו עסקית. בונים מערכות צמיחה לעסקים מבוססים — קמפיינים, סושיאל ואוטומציות שמדברים אחד עם השני.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/profile.php?id=61584515743546" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://instagram.com/simple.solutions__" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@simple.solutions2020" aria-label="TikTok"><i data-lucide="music-2"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>שירותים</h4>
+      <ul>
+        <li><a href="/main-site-redesign/campaign-management/">ניהול קמפיינים</a></li>
+        <li><a href="/main-site-redesign/social-media/">סושיאל מדיה</a></li>
+        <li><a href="/main-site-redesign/automation/">אוטומציות</a></li>
+        <li></li>
+        <li><a href="/main-site-redesign/articles/">מאמרים</a></li>
+        <li><a href="/main-site-redesign/about/">אודות</a></li>
+        <li><a href="/main-site-redesign/contact/">צור קשר</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>צור קשר</h4>
+      <ul>
+        <li><a href="https://wa.me/972509697776"><i data-lucide="message-circle"></i>050-969-7776</a></li>
+        <li><a href="tel:+972509697776"><i data-lucide="phone"></i>050-969-7776</a></li>
+        <li><a href="mailto:simple.solutions05055@gmail.com"><i data-lucide="mail"></i>simple.solutions05055@gmail.com</a></li>
+      </ul>
+      <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.5)">מאור עטייה — מייסד ומנכ״ל</p>
+    </div>
+  </div>
+  <div class="footer-bar"><div>© 2026 Simple Solutions. כל הזכויות שמורות.</div><div class="links"><a href="/main-site-redesign/">חזרה לבית</a></div></div>
+</footer>
+
+<a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות." class="fab-desktop" data-magnetic><i data-lucide="message-circle"></i><span>דברו איתי</span></a>
+<div class="fab-mobile"><a href="https://wa.me/972509697776?text=שלום מאור! הגעתי מהאתר ואשמח להתייעצות."><i data-lucide="message-circle"></i><span>דברו איתי בוואטסאפ</span></a></div>
+
+<script src="/main-site-redesign/app.js"></script>
+</body>
+</html>
