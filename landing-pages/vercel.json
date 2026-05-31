@@ -17,6 +17,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/", "destination": "/main-site-redesign/index.html" },
     { "source": "/main-site-redesign", "destination": "/main-site-redesign/index.html" }
   ]
 }
