@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/landing-pages/index.html" },
+    { "source": "/((?!landing-pages|public|projects|kiryat-shmona).*)", "destination": "/landing-pages/index.html" }
+  ]
 }
