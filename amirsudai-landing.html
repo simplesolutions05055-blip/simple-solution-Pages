@@ -2883,6 +2883,22 @@
         document.querySelectorAll('.reveal, .reveal--scale').forEach((el) => el.classList.add('is-visible'));
       }
 
+      // Pre-fill form from URL params (?name=...&phone=...&interest=...)
+      (function() {
+        var p = new URLSearchParams(window.location.search);
+        var n = p.get('name'), ph = p.get('phone'), it = p.get('interest');
+        if (n) { var fn = document.getElementById('lf-name'); if (fn) fn.value = n; }
+        if (ph) { var fp = document.getElementById('lf-phone'); if (fp) fp.value = ph; }
+        if (it) {
+          var r = document.querySelector('input[name="interest"][value="' + it + '"]');
+          if (r) r.checked = true;
+        }
+        if (n || ph || it) {
+          var fs = document.getElementById('form');
+          if (fs) fs.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      })();
+
       // Form submit → Google Sheets
       const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz1LbbR3fu88yJNL3jwVuD846RWUmjJ-iYM0VZaagHQWpnElKWWzR0-R-2q-NJoD0MO/exec';
       const form = document.getElementById('leadForm');
