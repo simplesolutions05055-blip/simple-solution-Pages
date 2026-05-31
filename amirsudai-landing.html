@@ -2887,21 +2887,27 @@
         document.querySelectorAll('.reveal, .reveal--scale').forEach((el) => el.classList.add('is-visible'));
       }
 
-      // Form submit
+      // Form submit → Google Sheets
+      const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz1LbbR3fu88yJNL3jwVuD846RWUmjJ-iYM0VZaagHQWpnElKWWzR0-R-2q-NJoD0MO/exec';
       const form = document.getElementById('leadForm');
       if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
-          // [PLACEHOLDER: חבר ל-Make/Zapier webhook
+          const btn = form.querySelector('[type="submit"]');
+          if (btn) { btn.disabled = true; btn.innerHTML = '<span>שולח...</span>'; }
+          const map = { cashflow: 'בעיה תזרימית', growth: 'הגדלת העסק', stuck: 'מרגיש תקוע', info: 'רק לשמוע פרטים' };
           const data = Object.fromEntries(new FormData(form));
-          console.log('Lead submitted:', data);
-          form.innerHTML = `
+          if (map[data.interest]) data.interest = map[data.interest];
+          try {
+            await fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          } catch(err) { console.warn('form error', err); }
+          form.innerHTML = \`
             <div class="form-success">
               <div class="form-success__icon">✓</div>
               <h3>תודה! קיבלתי את הפרטים שלך.</h3>
               <p>אצור איתך קשר תוך 24 שעות לשיחת התאמה קצרה.</p>
             </div>
-          `;
+          \`;
         });
       }
 
