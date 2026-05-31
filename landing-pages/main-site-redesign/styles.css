@@ -222,11 +222,11 @@ h1.display .word>span{display:inline-block;transform:translateY(110%);opacity:0;
 .logos-wall::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(201,169,97,.10),transparent 40%),radial-gradient(circle at 15% 80%,rgba(157,108,231,.18),transparent 45%);z-index:-1;pointer-events:none}
 .logos-wall-inner{max-width:1280px;margin:0 auto;position:relative}
 .logos-marquee{position:relative;overflow:hidden;padding:0;border-radius:28px;background:linear-gradient(180deg,rgba(31,11,51,.55),rgba(90,30,148,.35));border:1px solid rgba(201,169,97,.22);box-shadow:0 30px 80px -30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06),0 0 60px rgba(157,108,231,.15);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.logos-track{display:flex;align-items:center;width:max-content;animation:logos-scroll 50s linear infinite;will-change:transform}
+.logos-track{display:flex;align-items:center;width:max-content;direction:ltr;animation:logos-scroll 60s linear infinite;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
 .logos-track img{height:160px;width:auto;max-width:320px;object-fit:contain;flex-shrink:0;margin-inline:48px;filter:brightness(0) invert(1);opacity:.82;transition:opacity .35s ease,filter .35s ease,transform .35s ease}
 .logos-track img:hover{filter:none;opacity:1;transform:scale(1.08)}
 .logos-marquee:hover .logos-track{animation-play-state:paused}
-@keyframes logos-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes logos-scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @media (max-width:1024px){
   .logos-track img{height:120px;max-width:240px;margin-inline:36px}
 }
