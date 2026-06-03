@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebXP – מערכת הנחות לתושבים | אוטומציה מלאה לעיריות</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #0d1f3c;
+    --cyan: #00d4ff;
+    --cyan2: #00a8cc;
+    --cyan-glow: rgba(0, 212, 255, 0.15);
+    --silver: #c8d6e5;
+    --white: #ffffff;
+    --gray: #8fa3b8;
+    --gold: #f0c040;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(0,212,255,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    direction: rtl;
+    overflow-x: hidden;
+  }
+
+  /* ANIMATED BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(0,180,255,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,100,200,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 50% 50%, rgba(0,212,255,0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .grid-lines {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* FLOATING PARTICLES */
+  .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--cyan);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-particle linear infinite;
+  }
+  @keyframes float-particle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 0;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,212,255,0.12);
+  }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(0,212,255,0.3);
+    cursor: pointer;
+    border: none;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(0,212,255,0.5); }
+
+  /* WEBXP LOGO SVG */
+  .logo-text {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--white);
+  }
+  .logo-text span { color: var(--cyan); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 24px;
+    animation: fadeInDown 0.8s ease both;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--cyan);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero h1 {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.9s ease both 0.1s;
+  }
+  .hero h1 .accent { color: var(--cyan); position: relative; }
+  .hero h1 .accent::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0; left: 0;
+    height: 2px;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--silver);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    animation: fadeInDown 1s ease both 0.2s;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeInDown 1.1s ease both 0.3s; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 0 30px rgba(0,212,255,0.35);
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 0 50px rgba(0,212,255,0.55); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* HERO VISUAL */
+  .hero-visual { animation: fadeInUp 1s ease both 0.2s; }
+  .dashboard-mockup {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,255,0.08);
+    position: relative;
+  }
+  .dashboard-mockup::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px; left: -1px; height: 60%;
+    background: linear-gradient(to bottom, rgba(0,212,255,0.06), transparent);
+    border-radius: 20px 20px 0 0;
+    pointer-events: none;
+  }
+  .mock-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,212,255,0.12);
+  }
+  .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mock-dots { display: flex; gap: 6px; margin-left: auto; }
+  .mock-header-title { font-size: 13px; font-weight: 700; color: var(--cyan); }
+
+  .mock-stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .mock-stat {
+    background: rgba(0,212,255,0.06);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .mock-stat-val { font-size: 22px; font-weight: 900; color: var(--cyan); line-height: 1; }
+  .mock-stat-lbl { font-size: 10px; color: var(--gray); margin-top: 4px; }
+
+  .mock-table { width: 100%; }
+  .mock-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 80px 80px;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: center;
+  }
+  .mock-row.header { color: var(--gray); font-weight: 600; }
+  .mock-row:not(.header):hover { background: rgba(0,212,255,0.05); }
+  .badge-approved {
+    background: rgba(0,200,100,0.15);
+    color: #00c864;
+    border-radius: 20px;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .badge-pending {
+    background: rgba(255,180,0,0.15);
+    color: #ffb400;
+    border-radius: 20px;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .badge-review {
+    background: rgba(0,212,255,0.15);
+    color: var(--cyan);
+    border-radius: 20px;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .mock-progress { margin-top: 14px; }
+  .mock-progress-label { display: flex; justify-content: space-between; font-size: 10px; color: var(--gray); margin-bottom: 6px; }
+  .progress-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 6px; }
+  .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--cyan2), var(--cyan));
+    box-shadow: 0 0 8px rgba(0,212,255,0.5);
+    transition: width 2s ease;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    padding: 60px 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .stats-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, transparent 50%, rgba(0,100,200,0.04) 100%);
+    border-top: 1px solid rgba(0,212,255,0.1);
+    border-bottom: 1px solid rgba(0,212,255,0.1);
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; }
+  .stat-item {
+    padding: 32px 20px;
+    border-left: 1px solid rgba(0,212,255,0.1);
+    position: relative;
+  }
+  .stat-item:last-child { border-left: none; }
+  .stat-number {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--cyan);
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(0,212,255,0.4);
+  }
+  .stat-suffix { font-size: 28px; }
+  .stat-label { font-size: 14px; color: var(--silver); margin-top: 8px; font-weight: 500; }
+  .stat-sub { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* PROBLEM SECTION */
+  .section { padding: 80px 0; position: relative; z-index: 1; }
+  .section-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-desc { font-size: 16px; color: var(--silver); line-height: 1.8; max-width: 600px; }
+
+  /* PAIN POINTS */
+  .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .pain-card {
+    background: rgba(255,60,60,0.05);
+    border: 1px solid rgba(255,60,60,0.15);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle, rgba(255,60,60,0.1) 0%, transparent 70%);
+  }
+  .pain-card:hover { transform: translateY(-4px); border-color: rgba(255,60,60,0.3); }
+  .pain-icon { font-size: 36px; margin-bottom: 16px; }
+  .pain-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: #ff6060; }
+  .pain-card p { font-size: 14px; color: var(--silver); line-height: 1.6; }
+
+  /* SOLUTION / FEATURES */
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+  }
+  .feature-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(0,212,255,0.07); }
+  .feature-card:hover::after { opacity: 1; }
+  .feature-icon-wrap {
+    width: 52px; height: 52px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  .feature-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+  .feature-card p { font-size: 14px; color: var(--silver); line-height: 1.7; }
+
+  /* HOW IT WORKS */
+  .steps-wrap { margin-top: 48px; position: relative; }
+  .steps-wrap::before {
+    content: '';
+    position: absolute;
+    top: 40px; right: 40px; left: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    opacity: 0.3;
+  }
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+  .step-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .step-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+  .step-num {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--navy);
+    margin: 0 auto 16px;
+    box-shadow: 0 0 20px rgba(0,212,255,0.4);
+  }
+  .step-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .step-card p { font-size: 13px; color: var(--silver); line-height: 1.6; }
+
+  /* CLIENTS */
+  .clients-section { padding: 70px 0; position: relative; z-index: 1; }
+  .clients-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,212,255,0.025);
+    border-top: 1px solid rgba(0,212,255,0.08);
+    border-bottom: 1px solid rgba(0,212,255,0.08);
+  }
+  .clients-header { text-align: center; margin-bottom: 48px; }
+  .clients-header p { color: var(--gray); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 16px; }
+  .clients-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .client-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .client-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+  }
+  .client-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-4px); }
+  .client-city-icon {
+    width: 110px; height: 64px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(0,100,200,0.05));
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 20px;
+    padding: 8px 12px;
+  }
+  .client-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+  .client-years {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .client-card p { font-size: 13px; color: var(--silver); line-height: 1.6; }
+
+  /* DATA SECTION */
+  .data-section { padding: 80px 0; position: relative; z-index: 1; }
+  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+  .data-features { display: flex; flex-direction: column; gap: 20px; }
+  .data-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(0,212,255,0.1);
+    border-radius: 14px;
+    transition: all 0.3s;
+  }
+  .data-feature:hover { border-color: rgba(0,212,255,0.25); background: rgba(0,212,255,0.04); }
+  .data-feature-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(0,212,255,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .data-feature h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+  .data-feature p { font-size: 13px; color: var(--silver); line-height: 1.5; }
+
+  .data-visual {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chart-title { font-size: 13px; font-weight: 700; color: var(--silver); margin-bottom: 20px; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 10px; height: 160px; margin-bottom: 16px; }
+  .chart-bar {
+    flex: 1;
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    transition: all 0.5s ease;
+  }
+  .chart-bar.current { background: linear-gradient(to top, var(--cyan2), var(--cyan)); box-shadow: 0 0 15px rgba(0,212,255,0.3); }
+  .chart-bar.prev { background: rgba(0,212,255,0.2); }
+  .chart-labels { display: flex; gap: 10px; }
+  .chart-label { flex: 1; text-align: center; font-size: 10px; color: var(--gray); }
+  .chart-legend { display: flex; gap: 16px; margin-top: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--silver); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,212,255,0.06) 0%, transparent 70%);
+  }
+  .cta-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 28px;
+    padding: 60px 48px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-box h2 { font-size: 34px; font-weight: 900; margin-bottom: 16px; line-height: 1.2; }
+  .cta-box p { font-size: 16px; color: var(--silver); margin-bottom: 36px; line-height: 1.7; }
+  .cta-contact {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--silver);
+  }
+  .contact-item a { color: var(--cyan); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  footer p { font-size: 13px; color: var(--gray); }
+  footer .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+
+  /* DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.15), transparent);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes countUp { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* HIGHLIGHT BAND */
+  .highlight-band {
+    background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(0,100,200,0.06));
+    border: 1px solid rgba(0,212,255,0.12);
+    border-radius: 16px;
+    padding: 24px 32px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .highlight-band-icon { font-size: 32px; flex-shrink: 0; }
+  .highlight-band p { font-size: 15px; color: var(--silver); line-height: 1.6; }
+  .highlight-band strong { color: var(--white); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .pain-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-wrap::before { display: none; }
+    .clients-grid { grid-template-columns: 1fr; }
+    .data-grid { grid-template-columns: 1fr; }
+    .cta-box { padding: 40px 24px; }
+    .footer-inner { flex-direction: column; gap: 12px; }
+    .mock-stat-row { grid-template-columns: 1fr 1fr; }
+    .mock-table .mock-row { grid-template-columns: 1fr 1fr; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-lines"></div>
+<div class="particles" id="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <img src="images/webxp-logo.png" alt="WebXP" style="height:36px;object-fit:contain;">
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      בואו נדבר →
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          פתרון מוביל לעיריות בישראל
+        </div>
+        <h1>
+          תסיימו עם<br>
+          <span class="accent">עבודת הנמלים</span><br>
+          במחלקת ההנחות
+        </h1>
+        <p class="hero-sub">
+          מערכת אוטומציה מלאה לניהול הנחות ארנונה — קולטת בקשות, מסיננת, מעבדת ומחליטה.<br>
+          הפקידה שלכם עובדת על הדברים שחשובים, לא על פינג-פונג עם תושבים.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            🗓 קביעת הדגמה חינם
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+            איך זה עובד ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dashboard-mockup">
+          <div class="mock-header">
+            <span class="mock-header-title">⚡ מחלקת הנחות | לוח בקרה</span>
+            <div class="mock-dots">
+              <div class="mock-dot" style="background:#ff5f57"></div>
+              <div class="mock-dot" style="background:#febc2e"></div>
+              <div class="mock-dot" style="background:#28c840"></div>
+            </div>
+          </div>
+          <div class="mock-stat-row">
+            <div class="mock-stat">
+              <div class="mock-stat-val">847</div>
+              <div class="mock-stat-lbl">בקשות השנה</div>
+            </div>
+            <div class="mock-stat">
+              <div class="mock-stat-val">94%</div>
+              <div class="mock-stat-lbl">עיבוד אוטומטי</div>
+            </div>
+            <div class="mock-stat">
+              <div class="mock-stat-val">8 דק׳</div>
+              <div class="mock-stat-lbl">ממוצע לבקשה</div>
+            </div>
+          </div>
+          <div class="mock-table">
+            <div class="mock-row header">
+              <span>שם התושב</span>
+              <span>סוג ההנחה</span>
+              <span>אחוז</span>
+              <span>סטטוס</span>
+            </div>
+            <div class="mock-row">
+              <span>דוד כהן</span>
+              <span>קשיש</span>
+              <span style="color:var(--cyan)">30%</span>
+              <div><span class="badge-approved">✓ אושר</span></div>
+            </div>
+            <div class="mock-row">
+              <span>מרים לוי</span>
+              <span>הכנסה נמוכה</span>
+              <span style="color:var(--cyan)">80%</span>
+              <div><span class="badge-approved">✓ אושר</span></div>
+            </div>
+            <div class="mock-row">
+              <span>יוסף אברהם</span>
+              <span>נכות</span>
+              <span style="color:var(--cyan)">66%</span>
+              <div><span class="badge-pending">⏳ בבדיקה</span></div>
+            </div>
+            <div class="mock-row">
+              <span>רחל גרין</span>
+              <span>עולה חדש</span>
+              <span style="color:var(--cyan)">40%</span>
+              <div><span class="badge-review">📋 ממתין</span></div>
+            </div>
+          </div>
+          <div class="mock-progress" style="margin-top:16px">
+            <div class="mock-progress-label"><span>ניצול תקציב שנתי</span><span style="color:var(--cyan)">67%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:67%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number"><span class="counter" data-target="90">0</span><span class="stat-suffix">%</span></div>
+        <div class="stat-label">פחות זמן לבקשה</div>
+        <div class="stat-sub">ממוצע 8 דקות במקום 60+</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number"><span class="counter" data-target="3">0</span><span class="stat-suffix"> ערים</span></div>
+        <div class="stat-label">עיריות משתמשות</div>
+        <div class="stat-sub">הרצליה, פ"ת, אשדוד</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></div>
+        <div class="stat-label">אוטומציה לתהליך</div>
+        <div class="stat-sub">מהגשה עד החלטה</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number"><span class="counter" data-target="0">0</span></div>
+        <div class="stat-label">אקסל. אפס.</div>
+        <div class="stat-sub">הכל בסיסטם אחד מרכזי</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROBLEM -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">❌ הבעיה שכולם מכירים</span>
+      <h2 class="section-title">כמה זמן מבזבזת המחלקה<br>על דברים שמחשב יכול לעשות?</h2>
+      <p class="section-desc">כל שנה מחדש — אותה עבודה ידנית, אותם מיילים לתושבים, אותו אקסל שלא מסתדר עם ועדת ההנחות.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">📞</div>
+        <h3>פינג-פונג אינסופי</h3>
+        <p>שיחות טלפון, מיילים ותזכורות לתושבים שחסרים מסמכים — תהליך שלוקח שבועות ומתיש את הצוות.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📂</div>
+        <h3>ניירת ואיסוף ידני</h3>
+        <p>כל תיק נפתח ידנית, מסמכים מסורקים נשמרים בתיקיות, ומידע חשוב אובד בין המחלקות.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📊</div>
+        <h3>אקסל שלא מספיק</h3>
+        <p>טבלאות מסורבלות, ניסיון אנושי שלא נשמר, וחוסר יכולת לראות מגמות ולתכנן תקציב לשנה הבאה.</p>
+      </div>
+    </div>
+
+    <div class="highlight-band reveal">
+      <div class="highlight-band-icon">💡</div>
+      <p>
+        <strong>יש פתרון.</strong> עיריות שכבר עברו למערכת אוטומטית מדווחות על חיסכון של <strong>מאות שעות עבודה בשנה</strong> — ועל ועדת הנחות שסוגרת את עונת הבקשות בשבועות במקום חודשים.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">✅ הפתרון</span>
+      <h2 class="section-title">מערכת שעושה הכל —<br>כדי שהצוות שלכם לא יצטרך</h2>
+      <p class="section-desc">פלטפורמה מותאמת אישית לכל עירייה, עם אוטומציה מלאה מרגע הגשת הבקשה ועד להחלטה הסופית.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">📥</div>
+        <h3>קליטת בקשות אוטומטית</h3>
+        <p>תושבים ממלאים טפסים דיגיטליים מכל מכשיר. המערכת קולטת, מסווגת ומאמתת את המסמכים — ללא כל מגע אנושי בשלב הראשון.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">🤖</div>
+        <h3>זיהוי זכאות חכמה</h3>
+        <p>האלגוריתם בודק כל בקשה מול קריטריוני הזכאות, מחשב את אחוז ההנחה המדויק ומסמן אוטומטית כל מה שדורש בדיקה אנושית.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">📈</div>
+        <h3>לוח בקרה מנהלתי</h3>
+        <p>תצוגה ברורה של כל הבקשות, הסטטוסים, ניצול תקציב ומגמות — בזמן אמת, ללא צורך בעדכון ידני.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">🗄</div>
+        <h3>זיכרון מוסדי חי</h3>
+        <p>המערכת שומרת את כל הנתונים משנה לשנה. ניתן לראות אם תושב הגיש בעבר, לאיזה הנחה זכה, ולהשוות מגמות לאורך זמן.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <span class="section-tag">⚙️ תהליך העבודה</span>
+      <h2 class="section-title">מהגשה לאישור — 4 שלבים אוטומטיים</h2>
+    </div>
+    <div class="steps-wrap">
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">1</div>
+          <h4>תושב ממלא בקשה</h4>
+          <p>פורטל דיגיטלי נגיש מכל מכשיר, ב-24/7, עם הדרכה צעד אחר צעד.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">2</div>
+          <h4>אוטומציה מעבדת</h4>
+          <p>המערכת בודקת מסמכים, מאמתת פרטים ומחשבת זכאות על פי הקריטריונים.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">3</div>
+          <h4>הפקידה מחליטה</h4>
+          <p>רק בקשות שדורשות שיקול דעת מגיעות לשולחן — כל השאר עברו כבר אוטומטית.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">4</div>
+          <h4>תושב מקבל עדכון</h4>
+          <p>הודעה אוטומטית על החלטת הוועדה, ללא צורך בשיחה טלפונית.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- DATA SECTION -->
+<section class="data-section">
+  <div class="container">
+    <div class="data-grid">
+      <div class="reveal">
+        <span class="section-tag">📊 חוכמת נתונים</span>
+        <h2 class="section-title" style="font-size:32px">הנתונים עובדים בשבילכם, לא להיפך</h2>
+        <p class="section-desc" style="margin-bottom:28px; font-size:15px;">לא עוד החלטות על סמך תחושות. כל שנה הנתונים מצטברים ומספקים תמונה ברורה שמאפשרת לעירייה להשתפר.</p>
+        <div class="data-features">
+          <div class="data-feature reveal">
+            <div class="data-feature-icon">📅</div>
+            <div>
+              <h4>מעקב רב-שנתי</h4>
+              <p>השוואת מגמות לאורך שנים — מי מגיש, מה נדרש, כמה תקציב נוצל.</p>
+            </div>
+          </div>
+          <div class="data-feature reveal">
+            <div class="data-feature-icon">💰</div>
+            <div>
+              <h4>ניהול תקציב בזמן אמת</h4>
+              <p>ראו בכל רגע כמה תקציב נוצל ומה נשאר — ללא סיכומים ידניים.</p>
+            </div>
+          </div>
+          <div class="data-feature reveal">
+            <div class="data-feature-icon">⚡</div>
+            <div>
+              <h4>דוחות לוועדה בלחיצה</h4>
+              <p>הכינו את כל חומר הוועדה בדקות — לא בימים.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="data-visual">
+          <div class="chart-title">📊 בקשות לפי חודש — 2025 מול 2024</div>
+          <div class="chart-bars">
+            <div class="chart-bar prev" style="height:55%"></div>
+            <div class="chart-bar current" style="height:70%"></div>
+            <div class="chart-bar prev" style="height:45%"></div>
+            <div class="chart-bar current" style="height:85%"></div>
+            <div class="chart-bar prev" style="height:65%"></div>
+            <div class="chart-bar current" style="height:90%"></div>
+            <div class="chart-bar prev" style="height:50%"></div>
+            <div class="chart-bar current" style="height:75%"></div>
+            <div class="chart-bar prev" style="height:40%"></div>
+            <div class="chart-bar current" style="height:60%"></div>
+            <div class="chart-bar prev" style="height:70%"></div>
+            <div class="chart-bar current" style="height:95%"></div>
+          </div>
+          <div class="chart-labels">
+            <span class="chart-label">ינו</span>
+            <span class="chart-label"></span>
+            <span class="chart-label">מרץ</span>
+            <span class="chart-label"></span>
+            <span class="chart-label">מאי</span>
+            <span class="chart-label"></span>
+            <span class="chart-label">יול</span>
+            <span class="chart-label"></span>
+            <span class="chart-label">ספט</span>
+            <span class="chart-label"></span>
+            <span class="chart-label">נוב</span>
+            <span class="chart-label"></span>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(0,212,255,0.3)"></div> 2024</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--cyan)"></div> 2025</div>
+          </div>
+          <div style="margin-top:20px; padding:14px; background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.15); border-radius:10px; font-size:12px; color:var(--silver);">
+            📌 <strong style="color:var(--white)">גידול של 34%</strong> בבקשות — אותו צוות, פחות עומס. כי האוטומציה סופגת את הגידול.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="clients-header reveal">
+      <p>עיריות שבחרו להפסיק לבזבז זמן</p>
+      <h2 class="section-title" style="font-size:32px;text-align:center">שלוש עיריות. שלוש הצלחות.<br>תוצאות מדידות.</h2>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card reveal">
+        <div class="client-city-icon">
+          <img src="images/logo-herzliya.png" alt="עיריית הרצליה" style="max-width:90px;max-height:50px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;">
+        </div>
+        <h3>עיריית הרצליה</h3>
+        <div class="client-years">⭐ 5 שנות שימוש</div>
+        <p>מעיריית חלוץ בדיגיטציה של תהליכי הנחות. הצוות מטפל היום בפי שלושה בקשות — עם אותו מספר עובדים.</p>
+      </div>
+      <div class="client-card reveal">
+        <div class="client-city-icon">
+          <img src="images/logo-petahtikva.png" alt="עיריית פתח תקווה" style="max-width:90px;max-height:50px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;">
+        </div>
+        <h3>עיריית פתח תקווה</h3>
+        <div class="client-years">⭐ 2 שנות שימוש</div>
+        <p>עיר גדולה עם אלפי בקשות בשנה. האוטומציה מאפשרת לצוות להתמקד בבקשות מורכבות שדורשות שיקול דעת אנושי.</p>
+      </div>
+      <div class="client-card reveal">
+        <div class="client-city-icon">
+          <img src="images/logo-ashdod.png" alt="עיריית אשדוד" style="max-width:90px;max-height:50px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;">
+        </div>
+        <h3>עיריית אשדוד</h3>
+        <div class="client-years">⭐ 3 שנות שימוש</div>
+        <p>עיר מגוונת עם אוכלוסייה מרובת שפות. המערכת מאפשרת שירות נגיש ויעיל לכל התושבים ללא מגבלות שפה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SECURITY SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <span class="section-tag">🔒 ביטחון ואמינות</span>
+      <h2 class="section-title">המידע שלכם — מוגן, מגובה, תחת שליטתכם המלאה</h2>
+      <p class="section-desc" style="margin:0 auto;text-align:center">אנחנו יודעים שמדובר במידע רגיש של תושבים. לכן אבטחת המידע היא עיקרון יסוד במערכת — לא תוספת.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">🛡</div>
+        <h3>אחסון מאובטח בענן ישראלי</h3>
+        <p>כל הנתונים מאוחסנים בשרתים המוצפנים בתקן AES-256. האחסון מבוצע בתשתית ענן ישראלית — המידע לא יוצא מגבולות המדינה.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">💾</div>
+        <h3>גיבויים אוטומטיים יומיים</h3>
+        <p>גיבוי מלא של כל הנתונים מתבצע אוטומטית מדי יום. במקרה חירום — שחזור מלא תוך שעות ספורות, ללא אובדן מידע.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">👤</div>
+        <h3>הרשאות גישה מבוקרות</h3>
+        <p>כל משתמש רואה רק מה שהוא מורשה לראות. מנהל מחלקה, פקיד, ראש ועדה — כל תפקיד עם הרשאות מדויקות בנפרד.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon-wrap">📋</div>
+        <h3>עמידה בתקנות הגנת הפרטיות</h3>
+        <p>המערכת עומדת בדרישות חוק הגנת הפרטיות הישראלי ובהנחיות הרשות להגנת הפרטיות לגופים ציבוריים.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- TIMELINE SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">📅 ציר הזמן</span>
+      <h2 class="section-title">מאפיון לשגר — תהליך מובנה ומוכח</h2>
+      <p class="section-desc">אנחנו לא מוכרים "פתרון מהיר". אנחנו בונים מערכת שתעבוד נכון ב-100% — ולכן לוקחים את הזמן הנכון לעשות זאת כמו שצריך.</p>
+    </div>
+    <div style="margin-top:48px;position:relative;">
+      <!-- Vertical line -->
+      <div style="position:absolute;right:32px;top:40px;bottom:40px;width:2px;background:linear-gradient(to bottom,transparent,rgba(0,212,255,0.3),transparent);display:none" class="timeline-line"></div>
+      <div style="display:grid;gap:20px;">
+
+        <div class="feature-card reveal" style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--cyan),var(--cyan2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:var(--navy);flex-shrink:0;box-shadow:0 0 25px rgba(0,212,255,0.4);">1</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
+              <h3 style="font-size:18px;margin:0">אפיון מלא של תהליכי המחלקה</h3>
+              <span style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;">2–3 שבועות</span>
+            </div>
+            <p style="font-size:14px;color:var(--silver);line-height:1.6;">ישיבות עבודה עם צוות המחלקה — מיפוי כל שלב בתהליך הנוכחי, סוגי הבקשות, קריטריוני הזכאות, נהלי הוועדה ומנגנוני הדיווח. זה השלב שקובע הכל.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal" style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--cyan),var(--cyan2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:var(--navy);flex-shrink:0;box-shadow:0 0 25px rgba(0,212,255,0.4);">2</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
+              <h3 style="font-size:18px;margin:0">פיתוח ואינטגרציה</h3>
+              <span style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;">6–8 שבועות</span>
+            </div>
+            <p style="font-size:14px;color:var(--silver);line-height:1.6;">בניית המערכת בהתאם לאפיון — פורטל תושב, לוח בקרה, מנוע הזכאות, ואינטגרציה עם מערכות העירייה הקיימות.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal" style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--cyan),var(--cyan2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:var(--navy);flex-shrink:0;box-shadow:0 0 25px rgba(0,212,255,0.4);">3</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
+              <h3 style="font-size:18px;margin:0">טסטים, הדרכה והשקה מבוקרת</h3>
+              <span style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;">2–3 שבועות</span>
+            </div>
+            <p style="font-size:14px;color:var(--silver);line-height:1.6;">בדיקות מקצה לקצה, הדרכת הצוות, השקה בשלב ניסוי עם קבוצה קטנה לפני פתיחה לכלל הציבור.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="highlight-band reveal" style="margin-top:32px">
+        <div class="highlight-band-icon">⏱</div>
+        <p>
+          <strong>סה"כ: 4 חודשים לכל הפחות מרגע אפיון מלא של תהליכי המחלקה.</strong><br>
+          לא ניתן לקצר את התהליך מבלי לפגוע באיכות. מערכת שנבנתה נכון — עובדת שנים ללא תקלות.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="section-tag" style="display:block;text-align:center;margin-bottom:16px">🚀 השלב הבא</span>
+      <h2>מוכנים לראות את זה בפעולה?</h2>
+      <p>
+        נדגים לכם בדיוק איך המערכת עובדת עם הנתונים של העירייה שלכם.<br>
+        הדגמה ללא עלות, ללא התחייבות — תוך 30 דקות תבינו מה אתם מפספסים.
+      </p>
+      <button class="btn-primary" style="font-size:16px;padding:16px 40px" onclick="window.open('tel:054-9020253')">
+        📞 דברו עם מאור ישירות
+      </button>
+      <div class="cta-contact">
+        <div class="contact-item">📱 <a href="tel:054-9020253">054-9020253</a></div>
+        <div class="contact-item">📧 <a href="mailto:maor@webxp.co.il">maor@webxp.co.il</a></div>
+        <div class="contact-item">🌐 <a href="https://www.webxp.co.il" target="_blank">webxp.co.il</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <img src="images/webxp-logo.png" alt="WebXP" style="height:28px;object-fit:contain;">
+      <p>© 2026 WEBXP Technologies — פתרונות אינטרנט מתקדמים מאז 2006</p>
+      <a href="https://www.webxp.co.il" style="color:var(--cyan);font-size:13px;text-decoration:none;">webxp.co.il ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// PARTICLES
+const container = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.cssText = `
+    left: ${Math.random() * 100}%;
+    animation-duration: ${8 + Math.random() * 12}s;
+    animation-delay: ${Math.random() * 10}s;
+    width: ${1 + Math.random() * 2}px;
+    height: ${1 + Math.random() * 2}px;
+    opacity: ${0.3 + Math.random() * 0.4};
+  `;
+  container.appendChild(p);
+}
+
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// COUNTER ANIMATION
+const counters = document.querySelectorAll('.counter');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.done) {
+      entry.target.dataset.done = true;
+      const target = parseInt(entry.target.dataset.target);
+      let current = 0;
+      const step = target / 50;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        entry.target.textContent = Math.floor(current);
+      }, 30);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// PROGRESS BAR ANIMATION
+setTimeout(() => {
+  document.querySelectorAll('.progress-fill').forEach(bar => {
+    const w = bar.style.width;
+    bar.style.width = '0';
+    setTimeout(() => bar.style.width = w, 500);
+  });
+}, 1000);
+</script>
+</body>
+</html>
