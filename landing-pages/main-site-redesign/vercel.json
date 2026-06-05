@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/main-site-redesign/:path*", "destination": "/:path*" },
+    { "source": "/main-site-redesign", "destination": "/index.html" }
+  ]
+}
