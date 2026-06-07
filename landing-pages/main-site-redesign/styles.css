@@ -560,48 +560,58 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .fab-mobile a svg{width:18px;height:18px}
 
 /* HOME PAGE CONTENT HERO (mirrors video-banner + content pattern from inner pages) */
-.home-hero{padding-top:64px;padding-bottom:80px}
+.home-hero{
+  padding-top:64px;padding-bottom:80px;
+  background:radial-gradient(ellipse at 50% 30%,var(--purple-700) 0%,#1F0B33 75%);
+  color:#fff;
+}
+.home-hero::before{
+  background:
+    radial-gradient(circle at 20% 25%,rgba(201,169,97,.22),transparent 45%),
+    radial-gradient(circle at 80% 75%,rgba(157,108,231,.32),transparent 45%);
+}
+.home-hero::after{opacity:.35}
 .home-hero .brand-pill{
   display:inline-flex;align-items:center;gap:14px;
   padding:10px 24px;border-radius:99px;
-  background:rgba(255,255,255,.78);
-  border:1px solid var(--line-gold);
+  background:rgba(31,11,51,.55);
+  border:1px solid rgba(201,169,97,.4);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;
   letter-spacing:.4em;text-transform:uppercase;
-  margin-bottom:32px;color:var(--ink-soft);
+  margin-bottom:32px;color:#fff;
   animation:none;opacity:1;
 }
 .home-hero .brand-pill::before{content:"";width:24px;height:1px;background:var(--gold)}
 .home-hero h1.display{
-  color:var(--ink);text-shadow:none;
-  font-size:clamp(34px, 5.4vw, 72px);
-  max-width:22ch;margin-inline:auto;
+  color:#fff;text-shadow:none;
+  font-size:clamp(30px, 4.6vw, 58px);
+  max-width:30ch;margin-inline:auto;
   margin-bottom:28px;
 }
 .home-hero .hero-sub{
-  color:var(--ink-soft);max-width:62ch;
+  color:rgba(255,255,255,.92);max-width:62ch;
   font-size:clamp(16px,1.4vw,19px);
   margin:0 auto 14px;line-height:1.75;
   animation:none;opacity:1;
 }
-.home-hero .hero-sub strong{color:var(--ink);font-weight:600}
+.home-hero .hero-sub strong{color:#fff;font-weight:700}
 .home-hero .hero-promise{
-  color:var(--ink);font-weight:700;
+  color:#fff;font-weight:700;
   max-width:54ch;margin:0 auto 38px;
   font-size:clamp(18px,1.8vw,22px);line-height:1.5;
   animation:none;opacity:1;
 }
 .home-hero .trust-row{animation:none;opacity:1;margin-bottom:38px;justify-content:center;display:flex;gap:12px;flex-wrap:wrap}
 .home-hero .trust-pill{
-  background:rgba(255,255,255,.85);
-  border:1px solid var(--line-light);
-  color:var(--ink);
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.22);
+  color:#fff;
   backdrop-filter:blur(8px);
 }
 .home-hero .cta-row{animation:none;opacity:1;justify-content:center}
-.home-hero .btn-link{color:var(--ink-soft);border-color:rgba(61,20,102,.2)}
-.home-hero .btn-link:hover{color:var(--gold-700);border-color:var(--gold)}
+.home-hero .btn-link{color:rgba(255,255,255,.95);border-color:rgba(255,255,255,.3)}
+.home-hero .btn-link:hover{color:var(--gold-50);border-color:var(--gold)}
 
 /* ===================== MEGA MENU ===================== */
 .has-mega{position:relative}
