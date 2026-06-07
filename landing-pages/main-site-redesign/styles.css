@@ -571,7 +571,10 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     radial-gradient(circle at 20% 25%,rgba(201,169,97,.22),transparent 45%),
     radial-gradient(circle at 80% 75%,rgba(157,108,231,.32),transparent 45%);
 }
-.home-hero::after{opacity:.35}
+/* No gold-line decoration on dark hero variants — lines only on light bg */
+.home-hero::after,
+.page-hero-dark::after,
+.page-hero[data-dark]::after{display:none}
 .home-hero .brand-pill{
   display:inline-flex;align-items:center;gap:14px;
   padding:10px 24px;border-radius:99px;
