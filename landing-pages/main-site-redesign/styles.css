@@ -7,8 +7,8 @@
   --purple-200:#D4C0F7;
   --purple-100:#E8DEFF;
   --purple-50:#F4EDFB;
-  --lavender-bg:#FBFAF6;
-  --lavender-soft:#F7F4EC;
+  --lavender-bg:#FBFAF8;
+  --lavender-soft:#F5F2EC;
   --gold:#C9A961;
   --gold-700:#A88845;
   --gold-50:#F5E8B0;
@@ -253,7 +253,7 @@ h1.display .word>span{display:inline-block;transform:translateY(110%);opacity:0;
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s, transform .9s cubic-bezier(.2,.7,.2,1)}
 .reveal.on{opacity:1;transform:translateY(0)}
 
-.section-light{background:linear-gradient(180deg,var(--lavender-bg) 0%,#FEFDFA 50%,var(--lavender-bg) 100%)}
+.section-light{background:linear-gradient(180deg,var(--lavender-bg) 0%,#FFFFFE 50%,var(--lavender-bg) 100%)}
 .section-light::before{
   content:"";position:absolute;inset:0;pointer-events:none;opacity:.85;
   background:
