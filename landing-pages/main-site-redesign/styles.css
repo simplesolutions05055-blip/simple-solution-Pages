@@ -205,7 +205,8 @@ h1.display .word>span{display:inline-block;transform:translateY(110%);opacity:0;
 .btn-gold svg{width:18px;height:18px}
 .btn-ghost{background:rgba(31,11,51,.04);border:1px solid rgba(61,20,102,.20);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold-700);background:rgba(201,169,97,.06)}
-.on-dark-bg .btn-ghost,.hero .btn-ghost,.final-cta .btn-ghost,.page-hero-dark .btn-ghost{color:#fff;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+.on-dark-bg .btn-ghost,.hero .btn-ghost,.final-cta .btn-ghost,.page-hero-dark .btn-ghost,.authority .btn-ghost,.home-hero .btn-ghost,.section-dark .btn-ghost{color:#fff;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.35)}
+.on-dark-bg .btn-ghost:hover,.hero .btn-ghost:hover,.final-cta .btn-ghost:hover,.page-hero-dark .btn-ghost:hover,.authority .btn-ghost:hover,.home-hero .btn-ghost:hover,.section-dark .btn-ghost:hover{color:var(--gold-50);border-color:var(--gold);background:rgba(201,169,97,.12)}
 .btn-link{font-size:14px;font-weight:600;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid rgba(61,20,102,.2);padding-bottom:4px;transition:color .3s, border-color .3s}
 .btn-link:hover{color:var(--gold-700);border-color:var(--gold)}
 .hero .btn-link,.final-cta .btn-link,.page-hero-dark .btn-link{color:rgba(255,255,255,.95);border-color:rgba(255,255,255,.4)}
