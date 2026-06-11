@@ -1,9 +1,25 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/landing-pages/main-site-redesign/index.html" },
-    { "source": "/main-site-redesign", "destination": "/landing-pages/main-site-redesign/index.html" },
-    { "source": "/main-site-redesign/:path*", "destination": "/landing-pages/main-site-redesign/:path*" },
-    { "source": "/amirsudai", "destination": "/landing-pages/index.html" }
+    {
+      "source": "/",
+      "destination": "/landing-pages/main-site-redesign/index.html"
+    },
+    {
+      "source": "/main-site-redesign",
+      "destination": "/landing-pages/main-site-redesign/index.html"
+    },
+    {
+      "source": "/main-site-redesign/:path*",
+      "destination": "/landing-pages/main-site-redesign/:path*"
+    },
+    {
+      "source": "/amirsudai",
+      "destination": "/landing-pages/index.html"
+    },
+    {
+      "source": "/adi",
+      "destination": "/landing-pages/adi/index.html"
+    }
   ]
 }
