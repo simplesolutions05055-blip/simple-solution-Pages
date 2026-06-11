@@ -474,13 +474,15 @@ footer{
   .inst-logo-box span{font-family:var(--fb);font-size:13px;color:var(--text-mid);font-weight:600;}
 
   /* ── TEXT CENTER ── */
-  body { text-align: center; }
-  .hero-eyebrow, .section-eyebrow {
-    justify-content: center;
+  body, body * {
+    text-align: center !important;
   }
+  /* keep flex rows centered too */
+  .hero-eyebrow, .section-eyebrow,
   .about-credentials, .hero-cta, .cta-button-wrap,
-  .trust-author, .inst-logos-row, .carousel-nav {
-    justify-content: center;
+  .trust-author, .inst-logos-row, .carousel-nav,
+  .pillar-items li, .cred-item, .nav-wa, .inst-logos {
+    justify-content: center !important;
   }
 </style>
 </head>
