@@ -473,16 +473,23 @@ footer{
   .inst-logo-circle img{width:100%;height:100%;object-fit:contain;display:block;}
   .inst-logo-box span{font-family:var(--fb);font-size:13px;color:var(--text-mid);font-weight:600;}
 
-  /* ── TEXT CENTER ── */
-  body, body * {
+  /* ── TEXT CENTER: only text elements ── */
+  h1, h2, h3, h4, h5, h6,
+  p, li, span, a, label, blockquote,
+  .hero-headline, .hero-tagline, .hero-eyebrow,
+  .section-title, .section-subtitle, .section-eyebrow,
+  .about-quote-text, .about-text p,
+  .method-intro, .method-story-text,
+  .transitions-intro,
+  .pillar-title, .pillar-items li,
+  .trust-text, .trust-author-info, .trust-author-role,
+  .inst-label, .inst-logo-box span,
+  .service-title, .service-desc, .service-tag,
+  .cta-quote, .cta-sub, .cta-phone,
+  .footer-logo, .footer-credit,
+  .hero-badge-text, .hero-badge-sub,
+  .cred-item, .transition-chip {
     text-align: center !important;
-  }
-  /* keep flex rows centered too */
-  .hero-eyebrow, .section-eyebrow,
-  .about-credentials, .hero-cta, .cta-button-wrap,
-  .trust-author, .inst-logos-row, .carousel-nav,
-  .pillar-items li, .cred-item, .nav-wa, .inst-logos {
-    justify-content: center !important;
   }
 </style>
 </head>
