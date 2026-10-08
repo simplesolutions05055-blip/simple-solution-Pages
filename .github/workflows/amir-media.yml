@@ -1,0 +1,35 @@
+name: amir-media-fetch
+on:
+  push:
+    branches: [amir-sudai-sketch]
+    paths: ['.github/workflows/amir-media.yml']
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: amir-sudai-sketch }
+      - name: Download and compress
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg webp >/dev/null
+          K=https://media.kolbo.ai/kolboai-media
+          mkdir -p media-src && cd media-src
+          curl -sSL -o d.mp4 "$K/generated-videos/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Slow-smooth-cinematic-dolly-pu-6ac800b0b50cd19c0c02d9b7-v25-turbo-pro-image.mp4"
+          curl -sSL -o m.mp4 "$K/generated-videos/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Slow-smooth-cinematic-push-in--6ac802fdb50cd19c0c02e154-v25-turbo-pro-image.mp4"
+          curl -sSL -o d.jpg "$K/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-this-exact-man-his-f-6ac8001eb50cd19c0c02d475-nano-banana-2-image.jpeg"
+          curl -sSL -o m.jpg "$K/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Reframe-this-exact-scene-6ac800b368cda88adafcd627-nano-banana-2-image.jpeg"
+          ls -la
+          O=../landing-pages/amir-sudai-media; mkdir -p $O
+          ffmpeg -y -loglevel error -i d.mp4 -an -vf "scale=1600:-2,fps=25" -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart $O/hero-desktop.mp4
+          ffmpeg -y -loglevel error -i m.mp4 -an -vf "scale=720:-2,fps=25" -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart $O/hero-mobile.mp4
+          ffmpeg -y -loglevel error -i d.jpg -vf "scale=1920:-2" -q:v 3 tmp-d.jpg && cwebp -quiet -q 78 tmp-d.jpg -o $O/hero-desktop.webp
+          ffmpeg -y -loglevel error -i m.jpg -vf "scale=900:-2" -q:v 3 tmp-m.jpg && cwebp -quiet -q 78 tmp-m.jpg -o $O/hero-mobile.webp
+          ffmpeg -y -loglevel error -i d.jpg -vf "scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630" -q:v 4 $O/og.jpg
+          ls -la $O
+      - name: Commit
+        run: |
+          git config user.name "Simple Solutions"; git config user.email "simple.solutions05055@gmail.com"
+          git add landing-pages/amir-sudai-media
+          git commit -m "Amir site: self-hosted compressed hero media" && git push
