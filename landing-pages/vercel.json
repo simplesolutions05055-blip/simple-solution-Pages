@@ -10,24 +10,418 @@
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization, X-Webhook-Secret" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,POST,OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, X-Webhook-Secret"
+        }
+      ]
+    },
+    {
+      "source": "/amir-sudai-site/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ],
   "rewrites": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "amir.simple-solution.co.il" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/index.html"
+    },
+    {
+      "source": "/assets/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/assets/:path*"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/robots.txt"
+    },
+    {
+      "source": "/about",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/about.html"
+    },
+    {
+      "source": "/accessibility",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/accessibility.html"
+    },
+    {
+      "source": "/articles",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles.html"
+    },
+    {
+      "source": "/articles/family-budget-first-steps",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles/family-budget-first-steps.html"
+    },
+    {
+      "source": "/articles/mortgage-refinance-when",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles/mortgage-refinance-when.html"
+    },
+    {
+      "source": "/articles/profit-but-no-cash",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles/profit-but-no-cash.html"
+    },
+    {
+      "source": "/contact",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/contact.html"
+    },
+    {
+      "source": "/privacy",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/privacy.html"
+    },
+    {
+      "source": "/services",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services.html"
+    },
+    {
+      "source": "/services/business-consulting",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/business-consulting.html"
+    },
+    {
+      "source": "/services/credit-solutions",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/credit-solutions.html"
+    },
+    {
+      "source": "/services/family-economics",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/family-economics.html"
+    },
+    {
+      "source": "/services/mortgage-consulting",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/mortgage-consulting.html"
+    },
+    {
+      "source": "/services/mortgage-lectures",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/mortgage-lectures.html"
+    },
+    {
+      "source": "/sitemap",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/sitemap.html"
+    },
+    {
+      "source": "/terms",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/terms.html"
+    },
+    {
+      "source": "/about.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/about.html"
+    },
+    {
+      "source": "/accessibility.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/accessibility.html"
+    },
+    {
+      "source": "/articles.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles.html"
+    },
+    {
+      "source": "/articles/family-budget-first-steps.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles/family-budget-first-steps.html"
+    },
+    {
+      "source": "/articles/mortgage-refinance-when.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles/mortgage-refinance-when.html"
+    },
+    {
+      "source": "/articles/profit-but-no-cash.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/articles/profit-but-no-cash.html"
+    },
+    {
+      "source": "/contact.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/contact.html"
+    },
+    {
+      "source": "/privacy.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/privacy.html"
+    },
+    {
+      "source": "/services.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services.html"
+    },
+    {
+      "source": "/services/business-consulting.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/business-consulting.html"
+    },
+    {
+      "source": "/services/credit-solutions.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/credit-solutions.html"
+    },
+    {
+      "source": "/services/family-economics.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/family-economics.html"
+    },
+    {
+      "source": "/services/mortgage-consulting.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/mortgage-consulting.html"
+    },
+    {
+      "source": "/services/mortgage-lectures.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/services/mortgage-lectures.html"
+    },
+    {
+      "source": "/sitemap.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/sitemap.html"
+    },
+    {
+      "source": "/terms.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/terms.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "amir.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amir-sudai-site/404.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "pages.simple-solution.co.il"
+        }
+      ],
       "destination": "/amir-sudai-home/index.html"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "pages.simple-solution.co.il" }],
-      "destination": "/amir-sudai-home/index.html"
+      "destination": "/main-site-redesign/index.html"
     },
-    { "source": "/", "destination": "/main-site-redesign/index.html" },
-    { "source": "/main-site-redesign", "destination": "/main-site-redesign/index.html" }
+    {
+      "source": "/main-site-redesign",
+      "destination": "/main-site-redesign/index.html"
+    }
   ]
 }
