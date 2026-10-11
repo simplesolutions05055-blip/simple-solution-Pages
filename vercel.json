@@ -20,6 +20,10 @@
     {
       "source": "/adi",
       "destination": "/landing-pages/adi/index.html"
+    },
+    {
+      "source": "/files/mivtza50.pdf",
+      "destination": "/public/mivtza50/hatzaa-mivtza50.pdf"
     }
   ]
 }
