@@ -250,6 +250,7 @@ select{appearance:none;text-align-last:center}
 .consent{display:flex;gap:10px;align-items:flex-start;justify-content:center;font-size:.9rem;color:var(--mute);text-align:right}
 .consent input{width:20px;height:20px;min-height:0;flex:none;margin-top:3px;accent-color:var(--navy2)}
 form .btn{width:100%;margin-top:4px}
+#contact .final-card{overflow:visible}
 .reassure{font-size:.85rem;color:var(--mute);display:flex;align-items:center;justify-content:center;gap:6px}
 .reassure svg{width:15px;height:15px}
 .form-ok{display:none;padding:26px 0 0}
@@ -264,6 +265,39 @@ footer b{color:var(--navy);font-family:"Heebo";font-size:1rem;display:block}
 .foot-grid{display:grid;gap:18px;margin-top:22px}
 footer .legal{margin-top:22px;font-size:.82rem;max-width:640px;margin-inline:auto}
 .linkbtn{background:none;border:0;color:var(--navy2);text-decoration:underline;cursor:pointer;font-size:inherit;padding:4px}
+
+
+/* הגה דקורטיבי */
+#areas,#faq{overflow-x:clip}
+.wheel{position:absolute;z-index:-1;width:min(420px,60vw);aspect-ratio:1;pointer-events:none;opacity:.95;filter:drop-shadow(0 30px 40px rgba(12,31,61,.35));will-change:transform}
+.wheel img{width:100%;height:100%;object-fit:contain}
+.wheel.r{right:calc(min(420px,60vw) / -2)}
+.wheel.l{left:calc(min(420px,60vw) / -2)}
+
+/* עץ ריח */
+.fresh{position:absolute;z-index:2;width:130px;pointer-events:none;transform-origin:50% 0;will-change:transform}
+.fresh svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 18px rgba(12,31,61,.3))}
+.fresh text{font-family:"Heebo",sans-serif;font-weight:900;fill:#fff}
+.fresh.f1{top:-6px;left:4%}
+.fresh.f2{top:-6px;left:4%}
+@media (max-width:759px){.fresh.f2{display:none}.fresh{width:92px}.fresh.f1{left:2%}.fresh.f2{right:2%}.wheel{opacity:.5}}
+
+/* כפתור התנעה */
+.ignite-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:6px}
+.ignite{position:relative;width:148px;height:148px;border-radius:50%;border:0;cursor:pointer;background:radial-gradient(circle at 50% 35%,#2a4777,#0c1f3d 70%);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 7px #d9dee6,0 0 0 9px #9aa6b8,0 18px 40px -12px rgba(12,31,61,.7),inset 0 3px 6px rgba(255,255,255,.18),inset 0 -6px 14px rgba(0,0,0,.35);transition:transform .15s,box-shadow .3s}
+.ignite::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:conic-gradient(from 0deg,#8a96a8,#fbfcfd,#a4aebd,#e8ecf1,#8a96a8);z-index:-1}
+.ignite:hover{transform:scale(1.03)}
+.ignite:active{transform:scale(.95)}
+.ignite .in{display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1.1}
+.ignite svg{width:30px;height:30px}
+.ignite b{font-family:"Heebo";font-size:1.02rem;font-weight:900}
+.ignite small{font-size:.66rem;letter-spacing:2px;color:#b9c5d8;font-family:"Heebo";font-weight:700}
+.ignite .lamp{position:absolute;top:16px;width:10px;height:10px;border-radius:50%;background:#7a1f26;box-shadow:inset 0 1px 2px rgba(0,0,0,.5);transition:background .3s,box-shadow .3s}
+.ignite.on .lamp{background:#2fd47b;box-shadow:0 0 12px #2fd47b}
+.ignite.on{animation:rev .5s ease 2}
+@keyframes rev{25%{transform:translateX(-2px) rotate(-1deg)}75%{transform:translateX(2px) rotate(1deg)}}
+.ignite[disabled]{cursor:wait}
+.ignite-hint{font-size:.88rem;color:var(--mute)}
 
 /* סרגל נייד */
 .mbar{position:fixed;bottom:10px;inset-inline:10px;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;border-radius:999px;transform:translateY(140%);transition:transform .35s ease}
@@ -452,6 +486,12 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 
 <!-- מה על הכף -->
 <section id="stakes" aria-labelledby="stakes-h">
+  <div class="fresh f1" aria-hidden="true"><svg viewBox="0 0 160 270">
+  <path d="M80 0V44" stroke="#8a96a8" stroke-width="2"/>
+  <circle cx="80" cy="49" r="5" fill="none" stroke="#8a96a8" stroke-width="2"/>
+  <path d="M80 55 L108 92 L96 92 L128 128 L114 128 L148 172 L130 172 L154 222 L92 222 L92 252 L68 252 L68 222 L6 222 L30 172 L12 172 L46 128 L32 128 L64 92 L52 92 Z" fill="#173462" stroke="#d9dee6" stroke-width="3" stroke-linejoin="round"/>
+  <text x="80" y="158" text-anchor="middle" font-size="19">בודקים</text><text x="80" y="184" text-anchor="middle" font-size="19">לפני</text><text x="80" y="210" text-anchor="middle" font-size="16">שמחליטים</text>
+</svg></div>
   <div class="wrap">
     <p class="eyebrow rv">מה עומד על הכף</p>
     <h2 id="stakes-h" class="words" data-split>עבירת תעבורה היא לא רק קנס</h2>
@@ -490,6 +530,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 
 <!-- תחומי טיפול -->
 <section id="areas" aria-labelledby="areas-h">
+  <div class="wheel r" aria-hidden="true" style="top:120px"><img src="/amnon-bennaim/assets/wheel.webp" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <p class="eyebrow rv">תחומי טיפול</p>
     <h2 id="areas-h" class="words" data-split>במה עו״ד בן נעים מטפל</h2>
@@ -573,6 +614,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 
 <!-- שאלות -->
 <section id="faq" aria-labelledby="faq-h">
+  <div class="wheel l" aria-hidden="true" style="top:60px"><img src="/amnon-bennaim/assets/wheel.webp" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <p class="eyebrow rv">שאלות נפוצות</p>
     <h2 id="faq-h" class="words" data-split>מה שנהגים שואלים</h2>
@@ -590,6 +632,12 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 <section id="contact" aria-labelledby="form-h">
   <div class="wrap">
     <div class="final-card glass rv">
+      <div class="fresh f2" aria-hidden="true"><svg viewBox="0 0 160 270">
+  <path d="M80 0V44" stroke="#8a96a8" stroke-width="2"/>
+  <circle cx="80" cy="49" r="5" fill="none" stroke="#8a96a8" stroke-width="2"/>
+  <path d="M80 55 L108 92 L96 92 L128 128 L114 128 L148 172 L130 172 L154 222 L92 222 L92 252 L68 252 L68 222 L6 222 L30 172 L12 172 L46 128 L32 128 L64 92 L52 92 Z" fill="#173462" stroke="#d9dee6" stroke-width="3" stroke-linejoin="round"/>
+  <text x="80" y="158" text-anchor="middle" font-size="19">לא לבד</text><text x="80" y="184" text-anchor="middle" font-size="19">מול</text><text x="80" y="210" text-anchor="middle" font-size="19">הדו״ח</text>
+</svg></div>
       <p class="eyebrow">ייעוץ ראשוני ללא התחייבות</p>
       <h2 id="form-h" class="words" data-split>ספרו לנו מה קרה. <span class="silver-text">עורך הדין יחזור אליכם.</span></h2>
       <p class="lead">שם וטלפון מספיקים. את השאר נשמע בשיחה.</p>
@@ -609,7 +657,10 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
             <option>אחר</option>
           </select></div>
         <div><label class="consent"><input type="checkbox" id="f-ok" required aria-required="true" aria-describedby="e-ok">אני מאשר/ת שהמשרד יחזור אליי בנוגע לפנייה</label><p class="err" id="e-ok" role="alert">נא לאשר כדי שנוכל לחזור אליכם.</p></div>
-        <button class="btn btn-main" type="submit">שלחו לעורך הדין</button>
+        <div class="ignite-wrap">
+          <button class="ignite" type="submit" aria-label="התניעו שיחה: שליחת הפרטים לעורך הדין"><span class="lamp" aria-hidden="true"></span><span class="in" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v8"/><path d="M6.3 7.3a8 8 0 1011.4 0"/></svg><b>התניעו שיחה</b><small>START</small></span></button>
+          <span class="ignite-hint">לחיצה אחת, והפרטים אצל עורך הדין</span>
+        </div>
         <p class="reassure"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>הפרטים מגיעים ישירות למשרד ולא מועברים לאף גורם אחר.</p>
       </form>
       <div class="form-ok" id="ok" role="status" aria-live="polite" tabindex="-1"><h3>הפנייה התקבלה</h3><p>פותחים לכם וואטסאפ עם הפרטים מוכנים, רק לשלוח.</p><a class="btn btn-wa" id="wa-after" href="https://wa.me/972506233081" rel="noopener" style="margin-top:14px">לשליחה בוואטסאפ</a></div>
@@ -797,6 +848,30 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
     c.addEventListener('pointerleave',function(){c.style.transform='';});
   });
 
+  /* ---------- הגה מסתובב וגלילה + עץ ריח מתנדנד ---------- */
+  (function(){
+    var wheels=[].slice.call(document.querySelectorAll('.wheel')), fr=[].slice.call(document.querySelectorAll('.fresh'));
+    if(!wheels.length&&!fr.length) return;
+    var lastY=window.scrollY, ang=0, vel=0, ticking=false, raf=null;
+    function draw(){
+      var y=window.scrollY;
+      wheels.forEach(function(w,i){w.style.transform='rotate('+((i?-1:1)*y*0.12)+'deg)';});
+    }
+    function swing(){
+      vel+= -ang*0.06; vel*=0.92; ang+=vel;
+      fr.forEach(function(f,i){f.style.transform='rotate('+(ang*(i?-1:1))+'deg)';});
+      if(Math.abs(ang)>0.05||Math.abs(vel)>0.05) raf=requestAnimationFrame(swing); else {raf=null;ang=0;vel=0;}
+    }
+    window.addEventListener('scroll',function(){
+      if(still()) return;
+      var y=window.scrollY, d=y-lastY; lastY=y;
+      vel+=Math.max(-3,Math.min(3,d*0.05));
+      if(!raf) raf=requestAnimationFrame(swing);
+      if(!ticking){ticking=true;requestAnimationFrame(function(){draw();ticking=false;});}
+    },{passive:true});
+    draw();
+  })();
+
   /* ---------- רמזור ---------- */
   var lights=document.querySelectorAll('.tlight span'), steps=document.querySelectorAll('.step'), cur=0, timer=null;
   function setLight(n){lights.forEach(function(l,i){l.classList.toggle('on',i===n)});steps.forEach(function(s,i){s.classList.toggle('active',i===n)});}
@@ -856,7 +931,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
     var msg='שלום עו״ד בן נעים, הגעתי מדף הנחיתה.\nשם: '+name+'\nטלפון: '+phone+(topic?'\nנושא: '+topic:'')+'\nאשמח שתחזרו אליי.';
     var wa='https://wa.me/'+LAWYER_WA+'?text='+encodeURIComponent(msg);
     document.getElementById('wa-after').href=wa;
-    var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='שולח...';
+    var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.classList.add('on');btn.querySelector('b').textContent='מתניעים...';
     function done(){
       form.style.display='none';var okBox=document.getElementById('ok');okBox.style.display='block';okBox.focus();
       try{window.dataLayer&&window.dataLayer.push({event:'lead_submit'});window.fbq&&window.fbq('track','Lead');}catch(_){}
