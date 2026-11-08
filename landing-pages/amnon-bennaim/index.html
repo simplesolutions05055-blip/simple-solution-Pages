@@ -81,7 +81,7 @@ h2{font-size:clamp(1.85rem,4.4vw,2.9rem);line-height:1.18;font-weight:900;margin
 .glass.spot:hover::after{opacity:1}
 
 /* סרגל עליון */
-.top{position:sticky;top:0;z-index:40;padding:12px 0}
+.top{position:sticky;top:0;z-index:40;padding:12px 0;height:80px}
 .top .bar{display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 18px;border-radius:999px}
 .brand{display:flex;align-items:center;gap:10px;text-align:right}
 .brand .seal{width:38px;height:38px;border-radius:50%;background:linear-gradient(180deg,var(--navy2),var(--navy));display:grid;place-items:center;color:#e9edf2;flex:none;box-shadow:inset 0 0 0 1.5px #c3cbd6}
@@ -92,28 +92,41 @@ h2{font-size:clamp(1.85rem,4.4vw,2.9rem);line-height:1.18;font-weight:900;margin
 .top .tel{display:none}
 
 /* גיבור */
-.hero{padding:22px 0 0}
-.portrait{position:relative;width:min(210px,52vw);margin:6px auto 22px}
+.hero{padding:0;margin-top:-80px;color:#eef2f8;background:linear-gradient(180deg,#081630 0%,#0c1f3d 55%,#16305a 78%,var(--pearl) 100%);overflow:hidden;isolation:isolate}
+.hero-video{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.hero-video video.ready{opacity:.55}
+.hero-video::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,22,48,.55) 0%,rgba(12,31,61,.35) 40%,rgba(22,48,90,.55) 72%,var(--pearl) 99%),radial-gradient(70% 60% at 70% 40%,rgba(8,22,48,0),rgba(8,22,48,.55))}
+.hero-inner{display:grid;grid-template-columns:1fr;gap:26px;align-items:center;padding:118px 0 10px}
+.hero-text{text-align:center}
+.hero .eyebrow{color:#c6d2e4}
+.hero .silver-text{background:linear-gradient(110deg,#aebbd0 0%,#ffffff 30%,#c9d3e1 45%,#ffffff 55%,#9fb0c8 75%,#e8edf4 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .btn-main{background:linear-gradient(180deg,#ffffff,#dfe5ee);color:var(--navy);box-shadow:0 14px 34px -12px rgba(0,0,0,.55)}
+.hero .btn-glass{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.35)}
+.hero .chip.glass{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#eef2f8}
+.hero .chip svg{color:#cfe0ff}
+.hero .glass::before{opacity:.35}
+.portrait{position:relative;width:min(210px,52vw);margin:6px auto 10px}
 .portrait .frame{position:relative;aspect-ratio:4/5;border-radius:999px 999px 28px 28px;padding:6px;background:var(--silver);background-size:250% 100%;animation:sheen 7s linear infinite;box-shadow:0 30px 60px -25px rgba(12,31,61,.55)}
 .portrait .frame>div{width:100%;height:100%;border-radius:999px 999px 23px 23px;overflow:hidden;background:#cfd3d8}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 8%;transform:scale(1.04)}
 .portrait .ring{position:absolute;inset:-20px;border-radius:999px 999px 40px 40px;border:1px dashed rgba(23,52,98,.25);animation:spin 40s linear infinite;pointer-events:none}
 @keyframes spin{to{transform:rotate(360deg)}}
-.float-tag{position:absolute;display:flex;align-items:center;gap:8px;padding:7px 11px;border-radius:14px;font-size:.78rem;line-height:1.25;text-align:right;font-weight:700;white-space:nowrap;animation:bob 5s ease-in-out infinite}
+.float-tag{position:absolute;color:var(--navy);display:flex;align-items:center;gap:8px;padding:7px 11px;border-radius:14px;font-size:.78rem;line-height:1.25;text-align:right;font-weight:700;white-space:nowrap;animation:bob 5s ease-in-out infinite}
 .float-tag svg{width:18px;height:18px;color:var(--navy2)}
 .float-tag.t1{top:14%;right:-30%}
 .float-tag.t2{bottom:12%;left:-30%;animation-delay:-2.5s}
 .float-tag .num{font-size:1.35rem;font-weight:900;color:var(--navy2);line-height:1}
 @keyframes bob{50%{transform:translateY(-9px)}}
-.hero h1{font-size:clamp(2rem,5.6vw,3.5rem);line-height:1.14;font-weight:900;letter-spacing:-.6px;max-width:960px;margin:12px auto 16px}
-.hero .sub{font-size:1.18rem;color:var(--navy-soft);max-width:640px;margin:0 auto}
+.hero h1{font-size:clamp(1.95rem,4.2vw,2.95rem);line-height:1.15;font-weight:900;letter-spacing:-.6px;max-width:720px;margin:12px auto 16px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .sub{font-size:1.15rem;color:#d7e0ee;max-width:600px;margin:0 auto}
 .hero-ctas{display:flex;flex-direction:column;align-items:center;gap:12px;margin:26px 0 20px}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:680px;margin:0 auto;list-style:none}
 .chip{display:inline-flex;align-items:center;gap:7px;font-size:.9rem;font-weight:600;padding:8px 14px;border-radius:999px}
 .chip svg{width:15px;height:15px;color:var(--navy2)}
 
 /* כביש */
-.road-svg{display:block;width:min(620px,100%);height:auto;margin:40px auto 0}
+.road-svg{display:block;width:min(620px,100%);height:auto;margin:24px auto 0}
 .road-svg .lane{stroke-dasharray:18 16;animation:lane .8s linear infinite}
 @keyframes lane{to{stroke-dashoffset:-34}}
 .lane-divider{height:2px;width:min(520px,80%);margin:0 auto;background:repeating-linear-gradient(90deg,var(--silver-solid) 0 22px,transparent 22px 40px);background-size:40px 2px;animation:dash 1.4s linear infinite;opacity:.7}
@@ -285,20 +298,20 @@ html.a11y-gray body>*:not(.a11y-panel):not(.a11y-btn){filter:grayscale(1)}
 html.a11y-links a,html.a11y-links .linkbtn{text-decoration:underline!important;text-decoration-thickness:2px!important;background:#fff6c4}
 html.a11y-readable body,html.a11y-readable h1,html.a11y-readable h2,html.a11y-readable h3,html.a11y-readable .btn{font-family:Arial,"Segoe UI",sans-serif!important;letter-spacing:.02em}
 html.a11y-still *,html.a11y-still *::before,html.a11y-still *::after{animation:none!important;transition:none!important}
-html.a11y-still .rv,html.a11y-still .words .w{opacity:1;transform:none;filter:none}
+html.a11y-still .rv,html.a11y-still .words .w{opacity:1;transform:none;}
 html.a11y-still .gauge .needle{transform:rotate(68deg)}
 html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 
 /* חשיפות */
-.rv{opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),filter .8s ease}
-.rv.in{opacity:1;transform:none;filter:none}
-.words .w{display:inline-block;opacity:0;transform:translateY(.45em);filter:blur(8px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1),filter .7s ease;transition-delay:calc(var(--i) * 50ms)}
-.words.in .w{opacity:1;transform:none;filter:none}
+.rv{opacity:0;transform:translateY(34px) scale(.96);transition:opacity .5s ease,transform .75s cubic-bezier(.34,1.56,.64,1)}
+.rv.in{opacity:1;transform:none}
+.words .w{display:inline-block;opacity:0;transform:translateY(.7em) scale(.9);transform-origin:50% 100%;transition:opacity .35s ease,transform .6s cubic-bezier(.34,1.7,.64,1);transition-delay:calc(var(--i) * 45ms)}
+.words.in .w{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rv,.words .w{opacity:1;transform:none;filter:none}
+  .rv,.words .w{opacity:1;transform:none}
   .gauge .needle{transform:rotate(68deg)}
   .stamp{opacity:.85;transform:rotate(-14deg)}
 }
@@ -320,7 +333,14 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
   .a11y-btn{bottom:22px}.a11y-panel{bottom:84px}
   .top .tel{display:inline-flex}
   section{padding:96px 0}
-  .portrait{width:240px}
+  .portrait{width:290px;margin:0 auto}
+  .hero-inner{grid-template-columns:1.25fr .75fr;gap:40px;padding:150px 0 20px}
+  .hero-text{text-align:right}
+  .hero .eyebrow{justify-content:flex-start}
+  .hero h1,.hero .sub{margin-inline:0}
+  .hero-ctas{justify-content:flex-start}
+  .hero .chips{justify-content:flex-start;margin:0}
+  .float-tag.t1{right:-34%}.float-tag.t2{left:-30%}
   .areas-grid{grid-template-columns:repeat(3,1fr)}
   .areas-grid li:last-child{grid-column:2}
   .vid-row{justify-content:center;overflow:visible}
@@ -353,15 +373,13 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 
 <!-- גיבור -->
 <section class="hero" id="top" aria-labelledby="h1">
+  <div class="hero-video" aria-hidden="true">
+    <video id="hero-vid" muted loop playsinline preload="metadata" disablepictureinpicture></video>
+  </div>
   <div class="wrap">
-    <div class="portrait rv">
-      <div class="ring" aria-hidden="true"></div>
-      <div class="frame"><div><img src="/amnon-bennaim/assets/p4.webp" alt="עו״ד אמנון בן נעים בחליפה כהה" width="240" height="300" fetchpriority="high"></div></div>
-      <div class="float-tag glass t1" aria-hidden="true"><span class="num" data-count="30">30</span><span>שנה במשטרת<br>ישראל</span></div>
-      <div class="float-tag glass t2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>ליווי אישי עד הדיון</div>
-    </div>
-
-    <p class="eyebrow rv">עורך דין תעבורה בחדרה</p>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow rv">עורך דין תעבורה בחדרה</p>
     <h1 id="h1" class="words" data-split>קיבלתם דו״ח, פסילה או הזמנה לבית משפט לתעבורה? <span class="silver-text">לפני שמחליטים, בודקים את התיק.</span></h1>
     <p class="sub rv d2">עו״ד אמנון בן נעים עובר על החומר, מסביר לכם בגובה העיניים מה האפשרויות ומה המשמעות של כל אחת, ומלווה אתכם עד הדיון. לפני עריכת הדין שירת כ-30 שנה במשטרת ישראל, בין היתר בתעבורה ובחקירות.</p>
     <div class="hero-ctas rv d3">
@@ -376,7 +394,14 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
       <li class="chip glass"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5 9-10"/></svg>זמינות למקרים דחופים</li>
       <li class="chip glass"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5 9-10"/></svg>מדברים ישירות עם עורך הדין</li>
     </ul>
-
+      </div>
+      <div class="portrait rv">
+      <div class="ring" aria-hidden="true"></div>
+      <div class="frame"><div><img src="/amnon-bennaim/assets/p4.webp" alt="עו״ד אמנון בן נעים בחליפה כהה" width="240" height="300" fetchpriority="high"></div></div>
+      <div class="float-tag glass t1" aria-hidden="true"><span class="num" data-count="30">30</span><span>שנה במשטרת<br>ישראל</span></div>
+      <div class="float-tag glass t2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>ליווי אישי עד הדיון</div>
+    </div>
+    </div>
     <svg class="road-svg" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
       <defs>
         <linearGradient id="rd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#173462" stop-opacity="0"/><stop offset=".35" stop-color="#173462" stop-opacity=".85"/><stop offset="1" stop-color="#0c1f3d"/></linearGradient>
@@ -395,7 +420,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
     <ul class="stats">
       <li class="stat glass spot rv"><div class="num"><span data-count="30">30</span></div><p>שנות שירות<br>במשטרת ישראל</p></li>
       <li class="stat glass spot rv d1"><div class="num"><span data-count="7">7</span></div><p>תחומי טיפול<br>בדיני תעבורה</p></li>
-      <li class="stat glass spot rv d2"><div class="num"><small>עד </small>21:00</div><p>זמינות<br>בימים א-ה</p></li>
+      <li class="stat glass spot rv d2"><div class="num">21:00</div><p>זמינות עד השעה<br>בימים א-ה</p></li>
     </ul>
   </div>
 </section>
@@ -661,6 +686,16 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
   var sysReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function still(){return sysReduce||root.classList.contains('a11y-still');}
 
+  /* ---------- סרטון רקע בגיבור ---------- */
+  (function(){
+    var v=document.getElementById('hero-vid'); if(!v) return;
+    var saveData=navigator.connection&&navigator.connection.saveData;
+    if(sysReduce||saveData) return;
+    v.src='https://media.kolbo.ai/kolboai-media/stock-imports/pexels/69c033b18400d38997e63d00/pexels-28928755.mp4';
+    v.addEventListener('canplay',function(){v.classList.add('ready');var p=v.play();if(p&&p.catch)p.catch(function(){});},{once:true});
+    window.__heroVid=v;
+  })();
+
   /* ---------- רכיב נגישות ---------- */
   var KEY='abn-a11y', st={fs:1,contrast:false,gray:false,links:false,readable:false,still:false};
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved)st=Object.assign(st,saved);}catch(_){}
@@ -686,7 +721,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
       else if(k==='reset')st={fs:1,contrast:false,gray:false,links:false,readable:false,still:false};
       else st[k]=!st[k];
       apply();
-      if(k==='still'&&st.still) finishAll();
+      if(k==='still'&&st.still){finishAll();if(window.__heroVid)window.__heroVid.pause();}
     });
   });
 
