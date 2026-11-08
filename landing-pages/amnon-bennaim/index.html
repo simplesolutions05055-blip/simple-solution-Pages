@@ -11,9 +11,10 @@
 <meta property="og:image" content="https://amnon.simple-solution.co.il/amnon-bennaim/assets/p4.webp">
 <meta name="theme-color" content="#f4f2ec">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230c1f3d'/%3E%3Cpath d='M50 22v54M36 76h28M26 34h48M26 34l-9 20a10 6 0 0018 0zM74 34l-9 20a10 6 0 0018 0z' stroke='%23e9edf2' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="/amnon-bennaim/assets/p4-600.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;700;800;900&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --pearl:#f4f2ec; --pearl2:#fbfaf6;
@@ -238,6 +239,7 @@ details p{color:var(--mute);font-size:1rem;padding-bottom:20px;max-width:620px;m
 
 /* טופס */
 .final-card{padding:40px 20px;max-width:760px;margin:0 auto}
+.final-card>*:not(.fresh){position:relative;z-index:1}
 form{display:grid;gap:14px;max-width:440px;margin:26px auto 0}
 .field label{font-size:.92rem;color:var(--navy-soft);font-weight:600;display:block;margin-bottom:6px}
 .field .opt{font-weight:400;color:var(--mute)}
@@ -248,7 +250,8 @@ select{appearance:none;text-align-last:center}
 .err{display:none;color:var(--err);font-size:.88rem;font-weight:600;margin-top:5px}
 .err.show{display:block}
 .consent{display:flex;gap:10px;align-items:flex-start;justify-content:center;font-size:.9rem;color:var(--mute);text-align:right}
-.consent input{width:20px;height:20px;min-height:0;flex:none;margin-top:3px;accent-color:var(--navy2)}
+.consent{padding:6px 0;cursor:pointer}
+.consent input{width:22px;height:22px;min-height:0;flex:none;margin-top:2px;accent-color:var(--navy2)}
 form .btn{width:100%;margin-top:4px}
 #contact .final-card{overflow:visible}
 .reassure{font-size:.85rem;color:var(--mute);display:flex;align-items:center;justify-content:center;gap:6px}
@@ -257,16 +260,18 @@ form .btn{width:100%;margin-top:4px}
 .form-ok h3{font-family:"Heebo";font-size:1.6rem;font-weight:900}
 .form-ok p{color:var(--mute)}
 .direct{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:22px;font-size:1rem;color:var(--navy-soft)}
-.direct a{display:inline-flex;align-items:center;gap:8px;padding:6px 2px}
+.direct a{display:inline-flex;align-items:center;gap:8px;padding:8px 4px;min-height:44px}
 .direct svg{width:19px;height:19px;color:var(--navy2)}
 
 footer{padding:40px 0 30px;color:var(--mute);font-size:.95rem}
 footer b{color:var(--navy);font-family:"Heebo";font-size:1rem;display:block}
 .foot-grid{display:grid;gap:18px;margin-top:22px}
 footer .legal{margin-top:22px;font-size:.82rem;max-width:640px;margin-inline:auto}
-.linkbtn{background:none;border:0;color:var(--navy2);text-decoration:underline;cursor:pointer;font-size:inherit;padding:4px}
+.linkbtn{background:none;border:0;color:var(--navy2);text-decoration:underline;cursor:pointer;font-size:inherit;padding:10px 6px;min-height:44px}
 
 
+/* שכבות: טקסט תמיד מעל אלמנטים דקורטיביים */
+main section>.wrap{position:relative;z-index:1}
 /* הגה דקורטיבי */
 #areas,#faq{overflow-x:clip}
 .wheel{position:absolute;z-index:-1;width:min(420px,60vw);aspect-ratio:1;pointer-events:none;opacity:.95;filter:drop-shadow(0 30px 40px rgba(12,31,61,.35));will-change:transform}
@@ -275,10 +280,11 @@ footer .legal{margin-top:22px;font-size:.82rem;max-width:640px;margin-inline:aut
 .wheel.l{left:calc(min(420px,60vw) / -2)}
 
 /* עץ ריח */
-.fresh{position:absolute;z-index:2;width:130px;pointer-events:none;transform-origin:50% 0;will-change:transform}
+.fresh{position:absolute;z-index:0;width:130px;pointer-events:none;transform-origin:50% 0;will-change:transform}
 .fresh svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 18px rgba(12,31,61,.3))}
 .fresh text{font-family:"Heebo",sans-serif;font-weight:900;fill:#fff}
 .fresh.f1{top:-6px;left:4%}
+@media (min-width:700px) and (max-width:1149px){.fresh.f1{display:none}}
 .fresh.f2{top:-6px;left:-170px;display:none}
 @media (min-width:1150px){.fresh.f2{display:block}}
 @media (max-width:759px){.fresh.f2{display:none}.fresh{width:92px}.fresh.f1{left:2%}.fresh.f2{right:2%}.wheel{opacity:.5}}
@@ -306,6 +312,11 @@ footer .legal{margin-top:22px;font-size:.82rem;max-width:640px;margin-inline:aut
 .mbar .btn{padding:12px 10px;min-height:48px;font-size:1rem}
 
 /* כפתור ופאנל נגישות */
+.a11y-top{width:44px;height:44px;border-radius:50%;border:0;background:var(--navy2);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.a11y-top svg{width:24px;height:24px}
+@media (max-width:420px){.brand small{display:none}.brand b{font-size:.92rem}.brand .seal{width:32px;height:32px}.top .bar{padding:6px 6px 6px 12px}.top .btn-main{padding:8px 12px;font-size:.85rem;min-height:44px}}
+@media (max-width:759px){.a11y-btn{display:none!important}.a11y-panel{top:84px;bottom:auto}.top .btn-main{padding:10px 14px}}
+@media (min-width:760px){.a11y-top{display:none}}
 .a11y-btn{position:fixed;left:12px;bottom:86px;z-index:60;width:46px;height:46px;border-radius:50%;border:2px solid #fff;background:var(--navy2);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(12,31,61,.6)}
 .a11y-btn svg{width:28px;height:28px}
 .a11y-panel{position:fixed;left:14px;bottom:146px;z-index:61;width:min(300px,calc(100vw - 28px));max-height:70vh;overflow:auto;background:#fff;color:var(--navy);border-radius:18px;box-shadow:0 24px 60px -18px rgba(12,31,61,.55);padding:18px;text-align:right;display:none}
@@ -375,7 +386,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
   .hero-text{text-align:right}
   .hero .eyebrow{justify-content:flex-start}
   .hero h1,.hero .sub{margin-inline:0}
-  .float-tag.t1{right:-34%}.float-tag.t2{left:-30%}
+  .float-tag.t1{right:auto;left:-8%;top:8%}.float-tag.t2{left:auto;right:-10%;bottom:6%}
   .areas-grid{grid-template-columns:repeat(3,1fr)}
   .areas-grid li:last-child{grid-column:2}
   .vid-row{justify-content:center;overflow:visible}
@@ -396,7 +407,8 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
         <span class="seal" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M50 14v70M30 84h40M20 30h60"/><path d="M20 30l-12 26a14 8 0 0024 0zM80 30l-12 26a14 8 0 0024 0z"/></svg></span>
         <span><b>עו״ד אמנון בן נעים</b><small>עורך דין תעבורה | חדרה</small></span>
       </a>
-      <nav aria-label="יצירת קשר" style="display:flex;gap:8px">
+      <nav aria-label="יצירת קשר" style="display:flex;gap:8px;align-items:center">
+        <button type="button" class="a11y-top" data-a11y-toggle aria-label="תפריט נגישות" aria-controls="a11y-panel" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2"/><path d="M19 8.5c-2.3.6-4.6.9-7 .9s-4.7-.3-7-.9l-.5 1.9c1.8.5 3.6.8 5.5.9V14l-2 7h2.1l1.9-5.6L13.9 21H16l-2-7v-2.7c1.9-.1 3.7-.4 5.5-.9z"/></svg></button>
         <a class="btn btn-glass tel" href="tel:0506233081" aria-label="חיוג למשרד: 050-6233081">050-6233081</a>
         <a class="btn btn-main" href="#contact">לבדיקת התיק</a>
       </nav>
@@ -421,7 +433,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
       </div>
       <div class="portrait rv">
       <div class="ring" aria-hidden="true"></div>
-      <div class="frame"><div><img src="/amnon-bennaim/assets/p4.webp" alt="עו״ד אמנון בן נעים בחליפה כהה" width="240" height="300" fetchpriority="high"></div></div>
+      <div class="frame"><div><img src="/amnon-bennaim/assets/p4-600.webp" alt="עו״ד אמנון בן נעים בחליפה כהה" width="600" height="895" fetchpriority="high"></div></div>
       <div class="float-tag glass t1" aria-hidden="true"><span class="num" data-count="30">30</span><span>שנה במשטרת<br>ישראל</span></div>
       <div class="float-tag glass t2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>ליווי אישי עד הדיון</div>
     </div>
@@ -694,7 +706,7 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
 </div>
 
 <!-- רכיב נגישות -->
-<button type="button" class="a11y-btn" id="a11y-btn" aria-label="תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
+<button type="button" class="a11y-btn" id="a11y-btn" data-a11y-toggle aria-label="תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
   <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2"/><path d="M19 8.5c-2.3.6-4.6.9-7 .9s-4.7-.3-7-.9l-.5 1.9c1.8.5 3.6.8 5.5.9V14l-2 7h2.1l1.9-5.6L13.9 21H16l-2-7v-2.7c1.9-.1 3.7-.4 5.5-.9z"/></svg>
 </button>
 <div class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title">
@@ -746,9 +758,17 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
     var v=document.getElementById('hero-vid'); if(!v) return;
     var saveData=navigator.connection&&navigator.connection.saveData;
     if(sysReduce||saveData) return;
-    v.src='https://media.kolbo.ai/kolboai-media/stock-imports/pexels/69c033b18400d38997e63d00/pexels-28928755.mp4';
-    v.addEventListener('canplay',function(){v.classList.add('ready');var p=v.play();if(p&&p.catch)p.catch(function(){});},{once:true});
+    var small=window.matchMedia('(max-width:759px)').matches;
+    var src=small?'https://videos.pexels.com/video-files/28928755/12519830_960_540_30fps.mp4':'https://videos.pexels.com/video-files/28928755/12519831_1280_720_30fps.mp4';
+    var fallback='https://media.kolbo.ai/kolboai-media/stock-imports/pexels/69c033b18400d38997e63d00/pexels-28928755.mp4';
+    function start(){
+      v.addEventListener('error',function(){if(v.src!==fallback){v.src=fallback;}},{once:false});
+      v.addEventListener('canplay',function(){v.classList.add('ready');if(!root.classList.contains('a11y-still')){var p=v.play();if(p&&p.catch)p.catch(function(){});}},{once:true});
+      v.preload='auto'; v.src=src;
+    }
+    if(document.readyState==='complete') setTimeout(start,300); else window.addEventListener('load',function(){setTimeout(start,300);});
     window.__heroVid=v;
+    if('IntersectionObserver' in window) new IntersectionObserver(function(en){if(!v.classList.contains('ready'))return;if(en[0].isIntersecting&&!root.classList.contains('a11y-still'))v.play().catch(function(){});else v.pause();}).observe(v);
   })();
 
   /* ---------- רכיב נגישות ---------- */
@@ -763,9 +783,10 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
     try{localStorage.setItem(KEY,JSON.stringify(st));}catch(_){}
   }
   apply();
-  var panel=document.getElementById('a11y-panel'),abtn=document.getElementById('a11y-btn');
-  function togglePanel(open){panel.classList.toggle('open',open);abtn.setAttribute('aria-expanded',open?'true':'false');if(open)panel.querySelector('[data-a11y]').focus();else abtn.focus();}
-  abtn.addEventListener('click',function(){togglePanel(!panel.classList.contains('open'));});
+  var panel=document.getElementById('a11y-panel'),triggers=[].slice.call(document.querySelectorAll('[data-a11y-toggle]')),lastTrig=triggers[0];
+  function visibleTrig(){return triggers.filter(function(t){return t.offsetParent!==null||getComputedStyle(t).position==='fixed'&&getComputedStyle(t).display!=='none';})[0]||triggers[0];}
+  function togglePanel(open,from){panel.classList.toggle('open',open);triggers.forEach(function(t){t.setAttribute('aria-expanded',open?'true':'false');});if(from)lastTrig=from;if(open)panel.querySelector('[data-a11y]').focus();else (lastTrig||visibleTrig()).focus();}
+  triggers.forEach(function(t){t.addEventListener('click',function(){togglePanel(!panel.classList.contains('open'),t);});});
   document.getElementById('a11y-close').addEventListener('click',function(){togglePanel(false);});
   panel.addEventListener('keydown',function(e){if(e.key==='Escape')togglePanel(false);});
   panel.querySelectorAll('[data-a11y]').forEach(function(b){
