@@ -126,7 +126,9 @@ h2{font-size:clamp(1.85rem,4.4vw,2.9rem);line-height:1.18;font-weight:900;margin
 .chip svg{width:15px;height:15px;color:var(--navy2)}
 
 /* כביש */
-.road-svg{display:block;width:min(620px,100%);height:auto;margin:24px auto 0}
+.hero-actions{text-align:center;padding-top:6px}
+.hero-actions .hero-ctas{margin:18px 0 18px}
+.road-svg{display:block;width:min(620px,100%);height:auto;margin:18px auto 0}
 .road-svg .lane{stroke-dasharray:18 16;animation:lane .8s linear infinite}
 @keyframes lane{to{stroke-dashoffset:-34}}
 .lane-divider{height:2px;width:min(520px,80%);margin:0 auto;background:repeating-linear-gradient(90deg,var(--silver-solid) 0 22px,transparent 22px 40px);background-size:40px 2px;animation:dash 1.4s linear infinite;opacity:.7}
@@ -338,8 +340,6 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
   .hero-text{text-align:right}
   .hero .eyebrow{justify-content:flex-start}
   .hero h1,.hero .sub{margin-inline:0}
-  .hero-ctas{justify-content:flex-start}
-  .hero .chips{justify-content:flex-start;margin:0}
   .float-tag.t1{right:-34%}.float-tag.t2{left:-30%}
   .areas-grid{grid-template-columns:repeat(3,1fr)}
   .areas-grid li:last-child{grid-column:2}
@@ -382,7 +382,17 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
         <p class="eyebrow rv">עורך דין תעבורה בחדרה</p>
     <h1 id="h1" class="words" data-split>קיבלתם דו״ח, פסילה או הזמנה לבית משפט לתעבורה? <span class="silver-text">לפני שמחליטים, בודקים את התיק.</span></h1>
     <p class="sub rv d2">עו״ד אמנון בן נעים עובר על החומר, מסביר לכם בגובה העיניים מה האפשרויות ומה המשמעות של כל אחת, ומלווה אתכם עד הדיון. לפני עריכת הדין שירת כ-30 שנה במשטרת ישראל, בין היתר בתעבורה ובחקירות.</p>
-    <div class="hero-ctas rv d3">
+    
+      </div>
+      <div class="portrait rv">
+      <div class="ring" aria-hidden="true"></div>
+      <div class="frame"><div><img src="/amnon-bennaim/assets/p4.webp" alt="עו״ד אמנון בן נעים בחליפה כהה" width="240" height="300" fetchpriority="high"></div></div>
+      <div class="float-tag glass t1" aria-hidden="true"><span class="num" data-count="30">30</span><span>שנה במשטרת<br>ישראל</span></div>
+      <div class="float-tag glass t2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>ליווי אישי עד הדיון</div>
+    </div>
+    </div>
+    <div class="hero-actions">
+      <div class="hero-ctas rv d3">
       <a class="btn btn-main" href="#contact">לבדיקת התיק שלי
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
       <a class="btn btn-glass" href="https://wa.me/972506233081?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%91%D7%A2%D7%A0%D7%99%D7%99%D7%9F%20%D7%AA%D7%A2%D7%91%D7%95%D7%A8%D7%94" target="_blank" rel="noopener" aria-label="לשיחה בוואטסאפ (נפתח בחלון חדש)">
@@ -394,13 +404,6 @@ html.a11y-still .stamp{opacity:.85;transform:rotate(-14deg)}
       <li class="chip glass"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5 9-10"/></svg>זמינות למקרים דחופים</li>
       <li class="chip glass"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5 9-10"/></svg>מדברים ישירות עם עורך הדין</li>
     </ul>
-      </div>
-      <div class="portrait rv">
-      <div class="ring" aria-hidden="true"></div>
-      <div class="frame"><div><img src="/amnon-bennaim/assets/p4.webp" alt="עו״ד אמנון בן נעים בחליפה כהה" width="240" height="300" fetchpriority="high"></div></div>
-      <div class="float-tag glass t1" aria-hidden="true"><span class="num" data-count="30">30</span><span>שנה במשטרת<br>ישראל</span></div>
-      <div class="float-tag glass t2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>ליווי אישי עד הדיון</div>
-    </div>
     </div>
     <svg class="road-svg" viewBox="0 0 600 150" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
       <defs>
