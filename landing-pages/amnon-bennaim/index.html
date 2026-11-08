@@ -489,8 +489,7 @@ footer .legal a{text-decoration:underline}
         <label class="consent"><input type="checkbox" id="f-ok" required>אני מאשר/ת שיחזרו אליי בנוגע לפנייה</label>
         <button class="btn btn-main" type="submit">לחזרה מעורך הדין</button>
       </form>
-      <div class="form-ok" id="ok"><h3>הפנייה התקבלה</h3><p>נחזור אליכם בהקדם. רוצים לזרז? שלחו את הפרטים גם בוואטסאפ.</p><a class="btn btn-wa" id="wa-after" href="https://wa.me/972506233081" target="_blank" rel="noopener" style="margin-top:14px">לשליחה בוואטסאפ</a></div>
-      <p class="form-err" id="err" style="display:none;color:#b4232c;font-size:15px;margin-top:10px">משהו השתבש בשליחה. אפשר להתקשר ל-050-6233081 או לכתוב בוואטסאפ.</p>
+      <div class="form-ok" id="ok"><h3>הפנייה התקבלה</h3><p>פותחים לכם וואטסאפ עם הפרטים מוכנים. רק לשלוח.</p><a class="btn btn-wa" id="wa-after" href="https://wa.me/972506233081" rel="noopener" style="margin-top:14px">לשליחה בוואטסאפ</a></div>
       <div class="direct">
         <a href="tel:0506233081"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>050-6233081</a>
         <a href="https://waze.com/ul?q=הרב עובדיה יוסף 9 חדרה" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>הרב עובדיה יוסף 9, חדרה</a>
@@ -507,7 +506,7 @@ footer .legal a{text-decoration:underline}
       <div><b>פרטי קשר</b>הרב עובדיה יוסף 9, חדרה<br>050-6233081</div>
       <div><b>שעות פעילות</b>א-ה: 09:00-21:00<br>ו: 09:00 עד כניסת שבת<br>שבת: מקרי חירום</div>
     </div>
-    <p class="legal">המידע בעמוד זה הוא מידע כללי ואינו מהווה ייעוץ משפטי או תחליף לו. כל מקרה נבחן לפי נסיבותיו. הפרטים שנשלחים בטופס משמשים לחזרה אליכם בלבד.</p>
+    <p class="legal">המידע בעמוד זה הוא מידע כללי ואינו מהווה ייעוץ משפטי או תחליף לו. כל מקרה נבחן לפי נסיבותיו. הפרטים שנשלחים בטופס מועברים למשרד עו״ד אמנון בן נעים לצורך חזרה אליכם בלבד.</p>
   </div>
 </footer>
 
@@ -602,10 +601,10 @@ footer .legal a{text-decoration:underline}
     });
   });
 
-  // טופס - שמירה במסד ופתיחת וואטסאפ כגיבוי
-  var SB_URL='https://odidefurcrumgmqcwyjm.supabase.co/rest/v1/landing_leads';
-  var SB_KEY='sb_publishable_J4lXoYKEElpeiAJ8wcSY2Q_A2HL1O_2';
-  var utm={};try{new URLSearchParams(location.search).forEach(function(v,k){if(/^(utm_|fbclid|gclid)/.test(k))utm[k]=String(v).slice(0,150)});}catch(_){}
+  // טופס - הליד נשלח ישירות לעורך הדין: מייל + וואטסאפ
+  var LAWYER_EMAIL='';               // מייל המשרד - יוזן לאחר קבלתו
+  var LAWYER_WA='972506233081';
+  var utm=[];try{new URLSearchParams(location.search).forEach(function(v,k){if(/^(utm_|fbclid|gclid)/.test(k))utm.push(k+'='+String(v).slice(0,80))});}catch(_){}
   var form=document.getElementById('lead');
   form.addEventListener('submit',function(e){
     e.preventDefault();
@@ -616,17 +615,22 @@ footer .legal a{text-decoration:underline}
     if(phone.replace(/\D/g,'').length<9){ph.style.borderColor='#b4232c';bad=true;}
     ok.parentElement.style.color=ok.checked?'':'#b4232c'; if(!ok.checked) bad=true;
     if(bad) return;
+    var name=n.value.trim().slice(0,120), topic=ty.value||'';
+    var msg='שלום עו״ד בן נעים, הגעתי מדף הנחיתה.\nשם: '+name+'\nטלפון: '+phone+(topic?'\nנושא: '+topic:'')+'\nאשמח שתחזרו אליי.';
+    var wa='https://wa.me/'+LAWYER_WA+'?text='+encodeURIComponent(msg);
+    document.getElementById('wa-after').href=wa;
     var btn=form.querySelector('button');btn.disabled=true;btn.textContent='שולח...';
-    var body={client_slug:'amnon-bennaim',name:n.value.trim().slice(0,120),phone:phone.slice(0,30),topic:ty.value||null,page_url:location.href.slice(0,500),utm:Object.keys(utm).length?utm:null};
-    var msg='שלום, אני '+body.name+'. אשמח לייעוץ'+(body.topic?' בנושא: '+body.topic:'')+'. טלפון: '+body.phone;
-    document.getElementById('wa-after').href='https://wa.me/972506233081?text='+encodeURIComponent(msg);
-    var ctrl=('AbortController' in window)?new AbortController():null; var to=setTimeout(function(){ctrl&&ctrl.abort()},10000);
-    fetch(SB_URL,{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(body),signal:ctrl&&ctrl.signal})
-      .then(function(r){clearTimeout(to);if(!r.ok) throw new Error(r.status);
-        form.style.display='none';document.getElementById('ok').style.display='block';
-        try{window.dataLayer&&window.dataLayer.push({event:'lead_submit'});window.fbq&&window.fbq('track','Lead');}catch(_){}
-      })
-      .catch(function(){clearTimeout(to);btn.disabled=false;btn.textContent='לחזרה מעורך הדין';document.getElementById('err').style.display='block';});
+    function done(){
+      form.style.display='none';document.getElementById('ok').style.display='block';
+      try{window.dataLayer&&window.dataLayer.push({event:'lead_submit'});window.fbq&&window.fbq('track','Lead');}catch(_){}
+      setTimeout(function(){location.href=wa;},900);
+    }
+    if(!LAWYER_EMAIL){done();return;}
+    var ctrl=('AbortController' in window)?new AbortController():null, to=setTimeout(function(){ctrl&&ctrl.abort()},8000);
+    fetch('https://formsubmit.co/ajax/'+LAWYER_EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},signal:ctrl&&ctrl.signal,
+      body:JSON.stringify({'_subject':'ליד חדש מדף הנחיתה - '+name,'_template':'table','_captcha':'false','שם':name,'טלפון':phone,'נושא':topic||'לא צוין','מקור':utm.join(' | ')||'כניסה ישירה','עמוד':location.href.split('?')[0]})})
+      .then(function(){clearTimeout(to);done();})
+      .catch(function(){clearTimeout(to);done();});
   });
 })();
 </script>
