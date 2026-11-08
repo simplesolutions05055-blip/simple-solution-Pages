@@ -40,6 +40,16 @@
       "has": [
         {
           "type": "host",
+          "value": "amnon.simple-solution.co.il"
+        }
+      ],
+      "destination": "/amnon-bennaim/index.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
           "value": "amir.simple-solution.co.il"
         }
       ],
