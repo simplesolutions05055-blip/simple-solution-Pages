@@ -264,6 +264,48 @@ input[type=range]{width:100%;accent-color:var(--gold);margin-top:8px;height:28px
 .lead-mini{display:none;grid-column:1/-1;background:#fff;border-radius:18px;padding:16px;box-shadow:0 6px 18px -12px rgba(10,26,58,.35)}
 .lead-mini.on{display:block;animation:fadeIn .4s}
 
+/* מחשבון 2 */
+.qbox{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 6px 18px -12px rgba(10,26,58,.35)}
+.seg.big button{min-width:96px;font-size:1.05rem;min-height:50px}
+.loan{grid-template-columns:auto repeat(4,minmax(0,1fr)) auto}
+.money.nm input,.money.pc input{padding-left:12px}
+.money.nm::after{content:""}
+.money.pc::after{content:"%"}
+.money.pc input::placeholder{font-size:.8rem;font-weight:600}
+.live{margin-top:14px;background:rgba(10,26,58,.05);border-radius:14px;padding:12px;text-align:center;font-weight:700}
+.live:empty{display:none}
+.live b{font-family:Heebo;color:var(--navy2)}
+.res-head{font-family:Heebo;font-weight:800;font-size:clamp(1.15rem,3vw,1.5rem);text-align:center;margin-bottom:12px}
+.res-head b{background:var(--goldgrad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.tracks{justify-content:center;margin-bottom:12px}
+.cmp-wrap{overflow-x:auto}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 6px 18px -12px rgba(10,26,58,.35)}
+.cmp th{font-family:Heebo;padding:10px;background:var(--navy);color:#fff;font-size:.95rem}
+.cmp th:last-child{background:linear-gradient(160deg,var(--navy2),var(--navy));color:var(--gold-l)}
+.cmp th small{display:block;font-family:Assistant;font-weight:600;font-size:.75rem;color:#cdd6e6}
+.cmp td{padding:10px;border-top:1px solid #edf0f4;text-align:center;font-weight:700}
+.cmp td:first-child{text-align:right;color:var(--mute);font-weight:700}
+.cmp td.b{color:#9a2a2a}
+.cmp td.a{color:#1f6b3f;background:#f6fbf7}
+.lead-q{font-family:Heebo;font-weight:800;text-align:center;margin-bottom:10px}
+.lead-mini{margin-top:14px}
+.pain{padding:34px;text-align:center;max-width:760px;margin:0 auto}
+.pain-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0;text-align:right}
+.pain-list li{background:#fff;border-radius:14px;padding:12px 16px;font-weight:700;box-shadow:0 4px 14px -10px rgba(10,26,58,.3);display:flex;gap:10px;align-items:center}
+.pain-list li::before{content:"";width:10px;height:10px;border-radius:50%;background:#c0504d;flex:none}
+.pain-close{font-family:Heebo;font-weight:900;font-size:1.3rem;margin-bottom:16px}
+.urg{background:linear-gradient(135deg,#7a1f1f,#3d0f14);color:#fff;border-radius:28px;padding:40px 28px;text-align:center}
+.urg h2{color:#fff}
+.urg p{font-size:1.2rem;color:#f3d9d9;max-width:640px;margin:0 auto}
+.urg p b{color:#fff;font-family:Heebo;font-size:1.3em}
+.under{text-align:center;color:var(--mute);font-weight:600;font-size:.95rem}
+@media (max-width:720px){
+  .loan{grid-template-columns:1fr 1fr!important;position:relative}
+  .loan .lt{grid-column:1/-1!important}
+  .loan .rm{position:absolute;top:10px;left:10px}
+  .pain-list{grid-template-columns:1fr}
+  .cmp th,.cmp td{padding:8px 6px;font-size:.88rem}
+}
 /* טופס */
 .form{display:grid;gap:12px;text-align:right}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -421,6 +463,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .dock{display:flex}
   .fee{padding:44px 20px}
   .stats{margin-top:-30px}
+  .hero h1{font-size:clamp(1.4rem,6.4vw,1.9rem)}
+  .hero h1 .gold-text{display:block;white-space:nowrap}
   .summary b{font-size:1.05rem}
   .stats .grid{grid-template-columns:repeat(3,1fr);gap:8px}
   .stat{padding:14px 6px}
@@ -457,176 +501,125 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <div>
-      <h1>איחוד הלוואות עם מי שמכיר <span class="gold-text" style="white-space:nowrap">את הבנק מבפנים</span></h1>
-      <p class="sub">יוצא המערכת הבנקאית עם 12 שנות ניסיון בעולם האשראי. בודקים איך לאחד את ההלוואות להחזר חודשי אחד ומשלמים שכר טרחה רק אחרי שהכסף נכנס לחשבון.</p>
+      <h1>ההלוואות חונקות אתכם? <span class="gold-text">בואו נוריד את ההחזר החודשי</span></h1>
+      <p class="sub">מאחדים את כל ההלוואות להחזר אחד ובודקים לכם ריבית נמוכה יותר. עמית גל כהן · 12 שנות ניסיון בעולם האשראי</p>
       <div class="cta">
-        <a class="btn btn-gold" href="#calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M8 16h2M12 16h4"/></svg>לחישוב ההחזר שלי</a>
-        <a class="btn btn-glass" href="#check">לבדיקה ללא עלות</a>
+        <a class="btn btn-gold" href="#calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M8 16h2M12 16h4"/></svg>לחישוב ההחזר החדש שלי</a>
+        <a class="btn btn-glass" href="#check">לשיחת התאמה ללא עלות</a>
       </div>
       <ul class="ticks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>שיחת ייעוץ ללא עלות</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>אין עסקה אין שכר טרחה</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>ליווי אישי וזמין</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>בדיקה ללא עלות</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>שכר טרחה רק אחרי שהכסף בחשבון</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>ליווי אישי מול עמית</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<section class="stats">
-  <div class="wrap grid">
-    <div class="glass stat spot rv"><span class="num gold-text" data-count="12">12</span><p>שנות ניסיון בעולם האשראי</p></div>
-    <div class="glass stat spot rv"><span class="num">0 ₪</span><p>לשיחת הייעוץ והבדיקה</p></div>
-    <div class="glass stat spot rv"><span class="num gold-text">1</span><p>החזר חודשי אחד במקום כמה</p></div>
-  </div>
-</section>
-
-<section id="situation">
-  <div class="wrap">
-    <h2 class="rv">מה המצב שלכם היום</h2>
-    <p class="lead rv">בחרו את מה שהכי מתאר אתכם ונמשיך משם</p>
-    <div class="cards">
-      <button class="glass sc spot rv" data-reason="כמה הלוואות במקביל"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="13" height="9" rx="2"/><rect x="8" y="10" width="13" height="9" rx="2"/></svg></span><b>כמה הלוואות במקביל</b><span>חיובים שונים בתאריכים שונים</span></button>
-      <button class="glass sc spot rv" data-reason="החזר חודשי גבוה מדי"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><b>החזר חודשי גבוה</b><span>לא נשאר מספיק לחודש</span></button>
-      <button class="glass sc spot rv" data-reason="מינוס קבוע בחשבון"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></span><b>מינוס קבוע</b><span>החשבון לא יוצא מהאדום</span></button>
-      <button class="glass sc spot rv" data-reason="הלוואות בריבית גבוהה"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span><b>ריבית גבוהה</b><span>הלוואות חוץ בנקאיות או אשראי</span></button>
-      <button class="glass sc spot rv" data-reason="סורבתי בעבר בבנק"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-6 9 6M5 10v9M19 10v9M9 10v9M15 10v9M3 21h18"/></svg></span><b>סורבתי בבנק</b><span>כבר ניסיתי ולא הלך</span></button>
-      <button class="glass sc spot rv" data-reason="דירוג אשראי נמוך"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l-4-5"/></svg></span><b>דירוג אשראי נמוך</b><span>לא בטוח מה הבנק יגיד</span></button>
-    </div>
-  </div>
-</section>
-
-<section id="problem">
-  <div class="wrap split">
-    <div>
-      <h2 class="rv">כמה הלוואות זה כמה חיובים שאוכלים את החודש</h2>
-      <p class="lead rv">הלוואה מהבנק. הלוואה לרכב. עסקה בכרטיס האשראי. מינוס שלא נסגר. לכל אחת ריבית משלה ותאריך חיוב משלו, ובסוף החודש קשה להבין לאן הכסף הלך.</p>
-    </div>
-    <div class="glass debts rv" aria-label="דוגמה לכמה חיובים במקביל">
-      <div class="debt"><i style="background:#5b7fc0"></i><span><b>הלוואה בנקאית</b><small>חיוב ב-2 לחודש</small></span><em>חיוב</em></div>
-      <div class="debt"><i style="background:#3aa38a"></i><span><b>הלוואת רכב</b><small>חיוב ב-10 לחודש</small></span><em>חיוב</em></div>
-      <div class="debt"><i style="background:#d9822b"></i><span><b>הלוואה בכרטיס אשראי</b><small>חיוב ב-15 לחודש</small></span><em>חיוב</em></div>
-      <div class="debt"><i style="background:#c0504d"></i><span><b>מינוס בחשבון</b><small>ריבית כל יום</small></span><em>ריבית</em></div>
-    </div>
-  </div>
-</section>
-
-<section id="merge">
-  <div class="wrap">
-    <h2 class="rv">הרבה חיובים הופכים להחזר חודשי אחד</h2>
-    <p class="lead rv">בודקים את כל ההלוואות שלכם ומחפשים הלוואה אחת שסוגרת אותן. במקום כמה חיובים יש תשלום אחד ברור.</p>
-    <div class="merge" id="mergeViz" aria-hidden="true">
-      <div class="bars">
-        <div class="bar" style="height:70px;background:#5b7fc0"></div>
-        <div class="bar" style="height:110px;background:#3aa38a"></div>
-        <div class="bar" style="height:90px;background:#d9822b"></div>
-        <div class="bar" style="height:130px;background:#c0504d"></div>
-      </div>
-      <div class="one"><span>החזר אחד</span></div>
-      <div class="base"></div>
-      <div class="lbl">גללו וראו את ההלוואות מתאחדות</div>
-    </div>
-    <div class="benefits">
-      <div class="glass bf spot rv"><b>תשלום אחד</b><p>חיוב אחד בחודש במקום כמה תאריכים וכמה גופים</p></div>
-      <div class="glass bf spot rv"><b>בדיקת תנאים טובים יותר</b><p>מחפשים ריבית ותקופה שמתאימות למצב שלכם היום</p></div>
-      <div class="glass bf spot rv"><b>סדר בחשבון</b><p>יודעים בדיוק כמה יוצא כל חודש ולמה</p></div>
     </div>
   </div>
 </section>
 
 <section id="calc" class="calc-sec">
   <div class="wrap">
-    <h2 class="rv">בדקו כמה יכול לרדת ההחזר החודשי שלכם</h2>
-    <p class="lead rv">שלושה שלבים קצרים. בלי פרטים מזהים ובלי התחייבות.</p>
+    <h2 class="rv">בדקו כמה יכול לרדת ההחזר שלכם</h2>
+    <p class="lead rv">דקה אחת. בלי פרטים מזהים.</p>
 
     <div class="glass calc rv" id="calcBox">
       <aside class="calc-side">
-        <div class="bubble" id="calcSay">בחרו את סוגי ההלוואות שיש לכם. אפשר כמה שרוצים</div>
+        <div class="bubble" id="calcSay">שתי שאלות קצרות ומתחילים</div>
         <div class="mascot" data-pose="point" id="calcMascot"></div>
         <ol class="steps-bar" aria-label="שלבי המחשבון">
-          <li class="on" data-s="1"><i>1</i><span>ההלוואות שלכם</span></li>
-          <li data-s="2"><i>2</i><span>קצת עליכם</span></li>
+          <li class="on" data-s="1"><i>1</i><span>שתי שאלות</span></li>
+          <li data-s="2"><i>2</i><span>ההלוואות שלכם</span></li>
           <li data-s="3"><i>3</i><span>התוצאה</span></li>
         </ol>
       </aside>
 
       <div class="calc-main">
-        <!-- שלב 1 -->
         <div class="pane on" data-pane="1">
+          <h3>שתי שאלות קצרות</h3>
+          <p class="hint">זה קובע אילו מסלולים פתוחים בפניכם</p>
+          <div class="row2">
+            <div class="qbox">
+              <span class="seg-l" id="homeL">יש לכם דירה או נכס בבעלותכם?</span>
+              <div class="seg big" role="group" aria-labelledby="homeL" id="home">
+                <button type="button" aria-pressed="false" data-v="1">כן</button>
+                <button type="button" aria-pressed="false" data-v="0">לא</button>
+              </div>
+            </div>
+            <div class="qbox">
+              <span class="seg-l" id="carL">יש לכם מימון על הרכב?</span>
+              <div class="seg big" role="group" aria-labelledby="carL" id="car">
+                <button type="button" aria-pressed="false" data-v="1">כן</button>
+                <button type="button" aria-pressed="false" data-v="0">לא</button>
+              </div>
+            </div>
+          </div>
+          <p class="err-msg" id="err0" role="alert"></p>
+          <div class="nav" style="margin-top:auto;padding-top:16px"><span></span><button class="btn btn-main" id="to2">להמשך<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+        </div>
+
+        <div class="pane" data-pane="2">
           <h3>אילו הלוואות יש לכם</h3>
-          <p class="hint">לחיצה על סוג מוסיפה שורה. ממלאים יתרה לסילוק והחזר חודשי</p>
+          <p class="hint">לחיצה על סוג מוסיפה שורה. את הריבית אפשר להשאיר ריקה</p>
           <div class="types" id="types"></div>
           <div class="loans" id="loans"></div>
           <div class="empty" id="emptyNote">עוד לא הוספתם הלוואות</div>
-          <div class="summary" aria-live="polite">
-            <div><small>מספר הלוואות</small><b id="sCount">0</b></div>
-            <div><small>סך היתרות</small><b id="sBal">0 ₪</b></div>
-            <div><small>החזר חודשי היום</small><b id="sPay">0 ₪</b></div>
-          </div>
+          <div class="live" id="live" aria-live="polite"></div>
           <p class="err-msg" id="err1" role="alert"></p>
-          <div class="nav"><span></span><button class="btn btn-main" id="to2">להמשך<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+          <div class="nav"><button class="btn btn-ghost" id="back1">חזרה</button><button class="btn btn-gold" id="to3">לחישוב<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button></div>
         </div>
 
-        <!-- שלב 2 -->
-        <div class="pane" data-pane="2">
-          <h3>קצת עליכם</h3>
-          <p class="hint">הנתונים האלה משפיעים על התקופה והמסלול האפשריים</p>
-          <div class="row2">
-            <div class="age-box">
-              <div class="age-head"><label for="age">גיל</label><output id="ageOut" for="age">40</output></div>
-              <input type="range" id="age" min="21" max="75" value="40">
-            </div>
-            <div>
-              <span class="seg-l" id="famL">מצב משפחתי</span>
-              <div class="seg" role="group" aria-labelledby="famL" id="fam">
-                <button type="button" aria-pressed="false">רווק/ה</button>
-                <button type="button" aria-pressed="true">נשוי/אה</button>
-                <button type="button" aria-pressed="false">גרוש/ה</button>
-                <button type="button" aria-pressed="false">אלמן/ה</button>
-              </div>
-            </div>
-            <div>
-              <span class="seg-l" id="homeL">דירה בבעלותכם</span>
-              <div class="seg" role="group" aria-labelledby="homeL" id="home">
-                <button type="button" aria-pressed="false" data-v="1">כן</button>
-                <button type="button" aria-pressed="true" data-v="0">לא</button>
-              </div>
-              <p class="auto-note" id="homeNote" hidden>סימנו "כן" כי הוספתם משכנתא</p>
-            </div>
-          </div>
-          <div class="nav" style="margin-top:auto;padding-top:20px">
-            <button class="btn btn-ghost" id="back1">חזרה</button>
-            <button class="btn btn-gold" id="to3">לחישוב<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button>
-          </div>
-        </div>
-
-        <!-- שלב 3 -->
         <div class="pane" data-pane="3">
-          <h3>ההערכה שלכם</h3>
-          <p class="hint" id="resHint">ההלוואות לאיחוד בלי המשכנתא</p>
-          <div class="result" id="result">
-            <div class="rbox now"><small>החזר חודשי היום</small><b id="rNow">0 ₪</b></div>
-            <div class="rbox new"><small>החזר משוער אחרי איחוד</small><b id="rNew">0 ₪</b></div>
-            <div class="rbars" aria-hidden="true"><div class="a" id="barA" style="height:0"><span>היום</span></div><div class="b" id="barB" style="height:0"><span>אחרי איחוד</span></div></div>
-            <div class="save" id="rSave"></div>
-            <div class="lead-mini" id="leadMini">
-              <form class="form" id="calcForm" novalidate>
-                <div class="two">
-                  <div class="inp"><label for="cName">שם מלא</label><input id="cName" autocomplete="name" required><span class="e"></span></div>
-                  <div class="inp"><label for="cPhone">טלפון נייד</label><input id="cPhone" type="tel" inputmode="tel" autocomplete="tel" required><span class="e"></span></div>
-                </div>
-                <label class="chk"><input type="checkbox" id="cOk" required><span>אני מאשר/ת לעמית ליצור איתי קשר לגבי הפנייה. נתוני המחשבון יישלחו אליו כדי שיגיע לשיחה מוכן</span></label>
-                <button class="btn btn-main" type="submit">לבדיקה מדויקת ללא עלות</button>
-              </form>
-              <div class="thanks" id="calcThanks"><div class="mascot" data-pose="happy"></div><h3>קיבלנו! עמית יחזור אליכם</h3><p>רוצים לזרז? שלחו לו הודעה</p><a class="btn btn-wa" style="margin-top:10px" href="https://wa.me/972542761216" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div>
-            </div>
+          <p class="res-head" id="resHead"></p>
+          <div class="tracks seg" role="group" aria-label="מסלול" id="track">
+            <button type="button" aria-pressed="true" data-v="low">החזר חודשי נמוך</button>
+            <button type="button" aria-pressed="false" data-v="fast">סיום מהיר</button>
           </div>
-          <p class="disc">אינדיקציה בלבד לפי ההנחות של המחשבון. זו לא הצעה לאשראי ולא התחייבות. ההחזר בפועל נקבע על ידי הגוף המממן אחרי בדיקה. פריסה לתקופה ארוכה יותר מורידה את ההחזר החודשי אבל יכולה להגדיל את סך התשלומים.</p>
-          <div class="nav" id="nav3">
-            <button class="btn btn-ghost" id="back2">לשינוי הנתונים</button>
-            <button class="btn btn-main" id="openLead">לבדיקה מדויקת ללא עלות</button>
+          <div class="cmp-wrap">
+            <table class="cmp">
+              <thead><tr><th></th><th>המצב היום</th><th>אחרי איחוד<small>הערכה</small></th></tr></thead>
+              <tbody id="cmpBody"></tbody>
+            </table>
           </div>
+          <div class="lead-mini" id="leadMini">
+            <p class="lead-q">רוצים את המספר המדויק? השאירו פרטים לשיחת התאמה ללא עלות</p>
+            <form class="form" id="calcForm" novalidate>
+              <div class="two">
+                <div class="inp"><label for="cName">שם מלא</label><input id="cName" autocomplete="name" required><span class="e"></span></div>
+                <div class="inp"><label for="cPhone">טלפון נייד</label><input id="cPhone" type="tel" inputmode="tel" autocomplete="tel" required><span class="e"></span></div>
+              </div>
+              <label class="chk"><input type="checkbox" id="cOk" required><span>אני מאשר/ת לעמית ליצור איתי קשר. נתוני המחשבון יישלחו אליו כדי שיגיע לשיחה מוכן</span></label>
+              <button class="btn btn-main" type="submit">לשיחת התאמה ללא עלות</button>
+            </form>
+            <div class="thanks" id="calcThanks"><div class="mascot" data-pose="happy"></div><h3>קיבלנו! עמית יחזור אליכם</h3><p>רוצים לזרז? שלחו לו הודעה</p><a class="btn btn-wa" style="margin-top:10px" href="https://wa.me/972542761216" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div>
+          </div>
+          <p class="disc">אינדיקציה בלבד ולא הצעה לאשראי. ההחזר והריבית בפועל נקבעים על ידי הגוף המממן. פריסה ארוכה מורידה את ההחזר החודשי ויכולה להגדיל את סך התשלומים.</p>
+          <div class="nav"><button class="btn btn-ghost" id="back2">לשינוי הנתונים</button><span></span></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="pain">
+  <div class="wrap">
+    <div class="glass pain rv">
+      <h2>כל חודש המשכורת נגמרת לפני החודש</h2>
+      <ul class="pain-list">
+        <li>כמה הלוואות וכמה תאריכי חיוב</li>
+        <li>ריבית גבוהה שאוכלת את ההחזר</li>
+        <li>מינוס שלא נסגר אף פעם</li>
+        <li>תחושה שזה לא נגמר</li>
+      </ul>
+      <p class="pain-close">זה לא חייב להישאר ככה.</p>
+      <a class="btn btn-gold" href="#calc">לחישוב ההחזר החדש שלי</a>
+    </div>
+  </div>
+</section>
+
+<section id="urgency">
+  <div class="wrap">
+    <div class="urg rv">
+      <h2>כל חודש שמחכים עולה לכם כסף</h2>
+      <p id="urgText">כל חודש בריבית גבוהה הוא כסף שלא חוזר.</p>
     </div>
   </div>
 </section>
@@ -635,32 +628,13 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <div class="wrap">
     <div class="fee rv">
       <div class="mascot fee-owl" data-pose="coin"></div>
-      <span class="eyebrow" style="color:var(--gold-l)">המודל שלי</span>
       <h2>אין כסף בחשבון אין שכר טרחה</h2>
-      <p>השיחה והבדיקה ללא עלות. משלמים שכר טרחה רק אחרי שהכסף נכנס לחשבון שלכם. אם לא יצאה עסקה לא משלמים.</p>
+      <p>משלמים רק על תוצאה. אם לא יצאה עסקה לא משלמים כלום.</p>
       <div class="flow">
-        <div><b>שיחה ובדיקה</b><span>ללא עלות</span></div>
-        <div><b>הגשה לבנקים</b><span>ללא עלות</span></div>
-        <div><b>הכסף בחשבון</b><span>רק עכשיו משלמים</span></div>
+        <div><b>1 · שיחת התאמה</b><span>מספרים על ההלוואות. ללא עלות</span></div>
+        <div><b>2 · בדיקה והגשה</b><span>בונים את תוכנית האיחוד ומגישים לבנקים</span></div>
+        <div><b>3 · הכסף בחשבון</b><span>רק עכשיו משלמים שכר טרחה</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="declined">
-  <div class="wrap split">
-    <div>
-      <h2 class="rv">סירוב מהבנק הוא לא סוף הדרך</h2>
-      <p class="lead rv">דירוג אשראי נמוך או סירוב קודם לא אומרים שאין פתרון. מה שחשוב הוא להבין למה זה קרה ואיך להציג את הבקשה נכון.</p>
-    </div>
-    <div class="rv">
-      <ul class="checks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>בודקים את דירוג האשראי שלכם</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>מבינים מה עמד מאחורי הסירוב</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>בודקים גם עבר של כינוס נכסים או פשיטת רגל</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>אומרים לכם בכנות מה אפשרי</li>
-      </ul>
-      <p class="honest">אין הבטחה לאישור. יש בדיקה רצינית ותשובה כנה.</p>
     </div>
   </div>
 </section>
@@ -674,45 +648,22 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       </div>
       <div>
         <span class="tag">הניסיון הבנקאי שלי היתרון שלכם</span>
-        <h2>נעים מאוד עמית גל כהן</h2>
-        <p>אני יוצא המערכת הבנקאית עם 12 שנות ניסיון בעולם האשראי. אני מכיר מבפנים איך בנק בוחן בקשה, ולכן אני יודע איך להציג את המקרה שלכם בצורה הנכונה.</p>
-        <p>אתם מדברים איתי ישירות. מהשיחה הראשונה ועד שהכסף בחשבון.</p>
-        <div class="pills"><span>שירות אישי</span><span>זמינות</span><span>ידע בנקאי</span><span>פתרונות יצירתיים</span></div>
+        <h2>מי שהיה בבנק יודע איך מקבלים אישור</h2>
+        <p>יוצא המערכת הבנקאית עם 12 שנות ניסיון בעולם האשראי. אני יודע איך בנק בוחן בקשה ואיך להציג את המקרה שלכם נכון.</p>
+        <p>גם אם סורבתם בעבר או שהדירוג שלכם נמוך, שווה לבדוק.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="steps">
-  <div class="wrap">
-    <h2 class="rv">שלושה צעדים עד שהכסף בחשבון</h2>
-    <div class="how">
-      <div class="glass spot rv"><span class="n">1</span><b>שיחת היכרות</b><p>מספרים לי על ההלוואות ועל המצב. ללא עלות</p></div>
-      <div class="glass spot rv"><span class="n">2</span><b>בדיקה מעמיקה</b><p>עוברים על ההלוואות ועל דירוג האשראי ובונים תוכנית איחוד</p></div>
-      <div class="glass spot rv"><span class="n">3</span><b>הגשה וליווי</b><p>מגישים לבנקים ומלווים אתכם עד שהכסף בחשבון</p></div>
-    </div>
-    <div class="glass docs rv">
-      <b>מה כדאי להכין לשיחה</b>
-      <ul>
-        <li>תדפיסי חשבון בנק אחרונים</li>
-        <li>פירוט ההלוואות והיתרות</li>
-        <li>תלושי שכר אחרונים</li>
-        <li>תעודת זהות</li>
-      </ul>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <h2 class="rv">מה שואלים אותי בשיחה הראשונה</h2>
+    <h2 class="rv">מה שואלים אותי לפני שמתחילים</h2>
     <div class="faq">
-      <details class="glass rv"><summary>הבדיקה פוגעת בדירוג האשראי שלי?</summary><p>שיחת הייעוץ והבדיקה הראשונית לא כוללות בקשת הלוואה. לפני כל פנייה לבנק אסביר לכם מה עומד לקרות ואבקש את האישור שלכם.</p></details>
-      <details class="glass rv"><summary>כמה עולה השירות ומתי משלמים?</summary><p>השיחה והבדיקה ללא עלות. שכר טרחה משולם רק אחרי שהכסף נכנס לחשבון שלכם. אם לא יצאה עסקה לא משלמים שכר טרחה.</p></details>
-      <details class="glass rv"><summary>הבנק סירב לי בעבר. יש טעם לפנות?</summary><p>כן. סירוב אחד לא אומר שאין פתרון. נבדוק את הסיבה לסירוב ואת ההיסטוריה שלכם ואגיד לכם בכנות אם יש אפשרות.</p></details>
-      <details class="glass rv"><summary>כמה זמן לוקח התהליך?</summary><p>זה תלוי במצב ובגוף המממן. בשיחה הראשונה תקבלו הערכה לפי המקרה שלכם.</p></details>
-      <details class="glass rv"><summary>צריך דירה כדי לאחד הלוואות?</summary><p>לא. דירה בבעלות יכולה לפתוח אפשרויות נוספות, אבל יש מסלולים גם בלי דירה. בשיחה נבדוק מה מתאים לכם.</p></details>
-      <details class="glass rv"><summary>התוצאה במחשבון מחייבת?</summary><p>לא. המחשבון נותן אינדיקציה כללית לפי הנחות. ההחזר בפועל נקבע רק אחרי בדיקה ואישור של הגוף המממן.</p></details>
+      <details class="glass rv"><summary>כמה זה עולה?</summary><p>השיחה והבדיקה ללא עלות. שכר טרחה משולם רק אחרי שהכסף נכנס לחשבון. אם אין עסקה לא משלמים.</p></details>
+      <details class="glass rv"><summary>סורבתי בבנק. יש טעם?</summary><p>כן. נבדוק למה זה קרה ונגיד לכם בכנות אם יש אפשרות.</p></details>
+      <details class="glass rv"><summary>הבדיקה פוגעת בדירוג?</summary><p>השיחה לא כוללת בקשת הלוואה. לפני כל פנייה לבנק אסביר מה קורה ואבקש אישור.</p></details>
+      <details class="glass rv"><summary>צריך דירה?</summary><p>לא. דירה פותחת עוד אפשרויות, ויש מסלולים גם בלעדיה.</p></details>
     </div>
   </div>
 </section>
@@ -721,7 +672,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <div class="wrap">
     <div class="glass contact rv" id="contactBox">
       <div>
-        <h2>בואו נבדוק את ההלוואות שלכם</h2>
+        <h2>שיחה אחת ותדעו כמה אפשר לחסוך</h2>
         <p class="lead">השאירו פרטים ועמית יחזור אליכם. הפרטים מגיעים רק אליו.</p>
         <div class="mascot" data-pose="point"></div>
       </div>
@@ -729,10 +680,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <form class="form" id="mainForm" novalidate>
           <div class="inp"><label for="fName">שם מלא</label><input id="fName" autocomplete="name" required><span class="e"></span></div>
           <div class="inp"><label for="fPhone">טלפון נייד</label><input id="fPhone" type="tel" inputmode="tel" autocomplete="tel" required><span class="e"></span></div>
-          <div class="inp"><label for="fReason">מה המצב שלכם (לא חובה)</label>
-            <select id="fReason"><option value="">בחירה</option><option>כמה הלוואות במקביל</option><option>החזר חודשי גבוה מדי</option><option>מינוס קבוע בחשבון</option><option>הלוואות בריבית גבוהה</option><option>סורבתי בעבר בבנק</option><option>דירוג אשראי נמוך</option><option>אחר</option></select><span class="e"></span></div>
           <label class="chk"><input type="checkbox" id="fOk" required><span>אני מאשר/ת לעמית ליצור איתי קשר לגבי הפנייה</span></label>
-          <button class="btn btn-gold" type="submit">לבדיקה ללא עלות</button>
+          <button class="btn btn-gold" type="submit">לשיחת התאמה ללא עלות</button>
+          <p class="under">משלמים רק אם הכסף נכנס לחשבון</p>
         </form>
         <div class="thanks" id="mainThanks"><h3>קיבלנו! עמית יחזור אליכם</h3><p>רוצים לזרז? שלחו לו הודעה</p><a class="btn btn-wa" style="margin-top:10px" href="https://wa.me/972542761216" target="_blank" rel="noopener">שליחה בוואטסאפ</a></div>
       </div>
@@ -781,20 +731,16 @@ const hv=document.getElementById('heroVideo');if(RM&&hv){hv.removeAttribute('aut
 
 /* ===== הגדרות המחשבון - כל הערכים כאן הם הנחה זמנית עד שעמית ישלח נתונים ===== */
 const CFG={
-  withHome:{rate:.065, maxYears:20},   // הנחה: הלוואה בשעבוד דירה
-  noHome:{rate:.095, maxYears:8},      // הנחה: הלוואת איחוד בנקאית
-  maxAgeAtEnd:80,                      // הנחה: גיל מקסימלי בסוף ההלוואה
-  minYears:2,                          // הנחה: תקופה מינימלית
-  rangeLow:-.01, rangeHigh:.015,       // הנחה: טווח סביב הריבית
-  familyFactor:{'רווק/ה':0,'נשוי/אה':0,'גרוש/ה':0,'אלמן/ה':0} // ייקבע לפי נתוני עמית
+  prime:.0475,                                   // ריבית בנק ישראל 3.25% + 1.5 (נכון לאוקטובר 2026)
+  withHome:{mLo:.015,mHi:.03,maxYears:20},       // הנחה: הלוואה בשעבוד נכס
+  noHome:{mLo:.035,mHi:.055,maxYears:10}         // הנחה: הלוואת איחוד בלי נכס
 };
-const TYPES=[
-  {k:'mortgage',n:'משכנתא',c:'#16305e',i:'<path d="M3 11l9-7 9 7M5 10v10h14V10"/>'},
-  {k:'car',n:'הלוואת רכב',c:'#3aa38a',i:'<path d="M5 16h14M6 16l1.5-5h9L18 16M7 19a1.5 1.5 0 1 0 0-.1M17 19a1.5 1.5 0 1 0 0-.1"/>'},
-  {k:'card',n:'כרטיס אשראי',c:'#d9822b',i:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>'},
-  {k:'bank',n:'בנקאית לכל מטרה',c:'#5b7fc0',i:'<path d="M3 10l9-6 9 6M5 10v8M19 10v8M10 10v8M14 10v8M3 20h18"/>'},
-  {k:'nonbank',n:'חוץ בנקאית',c:'#c0504d',i:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1 1.3-1.8 3-1.8s3 .8 3 1.8-1.3 1.6-3 1.9-3 .9-3 1.9 1.3 1.8 3 1.8 3-.8 3-1.8"/>'},
-  {k:'other',n:'הלוואה אחרת',c:'#7a6aa8',i:'<path d="M12 5v14M5 12h14"/>'}
+const TYPES=[                                    // m = תוספת לפריים כשהריבית לא ידועה (הנחה)
+  {k:'car',n:'הלוואת רכב',c:'#3aa38a',m:.03,i:'<path d="M5 16h14M6 16l1.5-5h9L18 16M7 19a1.5 1.5 0 1 0 0-.1M17 19a1.5 1.5 0 1 0 0-.1"/>'},
+  {k:'card',n:'כרטיס אשראי',c:'#d9822b',m:.07,i:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>'},
+  {k:'bank',n:'בנקאית לכל מטרה',c:'#5b7fc0',m:.05,i:'<path d="M3 10l9-6 9 6M5 10v8M19 10v8M10 10v8M14 10v8M3 20h18"/>'},
+  {k:'nonbank',n:'חוץ בנקאית',c:'#c0504d',m:.12,i:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1 1.3-1.8 3-1.8s3 .8 3 1.8-1.3 1.6-3 1.9-3 .9-3 1.9 1.3 1.8 3 1.8 3-.8 3-1.8"/>'},
+  {k:'other',n:'הלוואה אחרת',c:'#7a6aa8',m:.06,i:'<path d="M12 5v14M5 12h14"/>'}
 ];
 const ico=(t,cls='')=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${t.i}</svg>`;
 const fmt=n=>Math.round(n).toLocaleString('he-IL')+' ₪';
@@ -813,40 +759,34 @@ const say=(t,mood)=>{$('#calcSay').textContent=t;const m=$('#calcMascot');m.clas
 /* ===== חשיפה בגלילה ===== */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 $$('.rv').forEach(el=>RM?el.classList.add('in'):io.observe(el));
-const mv=$('#mergeViz');
-new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){mv.classList.add('on');$('.lbl',mv).textContent='החזר חודשי אחד במקום ארבעה';}}),{threshold:.6}).observe(mv);
-// פיזור הפסים למרכז
-$$('.merge .bar').forEach((b,i,a)=>{const off=(i-(a.length-1)/2)*60;b.style.setProperty('--o',off+'px');});
-mv.addEventListener('transitionstart',()=>{});
-const mergeStyle=document.createElement('style');mergeStyle.textContent='.merge.on .bar{transform:translateX(calc(var(--o) * -1)) scaleY(.4)}';document.head.appendChild(mergeStyle);
 
 /* ===== הארת עכבר על כרטיסים ===== */
 document.addEventListener('pointermove',e=>{const c=e.target.closest('.spot');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
-
-/* ===== כרטיסי מצב ממלאים את הטופס ===== */
-$$('.sc').forEach(c=>c.addEventListener('click',()=>{$('#fReason').value=c.dataset.reason;const box=$('#contactBox');box.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});box.classList.remove('flash');void box.offsetWidth;box.classList.add('flash');setTimeout(()=>$('#fName').focus({preventScroll:true}),700);}));
 
 /* ===== מחשבון ===== */
 const loans=[];let uid=0;
 $('#types').innerHTML=TYPES.map(t=>`<button type="button" class="type" data-k="${t.k}"><i style="background:${t.c}">${ico(t)}</i>${t.n}</button>`).join('');
 $('#types').addEventListener('click',e=>{const b=e.target.closest('.type');if(!b)return;addLoan(b.dataset.k);});
-function addLoan(k){
-  const t=TYPES.find(x=>x.k===k);const id=++uid;loans.push({id,k,bal:0,pay:0});
+function addLoan(k,silent){
+  const t=TYPES.find(x=>x.k===k);const id=++uid;loans.push({id,k,pay:0,bal:0,mon:0,rate:null});
   const row=document.createElement('div');row.className='loan';row.dataset.id=id;row.style.setProperty('--c',t.c);
-  row.innerHTML=`<div class="lt"><i>${ico(t)}</i><span>${t.n}${k==='mortgage'?'<small>לא נכללת באיחוד</small>':''}</span></div>
-  <div class="fld"><label for="b${id}">יתרה לסילוק</label><div class="money"><input id="b${id}" inputmode="numeric" placeholder="0" data-f="bal"></div></div>
+  row.innerHTML=`<div class="lt"><i>${ico(t)}</i><span>${t.n}</span></div>
   <div class="fld"><label for="p${id}">החזר חודשי</label><div class="money"><input id="p${id}" inputmode="numeric" placeholder="0" data-f="pay"></div></div>
+  <div class="fld"><label for="b${id}">יתרה לסילוק</label><div class="money"><input id="b${id}" inputmode="numeric" placeholder="0" data-f="bal"></div></div>
+  <div class="fld"><label for="m${id}">חודשים שנשארו</label><div class="money nm"><input id="m${id}" inputmode="numeric" placeholder="0" data-f="mon"></div></div>
+  <div class="fld"><label for="r${id}">ריבית %</label><div class="money pc"><input id="r${id}" inputmode="decimal" placeholder="לא יודע" data-f="rate"></div></div>
   <button type="button" class="rm" aria-label="הסרת ${t.n}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button>`;
-  $('#loans').appendChild(row);$('input',row).focus();
-  say(k==='mortgage'?'המשכנתא נשארת בצד. היא רק עוזרת לי לדעת שיש דירה':'מעולה. מלאו יתרה והחזר חודשי, ואפשר להוסיף עוד',null);
+  $('#loans').appendChild(row);if(!silent)$('input',row).focus();
   update();
 }
-$('#loans').addEventListener('input',e=>{const i=e.target;if(!i.dataset.f)return;const raw=num(i.value);i.value=raw?raw.toLocaleString('he-IL'):'';const L=loans.find(l=>l.id==i.closest('.loan').dataset.id);L[i.dataset.f]=raw;update();});
-$('#loans').addEventListener('click',e=>{const b=e.target.closest('.rm');if(!b)return;const row=b.closest('.loan');const ix=loans.findIndex(l=>l.id==row.dataset.id);loans.splice(ix,1);row.remove();update();});
+$('#loans').addEventListener('input',e=>{const i=e.target;if(!i.dataset.f)return;const L=loans.find(l=>l.id==i.closest('.loan').dataset.id);
+  if(i.dataset.f==='rate'){const v=parseFloat(i.value.replace(/[^\d.]/g,''));L.rate=isFinite(v)&&v>0?v/100:null;}
+  else{const raw=num(i.value);i.value=raw?raw.toLocaleString('he-IL'):'';L[i.dataset.f]=raw;}
+  update();});
+$('#loans').addEventListener('click',e=>{const b=e.target.closest('.rm');if(!b)return;const row=b.closest('.loan');loans.splice(loans.findIndex(l=>l.id==row.dataset.id),1);row.remove();update();});
 function update(){
-  $('#sCount').textContent=loans.length;
-  $('#sBal').textContent=fmt(loans.reduce((a,l)=>a+l.bal,0));
-  $('#sPay').textContent=fmt(loans.reduce((a,l)=>a+l.pay,0));
+  const pay=loans.reduce((a,l)=>a+l.pay,0);
+  $('#live').innerHTML=loans.length?`אתם משלמים היום <b>${fmt(pay)}</b> בחודש על <b>${loans.length}</b> ${loans.length===1?'הלוואה':'הלוואות'}`:'';
   $('#emptyNote').hidden=loans.length>0;$('#err1').textContent='';
 }
 function go(s){
@@ -854,47 +794,57 @@ function go(s){
   $$('.steps-bar li').forEach(li=>{const n=+li.dataset.s;li.classList.toggle('on',n===s);li.classList.toggle('done',n<s);});
   const box=$('#calcBox');const top=box.getBoundingClientRect().top;if(top<0||top>innerHeight*.5)box.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
 }
+function segInit(id,cb){$('#'+id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('#'+id+' button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#err0').textContent='';cb&&cb(b.dataset.v);});}
+const segVal=id=>{const b=$('#'+id+' [aria-pressed=true]');return b?b.dataset.v:null;};
+segInit('home');segInit('car');segInit('track',()=>render());
 $('#to2').addEventListener('click',()=>{
-  const cons=loans.filter(l=>l.k!=='mortgage');
-  if(!cons.length){$('#err1').textContent='הוסיפו לפחות הלוואה אחת שאינה משכנתא';say('צריך לפחות הלוואה אחת לאיחוד','think');return;}
-  if(cons.some(l=>!l.bal||!l.pay)){$('#err1').textContent='מלאו יתרה והחזר חודשי לכל הלוואה';say('חסר לי מספר אחד או שניים','think');return;}
-  const hasM=loans.some(l=>l.k==='mortgage');
-  if(hasM)setHome(1);$('#homeNote').hidden=!hasM;
-  go(2);say('עוד שלוש שאלות קטנות ואני מחשבת',null);
+  if(segVal('home')===null||segVal('car')===null){$('#err0').textContent='ענו על שתי השאלות';say('צריך תשובה לשתי השאלות','think');return;}
+  if(segVal('car')==='1'&&!loans.some(l=>l.k==='car'))addLoan('car',true);
+  go(2);say('הוסיפו את כל ההלוואות. אפשר כמה שרוצים',null);
 });
-$('#back1').addEventListener('click',()=>{go(1);say('אפשר לעדכן או להוסיף הלוואות',null);});
+$('#back1').addEventListener('click',()=>{go(1);say('אפשר לשנות את התשובות',null);});
 $('#back2').addEventListener('click',()=>{go(2);say('שנו מה שצריך ונחשב שוב',null);});
-$('#age').addEventListener('input',e=>$('#ageOut').textContent=e.target.value);
-function segInit(id){$('#'+id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('#'+id+' button').forEach(x=>x.setAttribute('aria-pressed',x===b));});}
-segInit('fam');segInit('home');
-function setHome(v){$$('#home button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v==String(v)));}
 $('#to3').addEventListener('click',()=>{
+  if(!loans.length){$('#err1').textContent='הוסיפו לפחות הלוואה אחת';say('צריך לפחות הלוואה אחת','think');return;}
+  if(loans.some(l=>!l.pay||!l.bal||!l.mon)){$('#err1').textContent='מלאו החזר חודשי, יתרה וחודשים שנשארו לכל הלוואה';say('חסר לי מספר אחד או שניים','think');return;}
   say('רגע, אני מחשבת...','think');$('#to3').disabled=true;
-  setTimeout(()=>{$('#to3').disabled=false;calc();go(3);},RM?0:900);
+  setTimeout(()=>{$('#to3').disabled=false;compute();render();go(3);},RM?0:900);
 });
 let last=null;
-function calc(){
-  const age=+$('#age').value, home=$('#home [aria-pressed=true]').dataset.v==='1', fam=$('#fam [aria-pressed=true]').textContent;
-  const cons=loans.filter(l=>l.k!=='mortgage');
-  const P=cons.reduce((a,l)=>a+l.bal,0), now=cons.reduce((a,l)=>a+l.pay,0);
+const yrs=m=>{const y=m/12;return y<1?`${Math.round(m)} חודשים`:`כ-${(Math.round(y*2)/2).toLocaleString('he-IL')} שנים`;};
+const pr=r=>{const d=Math.round((r-CFG.prime)*1000)/10;return d>=0?`פריים + ${d.toLocaleString('he-IL')}`:`פריים - ${(-d).toLocaleString('he-IL')}`;};
+function compute(){
+  const home=segVal('home')==='1';
+  const P=loans.reduce((a,l)=>a+l.bal,0), now=loans.reduce((a,l)=>a+l.pay,0);
+  const rateOf=l=>l.rate!=null?l.rate:CFG.prime+(TYPES.find(t=>t.k===l.k).m);
+  const avgR=loans.reduce((a,l)=>a+l.bal*rateOf(l),0)/P;
+  const endNow=Math.max(...loans.map(l=>l.mon));
+  const totNow=loans.reduce((a,l)=>a+l.pay*l.mon,0);
+  const intNow=loans.reduce((a,l)=>a+l.bal*rateOf(l)/12,0);
   const plan=home?CFG.withHome:CFG.noHome;
-  const years=Math.max(CFG.minYears,Math.min(plan.maxYears,CFG.maxAgeAtEnd-age));
-  const ff=CFG.familyFactor[fam]||0;
-  const lo=pmt(Math.max(.01,plan.rate+CFG.rangeLow+ff),years,P), hi=pmt(plan.rate+CFG.rangeHigh+ff,years,P);
-  last={age,home,fam,P,now,lo,hi,years,count:cons.length};
-  $('#rNow').textContent=fmt(now);
-  $('#rNew').textContent=`${Math.round(lo).toLocaleString('he-IL')} עד ${Math.round(hi).toLocaleString('he-IL')} ₪`;
-  $('#resHint').textContent=`${cons.length} הלוואות לאיחוד · יתרה ${fmt(P)}${loans.some(l=>l.k==='mortgage')?' · המשכנתא לא נכללת':''}`;
-  const mid=(lo+hi)/2, max=Math.max(now,hi);
-  $('#barA').style.height='0';$('#barB').style.height='0';
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{$('#barA').style.height=Math.max(8,now/max*110)+'px';$('#barB').style.height=Math.max(8,mid/max*110)+'px';}));
-  const s=$('#rSave');
-  if(hi<now){s.className='save';s.innerHTML=`החזר נמוך יותר בחודש: <b>${Math.round(now-hi).toLocaleString('he-IL')} עד ${Math.round(now-lo).toLocaleString('he-IL')} ₪</b>`;say('יש פה פוטנציאל! עמית יכול לבדוק את המספרים המדויקים','happy');}
-  else if(lo<now){s.className='save';s.innerHTML=`ייתכן החזר נמוך יותר בחודש: <b>עד ${Math.round(now-lo).toLocaleString('he-IL')} ₪</b>`;say('יש אפשרות להוריד. שווה בדיקה מדויקת','happy');}
-  else{s.className='save neutral';s.innerHTML='לפי הנתונים האלה ההחזר לא יורד בחישוב הכללי. בדיקה של התנאים עצמם יכולה להראות תמונה אחרת';say('המספרים כאן לא מראים ירידה. עמית יכול לבדוק תנאים ספציפיים','think');}
-  $('#leadMini').classList.remove('on');$('#nav3').hidden=false;
+  const rLo=CFG.prime+plan.mLo, rHi=CFG.prime+plan.mHi;
+  const avgMon=loans.reduce((a,l)=>a+l.bal*l.mon,0)/P;
+  const nLow=plan.maxYears*12, nFast=Math.max(12,Math.min(Math.round(avgMon),nLow));
+  last={home,car:segVal('car')==='1',P,now,avgR,endNow,totNow,intNow,rLo,rHi,
+    low:{n:nLow,lo:pmt(rLo,nLow/12,P),hi:pmt(rHi,nLow/12,P)},
+    fast:{n:nFast,lo:pmt(rLo,nFast/12,P),hi:pmt(rHi,nFast/12,P)},count:loans.length,loans:loans.map(l=>({...l}))};
+  $('#urgText').innerHTML=`לפי הנתונים שהזנתם אתם משלמים היום כ-<b>${fmt(intNow)}</b> בחודש רק על ריבית. כל חודש בלי שינוי הוא עוד חודש כזה.`;
 }
-$('#openLead').addEventListener('click',()=>{$('#leadMini').classList.add('on');$('#nav3').hidden=true;$('#cName').focus();});
+function render(){
+  if(!last)return;const T=last[segVal('track')||'low'];
+  const mid=(T.lo+T.hi)/2, saveLo=last.now-T.hi, saveHi=last.now-T.lo;
+  const r=(a,b)=>`${Math.round(a).toLocaleString('he-IL')} עד ${Math.round(b).toLocaleString('he-IL')} ₪`;
+  if(saveHi>0){$('#resHead').innerHTML=saveLo>0?`ההחזר שלכם יכול לרדת בכ-<b>${r(saveLo,saveHi)}</b> בחודש`:`ההחזר שלכם יכול לרדת <b>עד ${fmt(saveHi)}</b> בחודש`;say('יש פה פוטנציאל! עמית יבדוק את המספרים המדויקים','happy');}
+  else{$('#resHead').innerHTML='במסלול הזה ההחזר לא יורד. בדקו את המסלול השני או השאירו פרטים לבדיקת התנאים';say('נבדוק את התנאים עצמם בשיחה','think');}
+  $('#cmpBody').innerHTML=[
+    ['החזר חודשי',fmt(last.now),r(T.lo,T.hi)],
+    ['סך החובות',fmt(last.P),fmt(last.P)],
+    ['ריבית',pr(last.avgR),`${pr(last.rLo)} עד ${pr(last.rHi).replace('פריים ','')}`],
+    ['סיום ההתחייבויות',yrs(last.endNow),yrs(T.n)],
+    ['סך התשלומים עד הסוף',fmt(last.totNow),r(T.lo*T.n,T.hi*T.n)]
+  ].map(([a,b,c])=>`<tr><td>${a}</td><td class="b">${b}</td><td class="a">${c}</td></tr>`).join('');
+}
+$('#leadMini').classList.add('on');
 
 /* ===== טפסים (מוקאפ: אין שליחה אמיתית) ===== */
 const phoneOk=v=>/^0?5\d{8}$/.test(v.replace(/[\s-]/g,''));
@@ -909,9 +859,9 @@ function validate(f){
 function waLink(name,extra){const t=`היי עמית, אני ${name}. השארתי פרטים בדף לבדיקת איחוד הלוואות${extra?'. '+extra:''}`;return 'https://wa.me/972542761216?text='+encodeURIComponent(t);}
 $('#calcForm').addEventListener('submit',e=>{e.preventDefault();if(!validate(e.target))return;
   // מוקאפ: כאן יישלחו שם, טלפון ונתוני המחשבון (last + loans) למייל של עמית
-  e.target.hidden=true;$('#calcThanks').classList.add('on');$('#calcThanks a').href=waLink($('#cName').value.trim(),`החזר היום ${fmt(last.now)} על ${last.count} הלוואות`);say('שלחתי לעמית את כל הנתונים!','happy');});
+  e.target.hidden=true;$('#calcThanks').classList.add('on');$('#calcThanks a').href=waLink($('#cName').value.trim(),`החזר היום ${fmt(last.now)} על ${last.count} הלוואות`);$('#leadMini .lead-q').hidden=true;say('שלחתי לעמית את כל הנתונים!','happy');});
 $('#mainForm').addEventListener('submit',e=>{e.preventDefault();if(!validate(e.target))return;
-  e.target.hidden=true;$('#mainThanks').classList.add('on');const r=$('#fReason').value;$('#mainThanks a').href=waLink($('#fName').value.trim(),r);});
+  e.target.hidden=true;$('#mainThanks').classList.add('on');$('#mainThanks a').href=waLink($('#fName').value.trim(),last?`החזר היום ${fmt(last.now)} על ${last.count} הלוואות`:'');});
 
 /* ===== נגישות ומודאלים ===== */
 let fs=1;
