@@ -1,13 +1,15 @@
 import json, os, subprocess, urllib.request, glob, shutil
 from PIL import Image
 from rembg import remove, new_session
+import numpy as np
+from scipy.ndimage import binary_fill_holes
 base = os.path.dirname(os.path.abspath(__file__))
 jobs = json.load(open(os.path.join(base, 'jobs.json')))
 sess = new_session('isnet-general-use')
 manifest_path = os.path.join(base, 'manifest.json')
 manifest = json.load(open(manifest_path)) if os.path.exists(manifest_path) else {}
 for name, job in jobs.items():
-    if manifest.get(name, {}).get('src') == job['url']:
+    if manifest.get(name, {}).get('src') == job['url'] and manifest[name].get('rev') == job.get('rev'):
         continue
     out = os.path.join(base, name); shutil.rmtree(out, ignore_errors=True)
     os.makedirs(out + '/d'); os.makedirs(out + '/m')
@@ -18,9 +20,12 @@ for name, job in jobs.items():
     frames = sorted(glob.glob(tmp + '/f*.png'))
     for i, f in enumerate(frames):
         im = Image.open(f).convert('RGB')
-        cut = remove(im, session=sess, post_process_mask=True)
+        m = np.array(remove(im, session=sess, only_mask=True, post_process_mask=True))
+        solid = binary_fill_holes(m > 128)
+        m = np.where(solid & (m < 255), 255, m).astype('uint8')  # fill enclosed holes (white shirt)
+        cut = im.copy(); cut.putalpha(Image.fromarray(m))
         cut.resize((job.get('d', 720),) * 2, Image.LANCZOS).save(f'{out}/d/{i:03d}.webp', 'WEBP', quality=82, method=6)
         cut.resize((job.get('m', 360),) * 2, Image.LANCZOS).save(f'{out}/m/{i:03d}.webp', 'WEBP', quality=78, method=6)
-    manifest[name] = {'src': job['url'], 'frames': len(frames)}
+    manifest[name] = {'src': job['url'], 'rev': job.get('rev'), 'frames': len(frames)}
     print(name, len(frames))
 json.dump(manifest, open(manifest_path, 'w'), indent=1)
