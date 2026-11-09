@@ -120,6 +120,8 @@ h2{text-wrap:balance;font-size:clamp(1.6rem,6vw,2.75rem);line-height:1.2;font-we
 
 /* קמע */
 .mascot{position:relative;aspect-ratio:1/1;pointer-events:none}
+.mascot canvas{position:absolute;inset:0;width:100%;height:100%;display:block;filter:drop-shadow(0 14px 24px rgba(5,12,30,.35))}
+.mascot.anim-on img{visibility:hidden}
 .mascot img{display:block;width:100%;height:100%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 14px 24px rgba(5,12,30,.35))}
 .m-bob{animation:bob 3.4s ease-in-out infinite;transform-origin:100px 200px}
 @keyframes bob{50%{transform:translateY(-7px)}}
@@ -615,7 +617,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 <section class="qsec q1sec">
   <div class="wrap q1wrap">
-    <div class="mascot owl-arms" data-pose="arms"></div>
+    <div class="mascot owl-arms" data-pose="arms" data-anim="hero"></div>
     <div class="glass qbar">
       <p class="qt">השאירו פרטים ועמית יחזור אליכם לשיחת התאמה ללא עלות</p>
       <form class="form qform" id="q1" novalidate>
@@ -641,7 +643,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           <li data-s="2"><i>2</i><span>ההלוואות שלכם</span></li>
           <li data-s="3"><i>3</i><span>התוצאה</span></li>
         </ol>
-        <div class="mascot owl-calc" data-pose="point" id="calcMascot"></div>
+        <div class="mascot owl-calc" data-pose="point" data-anim="calc" id="calcMascot"></div>
       </aside>
 
       <div class="calc-main">
@@ -712,7 +714,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </section>
 
 <section id="pain">
-  <div class="mascot owl-pain" data-pose="listen"></div>
+  <div class="mascot owl-pain" data-pose="listen" data-anim="pain"></div>
   <div class="wrap">
     <div class="glass pain rv">
       <h2>כל חודש המשכורת נגמרת לפני החודש</h2>
@@ -731,7 +733,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <section id="urgency">
   <div class="wrap">
     <div class="urg rv">
-      <div class="mascot owl-urg" data-pose="ledge"></div>
+      <div class="mascot owl-urg" data-pose="ledge" data-anim="urg"></div>
       <h2>כל חודש שמחכים עולה לכם כסף</h2>
       <p id="urgText">כל חודש בריבית גבוהה הוא כסף שלא חוזר.</p>
     </div>
@@ -750,7 +752,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <div><b>3 · הכסף בחשבון</b><span>רק עכשיו משלמים שכר טרחה</span></div>
       </div>
       </div>
-      <div class="mascot owl-fee" data-pose="coin"></div>
+      <div class="mascot owl-fee" data-pose="coin" data-anim="fee"></div>
     </div>
   </div>
 </section>
@@ -796,7 +798,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <div class="wrap">
     <div class="glass contact rv" id="contactBox">
       <div class="contact-txt">
-        <div class="mascot owl-contact" data-pose="point"></div>
+        <div class="mascot owl-contact" data-pose="point" data-anim="contact"></div>
       </div>
       <div class="contact-form">
         <h2>שיחה אחת ותדעו כמה אפשר לחסוך</h2>
@@ -875,7 +877,7 @@ const pmt=(r,years,P)=>{const i=r/12,n=years*12;return i?P*i/(1-Math.pow(1+i,-n)
 const K='https://media.kolbo.ai/kolboai-media/edited_generated_images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/image-';
 const POSE={point:K+'gen_1794244281491_htg3ihth4.png',listen:K+'gen_1794244296107_ig2u06f6f.png',peek:K+'gen_1794244300954_vwq6j0kl3.png',down:K+'gen_1794244304756_bmi983x2a.png',happy:K+'gen_1794244308864_o316f2e1u.png',coin:K+'gen_1794245706844_mqkxbpvgm.png',arms:K+'gen_1794245715513_pwjmzmhfj.png',ledge:K+'gen_1794245723829_cpt7ckuw5.png'};
 Object.values(POSE).forEach(u=>{const i=new Image();i.src=u;});
-function setPose(el,p){let img=el.querySelector('img');if(!img){img=document.createElement('img');img.alt='';img.decoding='async';el.appendChild(img);}if(img.dataset.p!==p){img.dataset.p=p;img.src=POSE[p];}}
+function setPose(el,p){if(el.classList.contains('anim-on'))return;let img=el.querySelector('img');if(!img){img=document.createElement('img');img.alt='';img.decoding='async';el.appendChild(img);}if(img.dataset.p!==p){img.dataset.p=p;img.src=POSE[p];}}
 $$('[data-pose]').forEach(el=>setPose(el,el.dataset.pose));
 const say=(t,mood)=>{const m=$('#calcMascot');m.classList.remove('think','happy');setPose(m,mood==='think'?'listen':mood==='happy'?'happy':'point');};
 
@@ -968,6 +970,31 @@ function render(){
   ].map(([a,b,c])=>`<tr><td>${a}</td><td class="b">${b}</td><td class="a">${c}</td></tr>`).join('');
 }
 $('#leadMini').classList.add('on');
+
+
+/* ===== הנפשת הינשוף לפי גלילה ===== */
+(()=>{
+  if(RM||location.protocol==='file:')return;
+  const els=$$('[data-anim]');if(!els.length)return;
+  const small=matchMedia('(max-width:720px)').matches?'m':'d';
+  fetch('anim/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(man=>{
+    const items=[];
+    els.forEach(el=>{const m=man[el.dataset.anim];if(!m||!m.frames)return;items.push({el,n:m.frames,name:el.dataset.anim,imgs:[],loaded:0,cur:0,tgt:0,cv:null,ctx:null,started:false});});
+    if(!items.length)return;
+    const load=it=>{if(it.started)return;it.started=true;
+      for(let i=0;i<it.n;i++){const im=new Image();im.decoding='async';im.onload=()=>{if(++it.loaded===it.n)ready(it);};im.src=`anim/${it.name}/${small}/${String(i).padStart(3,'0')}.webp`;it.imgs[i]=im;}};
+    const ready=it=>{const cv=document.createElement('canvas');const w=it.imgs[0].naturalWidth;cv.width=w;cv.height=w;it.cv=cv;it.ctx=cv.getContext('2d');it.el.appendChild(cv);it.el.classList.add('anim-on');draw(it,true);};
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){load(items.find(x=>x.el===e.target));io.unobserve(e.target);}}),{rootMargin:'800px 0px'});
+    items.forEach(it=>io.observe(it.el));
+    const prog=el=>{const r=el.getBoundingClientRect(),vh=innerHeight;const start=vh,end=vh*.25;const c=r.top+r.height*.35;return Math.min(1,Math.max(0,(start-c)/(start-end)));};
+    const draw=(it,force)=>{const f=Math.round(it.cur);if(!force&&f===it.last)return;it.last=f;const im=it.imgs[f];if(!im||!im.complete)return;it.ctx.clearRect(0,0,it.cv.width,it.cv.height);it.ctx.drawImage(im,0,0,it.cv.width,it.cv.height);};
+    let raf=0;
+    const tick=()=>{raf=0;let moving=false;items.forEach(it=>{if(!it.ctx)return;it.tgt=prog(it.el)*(it.n-1);const d=it.tgt-it.cur;if(Math.abs(d)>.05){it.cur+=d*.18;moving=true;}else it.cur=it.tgt;draw(it);});if(moving)raf=requestAnimationFrame(tick);};
+    const kick=()=>{if(!raf)raf=requestAnimationFrame(tick);};
+    addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);
+    const iv=setInterval(()=>{if(items.every(it=>it.ctx||!it.started)&&items.some(it=>it.ctx)){kick();}},400);setTimeout(()=>clearInterval(iv),20000);
+  }).catch(()=>{});
+})();
 
 /* ===== טפסים (מוקאפ: אין שליחה אמיתית) ===== */
 const phoneOk=v=>/^0?5\d{8}$/.test(v.replace(/[\s-]/g,''));
