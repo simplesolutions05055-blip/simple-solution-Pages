@@ -570,6 +570,14 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .stat .num{font-size:1.8rem}
   .stat p{font-size:.82rem;line-height:1.35}
 }
+
+/* ינשופים: הפעלה בטריגר */
+.mascot.side-out{transform:translateX(125%)!important}
+.owl-pain{transition:transform .85s cubic-bezier(.22,.8,.3,1)}
+.owl-urg{--w:340px;width:var(--w)!important;bottom:calc(100% - var(--w)*.172)!important;clip-path:inset(-40% -20% calc(var(--w)*.172) -20%)}
+@media (max-width:720px){.owl-urg{--w:240px}}
+.calc-side{overflow:visible!important;z-index:2}
+@media (min-width:961px){.owl-calc{left:auto!important;right:-6px!important;transform:none!important;width:390px!important;height:auto!important}}
 </style>
 </head>
 <body>
@@ -974,25 +982,33 @@ $('#leadMini').classList.add('on');
 
 /* ===== הנפשת הינשוף לפי גלילה ===== */
 (()=>{
-  if(RM||location.protocol==='file:')return;
+  /* ינשופים: כל ינשוף מנגן את התנועה המלאה פעם אחת בכל פעם שהוא חוצה את הקו האמצעי של המסך, למעלה או למטה */
+  if(RM)return;
   const els=$$('[data-anim]');if(!els.length)return;
-  const small=matchMedia('(max-width:720px)').matches?'m':'d';
+  const FPS=12,small=matchMedia('(max-width:720px)').matches?'m':'d';
+  const CFG={hero:{tail:[50,60],tailDelay:2600,onload:true},pain:{side:true}};
+  const items=els.map(el=>({el,name:el.dataset.anim,cfg:CFG[el.dataset.anim]||{},tg:(CFG[el.dataset.anim]||{}).side?el.parentElement:el,n:0,imgs:[],loaded:0,ctx:null,cv:null,tok:0,inBand:false,pending:false}));
+  items.forEach(it=>{if(it.cfg.side)it.el.classList.add('side-out');});
+  const draw=(it,f)=>{const im=it.imgs[f];if(!it.ctx||!im||!im.complete)return;it.ctx.clearRect(0,0,it.cv.width,it.cv.height);it.ctx.drawImage(im,0,0,it.cv.width,it.cv.height);};
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  const run=(it,from,to,tok)=>new Promise(res=>{const t0=performance.now();const step=now=>{if(it.tok!==tok)return res(false);const f=Math.min(to,from+Math.floor((now-t0)*FPS/1000));draw(it,f);if(f>=to)return res(true);requestAnimationFrame(step);};requestAnimationFrame(step);});
+  const play=async it=>{
+    if(it.cfg.side===undefined&&!it.ctx){it.pending=true;return;}
+    const tok=++it.tok;it.pending=false;
+    if(it.cfg.side){if(it.ctx)draw(it,0);it.el.classList.remove('side-out');await wait(900);if(it.tok!==tok)return;}
+    if(it.ctx){if(!await run(it,0,it.n-1,tok))return;}else await wait(2600);
+    if(it.cfg.tail&&it.ctx){await wait(it.cfg.tailDelay);if(it.tok!==tok)return;await run(it,it.cfg.tail[0],Math.min(it.cfg.tail[1],it.n-1),tok);}
+    if(it.cfg.side){await wait(500);if(it.tok!==tok)return;it.el.classList.add('side-out');}
+  };
+  const reset=it=>{it.tok++;if(it.cfg.side)it.el.classList.add('side-out');if(it.ctx)draw(it,0);};
+  const band=new IntersectionObserver(es=>es.forEach(e=>{const it=items.find(x=>x.tg===e.target);if(e.isIntersecting&&!it.inBand){it.inBand=true;play(it);}else if(!e.isIntersecting&&it.inBand){it.inBand=false;reset(it);}}),{rootMargin:'-28% 0px -28% 0px'});
+  items.forEach(it=>band.observe(it.tg));
+  if(location.protocol==='file:')return;
   fetch('anim/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(man=>{
-    const items=[];
-    els.forEach(el=>{const m=man[el.dataset.anim];if(!m||!m.frames)return;items.push({el,n:m.frames,name:el.dataset.anim,imgs:[],loaded:0,cur:0,tgt:0,cv:null,ctx:null,started:false});});
-    if(!items.length)return;
-    const load=it=>{if(it.started)return;it.started=true;
-      for(let i=0;i<it.n;i++){const im=new Image();im.decoding='async';im.onload=()=>{if(++it.loaded===it.n)ready(it);};im.src=`anim/${it.name}/${small}/${String(i).padStart(3,'0')}.webp`;it.imgs[i]=im;}};
-    const ready=it=>{const cv=document.createElement('canvas');const w=it.imgs[0].naturalWidth;cv.width=w;cv.height=w;it.cv=cv;it.ctx=cv.getContext('2d');it.el.appendChild(cv);it.el.classList.add('anim-on');draw(it,true);};
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){load(items.find(x=>x.el===e.target));io.unobserve(e.target);}}),{rootMargin:'800px 0px'});
-    items.forEach(it=>io.observe(it.el));
-    const prog=el=>{const r=el.getBoundingClientRect(),vh=innerHeight;const start=vh,end=vh*.25;const c=r.top+r.height*.35;return Math.min(1,Math.max(0,(start-c)/(start-end)));};
-    const draw=(it,force)=>{const f=Math.round(it.cur);if(!force&&f===it.last)return;it.last=f;const im=it.imgs[f];if(!im||!im.complete)return;it.ctx.clearRect(0,0,it.cv.width,it.cv.height);it.ctx.drawImage(im,0,0,it.cv.width,it.cv.height);};
-    let raf=0;
-    const tick=()=>{raf=0;let moving=false;items.forEach(it=>{if(!it.ctx)return;it.tgt=prog(it.el)*(it.n-1);const d=it.tgt-it.cur;if(Math.abs(d)>.05){it.cur+=d*.18;moving=true;}else it.cur=it.tgt;draw(it);});if(moving)raf=requestAnimationFrame(tick);};
-    const kick=()=>{if(!raf)raf=requestAnimationFrame(tick);};
-    addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);
-    const iv=setInterval(()=>{if(items.every(it=>it.ctx||!it.started)&&items.some(it=>it.ctx)){kick();}},400);setTimeout(()=>clearInterval(iv),20000);
+    const ready=it=>{const cv=document.createElement('canvas');const w=it.imgs[0].naturalWidth;cv.width=w;cv.height=w;it.cv=cv;it.ctx=cv.getContext('2d');it.el.appendChild(cv);it.el.classList.add('anim-on');draw(it,0);if(it.pending||(it.inBand&&it.cfg.side===undefined)||it.cfg.onload){it.cfg.onload=false;play(it);}};
+    const load=it=>{for(let i=0;i<it.n;i++){const im=new Image();im.decoding='async';im.onload=()=>{if(++it.loaded===it.n)ready(it);};im.src=`anim/${it.name}/${small}/${String(i).padStart(3,'0')}.webp`;it.imgs[i]=im;}};
+    const near=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const it=items.find(x=>x.tg===e.target);if(it.n&&!it.imgs.length)load(it);near.unobserve(e.target);}}),{rootMargin:'900px 0px'});
+    items.forEach(it=>{const m=man[it.name];if(m&&m.frames){it.n=m.frames;near.observe(it.tg);}});
   }).catch(()=>{});
 })();
 
