@@ -98,15 +98,15 @@ h2{text-wrap:balance;font-size:clamp(1.6rem,6vw,2.75rem);line-height:1.2;font-we
 .hero{padding:0;margin-top:-80px;color:#eef2f8;background:radial-gradient(120% 80% at 80% 0%,#24467f 0%,#0a1a3a 55%,#071229 100%);overflow:hidden;isolation:isolate}
 .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(180deg,transparent,var(--pearl));z-index:-1}
 #heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-4}
-.hero-shade{position:absolute;inset:0;z-index:-3;background:linear-gradient(270deg,rgba(7,18,41,.94) 0%,rgba(10,26,58,.82) 45%,rgba(10,26,58,.45) 100%),linear-gradient(180deg,rgba(7,18,41,.35),rgba(7,18,41,.55))}
+.hero-shade{position:absolute;inset:0;z-index:-3;background:radial-gradient(70% 70% at 50% 50%,rgba(7,18,41,.78),rgba(7,18,41,.55) 100%),linear-gradient(180deg,rgba(7,18,41,.35),rgba(7,18,41,.6))}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:.45}
 @media (max-width:960px){.hero-shade{background:linear-gradient(180deg,rgba(7,18,41,.78),rgba(10,26,58,.9))}}
-.hero-in{display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:30px;padding:150px 0 120px;text-align:right}
+.hero-in{display:block;padding:170px 0 140px;text-align:center;max-width:920px}
 .hero .eyebrow{color:var(--gold-l)}
 .hero h1{font-size:clamp(2rem,4.6vw,3.5rem);line-height:1.12;font-weight:900;margin:14px 0 16px;letter-spacing:-.5px;text-wrap:balance}
-.hero p.sub{font-size:clamp(1.08rem,2.4vw,1.3rem);color:#cdd6e6;max-width:560px}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.ticks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;color:#dfe6f2;font-weight:600;font-size:1rem}
+.hero p.sub{font-size:clamp(1.08rem,2.4vw,1.3rem);color:#dfe6f2;max-width:680px;margin-inline:auto}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;justify-content:center}
+.ticks{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:24px;color:#dfe6f2;font-weight:600;font-size:1rem}
 .ticks li{display:flex;align-items:center;gap:8px}
 .ticks svg{width:20px;height:20px;color:var(--gold-l);flex:none}
 .hero-art{position:relative;display:grid;place-items:center;min-height:380px}
@@ -369,7 +369,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 @media (max-width:960px){
-  .hero-in{grid-template-columns:1fr;text-align:center;padding:100px 0 80px;gap:6px}
+  .hero-in{padding:120px 0 90px}
   .hero-art{order:-1;min-height:0}
   .hero-art .mascot{width:140px}
   .hero-art .bubble{font-size:.9rem;padding:8px 12px;max-width:250px}
@@ -466,11 +466,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>אין עסקה אין שכר טרחה</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>ליווי אישי וזמין</li>
       </ul>
-    </div>
-    <div class="hero-art">
-      <span class="halo"></span>
-      <div class="bubble" data-say="hero">היי! בואו נבדוק יחד כמה אפשר להוריד מההחזר החודשי</div>
-      <div class="mascot" data-pose="wave"></div>
     </div>
   </div>
 </section>
