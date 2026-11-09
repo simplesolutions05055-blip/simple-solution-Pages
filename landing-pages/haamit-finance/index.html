@@ -97,7 +97,10 @@ h2{text-wrap:balance;font-size:clamp(1.6rem,6vw,2.75rem);line-height:1.2;font-we
 /* גיבור */
 .hero{padding:0;margin-top:-80px;color:#eef2f8;background:radial-gradient(120% 80% at 80% 0%,#24467f 0%,#0a1a3a 55%,#071229 100%);overflow:hidden;isolation:isolate}
 .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(180deg,transparent,var(--pearl));z-index:-1}
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:.9}
+#heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-4}
+.hero-shade{position:absolute;inset:0;z-index:-3;background:linear-gradient(270deg,rgba(7,18,41,.94) 0%,rgba(10,26,58,.82) 45%,rgba(10,26,58,.45) 100%),linear-gradient(180deg,rgba(7,18,41,.35),rgba(7,18,41,.55))}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:.45}
+@media (max-width:960px){.hero-shade{background:linear-gradient(180deg,rgba(7,18,41,.78),rgba(10,26,58,.9))}}
 .hero-in{display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:30px;padding:150px 0 120px;text-align:right}
 .hero .eyebrow{color:var(--gold-l)}
 .hero h1{font-size:clamp(2rem,4.6vw,3.5rem);line-height:1.12;font-weight:900;margin:14px 0 16px;letter-spacing:-.5px;text-wrap:balance}
@@ -446,6 +449,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <main id="main">
 
 <section class="hero" id="top">
+  <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true" src="https://media.kolbo.ai/kolboai-media/generated-videos/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Cinematic-slow-motion-warm-bri-6af162ee350fd97b11fcd689-v25-turbo-pro-text-t.mp4"></video>
+  <div class="hero-shade" aria-hidden="true"></div>
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <div>
@@ -783,6 +788,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const hv=document.getElementById('heroVideo');if(RM&&hv){hv.removeAttribute('autoplay');hv.pause();}
 
 /* ===== הגדרות המחשבון - כל הערכים כאן הם הנחה זמנית עד שעמית ישלח נתונים ===== */
 const CFG={
@@ -923,7 +929,7 @@ let fs=1;
 $('#a11yBtn').addEventListener('click',()=>{const p=$('#a11y');const on=p.classList.toggle('on');$('#a11yBtn').setAttribute('aria-expanded',on);});
 $('#a11y').addEventListener('click',e=>{const a=e.target.dataset.a;if(!a)return;
   if(a==='up')fs=Math.min(1.4,fs+.1);if(a==='down')fs=Math.max(.9,fs-.1);
-  if(a==='hc')document.body.classList.toggle('hc');if(a==='pause')document.body.classList.toggle('paused');
+  if(a==='hc')document.body.classList.toggle('hc');if(a==='pause'){const p=document.body.classList.toggle('paused');p?hv.pause():hv.play().catch(()=>{});}
   if(a==='reset'){fs=1;document.body.classList.remove('hc','paused');}
   document.documentElement.style.setProperty('--fs',fs);});
 $$('[data-modal]').forEach(b=>b.addEventListener('click',()=>{const m=$('#'+b.dataset.modal);m.classList.add('on');$('.x',m).focus();}));
