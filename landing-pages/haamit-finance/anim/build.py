@@ -20,6 +20,8 @@ for name, job in jobs.items():
     frames = sorted(glob.glob(tmp + '/f*.png'))
     for i, f in enumerate(frames):
         im = Image.open(f).convert('RGB')
+        w, h = im.size; k = min(w, h)
+        if w != h: im = im.crop(((w - k) // 2, (h - k) // 2, (w - k) // 2 + k, (h - k) // 2 + k))  # center square, no squash
         m = np.array(remove(im, session=sess, only_mask=True, post_process_mask=True))
         solid = binary_fill_holes(m > 128)
         m = np.where(solid & (m < 255), 255, m).astype('uint8')  # fill enclosed holes (white shirt)
