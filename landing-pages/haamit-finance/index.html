@@ -318,40 +318,47 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;b
 .qbar .thanks .btn{margin-inline:auto}
 @media (max-width:720px){.qform{grid-template-columns:1fr}.qform .btn{margin-top:0}.credit-bar{padding-bottom:84px}}
 /* ינשוף מלווה */
-.q1sec{position:relative;overflow:hidden;padding-top:44px}
-.owl-peek{position:absolute;left:0;bottom:0;width:230px;z-index:2}
-.q1sec .qbar{margin-left:170px}
-.calc-side{padding-bottom:0!important}
-.owl-calc{width:100%;margin-top:6px;aspect-ratio:1/1}
-.calc-side .steps-bar{margin-top:6px!important}
-.pain{position:relative;overflow:visible}
-.owl-pain{position:absolute;right:-250px;bottom:0;width:280px}
-.urg{position:relative;padding-top:20px!important}
-.owl-urg{width:200px;margin:-80px auto 0}
-.fee{display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:end;gap:10px;padding-bottom:0!important}
+.q1sec{position:relative;padding-top:10px}
+.owl-arms{width:280px;margin:0 auto -2px;position:relative;z-index:1}
+.calc{grid-template-columns:300px 1fr!important}
+.calc-side{justify-content:space-between;padding:22px 0 0!important;gap:0!important}
+.calc-side .steps-bar{margin:0!important;padding:0 22px}
+.owl-calc{width:100%;margin:12px 0 0;aspect-ratio:1/1}
+#pain{position:relative}
+.pain{position:relative}
+.owl-pain{position:absolute;right:0;bottom:80px;width:360px;z-index:2}
+#urgency{padding-top:250px}
+.urg{position:relative;overflow:visible}
+.owl-urg{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% - 46px);width:340px;z-index:2}
+.fee{display:grid;grid-template-columns:minmax(0,1fr) 380px;align-items:end;gap:10px;padding-bottom:0!important;overflow:visible!important;margin-top:90px;background:radial-gradient(420px circle at 10% 0%,rgba(241,210,122,.18),transparent 65%),radial-gradient(100% 120% at 0% 0%,#24467f,#0a1a3a 60%)!important}
+.fee::before{display:none}
 .fee-c{padding-bottom:56px}
-.owl-fee{width:300px;align-self:end}
-.contact{padding-bottom:0!important;align-items:end}
-.contact>div:last-child{padding-bottom:34px}
-.owl-contact{width:300px!important;margin-top:10px!important}
-#urgency{padding-top:120px}
-@media (max-width:1300px){.owl-pain{right:-170px;width:220px}}
-@media (max-width:1180px){.owl-pain{position:static;width:200px;margin:-20px auto 0}}
+.owl-fee{width:380px;margin-top:-190px;align-self:end}
+.about-p{font-weight:700;color:var(--navy)!important;font-size:1.15rem;line-height:1.6;max-width:560px;margin-top:12px}
+.contact{padding:0!important;align-items:stretch;overflow:hidden}
+.contact-txt{position:relative;display:flex;flex-direction:column;padding:34px 34px 0;min-height:660px}
+.contact-txt h2{font-size:clamp(2rem,4vw,3rem);position:relative;z-index:2}
+.contact-txt .lead{position:relative;z-index:2;max-width:340px}
+.owl-contact{position:absolute!important;bottom:0;left:-10px;width:440px!important;margin:0!important;z-index:1}
+.contact>div:last-child{padding:34px;align-self:center}
+@media (max-width:1300px){.owl-pain{width:280px}}
+@media (max-width:1180px){.owl-pain{position:relative;right:auto;bottom:auto;display:block;width:220px;margin:0 0 -20px auto}}
 @media (max-width:960px){
-  .fee{grid-template-columns:1fr}.owl-fee{width:230px;margin:0 auto}
-  .fee-c{padding-bottom:10px}
-  .contact>div:last-child{padding-bottom:24px}
-  .owl-contact{width:220px!important;margin:10px auto 0!important;order:3}
-  .calc-side{align-items:flex-end}
-  .owl-calc{width:120px;margin:0}
-  .calc-side .bubble{align-self:center}
+  .calc{grid-template-columns:1fr!important}
+  .calc-side{flex-direction:row!important;align-items:flex-end;justify-content:space-between;padding:16px 16px 0!important}
+  .calc-side .steps-bar{padding:0;align-self:center}
+  .owl-calc{width:130px;margin:0}
+  .fee{grid-template-columns:1fr;margin-top:60px}.owl-fee{width:260px;margin:0 auto}
+  .fee-c{padding-bottom:10px;order:2}
+  .contact-txt{min-height:0;padding:24px 18px 0;text-align:center;align-items:center}
+  .owl-contact{position:relative!important;left:auto;width:260px!important;margin:10px auto 0!important}
+  .contact>div:last-child{padding:24px 18px}
 }
 @media (max-width:720px){
-  .owl-peek{width:130px;bottom:auto;top:0}
-  .q1sec{padding-top:90px}
-  .q1sec .qbar{margin-left:0}
-  .owl-urg{width:150px;margin-top:-60px}
-  #urgency{padding-top:90px}
+  .owl-arms{width:200px}
+  #urgency{padding-top:190px}
+  .owl-urg{width:240px}
+  .about-p{font-size:1.05rem}
 }
 /* טופס */
 .form{display:grid;gap:12px;text-align:right}
@@ -565,8 +572,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </section>
 
 <section class="qsec q1sec">
-  <div class="mascot owl-peek" data-pose="peek"></div>
   <div class="wrap">
+    <div class="mascot owl-arms" data-pose="arms"></div>
     <div class="glass qbar rv">
       <p class="qt">השאירו פרטים ועמית יחזור אליכם לשיחת התאמה ללא עלות</p>
       <form class="form qform" id="q1" novalidate>
@@ -587,8 +594,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
     <div class="glass calc rv" id="calcBox">
       <aside class="calc-side">
-        <div class="bubble" id="calcSay">שתי שאלות קצרות ומתחילים</div>
-        <ol class="steps-bar" aria-label="שלבי המחשבון">
+                <ol class="steps-bar" aria-label="שלבי המחשבון">
           <li class="on" data-s="1"><i>1</i><span>שתי שאלות</span></li>
           <li data-s="2"><i>2</i><span>ההלוואות שלכם</span></li>
           <li data-s="3"><i>3</i><span>התוצאה</span></li>
@@ -664,9 +670,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </section>
 
 <section id="pain">
+  <div class="mascot owl-pain" data-pose="listen"></div>
   <div class="wrap">
     <div class="glass pain rv">
-      <div class="mascot owl-pain" data-pose="listen"></div>
       <h2>כל חודש המשכורת נגמרת לפני החודש</h2>
       <ul class="pain-list">
         <li>כמה הלוואות וכמה תאריכי חיוב</li>
@@ -683,7 +689,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <section id="urgency">
   <div class="wrap">
     <div class="urg rv">
-      <div class="mascot owl-urg" data-pose="down"></div>
+      <div class="mascot owl-urg" data-pose="ledge"></div>
       <h2>כל חודש שמחכים עולה לכם כסף</h2>
       <p id="urgText">כל חודש בריבית גבוהה הוא כסף שלא חוזר.</p>
     </div>
@@ -716,8 +722,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <div>
         <span class="tag">הניסיון הבנקאי שלי היתרון שלכם</span>
         <h2>מי שהיה בבנק יודע איך מקבלים אישור</h2>
-        <p>יוצא המערכת הבנקאית עם 12 שנות ניסיון בעולם האשראי. אני יודע איך בנק בוחן בקשה ואיך להציג את המקרה שלכם נכון.</p>
-        <p>גם אם סורבתם בעבר או שהדירוג שלכם נמוך, שווה לבדוק.</p>
+        <p class="about-p">יוצא המערכת הבנקאית עם 12 שנות ניסיון בעולם האשראי. אני יודע איך בנק בוחן בקשה ואיך להציג את המקרה שלכם נכון. גם אם סורבתם בעבר או שהדירוג שלכם נמוך, שווה לבדוק.</p>
       </div>
       <div class="about-form">
         <p class="qt">רוצים לדעת כמה אפשר לחסוך אצלכם? השאירו פרטים</p>
@@ -748,7 +753,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 <section id="check">
   <div class="wrap">
     <div class="glass contact rv" id="contactBox">
-      <div>
+      <div class="contact-txt">
         <h2>שיחה אחת ותדעו כמה אפשר לחסוך</h2>
         <p class="lead">השאירו פרטים ועמית יחזור אליכם. הפרטים מגיעים רק אליו.</p>
         <div class="mascot owl-contact" data-pose="point"></div>
@@ -826,11 +831,11 @@ const pmt=(r,years,P)=>{const i=r/12,n=years*12;return i?P*i/(1-Math.pow(1+i,-n)
 
 /* ===== הפרזנטורית ===== */
 const K='https://media.kolbo.ai/kolboai-media/edited_generated_images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/image-';
-const POSE={point:K+'gen_1794244281491_htg3ihth4.png',listen:K+'gen_1794244296107_ig2u06f6f.png',peek:K+'gen_1794244300954_vwq6j0kl3.png',down:K+'gen_1794244304756_bmi983x2a.png',happy:K+'gen_1794244308864_o316f2e1u.png',coin:K+'gen_1794244361808_mn2qd1qew.png'};
+const POSE={point:K+'gen_1794244281491_htg3ihth4.png',listen:K+'gen_1794244296107_ig2u06f6f.png',peek:K+'gen_1794244300954_vwq6j0kl3.png',down:K+'gen_1794244304756_bmi983x2a.png',happy:K+'gen_1794244308864_o316f2e1u.png',coin:K+'gen_1794245706844_mqkxbpvgm.png',arms:K+'gen_1794245715513_pwjmzmhfj.png',ledge:K+'gen_1794245723829_cpt7ckuw5.png'};
 Object.values(POSE).forEach(u=>{const i=new Image();i.src=u;});
 function setPose(el,p){let img=el.querySelector('img');if(!img){img=document.createElement('img');img.alt='';img.decoding='async';el.appendChild(img);}if(img.dataset.p!==p){img.dataset.p=p;img.src=POSE[p];}}
 $$('[data-pose]').forEach(el=>setPose(el,el.dataset.pose));
-const say=(t,mood)=>{$('#calcSay').textContent=t;const m=$('#calcMascot');m.classList.remove('think','happy');setPose(m,mood==='think'?'listen':mood==='happy'?'happy':'point');};
+const say=(t,mood)=>{const m=$('#calcMascot');m.classList.remove('think','happy');setPose(m,mood==='think'?'listen':mood==='happy'?'happy':'point');};
 
 /* ===== חשיפה בגלילה ===== */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
