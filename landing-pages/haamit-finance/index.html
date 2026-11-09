@@ -324,7 +324,7 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;b
 .calc-side{justify-content:space-between;padding:22px 0 0!important;gap:0!important}
 .calc-side .steps-bar{margin:0!important;padding:0 22px}
 .owl-calc{width:100%;margin:12px 0 0;aspect-ratio:1/1}
-#pain{position:relative}
+#pain{position:relative;overflow-x:clip}
 .pain{position:relative}
 .owl-pain{position:absolute;right:0;bottom:80px;width:360px;z-index:2}
 #urgency{padding-top:250px}
@@ -360,6 +360,48 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;b
   .owl-urg{width:240px}
   .about-p{font-size:1.05rem}
 }
+
+/* סבב 3 */
+.hero-in{text-align:right!important;max-width:1120px!important}
+.hero-in>div{max-width:780px;margin-inline-start:0}
+.hero h1 .gold-text{display:block;white-space:nowrap}
+.hero p.sub{margin-inline:0!important}
+.hero .cta,.hero .ticks{justify-content:flex-start!important}
+.hero-in{padding-bottom:230px!important}
+.q1sec{padding-top:0!important;margin-top:-170px;z-index:5}
+.q1wrap{position:relative}
+.owl-arms{position:absolute!important;left:10px;bottom:calc(100% - 4px);width:320px!important;margin:0!important;z-index:1}
+.q1sec .qbar{position:relative;z-index:2}
+.calc-side{position:relative;overflow:hidden;min-height:560px}
+.owl-calc{position:absolute!important;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% - 175px);width:auto!important;aspect-ratio:1/1;margin:0!important}
+.owl-pain{right:-80px!important;width:400px!important}
+.owl-urg{bottom:calc(100% - 78px)!important}
+.contact{grid-template-columns:1fr 1fr;align-items:stretch!important}
+.contact-txt{padding:0!important;min-height:620px!important}
+.owl-contact{position:absolute!important;right:-6px!important;left:auto!important;bottom:0;top:22px;width:auto!important;height:calc(100% - 22px);aspect-ratio:1/1;margin:0!important}
+.owl-contact img{object-position:right bottom}
+.contact-form{padding:34px;align-self:center}
+.contact-form h2{margin:0 0 6px;font-size:clamp(1.8rem,3.4vw,2.6rem);text-align:right}
+.contact-form .lead{margin:0 0 18px;text-align:right}
+@media (max-width:1300px){.owl-pain{right:-60px!important;width:320px!important}}
+@media (max-width:1180px){.owl-pain{right:auto!important;width:220px!important}}
+@media (max-width:960px){
+  .hero-in{text-align:center!important}
+  .hero-in>div{margin-inline:auto}
+  .hero .cta,.hero .ticks{justify-content:center!important}
+  .hero p.sub{margin-inline:auto!important}
+  .hero-in{padding-bottom:170px!important}
+  .q1sec{margin-top:-110px}
+  .owl-arms{width:170px!important;left:0}
+  .calc-side{min-height:0;overflow:visible}
+  .owl-calc{position:relative!important;left:auto;transform:none;height:auto;width:130px!important}
+  .contact{grid-template-columns:1fr}
+  .contact-txt{min-height:0!important;order:2}
+  .owl-contact{position:relative!important;right:auto!important;top:auto;height:auto;width:260px!important;margin:0 auto!important}
+  .contact-form h2,.contact-form .lead{text-align:center}
+  .contact-form{padding:24px 18px 0}
+}
+@media (max-width:720px){.hero-in{padding-bottom:250px!important}.q1sec{margin-top:-90px}.owl-arms{width:130px!important}}
 /* טופס */
 .form{display:grid;gap:12px;text-align:right}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -572,9 +614,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </section>
 
 <section class="qsec q1sec">
-  <div class="wrap">
+  <div class="wrap q1wrap">
     <div class="mascot owl-arms" data-pose="arms"></div>
-    <div class="glass qbar rv">
+    <div class="glass qbar">
       <p class="qt">השאירו פרטים ועמית יחזור אליכם לשיחת התאמה ללא עלות</p>
       <form class="form qform" id="q1" novalidate>
         <div class="inp"><label for="q1N">שם מלא</label><input id="q1N" autocomplete="name" required><span class="e"></span></div>
@@ -754,11 +796,11 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <div class="wrap">
     <div class="glass contact rv" id="contactBox">
       <div class="contact-txt">
-        <h2>שיחה אחת ותדעו כמה אפשר לחסוך</h2>
-        <p class="lead">השאירו פרטים ועמית יחזור אליכם. הפרטים מגיעים רק אליו.</p>
         <div class="mascot owl-contact" data-pose="point"></div>
       </div>
-      <div>
+      <div class="contact-form">
+        <h2>שיחה אחת ותדעו כמה אפשר לחסוך</h2>
+        <p class="lead">השאירו פרטים ועמית יחזור אליכם. הפרטים מגיעים רק אליו.</p>
         <form class="form" id="mainForm" novalidate>
           <div class="inp"><label for="fName">שם מלא</label><input id="fName" autocomplete="name" required><span class="e"></span></div>
           <div class="inp"><label for="fPhone">טלפון נייד</label><input id="fPhone" type="tel" inputmode="tel" autocomplete="tel" required><span class="e"></span></div>
