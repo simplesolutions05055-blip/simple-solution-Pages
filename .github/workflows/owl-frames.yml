@@ -1,0 +1,30 @@
+name: owl-frames
+on:
+  push:
+    branches: [main]
+    paths: ['landing-pages/haamit-finance/anim/jobs.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: owl-frames
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: deps
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q "rembg[cpu]==2.0.59" pillow
+      - name: build frames
+        run: python landing-pages/haamit-finance/anim/build.py
+      - name: commit
+        run: |
+          git config user.name "Simple Solution"
+          git config user.email "simple.solutions05055@gmail.com"
+          git add landing-pages/haamit-finance/anim
+          git commit -m "Haamit Finance: owl animation frames (auto)" || echo "nothing to commit"
+          git pull --rebase -q origin main
+          git push
