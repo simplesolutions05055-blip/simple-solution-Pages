@@ -1,0 +1,25 @@
+name: fetch-assets
+on:
+  push:
+    branches: [main]
+    paths: ['video-work/urls.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: download
+        run: |
+          cd video-work
+          while read -r name url; do [ -n "$name" ] && [ ! -f "$name" ] && curl -sSfL "$url" -o "$name" && echo "ok $name"; done < urls.txt
+      - name: commit
+        run: |
+          git config user.name "Simple Solution"
+          git config user.email "simple.solutions05055@gmail.com"
+          git add video-work
+          git commit -m "video-work: fetched assets (auto)" || echo "nothing to commit"
+          git pull --rebase -q origin main
+          git push
