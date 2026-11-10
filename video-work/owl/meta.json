@@ -1,0 +1,22 @@
+{
+ "hero": {
+  "frames": 121,
+  "fps": 24.0
+ },
+ "calc": {
+  "frames": 121,
+  "fps": 24.0
+ },
+ "pain": {
+  "frames": 121,
+  "fps": 24.0
+ },
+ "contact": {
+  "frames": 121,
+  "fps": 24.0
+ },
+ "fee": {
+  "frames": 121,
+  "fps": 24.0
+ }
+}
