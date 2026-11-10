@@ -1,0 +1,29 @@
+name: haamit-media
+on:
+  push:
+    branches: [main]
+    paths: ['landing-pages/haamit-finance/media/list.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  media:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: deps
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q pillow
+      - name: fetch media
+        run: python landing-pages/haamit-finance/media/fetch.py
+      - name: commit
+        run: |
+          git config user.name "Simple Solution"
+          git config user.email "simple.solutions05055@gmail.com"
+          git add landing-pages/haamit-finance/media
+          git commit -m "Haamit Finance: self-hosted media (auto)" || echo "nothing to commit"
+          git pull --rebase -q origin main
+          git push
