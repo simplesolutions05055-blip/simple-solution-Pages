@@ -12,3 +12,10 @@ s5.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b1840
 s6.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Warm-and-determined-6af334319482c37f8268a7d1-James.wav
 s7.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Proud-confident-sign-6af334339482c37f8268a7df-James.wav
 s4b.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Soft-slow-personal-a-6af335ad3de159895eac1a6f-James.wav
+e1.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Deep-warm-TV-announc-6af33b01ebb21557be559d15-James.wav
+e2.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Excited-and-upliftin-6af33b03d108c45770075059-James.wav
+e3.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Proud-confident-auth-6af33b054781dde2cb694755-James.wav
+e4.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Soft-slow-heartfelt--6af33b074781dde2cb694760-James.wav
+e5.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Energetic-inviting-p-6af33b09d108c457700750ac-James.wav
+e6.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Warm-sincere-determi-6af33b0dd108c45770075121-James.wav
+e7.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Proud-triumphant-cla-6af33b0f67490907f04a2b22-James.wav
