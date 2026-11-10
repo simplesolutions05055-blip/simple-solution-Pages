@@ -477,14 +477,10 @@
   "redirects": [
     {
       "source": "/haamit-finance",
-      "missing": [
+      "has": [
         {
           "type": "host",
-          "value": "haamit-finance.com"
-        },
-        {
-          "type": "host",
-          "value": "www.haamit-finance.com"
+          "value": "pages.simple-solution.co.il"
         }
       ],
       "destination": "https://haamit-finance.com/",
@@ -492,14 +488,10 @@
     },
     {
       "source": "/haamit-finance/:path*",
-      "missing": [
+      "has": [
         {
           "type": "host",
-          "value": "haamit-finance.com"
-        },
-        {
-          "type": "host",
-          "value": "www.haamit-finance.com"
+          "value": "pages.simple-solution.co.il"
         }
       ],
       "destination": "https://haamit-finance.com/",
