@@ -40,6 +40,46 @@
       "has": [
         {
           "type": "host",
+          "value": "haamit-finance.com"
+        }
+      ],
+      "destination": "/haamit-finance/index.html"
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "haamit-finance.com"
+        }
+      ],
+      "destination": "/haamit-finance/:path"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.haamit-finance.com"
+        }
+      ],
+      "destination": "/haamit-finance/index.html"
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.haamit-finance.com"
+        }
+      ],
+      "destination": "/haamit-finance/:path"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
           "value": "amnon.simple-solution.co.il"
         }
       ],
