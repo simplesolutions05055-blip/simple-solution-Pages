@@ -19,3 +19,7 @@ e4.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b1840
 e5.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Energetic-inviting-p-6af33b09d108c457700750ac-James.wav
 e6.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Warm-sincere-determi-6af33b0dd108c45770075121-James.wav
 e7.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Proud-triumphant-cla-6af33b0f67490907f04a2b22-James.wav
+owl-c1.mp4 https://media.kolbo.ai/kolboai-media/video-firstlast-results/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Locked-off-static-camera-no-ca-6af33c6967490907f04a3595-o3-pro-image-to-vide.mp4
+owl-c2.mp4 https://media.kolbo.ai/kolboai-media/video-firstlast-results/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Locked-off-static-camera-no-ca-6af33c824781dde2cb69526b-o3-pro-image-to-vide.mp4
+owl-c3.mp4 https://media.kolbo.ai/kolboai-media/video-firstlast-results/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Locked-off-static-camera-no-ca-6af33c894781dde2cb695272-o3-pro-image-to-vide.mp4
+owl-c4.mp4 https://media.kolbo.ai/kolboai-media/video-firstlast-results/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Locked-off-static-camera-no-ca-6af33c8e67490907f04a35c1-o3-pro-image-to-vide.mp4
