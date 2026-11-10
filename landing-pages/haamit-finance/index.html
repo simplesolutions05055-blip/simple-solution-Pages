@@ -575,7 +575,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 /* הצצה מאחורי קיר: הגוף נוטה החוצה מקצה המסך */
 .owl-pain.peek{transform-origin:100% 100%;transition:transform 1s cubic-bezier(.25,.8,.3,1);transform:translateX(26%) rotate(-15deg)!important}
 .owl-pain.peek.side-out{transform:translateX(102%) rotate(0deg)!important}
-@media (min-width:721px){#pain{overflow:clip}.owl-pain.peek{bottom:-30px!important}}
+@media (min-width:721px){.owl-pain.peek{bottom:40px!important;-webkit-mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.6) 66%,transparent 84%);mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.6) 66%,transparent 84%)}}
 .owl-urg{--w:340px;width:var(--w)!important;bottom:calc(100% - var(--w)*.172)!important;clip-path:inset(-40% -20% calc(var(--w)*.172) -20%)}
 @media (max-width:720px){.owl-urg{--w:240px}}
 .calc-side{overflow:visible!important;z-index:2}
