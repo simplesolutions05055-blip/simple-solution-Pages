@@ -11,3 +11,4 @@ s4.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b1840
 s5.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Inviting-curious-lig-6af3342e3de159895eac0ceb-James.wav
 s6.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Warm-and-determined-6af334319482c37f8268a7d1-James.wav
 s7.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Proud-confident-sign-6af334339482c37f8268a7df-James.wav
+s4b.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Soft-slow-personal-a-6af335ad3de159895eac1a6f-James.wav
