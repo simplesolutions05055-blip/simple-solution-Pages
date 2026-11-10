@@ -473,5 +473,37 @@
       "source": "/main-site-redesign",
       "destination": "/main-site-redesign/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/haamit-finance",
+      "missing": [
+        {
+          "type": "host",
+          "value": "haamit-finance.com"
+        },
+        {
+          "type": "host",
+          "value": "www.haamit-finance.com"
+        }
+      ],
+      "destination": "https://haamit-finance.com/",
+      "permanent": true
+    },
+    {
+      "source": "/haamit-finance/:path*",
+      "missing": [
+        {
+          "type": "host",
+          "value": "haamit-finance.com"
+        },
+        {
+          "type": "host",
+          "value": "www.haamit-finance.com"
+        }
+      ],
+      "destination": "https://haamit-finance.com/",
+      "permanent": true
+    }
   ]
 }
