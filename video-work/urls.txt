@@ -2,3 +2,5 @@ vo-israelweiss.mp3 https://media.kolbo.ai/kolboai-media/generated-text-to-speech
 sample-1-noam.mp3 https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/tts-6af32bedd64da20ef742ed73-Noam-Broadcaster.mp3
 sample-2-sadachbia.mp3 https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/tts-6af32bef548447ede4dd94fe-Sadachbia.mp3
 sample-3-james.mp3 https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Deep-smooth-confiden-6af32bf1e7877679bbe9b801-James.mp3
+vo-james-v2.wav https://media.kolbo.ai/kolboai-media/generated-text-to-speech/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Warm-empathetic-deep-6af333e19482c37f8268a5c2-James.wav
+music-quiet-confidence.mp3 https://media.kolbo.ai/kolboai-media/stock-imports/kolbo-ai/69c033b18400d38997e63d00/Quiet-Confidence-4d640ad4-fb0c-47bd-ad59-2ae85c54df9f.mp3
