@@ -1,2 +1,2 @@
-ls-sync3.mp4 https://media.kolbo.ai/kolboai-media/lipsync-videos/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/1794330502539-lipsync.mp4
-ls-sync2pro.mp4 https://media.kolbo.ai/kolboai-media/generated-videos/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/lipsync-6af34f3fe1a66078cb46a68d-lipsync-2-pro.mp4
+ls-omni.mp4 https://media.kolbo.ai/kolboai-media/generated-videos/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/The-owl-in-the-navy-jacket-spe-6af3503de1a66078cb46aff3-omnihuman-20.mp4
+ls-ltx.mp4 https://media.kolbo.ai/kolboai-media/ltx-videos/69c033b18400d38997e63d00/1794330770669-audio-to-video.mp4
