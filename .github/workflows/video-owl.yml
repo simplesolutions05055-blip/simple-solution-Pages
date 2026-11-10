@@ -1,0 +1,30 @@
+name: video-owl
+on:
+  push:
+    branches: [main]
+    paths: ['video-work/owl/build.py']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  owl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: deps
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q "rembg[cpu]==2.0.59" pillow scipy numpy
+      - name: build
+        run: python video-work/owl/build.py
+      - name: commit
+        run: |
+          git config user.name "Simple Solution"
+          git config user.email "simple.solutions05055@gmail.com"
+          git add video-work/owl
+          git commit -m "video-work: smooth owl frames (auto)" || echo "nothing to commit"
+          git pull --rebase -q origin main
+          git push
