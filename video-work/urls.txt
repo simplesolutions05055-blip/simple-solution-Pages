@@ -1,1 +1,13 @@
-owl-talk2.mp4 https://v16m-default.tiktokcdn.com/6b201121886f00ed5c3aa984468288d0/6af3a966/video/tos/alisg/tos-alisg-v-a1f5fd-sg/oI8AiAYi2EA8DvAwk5fvlUENVtVzBvCAqMjalz/?a=7099&bti=c2JzZXd5ZW9ybHh3Zl9mXmwrYF4rXnFsOg%3D%3D&&bt=5678&ft=cApXJCz7ThWHGSFLLGZmo0P&mime_type=video_mp4&rc=ajhtPHY5cm1vZWYzOGk6NEBpajhtPHY5cm1vZWYzOGk6NEBqYWNmMmRrNm1hLS1kYjFzYSNqYWNmMmRrNm1hLS1kYjFzcw%3D%3D&vvpl=1&l=20261110173103640C5486FB16541B7A96&btag=e00048000
+pose-1.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af203f040fef56909756a98-edit.png
+pose-2.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af203f077a05fad1ea6e225-edit.png
+pose-3.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af1fe03220d3bdfea713bb2-edit.png
+pose-4.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af1fe025d5e718094dca3fd-edit.png
+pose-5.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af1fe025d5e718094dca401-edit.png
+pose-6.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af1fe00e8e49c9098f86185-edit.png
+pose-7.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af1fe0be4f1298d285e3265-edit.png
+pose-8.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af1fe01e8e49c9098f86186-edit.png
+pose-9.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af0fb38e0b41b0c12f99712-edit.png
+pose-10.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af0fb37424ea46f637967cd-edit.png
+pose-11.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af0fb37350fd97b11fc35cf-edit.png
+pose-12.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-exactly-the-same-owl-6af0fb38639c2511f2d02306-edit.png
+pose-first.png https://media.kolbo.ai/kolboai-media/generated-images/69c033b18400d38997e63d00/6ac613a941d3a9f39e6e2cee/Keep-the-FIRST-image-exac-6af203f540fef56909756aa0-edit.png
