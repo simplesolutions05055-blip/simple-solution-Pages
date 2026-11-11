@@ -1057,7 +1057,7 @@ const LEAD_TO='galcohenamit@gmail.com';
 const UTM=(()=>{const q=new URLSearchParams(location.search);const o=[];['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'].forEach(k=>{const v=q.get(k);if(v)o.push(k+'='+v);});
   try{if(o.length)sessionStorage.setItem('hf_utm',o.join(' | '));return o.join(' | ')||sessionStorage.getItem('hf_utm')||'';}catch(e){return o.join(' | ');}})();
 function sendLead(form,name,phone,extra){
-  const body={_subject:'ליד חדש - העמית הפיננסי - '+name,_template:'table',_captcha:'false',_honey:'',
+  const body={_subject:(form==='מחשבון'?'ליד מהמחשבון':'ליד חדש')+' - העמית הפיננסי - '+name+' - '+phone,_template:'table',_captcha:'false',_honey:'',
     'שם':name,'טלפון':phone,'טופס':form,'מקור':UTM||'כניסה ישירה','עמוד':location.href.split('?')[0],'זמן':new Date().toLocaleString('he-IL',{timeZone:'Asia/Jerusalem'}),...(extra||{})};
   try{if(typeof gtag==='function')gtag('event','generate_lead',{form});if(typeof fbq==='function')fbq('track','Lead');}catch(e){}
   return fetch('https://formsubmit.co/ajax/'+LEAD_TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(body)}).catch(()=>{});
